@@ -4,6 +4,9 @@ import { readFileSync } from 'node:fs';
 import { parse as parseYaml } from 'yaml';
 import { z } from 'zod';
 import type { Item, Meeting, NewsMention } from '@/lib/adapters/types';
+import { loadBodyCatalog } from '@/lib/ingest/catalog';
+import { CENSUS_SCHOOL_NAMES } from '@/lib/ingest/districtCatalog';
+import { districtTerms } from './districtTerms';
 
 const AliasSchema = z.union([z.string().min(1), z.object({ term: z.string().min(1), requires: z.string().min(1) })]);
 export const BodyTermsSchema = z.object({
@@ -16,8 +19,10 @@ export type BodyTerms = z.infer<typeof BodyTermsSchema>;
 export function parseTerms(yamlText: string): BodyTerms[] {
   return z.array(BodyTermsSchema).parse(parseYaml(yamlText));
 }
-export function loadTerms(path = 'data/news_terms.yaml'): BodyTerms[] {
-  return parseTerms(readFileSync(path, 'utf8'));
+/** Hand-written terms, plus pattern terms for the rollout's districts (lib/news/districtTerms.ts). */
+export function loadTerms(path = 'data/news_terms.yaml', withDistricts = true): BodyTerms[] {
+  const hand = parseTerms(readFileSync(path, 'utf8'));
+  return withDistricts ? [...hand, ...districtTerms(loadBodyCatalog(), hand, CENSUS_SCHOOL_NAMES)] : hand;
 }
 
 const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

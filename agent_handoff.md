@@ -33,6 +33,19 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-10-28: District coverage: shared-page checks (0.10)
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **News terms by pattern:** new `lib/news/districtTerms.ts` builds "might come up" terms for every tracked water district and school board in the catalog that has no entry in `data/news_terms.yaml`. `loadTerms()` in `lib/news/match.ts` now returns hand terms plus these (`loadTerms(path, false)` gives hand terms only). Water terms always carry the county prefix or the district's own name ("Harris County MUD 165", "HCMUD 165", "Remington MUD 1"), never a bare "MUD 165", which other counties reuse. "Harris County MUD 12" is cancelled when the text names "Northwest Harris County MUD 12". School terms are the short name and the Census name.
+  - **Logos, photos, Speak up:** no code change needed. Rollout bodies get the icon tile, the kind photo (the bayou for water districts, the bus stop for schools) and Speak up's existing "We haven't verified a registration recipe… don't rely on another district's rules" path with the body's own link. New test `tests/unit/district-shared-pages.test.ts` checks all three over the catalog plus every W batch's generated body.
+- **Files:** New: `lib/news/districtTerms.ts`, `tests/unit/news-district-terms.test.ts`, `tests/unit/district-shared-pages.test.ts`. Changed: `lib/news/match.ts`, `.plans/district-coverage-plan.md` (progress log).
+- **Contract changes:** `loadTerms()` now includes catalog bodies (additive; it reads the body catalog). `lib/news` imports `lib/ingest/catalog` and `districtCatalog`; the import rule only stops the reverse direction.
+- **Checked:** Run on this laptop, Oct 28: `npm test` 93 files, 951 tests, all passed; typecheck has no errors outside `scraper P2/tmp/`; ESLint passes on `lib/news`, `lib/ingest` and the new tests.
+- **Open issues / next:**
+  - For a water district with no checked site, Speak up's "Open the body's website" button opens the Comptroller's search, which isn't the district's own site. The label could say so; that's P4's screen, so it isn't changed here.
+  - Phase 0 work that needs no database is done. Next: 0.8 (scheduler at ~550 sources), and 0.1, 0.5 and the pilot's live checks once Supabase keys are on this laptop.
+
 ### 2026-10-28: District coverage: site survey (0.7)
 - **Who:** Iarush · P2 Agenda Data
 - **Branch:** main
