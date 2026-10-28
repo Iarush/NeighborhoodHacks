@@ -1,0 +1,75 @@
+# Hand-checked official websites for districts in the rollout (.plans/district-coverage-plan.md).
+# Add a row only after opening the site and confirming it names the district. The site survey
+# (plan 0.7) fills water districts in later; until then their pages link the Comptroller's
+# special-district search. scripts/build-district-catalog.ts reads this file.
+# A district with no agendas online gets `no_agendas_online: { reason: ..., checked_on: 'YYYY-MM-DD' }`,
+# which scripts/check-district-batch.ts accepts in place of a source (plan §4 step 4).
+- id: katy_isd_board
+  website: https://www.katyisd.org/
+  checked_on: '2026-10-28'
+- id: aldine_isd_board
+  website: https://www.aldineisd.org/
+  checked_on: '2026-10-28'
+- id: klein_isd_board
+  website: https://www.kleinisd.net/
+  checked_on: '2026-10-28'
+- id: alief_isd_board
+  website: https://www.aliefisd.net/
+  checked_on: '2026-10-28'
+- id: spring_branch_isd_board
+  website: https://www.springbranchisd.com/
+  checked_on: '2026-10-28'
+- id: pasadena_isd_board
+  website: https://www.pasadenaisd.org/
+  checked_on: '2026-10-28'
+- id: humble_isd_board
+  website: https://www.humbleisd.net/
+  checked_on: '2026-10-28'
+- id: spring_isd_board
+  website: https://www.springisd.org/
+  checked_on: '2026-10-28'
+- id: clear_creek_isd_board
+  website: https://www.ccisd.net/
+  checked_on: '2026-10-28'
+- id: tomball_isd_board
+  website: https://www.tomballisd.net/
+  checked_on: '2026-10-28'
+- id: galena_park_isd_board
+  website: https://www.galenaparkisd.com/
+  checked_on: '2026-10-28'
+- id: sheldon_isd_board
+  website: https://www.sheldonisd.com/
+  checked_on: '2026-10-28'
+- id: channelview_isd_board
+  website: https://www.cvisd.org/
+  checked_on: '2026-10-28'
+- id: goose_creek_consolidated_isd_board
+  website: https://www.gccisd.net/
+  checked_on: '2026-10-28'
+- id: la_porte_isd_board
+  website: https://www.lpisd.org/
+  checked_on: '2026-10-28'
+- id: deer_park_isd_board
+  website: https://www.dpisd.org/
+  checked_on: '2026-10-28'
+- id: crosby_isd_board
+  website: https://www.crosbyisd.org/
+  checked_on: '2026-10-28'
+- id: huffman_isd_board
+  website: https://www.huffmanisd.net/
+  checked_on: '2026-10-28'
+- id: new_caney_isd_board
+  website: https://www.newcaneyisd.org/
+  checked_on: '2026-10-28'
+- id: waller_isd_board
+  website: https://www.wallerisd.net/
+  checked_on: '2026-10-28'
+- id: dayton_isd_board
+  website: https://www.daytonisd.net/
+  checked_on: '2026-10-28'
+- id: pearland_isd_board
+  website: https://www.pearlandisd.org/
+  checked_on: '2026-10-28'
+- id: stafford_municipal_school_district_board
+  website: https://www.staffordmsd.org/
+  checked_on: '2026-10-28'

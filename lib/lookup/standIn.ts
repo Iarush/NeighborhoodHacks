@@ -25,6 +25,9 @@ const slug = (s: string) =>
 /** "Houston Independent School District" -> "Houston ISD" */
 const shortSchool = (name: string) => name.replace(/\s+Independent School District$/i, ' ISD').replace(/\s+Consolidated Independent School District$/i, ' CISD')
 
+/** The body ID for a Census school-district name, e.g. "Katy Independent School District" -> "katy_isd_board". */
+export const schoolBoardId = (censusName: string) => KNOWN_SCHOOLS[censusName]?.id ?? `${slug(shortSchool(censusName))}_board`
+
 const KNOWN_SCHOOLS: Record<string, { id: string; college?: StandInBody }> = {
   'Houston Independent School District': {
     id: 'hisd_board',
@@ -53,7 +56,7 @@ export function bodiesFromCensus(match: CensusMatch): StandInBody[] {
   if (match.schoolDistrict) {
     const known = KNOWN_SCHOOLS[match.schoolDistrict]
     bodies.push({
-      id: known?.id ?? `${slug(shortSchool(match.schoolDistrict))}_board`,
+      id: schoolBoardId(match.schoolDistrict),
       name: `${shortSchool(match.schoolDistrict)} Board`,
       type: 'school_board',
       category: 'tracked',

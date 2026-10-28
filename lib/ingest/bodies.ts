@@ -1,9 +1,12 @@
 import type { QuizBodyType } from '@/lib/contracts/bodyTypes';
+import { QUIZ_BODY_TYPES } from '@/lib/contracts/bodyTypes';
+import { loadBodyCatalog, type CatalogBody } from './catalog';
 
 // The `bodies` rows ingest needs before it can write meetings and items (they reference bodies.id).
 // P1 owns the bodies table: these rows are inserted only when missing and never overwritten,
 // so P1 can fill in descriptions, elected_or_appointed, tax_set_by_body_id and the rest.
-// IDs match data/sources.yaml (including section_body_map) and lib/lookup/standIn.ts.
+// The list comes from the body catalog (data/bodies*.yaml via ./catalog), so it can't drift from
+// the seed script. IDs match data/sources.yaml (including section_body_map) and lib/lookup/standIn.ts.
 // sms_eligible follows Project_Plan.md: city councils, Commissioners Court (with Flood Control),
 // school boards, community college boards, MUDs and ESDs.
 
@@ -15,15 +18,10 @@ export type BodySeed = {
   sms_eligible: boolean;
 };
 
-export const TRACKED_BODIES: readonly BodySeed[] = [
-  { id: 'houston_city_council', name: 'Houston City Council', type: 'city_council', category: 'tracked', sms_eligible: true },
-  { id: 'commissioners_court', name: 'Harris County Commissioners Court', type: 'commissioners_court', category: 'tracked', sms_eligible: true },
-  { id: 'flood_control', name: 'Harris County Flood Control District', type: 'flood_control', category: 'tracked', sms_eligible: true },
-  { id: 'port_houston', name: 'Port of Houston Authority', type: 'port', category: 'tracked', sms_eligible: false },
-  { id: 'hisd_board', name: 'Houston ISD Board of Managers', type: 'school_board', category: 'tracked', sms_eligible: true },
-  { id: 'cfisd_board', name: 'Cypress-Fairbanks ISD Board of Trustees', type: 'school_board', category: 'tracked', sms_eligible: true },
-  { id: 'hcc_board', name: 'Houston Community College Board of Trustees', type: 'college_board', category: 'tracked', sms_eligible: true },
-  { id: 'lone_star_board', name: 'Lone Star College Board of Trustees', type: 'college_board', category: 'tracked', sms_eligible: true },
-  { id: 'hcmud_489', name: 'Harris County MUD 489', type: 'mud', category: 'tracked', sms_eligible: true },
-  { id: 'hcad', name: 'Harris Central Appraisal District', type: 'hcad', category: 'tracked', sms_eligible: false },
-];
+export function trackedBodies(catalog: readonly CatalogBody[]): BodySeed[] {
+  return catalog
+    .filter((b) => b.category === 'tracked' && (QUIZ_BODY_TYPES as readonly string[]).includes(b.type))
+    .map((b) => ({ id: b.id, name: b.name, type: b.type as QuizBodyType, category: 'tracked', sms_eligible: b.sms_eligible }));
+}
+
+export const TRACKED_BODIES: readonly BodySeed[] = trackedBodies(loadBodyCatalog());

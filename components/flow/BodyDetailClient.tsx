@@ -23,6 +23,7 @@ type Detail = {
   last_vote_date: string | null
   latest_election: null | { date: string | null; type: string | null; votes_cast: number | null; registered_voters: number | null; source_url: string | null }
   ballot_offices: Array<{ office_name: string | null; holder_name: string | null; next_election_date: string | null; source_url: string | null }>
+  agenda_coverage?: 'reading' | 'not_yet' | null
   headlines: Array<{ outlet: string | null; headline: string; url: string; published_at: string | null }>
 }
 
@@ -82,6 +83,14 @@ export function BodyDetailClient({ bodyId, token }: { bodyId: string; token: str
             {body.tax_source_url && <a href={body.tax_source_url} target="_blank" rel="noreferrer" className="underline">{t('taxSource')}</a>}
             {body.latest_election?.source_url && <a href={body.latest_election.source_url} target="_blank" rel="noreferrer" className="underline">{t('electionSource')}</a>}
           </div>
+
+          {body.agenda_coverage === 'not_yet' && (
+            <section aria-labelledby="agenda-coverage-title" className="mt-9 rounded-[26px] bg-surface p-5 ring-1 ring-border md:p-7">
+              <h2 id="agenda-coverage-title" className="text-xl font-extrabold text-ink">{t('notReadTitle')}</h2>
+              <p className="mt-1 text-sm text-muted-foreground">{t('notReadBody')}</p>
+              {meetingInfoUrl && <a href={meetingInfoUrl} target="_blank" rel="noreferrer" className="mt-3 inline-block text-sm font-semibold text-primary underline underline-offset-4">{t('notReadLink')}</a>}
+            </section>
+          )}
 
           {body.ballot_offices.length > 0 && (
             <section className="mt-9">

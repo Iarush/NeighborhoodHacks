@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { QUIZ_BODY_TYPES } from '@/lib/contracts/bodyTypes';
-import { TRACKED_BODIES } from '@/lib/ingest/bodies';
+import { TRACKED_BODIES, trackedBodies } from '@/lib/ingest/bodies';
+import { loadBodyCatalog, parseBodyCatalog } from '@/lib/ingest/catalog';
 import { loadSources } from '@/lib/ingest/registry';
 
 const ids = new Set(TRACKED_BODIES.map((b) => b.id));
@@ -33,5 +34,40 @@ describe('tracked bodies seed', () => {
   it('marks only the plan\'s SMS-eligible kinds of body as able to text (Project_Plan: texts)', () => {
     const eligible = new Set(['city_council', 'commissioners_court', 'flood_control', 'school_board', 'college_board', 'mud', 'esd']);
     for (const b of TRACKED_BODIES) expect(b.sms_eligible, b.id).toBe(eligible.has(b.type));
+  });
+});
+
+describe('body catalog (one body list)', () => {
+  const row = (id: string, extra = '') => `- id: ${id}
+  name: Test ${id}
+  type: mud
+  category: tracked
+  elected_or_appointed: Elected board of directors
+  impact_rank: 50
+  sms_eligible: true
+  description_en: A test district.
+  description_es: Un distrito de prueba.
+  meeting_info_url: https://example.org/
+  source_url: https://example.org/
+${extra}`;
+
+  it('seeds exactly the tracked quiz-type bodies in data/bodies.yaml, so ingest and the seed script agree', () => {
+    const tracked = loadBodyCatalog().filter((b) => b.category === 'tracked');
+    expect(TRACKED_BODIES.map((b) => b.id).sort()).toEqual(tracked.map((b) => b.id).sort());
+    expect(ids.has('centerpoint')).toBe(false);
+  });
+
+  it('merges the generated district file into the same list', () => {
+    const bodies = trackedBodies(parseBodyCatalog([row('hcmud_489'), row('hcmud_165')]));
+    expect(bodies.map((b) => b.id)).toEqual(['hcmud_489', 'hcmud_165']);
+  });
+
+  it('rejects an ID repeated across files and an unknown tax-setting body', () => {
+    expect(() => parseBodyCatalog([row('hcmud_1'), row('hcmud_1')])).toThrow(/duplicate body id/);
+    expect(() => parseBodyCatalog([row('hcmud_2', '  tax_set_by_body_id: nowhere\n')])).toThrow(/not in the catalog/);
+  });
+
+  it('treats a missing district file as empty', () => {
+    expect(loadBodyCatalog(['data/bodies.yaml', 'data/does-not-exist.yaml']).length).toBe(loadBodyCatalog(['data/bodies.yaml']).length);
   });
 });

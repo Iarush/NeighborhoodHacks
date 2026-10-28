@@ -33,6 +33,139 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-10-28: District coverage: batch checker (0.9) and water-district boundary loader (0.4)
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **0.9 batch checker:** `npx tsx scripts/check-district-batch.ts --batch <id|pilot>` (pure logic in `lib/ingest/batchCheck.ts`). For each district it checks: in the catalog, HCAD code mapped to it, and a source in `data/sources.yaml` or a recorded `no_agendas_online` reason in `data/district-sites.yaml`. With Supabase keys it also checks the `bodies` row, `jurisdiction_map` and a boundary, and lists polygons for bodies not in the catalog. Without keys those print "skip". It exits non-zero on any failure. Steps 5–6 (a real address, pages at 390 px) stay manual.
+  - **0.4 boundary loader:** `data/boundary-sources.yaml` adds `hc-water-districts` (the county's `Permits/MUDandWaterDistricts_HCAD` MapServer, field `code`, fetch command in the comment). `scripts/load-boundaries.ts` accepts layers `HCAD_MUD` and `HCAD_Water_Districts` and a `--batch <id|pilot>` option that limits the load to that batch's bodies. The water layers require `--batch`. The RPC only replaces polygons for the IDs it's given, so earlier batches' polygons stay. `lib/lookup/boundaryStaging.ts` maps both layers to body type `mud`.
+- **Files:** New: `lib/ingest/batchCheck.ts`, `scripts/check-district-batch.ts`, `tests/unit/batch-check.test.ts`. Changed: `lib/lookup/boundaryStaging.ts`, `scripts/load-boundaries.ts`, `data/boundary-sources.yaml`, `data/district-sites.yaml` (comment only), `tests/lookup/boundaryStaging.test.ts`, `.plans/district-coverage-plan.md` (progress log).
+- **Contract changes:** None. `stageHcadBoundaries()` takes a wider layer type (additive).
+- **Checked:** Run on this laptop, Oct 28:
+  - Fetched both county layers to `tmp/scratch/hcad/` (452 + 47 features, no transfer limit hit). Every polygon passes staging validation.
+  - `load:boundaries --layer HCAD_MUD --batch pilot` dry run: 1 body (MUD 489 from code 189), 1 polygon, 451 unmapped.
+  - `check-district-batch --batch pilot --batch S1`: pilot passes the file checks; all 10 S1 boards fail on "no source", as expected.
+  - `npm test`: 90 files, 935 tests, all passed. Typecheck: no errors outside `scraper P2/tmp/`. ESLint passes on the changed files.
+  - Nothing applied to the database (no service-role key in `.env.local`).
+- **Open issues / next:**
+  - "No unexpected overlaps" (§4 step 2) isn't checked yet; it needs a PostGIS query once keys are here.
+  - The county service shows no edit date, so `release_updated` is the fetch date.
+  - **Next:** 0.7 site survey, 0.10 shared-page fallbacks. 0.1, 0.5, the pilot's live checks and S1's seeding need Supabase keys.
+
+### 2026-10-28: District coverage: catalog builder (0.2) and S1's catalog
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **0.2 catalog builder:** `scripts/build-district-catalog.ts --batch <id> [--check]` reads the batch list, `data/hcad-jurisdictions.json` and the new hand-checked `data/district-sites.yaml`. It writes the generated `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml`, keeping earlier batches' rows. It refuses X batches (reconcile by hand first), and it prints each HCAD/layer name pair that differs, for the hand check.
+    - IDs come from names, never codes: `hcmud_<n>`, `hcwcid_<n>`, `nwhcmud_<n>`, `whcmud_<n>`, `fbcmud_<n>`, and slugs for named districts (`remington_mud_1`). School IDs use the stand-in lookup's rule (new `schoolBoardId()` in `lib/lookup/standIn.ts`), so Stafford is `stafford_municipal_school_district_board` and Goose Creek is `goose_creek_consolidated_isd_board`.
+    - Water districts without a checked site link the Comptroller's special-district search. A school board must have a checked site, or the build fails.
+    - Board selection is written as "not loaded" until a source is checked (plan §4.1).
+  - **Shared code map:** `lib/ingest/catalog.ts` gains `loadJurisdictionMap()` (hand map plus generated map, no repeated codes). `seed-hcad-jurisdictions`, `load-hcad` and `load-boundaries` use it, and `load-boundaries` now takes body types from the whole catalog.
+  - **S1, step 1 only:** the 10 S1 school boards are in the generated files (codes 008, 009, 017, 018, 019, 021, 024, 025, 026, 027). There's no boundary, source or seeding yet, so the batch isn't ticked.
+- **Files:** New: `scripts/build-district-catalog.ts`, `lib/ingest/districtCatalog.ts`, `data/district-sites.yaml`, `data/bodies.districts.yaml`, `data/hcad-jurisdiction-map.districts.yaml`, `tests/unit/district-catalog.test.ts`. Changed: `lib/ingest/catalog.ts`, `lib/lookup/standIn.ts`, `scripts/{seed-hcad-jurisdictions,load-hcad,load-boundaries}.ts`, `.plans/district-coverage-plan.md` (progress log).
+- **Contract changes:** Additive. `TRACKED_BODIES` now includes the 10 S1 boards, so the next `seed-bodies --apply` and ingest seeding add them. Their pages show "agendas not read yet" until sources exist. The HCAD code map is now two files.
+- **Checked:** Run on this laptop, Oct 28:
+  - The 23 ISD websites: each one fetched, and its page title names the district.
+  - A dry run of every S and W batch: 520 bodies and 521 codes, with no failures.
+  - `seed-bodies --check`: 21 bodies. `seed-hcad-jurisdictions --check`: 19 codes.
+  - `npm test`: 927 of 928 passed. The failure was `news-isolation`, which timed out after 133 s under the full run's load (it runs ESLint). Run alone, it passes.
+  - Typecheck: no errors outside `scraper P2/tmp/`. ESLint passes on the changed files.
+  - Nothing checked against the live database (no keys).
+- **Open issues / next:**
+  - **Lago Bello (W51, code 011): resolved.** The county layer misspells it "LAGO BELLA". H.B. 2687 (85th Leg., 2017), TCEQ permit WQ0015903001 and HCAD's list all say Bello. `LAYER_NAME_FIXES` in `lib/ingest/districtCatalog.ts` corrects it, giving the ID `lago_bello_mud_1a`, and a test covers it.
+  - **Name differences to hand-check when their batch comes up:** spelling only (W16, W17, W19, W20, W27, W28, W30, W35, W36, W41, W42, W45, W49, W52, W53).
+  - W48 has one county polygon with no code or name. The builder skips it.
+  - **Next:** 0.9 batch checker, 0.4 boundary loader, 0.7 site survey. 0.1, 0.5 and the pilot still need Supabase keys.
+
+### 2026-10-28: District coverage Phase 0: one body list and "agendas not read yet"
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:** Phase 0 steps 0.3 and 0.6 of `.plans/district-coverage-plan.md`. Neither needs the database.
+  - **0.3, one body list:**
+    - New `lib/ingest/catalog.ts` loads and checks `data/bodies.yaml` plus the generated `data/bodies.districts.yaml`. The district file is optional until 0.2 writes it.
+    - The loader checks for repeated IDs and that every `tax_set_by_body_id` resolves.
+    - `lib/ingest/bodies.ts` no longer hard-codes 10 bodies: `TRACKED_BODIES` is now the catalog's tracked quiz-type rows.
+    - `scripts/seed-bodies.ts` uses the same loader.
+    - `next.config.ts` ships both YAML files with `/api/cron/ingest`.
+  - **0.6, "We don't read this board's agendas yet":**
+    - New `lib/ingest/coverage.ts` marks a body covered when a `sources` row names it, directly or through `section_body_map`.
+    - `/api/bodies` returns `agenda_coverage`.
+    - `/bodies/[id]` shows the notice with a link to the board's official meeting notices (English and Spanish messages).
+    - The `/app/districts` list shows "Agendas: Not read yet".
+    - `/app/districts/[id]` shows the notice under "Coming up and recently decided".
+- **Files:**
+  - New: `lib/ingest/catalog.ts`, `lib/ingest/coverage.ts`
+  - Changed: `lib/ingest/bodies.ts`, `scripts/seed-bodies.ts`, `next.config.ts`, `app/api/bodies/route.ts`, `components/flow/BodyDetailClient.tsx`, `messages/en.json`, `messages/es.json`, `lib/weekly/data.ts`, `lib/prototype/types.ts`, `lib/prototype/live.ts`, `app/(prototype)/app/districts/page.tsx`, `app/(prototype)/app/districts/[id]/page.tsx`, `tests/unit/ingest-bodies.test.ts`
+- **Contract changes:** Additive only; nothing removed.
+  - `WeeklyBody` in P3's `lib/weekly/data.ts` gains optional `agendas_read` and `meeting_info_url`. `resolveBodies()` now also reads the `sources` table.
+  - The prototype `Body` type gains optional `agendasRead`.
+  - Live bodies with no hand-written description now use `meeting_info_url` as their `website`.
+  - `/api/bodies` gains `agenda_coverage`.
+  - Screens wired to real data: `/app/districts` and `/app/districts/[id]`. Both show the coverage notice, from the `sources` table.
+- **Checked:** Run on this laptop, Oct 28:
+  - `npm test`: 88 files, 901 tests, all passed.
+  - `npm run typecheck`: passed, except 7 errors in the git-ignored local folder `scraper P2/tmp/`, which this work doesn't touch.
+  - ESLint on the changed files: passed.
+  - `npx tsx scripts/seed-bodies.ts --check`: validated 11 bodies.
+  - **Not checked:**
+    - the pages in a browser, at 390 px or by keyboard;
+    - live data, because there are no Supabase keys on this laptop.
+  - The notice shows only with real data: sample mode leaves `agendas_read` unset.
+- **Open issues / next:**
+  - **Next steps that don't need the database:**
+    - 0.2: catalog builder;
+    - 0.4: boundary loader;
+    - 0.7: site survey;
+    - 0.9: batch checker;
+    - 0.10: shared-page fallbacks.
+  - 0.1, 0.5 and the pilot need Supabase keys.
+  - **One notice covers two cases:** "not built yet" and "no agendas online". Telling them apart would need a new field, and the plan says this state comes from `sources` with no schema change.
+
+### 2026-10-28: Stress test answers: Iarush (P2)
+- **Who:** Iarush · P2 Agenda Data
+- **Dropped:** asked Oct 27–28.
+  - Dates passed: Q2, Q3, Q5, Q6, Q10, Q13, Q17, Q18, Q19, Q20, Q21.
+  - Already settled: Q8 and Q9. Since Oct 20 the prototype UI is the app's UI.
+- **Answers:**
+  - Q1: P2.
+  - Q4: yes. The district rollout must never break the two demo addresses.
+  - Q7: yes.
+  - Q11: yes. No problem with the spec's D17 running through OpenRouter.
+  - Q12: yes.
+  - Q14: yes.
+  - Q15: yes.
+  - Q16: yes, no problem. The rollout reuses BoardBook and Legistar, with one AI extraction template per website vendor.
+- **Differs from the owner:**
+  - Q1 only: P2, where the owner is P5.
+  - Q16 follows the spec, which replaced the owner's earlier answer.
+
+### 2026-10-27: Plan for every MUD and school district in Harris County
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:** Added a plan, `.plans/district-coverage-plan.md`, for covering all 23 remaining school districts and 498 water districts (MUD, UD, WCID, FWSD and others), plus 60 HCAD codes to reconcile, at full depth: lookup, body page, agendas, stories and alerts. Iarush builds it in phases of up to 10 districts:
+  - Phase 0: groundwork;
+  - S1–S3: school boards;
+  - W1–W55: water districts, region by region, Cy-Fair first;
+  - X1–X6: HCAD codes with no county boundary.
+  - The batch lists, with checkboxes, are in `.plans/district-rollout-batches.md`.
+  - Nothing is built yet.
+- **Files:** `.plans/district-coverage-plan.md`, `.plans/district-rollout-batches.md` (both new)
+- **Contract changes:** None yet. Phase 0 plans DB schema changes so everything fits the free plan (no paid Supabase, per Iarush):
+  - **HCAD tables:** `hcad_parcels` and `hcad_jurisdictions` replaced by `hcad_addresses` (address hash → code-set ID), `hcad_code_sets` and `hcad_subdivisions`. Estimated ~100 MB for the whole county, versus ~400 MB now for 30 ZIPs.
+  - **Raw text:** `documents.raw` moves to a private Storage bucket.
+  - **Items:** archived to Storage after 8 months, leaving stubs.
+  - **Stories:** template stories built on display, not stored.
+  - Also a new lookup RPC and scheduler sharding.
+  - Plan-file changes are listed as team proposals (§7).
+- **Checked:** Live, Oct 27:
+  - Harris County's `Permits/MUDandWaterDistricts_HCAD` MapServer has 452 MUD and 47 water-district polygons keyed by HCAD code.
+  - Code `189` is MUD 489, matching our map. HCAD codes aren't MUD numbers: code `489` is MUD 189.
+  - Regions come from Census TIGERweb school districts (center of each district's largest piece).
+  - No app code or tests run.
+- **Open issues / next:**
+  - Phase 0, starting with measuring the database. Iarush's `.env.local` (Oct 19) has no Supabase keys, so table sizes couldn't be read this session. Get current values from PlaidMod, or run the size query in plan §2.5 in the SQL editor. The ~400 MB HCAD figure is an estimate from the Oct 21 handoff numbers.
+  - Plan stress test: done Oct 28 (see "Stress test answers: Iarush (P2)").
+
 ### 2026-10-24: Pages no longer wait for the AI weekly summary
 - **Who:** PlaidMod · P5 Platform
 - **Branch:** main

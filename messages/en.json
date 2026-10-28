@@ -556,7 +556,10 @@
     "electionDate": "Next election: {date}",
     "officialSource": "Official source",
     "newsTitle": "News that may come up at a future meeting",
-    "newsNote": "These are linked headlines, not meeting agenda items. Check the official agenda."
+    "newsNote": "These are linked headlines, not meeting agenda items. Check the official agenda.",
+    "notReadTitle": "We don’t read this board’s agendas yet",
+    "notReadBody": "So there are no upcoming items or alerts for it here. Its meetings and agendas are posted on its own official notice page.",
+    "notReadLink": "See its official meeting notices"
   },
   "AppLabels": {
     "topic": {

@@ -556,7 +556,10 @@
     "electionDate": "Próxima elección: {date}",
     "officialSource": "Fuente oficial",
     "newsTitle": "Noticias que podrían surgir en una reunión futura",
-    "newsNote": "Estos son titulares enlazados, no puntos de una agenda. Revisa la agenda oficial."
+    "newsNote": "Estos son titulares enlazados, no puntos de una agenda. Revisa la agenda oficial.",
+    "notReadTitle": "Todavía no leemos las agendas de esta junta",
+    "notReadBody": "Por eso aquí no hay asuntos próximos ni alertas para ella. Sus reuniones y agendas se publican en su propia página oficial de avisos.",
+    "notReadLink": "Ver sus avisos oficiales de reuniones"
   },
   "AppLabels": {
     "topic": {

@@ -17,3 +17,21 @@
     - name: College
       allowed_body_types: [college_board]
       source_code_field: Code
+# District coverage plan 0.4: the county's water-district polygons, keyed by HCAD code (field `code`).
+# The service shows no edit date, so release_updated is the day it was fetched and checked.
+# Fetch each layer already reprojected (layer 0 = HCAD_MUD, 1 = HCAD_Water_Districts):
+#   curl -o tmp/scratch/hcad/HCAD_MUD.geojson "<source_url>/0/query?where=1%3D1&outFields=code,name&outSR=4326&f=geojson"
+- id: hc-water-districts
+  source_url: https://www.gis.hctx.net/arcgishcpid/rest/services/Permits/MUDandWaterDistricts_HCAD/MapServer
+  dictionary_url: https://www.gis.hctx.net/arcgishcpid/rest/services/Permits/MUDandWaterDistricts_HCAD/MapServer
+  verified_on: '2026-10-28'
+  release_updated: '2026-10-28'
+  source_crs: EPSG:2278
+  output_crs: EPSG:4326
+  layers:
+    - name: HCAD_MUD
+      allowed_body_types: [mud]
+      source_code_field: code
+    - name: HCAD_Water_Districts
+      allowed_body_types: [mud]
+      source_code_field: code

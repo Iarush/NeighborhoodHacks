@@ -2,9 +2,8 @@ import { config } from 'dotenv'
 import { createHash } from 'node:crypto'
 import { mkdirSync, readFileSync, realpathSync, statSync } from 'node:fs'
 import { join, relative, resolve } from 'node:path'
-import { parse } from 'yaml'
-import { z } from 'zod'
 import { rawDb } from '../lib/db/raw'
+import { loadJurisdictionMap } from '../lib/ingest/catalog'
 import { parseHcadStaging, planHcadLoad } from '../lib/lookup/hcadStaging'
 
 config({ path: '.env.local', quiet: true })
@@ -12,9 +11,7 @@ config({ path: '.env.local', quiet: true })
 const repo = process.cwd()
 mkdirSync(join(repo, 'tmp/scratch/hcad'), { recursive: true })
 const root = realpathSync(join(repo, 'tmp/scratch/hcad'))
-const map = z.object({ mappings: z.array(z.object({ code: z.string() })) })
-  .parse(parse(readFileSync('data/hcad-jurisdiction-map.yaml', 'utf8')))
-const mappedCodes = new Set(map.mappings.map((row) => row.code))
+const mappedCodes = new Set(loadJurisdictionMap().map((row) => row.code))
 const arg = (name: string) => {
   const index = process.argv.indexOf(name)
   return index < 0 ? undefined : process.argv[index + 1]

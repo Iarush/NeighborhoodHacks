@@ -32,8 +32,17 @@ function validGeometry(value: unknown): value is Geometry {
   return false
 }
 
+export const BOUNDARY_LAYERS = ['City', 'School', 'College', 'HCAD_MUD', 'HCAD_Water_Districts'] as const
+export type BoundaryLayer = typeof BOUNDARY_LAYERS[number]
+
+// HCAD's City/School/College downloads, and the county's two water-district layers
+// (district coverage plan 0.4), which hold every Water Code district as type `mud`.
+const LAYER_BODY_TYPES: Record<BoundaryLayer, string> = {
+  City: 'city_council', School: 'school_board', College: 'college_board', HCAD_MUD: 'mud', HCAD_Water_Districts: 'mud',
+}
+
 /** Validates HCAD polygon exports after reprojection to GeoJSON's WGS84 coordinates. */
-export function stageHcadBoundaries(text: string, sourceLayer: 'City' | 'School' | 'College', mappings: readonly BoundaryMapping[]): BoundaryStageResult {
+export function stageHcadBoundaries(text: string, sourceLayer: BoundaryLayer, mappings: readonly BoundaryMapping[]): BoundaryStageResult {
   if (Buffer.byteLength(text, 'utf8') > 30 * 1024 * 1024) throw new Error('Boundary GeoJSON exceeds the 30 MB staging limit.')
   let parsed: unknown
   try { parsed = JSON.parse(text) } catch { throw new Error('Boundary staging input is not valid GeoJSON.') }
@@ -44,9 +53,7 @@ export function stageHcadBoundaries(text: string, sourceLayer: 'City' | 'School'
   }
   const crs = collection.crs?.properties?.name
   if (crs && !/4326|CRS84|WGS.?84/i.test(String(crs))) throw new Error('Reproject the boundary GeoJSON to EPSG:4326 first.')
-  const allowedTypes = sourceLayer === 'City'
-    ? new Set(['city_council'])
-    : sourceLayer === 'School' ? new Set(['school_board']) : new Set(['college_board'])
+  const allowedTypes = new Set([LAYER_BODY_TYPES[sourceLayer]])
   const bodyByCode = new Map(mappings.filter((row) => allowedTypes.has(row.type)).map((row) => [row.code, row.body_id]))
   const byBody = new Map<string, Array<Record<string, unknown>>>()
   let skippedFeatureCount = 0

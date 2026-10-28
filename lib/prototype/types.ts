@@ -55,6 +55,8 @@ export interface Body {
   /** Your specific seat/district within this body */
   yourSeat?: string
   website: string
+  /** False when we don't read this body's agendas yet (real data only; unset for the demo). */
+  agendasRead?: boolean
 }
 
 export interface Update {

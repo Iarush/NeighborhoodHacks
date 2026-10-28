@@ -11,6 +11,7 @@ import { SAMPLE_BODIES, sampleItems } from './sample'
 import { getRecipe } from '@/lib/registration/recipes'
 import { getWindow } from '@/lib/registration/deadlines'
 import { fetchAllPages } from '@/lib/paging'
+import { bodiesWithAgendaSource } from '@/lib/ingest/coverage'
 
 // Server-side data for P3's pages and APIs: the weekly page, item pages and the timeline.
 // Reads the database when it's configured; otherwise serves the labeled sample data.
@@ -18,7 +19,16 @@ import { fetchAllPages } from '@/lib/paging'
 const DAY = 86_400_000
 
 export type DataMode = 'db' | 'sample'
-export type WeeklyBody = { body_id: string; body_name: string; body_type: string; sms_eligible: boolean }
+export type WeeklyBody = {
+  body_id: string
+  body_name: string
+  body_type: string
+  sms_eligible: boolean
+  /** Whether a row in `sources` reads this body's agendas (lib/ingest/coverage). Unset for sample data. */
+  agendas_read?: boolean
+  /** The body's official meeting-notice page, from `bodies.meeting_info_url`. */
+  meeting_info_url?: string | null
+}
 
 /** The database is used only when every key it needs is set. */
 export function dataMode(): DataMode {
@@ -43,8 +53,13 @@ export async function resolveBodies(token: string | null | undefined): Promise<B
   if (!token) return { mode: 'db', bodies: null, reason: 'no_token' }
   const ids = verifyBodiesToken(token)
   if (!ids) return { mode: 'db', bodies: null, reason: 'bad_token' }
-  const { data, error } = await db().from('bodies').select('id, name, type, sms_eligible').in('id', ids)
+  const [{ data, error }, sources] = await Promise.all([
+    db().from('bodies').select('id, name, type, sms_eligible, meeting_info_url').in('id', ids),
+    db().from('sources').select('body_id, config'),
+  ])
   if (error) throw error
+  if (sources.error) throw sources.error
+  const covered = bodiesWithAgendaSource(sources.data ?? [])
   return {
     mode: 'db',
     bodies: (data ?? []).map((b) => ({
@@ -52,6 +67,8 @@ export async function resolveBodies(token: string | null | undefined): Promise<B
       body_name: b.name,
       body_type: b.type ?? 'other',
       sms_eligible: b.sms_eligible,
+      agendas_read: covered.has(b.id),
+      meeting_info_url: b.meeting_info_url,
     })),
   }
 }

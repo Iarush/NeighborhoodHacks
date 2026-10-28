@@ -13,9 +13,9 @@ const securityHeaders = [
 ]
 
 const nextConfig: NextConfig = {
-  // The ingest route reads the source registry and manual agendas from disk at run time.
+  // The ingest route reads the source registry, manual agendas and body catalog from disk at run time.
   outputFileTracingIncludes: {
-    '/api/cron/ingest': ['./data/sources.yaml', './data/manual/**/*'],
+    '/api/cron/ingest': ['./data/sources.yaml', './data/manual/**/*', './data/bodies.yaml', './data/bodies.districts.yaml'],
   },
   async headers() {
     return [

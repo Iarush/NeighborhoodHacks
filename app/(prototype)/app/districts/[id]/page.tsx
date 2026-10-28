@@ -134,6 +134,20 @@ export default function BodyPage() {
       <div className="mt-4 grid gap-4 xl:grid-cols-[minmax(0,1fr)_380px]">
         <Panel>
           <SectionTitle>Coming up and recently decided</SectionTitle>
+          {b.agendasRead === false && (
+            <div className="rounded-2xl bg-muted p-4 text-sm leading-relaxed">
+              <p className="font-bold">We don't read this board's agendas yet</p>
+              <p className="mt-1 text-muted-foreground">
+                So nothing from its meetings shows up here or in your alerts. It posts its meetings and agendas on its own
+                official notice page.
+              </p>
+              {b.website && (
+                <a href={b.website} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-1 font-semibold text-denim underline underline-offset-4">
+                  See its official meeting notices <ExternalLink className="size-3.5" aria-hidden="true" />
+                </a>
+              )}
+            </div>
+          )}
           <ul className="divide-y divide-line">
             {[...upcoming, ...past].map((u) => {
               const TIcon = TYPE_ICON[u.type]

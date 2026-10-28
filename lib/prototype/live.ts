@@ -90,7 +90,8 @@ export function toBody(b: WeeklyBody): Body {
     meets: known?.meets ?? "",
     location: known?.location ?? "",
     commentRules: known?.commentRules ?? "",
-    website: known?.website ?? "",
+    website: known?.website ?? b.meeting_info_url ?? "",
+    agendasRead: b.agendas_read,
   }
 }
 

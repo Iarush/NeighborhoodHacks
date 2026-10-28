@@ -72,6 +72,12 @@ export default function Districts() {
                     </p>
                   </div>
                 )}
+                {b.agendasRead === false && (
+                  <div>
+                    <p className="text-[11px] font-semibold text-muted-foreground">Agendas</p>
+                    <p className="font-extrabold text-muted-foreground">Not read yet</p>
+                  </div>
+                )}
                 {t && b.kind === "mud" && (
                   <div>
                     <p className="text-[11px] font-semibold text-muted-foreground">Last turnout</p>

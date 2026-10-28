@@ -28,4 +28,12 @@ describe('stageHcadBoundaries', () => {
     expect(() => stageHcadBoundaries(collection(feature('001', [[[-100, 40], [-99, 40], [-99, 41], [-100, 40]]])), 'School', mappings)).toThrow(/invalid/)
     expect(() => stageHcadBoundaries(collection({ type: 'Feature', properties: { Code: '001' }, geometry: { type: 'Point', coordinates: [-95, 29] } }), 'School', mappings)).toThrow(/invalid/)
   })
+
+  it('reads the county water-district layers by lowercase code and keeps only mud bodies', () => {
+    const water = (code: string) => ({ type: 'Feature', properties: { code, name: 'x' }, geometry: { type: 'Polygon', coordinates: [ring] } })
+    const map: BoundaryMapping[] = [{ code: '189', body_id: 'hcmud_489', type: 'mud' }, ...mappings]
+    const result = stageHcadBoundaries(collection(water('189'), water('489'), water('001')), 'HCAD_MUD', map)
+    expect(result.boundaries.map((b) => b.body_id)).toEqual(['hcmud_489'])
+    expect(result.skippedFeatureCount).toBe(2)
+  })
 })

@@ -3,6 +3,7 @@ import { selectRows } from '@/lib/db/raw'
 import { verifyBodiesToken } from '@/lib/tokens'
 import { houstonDate } from '@/lib/date'
 import { validTaxRate } from '@/lib/taxReceipt'
+import { agendaCoverage, bodiesWithAgendaSource, type SourceCoverageRow } from '@/lib/ingest/coverage'
 
 type BodyRow = {
   id: string
@@ -50,7 +51,7 @@ export async function GET(request: Request) {
     const foundIds = bodies.map((body) => body.id)
     if (foundIds.length !== selectedIds.length) return failure(404, 'These verified bodies are no longer available. Run the address lookup again.')
     const relatedIds = [...new Set(bodies.flatMap((body) => [body.tax_set_by_body_id, body.operations_by_body_id]).filter((id): id is string => Boolean(id)))]
-    const [relatedBodies, rates, elections, offices, mentions] = await Promise.all([
+    const [relatedBodies, rates, elections, offices, mentions, sources] = await Promise.all([
       relatedIds.length
         ? selectRows<{ id: string; name: string }>('bodies', 'id,name', (query) => query.in('id', relatedIds))
         : Promise.resolve([] as Array<{ id: string; name: string }>),
@@ -70,7 +71,9 @@ export async function GET(request: Request) {
             (query) => query.in('body_id', foundIds).order('published_at', { ascending: false, referencedTable: 'mention' }).limit(100),
           )
         : Promise.resolve([] as MentionRow[]),
+      selectRows<SourceCoverageRow>('sources', 'body_id,config', (query) => query),
     ])
+    const covered = bodiesWithAgendaSource(sources)
     const nameById = new Map([...bodies, ...relatedBodies].map((body) => [body.id, body.name]))
     const rateById = new Map<string, RateRow>()
     for (const rate of rates) if (!rateById.has(rate.body_id)) rateById.set(rate.body_id, rate)
@@ -104,6 +107,7 @@ export async function GET(request: Request) {
           last_vote_date: rate?.last_vote_date ?? null,
           latest_election: body.type && electionById.get(body.id) ? electionById.get(body.id) : null,
           ballot_offices: offices.filter((office) => office.body_id === body.id),
+          agenda_coverage: agendaCoverage(body.type, body.id, covered),
           headlines: (headlines.get(body.id) ?? []).sort((a, b) => (b?.published_at ?? '').localeCompare(a?.published_at ?? '')).slice(0, 3),
         }
       }),
