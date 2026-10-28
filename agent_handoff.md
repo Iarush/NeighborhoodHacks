@@ -33,6 +33,23 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-10-28: District coverage: site survey (0.7)
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:** `npx tsx scripts/survey-district-sites.ts --batch <id|pilot>` (pure logic in `lib/ingest/siteSurvey.ts`). For each district it finds a site, in this order: `data/district-sites.yaml`, an existing source's `index_url`, the website the district reported to the Comptroller (open-data API `api.comptroller.texas.gov/open-data/v1/spdpid`, labeled self-reported), then common domains (`hcmud165.com`), accepted only if the page names that district's kind and number. It fetches up to 12 pages, two levels deep, names the board platform or site builder, and suggests an `llm_extract` config by trying patterns with the adapter's own `parseIndex`. The newest agenda wins over a longer archive. It writes `tmp/survey/<batch>.md` and `.json` only, never `sources.yaml`. Bodies already on a platform adapter are skipped.
+- **Files:** New: `lib/ingest/siteSurvey.ts`, `scripts/survey-district-sites.ts`, `tests/unit/site-survey.test.ts`. Changed: `.plans/district-coverage-plan.md` (progress log).
+- **Contract changes:** None.
+- **Checked:** Run on this laptop, Oct 28:
+  - Pilot: finds MUD 489's index page (9 dated, newest Oct 19); CFISD and HISD shown as on their adapters.
+  - W1: a config for 7 of 10 (MUD 165, WCID 159, FWSD 61, WCID 145, MUD 419, MUD 105, plus Remington's site with no dated links). No site found for WCID 157, WCID 155 and NW HC MUD 12.
+  - S1: BoardBook found for Pasadena (org 1894) and Clear Creek (org 1940); Tomball and Katy gave PDF lists. The other school sites are script-built and gave nothing.
+  - `npm test`: 91 files, 942 tests, all passed. Typecheck: no errors outside `scraper P2/tmp/`. ESLint passes on the new files.
+- **Open issues / next:**
+  - **Google Drive vendor cluster** (MUD 165, WCID 145, Remington; WordPress pages, dates in link text): `llm_extract` fetches the Drive `/view` page, not the PDF. A vendor template must turn `/file/d/<id>/view` into a download link before these can be sources.
+  - WCID 159's suggestion points at a single notice post; its `/board-meetings/` index lists posts, so it likely needs `follow_notice_page`. Every suggestion still needs a person and a `npm run scrape` before `sources.yaml`.
+  - The Comptroller's website field is blank for many districts, MUD 489 included.
+  - **Next:** 0.10 shared-page fallbacks.
+
 ### 2026-10-28: District coverage: batch checker (0.9) and water-district boundary loader (0.4)
 - **Who:** Iarush · P2 Agenda Data
 - **Branch:** main
