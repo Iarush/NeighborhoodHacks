@@ -85,6 +85,8 @@ export type RunReport = {
   items: { inserted: number; updated: number; unchanged: number; removed: number; restored: number; awaiting: number; skipped_unknown_body: number };
   result_updates: { applied: number; skipped_unverified: number; unknown_item: number };
   documents: number;
+  /** New PDF text among `documents`: the runs that may have called the model (the scheduler's AI limit). */
+  pdf_documents: number;
   elapsed_ms: number;
 };
 
@@ -101,6 +103,7 @@ function emptyReport(sourceId: string, mode: RunMode['kind']): RunReport {
     items: { inserted: 0, updated: 0, unchanged: 0, removed: 0, restored: 0, awaiting: 0, skipped_unknown_body: 0 },
     result_updates: { applied: 0, skipped_unverified: 0, unknown_item: 0 },
     documents: 0,
+    pdf_documents: 0,
     elapsed_ms: 0,
   };
 }
@@ -598,6 +601,7 @@ export async function runIngest(opts: RunOptions): Promise<RunReport> {
     });
   }
   report.documents = documentWrites.length;
+  report.pdf_documents = documentWrites.filter((d) => d.kind === 'pdf_text').length;
 
   // 10. Health.
   const h = health({ agenda: result }, history, source, now);

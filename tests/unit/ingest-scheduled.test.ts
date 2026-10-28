@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { SourceConfig } from '@/lib/adapters/types';
 import { createMemoryStore } from '@/lib/ingest/memoryStore';
 import type { RunOptions, RunReport } from '@/lib/ingest/run';
-import { pickResultsMeetings, rotationOrder, runScheduled } from '@/lib/ingest/scheduled';
+import { pickResultsMeetings, rotationOrder, runScheduled, shardOf, SWEEP_ALL_MAX } from '@/lib/ingest/scheduled';
 import type { ResultsCandidate, StoredSource } from '@/lib/ingest/store';
 
 const SOURCES: SourceConfig[] = [
@@ -31,12 +31,13 @@ function stubReport(o: RunOptions): RunReport {
     items: { inserted: 0, updated: 0, unchanged: 0, removed: 0, restored: 0, awaiting: 0, skipped_unknown_body: 0 },
     result_updates: { applied: 0, skipped_unverified: 0, unknown_item: 0 },
     documents: 0,
+    pdf_documents: 0,
     elapsed_ms: 0,
   };
 }
 
-/** A fake runIngest on a fake clock: every run "takes" `costMs`. */
-function harness(start: Date, costMs = 1000) {
+/** A fake runIngest on a fake clock: every run "takes" `costMs`; `docs` says how many new documents it read. */
+function harness(start: Date, costMs = 1000, docs: (o: RunOptions) => number = () => 0) {
   let t = start.getTime();
   const calls: RunOptions[] = [];
   return {
@@ -44,8 +45,8 @@ function harness(start: Date, costMs = 1000) {
     now: () => new Date(t),
     run: async (o: RunOptions) => {
       calls.push(o);
-      t += costMs;
-      return stubReport(o);
+      t += typeof costMs === 'number' ? costMs : 0;
+      return { ...stubReport(o), documents: docs(o), pdf_documents: docs(o) };
     },
   };
 }
@@ -107,13 +108,22 @@ describe('scheduled ingest', () => {
     expect(report.elapsed_ms).toBeLessThanOrEqual(270_000 + 100_000);
   });
 
-  it('rotates the oldest sources while time remains, with at most one AI source per call', async () => {
+  it('rotates while time remains, stopping AI sources after one that read a new document', async () => {
+    const store = createMemoryStore();
+    const h = harness(NOON, 1000, (o) => (o.mode.kind === 'rotation' && o.source.adapter !== 'legistar' && o.source.adapter !== 'boardbook' && o.source.adapter !== 'manual' ? 1 : 0));
+    const report = await runScheduled({ store, sources: SOURCES, now: h.now, run: h.run });
+    const rotation = h.calls.filter((c) => c.mode.kind === 'rotation');
+    expect(rotation.length).toBeGreaterThan(1);
+    expect(rotation.filter((c) => ['primegov', 'llm_extract'].includes(c.source.adapter))).toHaveLength(2);
+    expect(report.skipped.filter((s) => s.reason === 'llm_limit')).toHaveLength(1);
+  });
+
+  it('keeps rotating AI sources whose check found nothing new (no model call)', async () => {
     const store = createMemoryStore();
     const h = harness(NOON);
     await runScheduled({ store, sources: SOURCES, now: h.now, run: h.run });
     const rotation = h.calls.filter((c) => c.mode.kind === 'rotation');
-    expect(rotation.length).toBeGreaterThan(1);
-    expect(rotation.filter((c) => ['primegov', 'llm_extract'].includes(c.source.adapter))).toHaveLength(1);
+    expect(rotation.filter((c) => ['primegov', 'llm_extract'].includes(c.source.adapter))).toHaveLength(3);
   });
 
   it('only: runs just the named source in the named mode', async () => {
@@ -207,5 +217,58 @@ describe('scheduled ingest', () => {
     await runScheduled({ store, sources: SOURCES, now: h.now, run: h.run });
     const results = h.calls.filter((c) => c.mode.kind === 'results');
     expect(results.map((c) => [c.source.id, c.mode])).toEqual([['hcmud_489', { kind: 'results', meeting_external_ids: ['past-1'] }]]);
+  });
+
+  describe('at district-rollout scale (plan 0.8)', () => {
+    const MANY: SourceConfig[] = Array.from({ length: 550 }, (_, i) => ({
+      id: `mud_${String(i).padStart(3, '0')}`,
+      body_id: 'hcmud_489',
+      adapter: i % 10 === 0 ? 'legistar' : 'llm_extract',
+      config: {},
+    }));
+    const SHARDS = 6;
+
+    it('splits sources into stable shards that cover every source once', () => {
+      const counts = Array.from({ length: SHARDS }, (_, k) => MANY.filter((s) => shardOf(s.id, SHARDS) === k).length);
+      expect(counts.reduce((a, b) => a + b, 0)).toBe(550);
+      for (const c of counts) expect(c).toBeGreaterThan(550 / SHARDS / 2);
+      expect(shardOf('hcmud_489', SHARDS)).toBe(shardOf('hcmud_489', SHARDS));
+    });
+
+    it('sweeps only sources with a meeting in the next 72 hours', async () => {
+      expect(MANY.length).toBeGreaterThan(SWEEP_ALL_MAX);
+      const store = createMemoryStore();
+      store.tables.meetings.push({ id: 'm1', source_id: 'mud_007', date: new Date(NOON.getTime() + DAY).toISOString() } as never);
+      store.tables.meetings.push({ id: 'm2', source_id: 'mud_008', date: new Date(NOON.getTime() + 5 * DAY).toISOString() } as never);
+      const h = harness(NOON);
+      await runScheduled({ store, sources: MANY, now: h.now, run: h.run });
+      expect(h.calls.filter((c) => c.mode.kind === 'near_term').map((c) => c.source.id)).toEqual(['mud_007']);
+    });
+
+    it('stays inside the budget and reaches every source within a day of calls (none starves)', async () => {
+      const store = createMemoryStore();
+      const seen = new Set<string>();
+      let t = NOON.getTime();
+      // 6 shards x 8 calls a day (every 3 hours). A quiet check takes 1.5 s. About 1 AI check in 30
+      // finds a new agenda (~18 a day, more than ~500 districts posting monthly) and takes 60 s.
+      for (let call = 0; call < 8; call++) {
+        for (let k = 0; k < SHARDS; k++) {
+          const start = t;
+          let n = 0;
+          const run = async (o: RunOptions) => {
+            const reads = o.mode.kind === 'rotation' && o.source.adapter === 'llm_extract' && ++n % 30 === 0 ? 1 : 0;
+            t += reads ? 60_000 : 1500;
+            seen.add(o.source.id);
+            if (o.mode.kind === 'rotation') store.tables.sources.find((s) => s.id === o.source.id)!.last_checked = new Date(t).toISOString();
+            return { ...stubReport(o), documents: reads, pdf_documents: reads };
+          };
+          const report = await runScheduled({ store, sources: MANY, now: () => new Date(t), run, shard: { index: k, count: SHARDS } });
+          expect(t - start).toBeLessThanOrEqual(270_000);
+          expect(report.runs.every((r) => shardOf(r.source_id, SHARDS) === k)).toBe(true);
+        }
+        t += 3 * 3_600_000;
+      }
+      expect(seen.size).toBe(550);
+    });
   });
 });

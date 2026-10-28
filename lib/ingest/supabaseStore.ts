@@ -137,4 +137,11 @@ export const supabaseIngestStore: IngestStore = {
     }
     return [...byMeeting.values()];
   },
+
+  async sourcesWithMeetingsBetween(from: Date, to: Date) {
+    const rows = await all<{ source_id: string }>('meetings', (a, b) =>
+      db().from('meetings').select('source_id').gte('date', from.toISOString()).lte('date', to.toISOString()).order('id').range(a, b),
+    );
+    return [...new Set(rows.map((r) => r.source_id))].sort();
+  },
 };

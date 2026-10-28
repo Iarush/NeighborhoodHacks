@@ -33,6 +33,30 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-10-28: District coverage: scheduler at ~550 sources (0.8)
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - `lib/ingest/scheduled.ts`:
+    - **Near-term sweep:** once the registry has more than 25 sources (`SWEEP_ALL_MAX`), it visits only sources with a stored meeting in the next 72 hours. Today's 7-source registry still sweeps everything, as spec §9 P2-C says.
+    - **Rotation by how overdue a source is:** time since last check divided by `config.check_every_hours` (default 24). With equal intervals this is the old oldest-first order.
+    - **AI limit:** up to 2 rotation runs per call that read new PDF text. AI checks that find nothing new no longer count, so they keep rotating. Skipped sources stay most overdue and go first next call.
+    - **Shards:** `shard: { index, count }` takes a stable FNV-1a slice of the sources.
+  - `IngestStore` gains `sourcesWithMeetingsBetween(from, to)` (memory and Supabase stores).
+  - `RunReport` gains `pdf_documents`, the new PDF-text documents among `documents`.
+  - `/api/cron/ingest` takes `?shard=k&shards=n` (n ≤ 32; not combined with `source`).
+  - `.github/workflows/ingest.yml` runs a 6-shard matrix (3 at a time). A manual single-source run goes from shard 0 only. Vercel's daily cron still calls the route with no shard, which runs the full schedule.
+- **Files:** Changed: `lib/ingest/scheduled.ts`, `lib/ingest/store.ts`, `lib/ingest/memoryStore.ts`, `lib/ingest/supabaseStore.ts`, `lib/ingest/run.ts`, `app/api/cron/ingest/route.ts`, `.github/workflows/ingest.yml`, `tests/unit/ingest-scheduled.test.ts`, `.plans/district-coverage-plan.md` (progress log).
+- **Contract changes:** Additive. `IngestStore.sourcesWithMeetingsBetween` (any other store implementation must add it), `RunReport.pdf_documents`, and the route's `shard`/`shards` query.
+- **Checked:** Run on this laptop, Oct 28:
+  - New tests with 550 fake sources and 6 shards: the shards cover every source once; the sweep picks only a source with a meeting within 72 hours. Over 8 calls × 6 shards (one day), every source is reached and each call stays within 270 s, with ~1 in 30 AI checks reading a 60-second agenda.
+  - `npm test`: 93 files, 955 tests, all passed. Typecheck: no errors outside `scraper P2/tmp/`. ESLint passes on `lib/ingest`, the route and the test.
+  - Not run against Vercel or Supabase.
+- **Open issues / next:**
+  - **For P3:** plan 0.8 also asks that AI stories be written only for items `classify()` marks notable, with template stories for the rest. That's in `lib/stories/job.ts` and wasn't changed.
+  - The workflow's header still says to turn it off after Oct 23. It's on `main` but not pushed. The matrix takes effect with the next push, so decide whether the schedule should still run.
+  - Six shards is sized for ~550 sources; today most shards hold one source.
+
 ### 2026-10-28: District coverage: shared-page checks (0.10)
 - **Who:** Iarush · P2 Agenda Data
 - **Branch:** main

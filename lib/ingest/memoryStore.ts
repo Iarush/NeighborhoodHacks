@@ -191,5 +191,12 @@ export function createMemoryStore(): MemoryStore {
       }
       return out;
     },
+
+    async sourcesWithMeetingsBetween(from: Date, to: Date) {
+      const ids = tables.meetings
+        .filter((m) => Date.parse(m.date) >= from.getTime() && Date.parse(m.date) <= to.getTime())
+        .map((m) => m.source_id);
+      return [...new Set(ids)].sort();
+    },
   };
 }

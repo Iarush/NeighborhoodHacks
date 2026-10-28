@@ -121,4 +121,6 @@ export interface IngestStore {
   updateSource(id: string, patch: SourcePatch): Promise<void>;
   markResultsChecked(meetingIds: string[], at: string): Promise<void>;
   resultsCandidates(now: Date): Promise<ResultsCandidate[]>;
+  /** Source IDs with a stored meeting dated in [from, to] (the near-term sweep at scale). */
+  sourcesWithMeetingsBetween(from: Date, to: Date): Promise<string[]>;
 }

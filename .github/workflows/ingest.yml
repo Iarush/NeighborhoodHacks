@@ -24,10 +24,18 @@ concurrency:
   group: ingest
   cancel-in-progress: false
 
+# The scheduled run is a matrix of shards (district coverage plan 0.8): each job calls the route for
+# one shard, so every call stays under Vercel's 300-second limit as sources grow. Raise SHARDS (and
+# the list) together as the registry grows; a manual run with a source ignores the matrix.
 jobs:
   ingest:
     runs-on: ubuntu-latest
     timeout-minutes: 7
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5]
     steps:
       - name: Call the ingest route
         env:
@@ -35,9 +43,13 @@ jobs:
           APP_URL: ${{ vars.APP_URL }}
           SOURCE: ${{ inputs.source }}
           MODE: ${{ inputs.mode }}
+          SHARD: ${{ matrix.shard }}
+          SHARDS: 6
         run: |
-          query=""
+          query="?shard=${SHARD}&shards=${SHARDS}"
           if [ -n "$SOURCE" ]; then
+            # One source runs once, from the first matrix job only.
+            if [ "$SHARD" != "0" ]; then exit 0; fi
             query="?source=${SOURCE}"
             if [ -n "$MODE" ]; then query="${query}&mode=${MODE}"; fi
           fi
