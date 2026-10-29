@@ -82,6 +82,9 @@ mappings:
   - code: "031"
     source_name: STAFFORD MSD
     body_id: stafford_municipal_school_district_board
+  - code: "087"
+    source_name: HC MUD 560
+    body_id: hcmud_560
   - code: "090"
     source_name: HC MUD 575
     body_id: hcmud_575
@@ -373,6 +376,9 @@ mappings:
   - code: "255"
     source_name: HC MUD 501
     body_id: hcmud_501
+  - code: "256"
+    source_name: HARRIS-BRAZORIA COUNTIES MUD 509
+    body_id: harris_brazoria_counties_mud_509
   - code: "257"
     source_name: HC MUD 500
     body_id: hcmud_500
@@ -559,6 +565,9 @@ mappings:
   - code: "378"
     source_name: HC MUD 458
     body_id: hcmud_458
+  - code: "379"
+    source_name: HC MUD 381
+    body_id: hcmud_381
   - code: "381"
     source_name: HC MUD 081
     body_id: hcmud_81
@@ -592,6 +601,9 @@ mappings:
   - code: "392"
     source_name: HC MUD 411
     body_id: hcmud_411
+  - code: "394"
+    source_name: HC MUD 410
+    body_id: hcmud_410
   - code: "395"
     source_name: HARRIS-MONTGOMERY CO MUD 386
     body_id: harris_montgomery_counties_mud_386
@@ -775,6 +787,9 @@ mappings:
   - code: "483"
     source_name: HC MUD 183
     body_id: hcmud_183
+  - code: "484"
+    source_name: HC MUD 382
+    body_id: hcmud_382
   - code: "485"
     source_name: HC MUD 185
     body_id: hcmud_185
@@ -955,6 +970,9 @@ mappings:
   - code: "604"
     source_name: HC WCID 050
     body_id: hcwcid_50
+  - code: "605"
+    source_name: HC WCID 070
+    body_id: hcwcid_70
   - code: "606"
     source_name: HC WCID 074
     body_id: hcwcid_74
@@ -1045,6 +1063,9 @@ mappings:
   - code: "681"
     source_name: KINGSBRIDGE MUD
     body_id: kingsbridge_mud
+  - code: "682"
+    source_name: KIRKMONT MUD
+    body_id: kirkmont_mud
   - code: "683"
     source_name: KLEIN PUD
     body_id: klein_pud
@@ -1084,6 +1105,9 @@ mappings:
   - code: "702"
     source_name: MASON CREEK UD
     body_id: mason_creek_ud
+  - code: "703"
+    source_name: BRAZORIA COUNTY MUD 028
+    body_id: bcmud_28
   - code: "704"
     source_name: MAYDE CREEK MUD
     body_id: mayde_creek_mud
@@ -1285,6 +1309,9 @@ mappings:
   - code: "811"
     source_name: REMINGTON MUD 001
     body_id: remington_mud_1
+  - code: "822"
+    source_name: SAGEMEADOW UD
+    body_id: sagemeadow_ud
   - code: "824"
     source_name: SHASLA PUD
     body_id: shasla_pud
@@ -1468,6 +1495,9 @@ mappings:
   - code: A40
     source_name: HARRIS COUNTY MUD 478
     body_id: hcmud_478
+  - code: A41
+    source_name: Harris County MUD 544
+    body_id: hcmud_544
   - code: A42
     source_name: HC MUD 517
     body_id: hcmud_517

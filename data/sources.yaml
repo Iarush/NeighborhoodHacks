@@ -643,3 +643,182 @@
     match_link_text: true                               # Wix file URLs are opaque IDs
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 70                            # meets about every other month
+- id: hcmud_419
+  body_id: hcmud_419
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud419.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_493
+  body_id: hcmud_493
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud493.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_391
+  body_id: hcmud_391
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud391.org/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: windfern_forest_ud
+  body_id: windfern_forest_ud
+  adapter: llm_extract
+  config:
+    index_url: https://www.wfud.org/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_286
+  body_id: hcmud_286
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud286.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: whcmud_9
+  body_id: whcmud_9
+  adapter: llm_extract
+  config:
+    index_url: https://www.whcmud9.com/documents/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename; older Gatsby 2 site lists agendas under Documents
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: west_memorial_mud
+  body_id: west_memorial_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.westmemorialmud.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_119
+  body_id: hcwcid_119
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcwcid119.com/documents/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename; older Gatsby 2 site lists agendas under Documents
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_383
+  body_id: hcmud_383
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud383.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_401
+  body_id: hcmud_401
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud401.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: cnp_ud
+  body_id: cnp_ud
+  adapter: llm_extract
+  config:
+    index_url: https://www.cnpud.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: sunbelt_fwsd
+  body_id: sunbelt_fwsd
+  adapter: llm_extract
+  config:
+    index_url: https://www.sunbeltfwsd.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcud_16
+  body_id: hcud_16
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcud16.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_278
+  body_id: hcmud_278
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud278.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: bcmud_18
+  body_id: bcmud_18
+  adapter: llm_extract
+  config:
+    index_url: https://www.bcmud18.com/documents/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename; older Gatsby 2 site lists agendas under Documents
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_70
+  body_id: hcwcid_70
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcwcid70.com/documents/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"           # Gatsby layout (M11): /static/<hash>/<...Agenda...>.pdf, date in the filename; older Gatsby 2 site lists agendas under Documents
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: kleinwood_mud
+  body_id: kleinwood_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.kleinwoodmud.com/meetings/
+    link_pattern: "(?i)agenda"                          # Texas Network WordPress layout (M11): link text "10-22-26 Agenda"
+    match_link_text: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_99
+  body_id: hcwcid_99
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcwcid99.com/meetings/
+    link_pattern: "(?i)agenda"                          # Texas Network WordPress layout (M11): link text "10-22-26 Agenda"
+    match_link_text: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_109
+  body_id: hcmud_109
+  adapter: llm_extract
+  config:
+    index_url: https://www.waterdistrict109.com/meetings/index.html
+    link_pattern: "(?i)/(?!ajob)[^/]*agenda\\.pdf$"         # Texas Network static page: link text "10-20-26" (date only), so match the href; skip the joint "AJOB-…" agendas
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_1
+  body_id: hcwcid_1
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcwcid1.com/meetings/
+    link_pattern: "(?i)agenda"                          # Texas Network WordPress layout (M11): link text "10-22-26 Agenda"
+    match_link_text: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
