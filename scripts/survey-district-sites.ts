@@ -1,11 +1,12 @@
 // District coverage plan 0.7: surveys each district's website for a batch and writes a report.
-//   npx tsx scripts/survey-district-sites.ts --batch W1 [--batch pilot]
+//   npx tsx scripts/survey-district-sites.ts --batch W1 [--batch pilot] [--batch W1-W55]
+//   npx tsx scripts/survey-district-sites.ts --combine   (tmp/survey/W*.json -> tmp/survey/all.json)
 // For each district it finds a site (hand-checked data/district-sites.yaml, then an existing
 // source's index page, then the website the district reported to the Comptroller), fetches it,
 // names the vendor or board platform, and suggests an llm_extract config. Output goes to
 // tmp/survey/<batch>.json and .md only, never to data/sources.yaml: a person checks each one and
 // runs `npm run scrape -- --source <id>` before adding it (plan §4 step 4).
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { DateTime } from 'luxon'
 import { parse } from 'yaml'
 import { z } from 'zod'
@@ -15,10 +16,16 @@ import { loadBodyCatalog } from '../lib/ingest/catalog'
 import { parseBatches, waterDistrict } from '../lib/ingest/districtCatalog'
 import { ZONE } from '../lib/ingest/normalize'
 import { loadSources } from '../lib/ingest/registry'
-import { agendaPageLinks, betterSuggestion, boardPlatforms, comptrollerKey, daysSince, guessedDomains, namesDistrict, siteBuilder, suggestConfig, type ConfigSuggestion, type Platform } from '../lib/ingest/siteSurvey'
+import { agendaPageLinks, betterSuggestion, boardPlatforms, comptrollerKey, daysSince, fingerprint, guessedDomains, mergeFingerprints, namesDistrict, siteBuilder, suggestConfig, vendorKey, type ConfigSuggestion, type Fingerprint, type Platform } from '../lib/ingest/siteSurvey'
 
 const COMPTROLLER_API = 'https://api.comptroller.texas.gov/open-data/v1/spdpid/spdpid-entity'
-const batchIds = process.argv.flatMap((arg, i) => (process.argv[i - 1] === '--batch' ? arg.split(',') : []))
+// "W1-W55" expands to every W batch in that range.
+const batchIds = process.argv
+  .flatMap((arg, i) => (process.argv[i - 1] === '--batch' ? arg.split(',') : []))
+  .flatMap((id) => {
+    const r = /^W(\d+)-W(\d+)$/.exec(id)
+    return r ? Array.from({ length: Number(r[2]) - Number(r[1]) + 1 }, (_, k) => `W${Number(r[1]) + k}`) : [id]
+  })
 const http = { retries: 0, timeoutMs: 20_000 }
 const MAX_PAGES = 12
 // Sources on a platform adapter (boardbook, legistar, primegov) need no survey.
@@ -33,6 +40,8 @@ type Row = {
   builder?: string
   platforms: Platform[]
   suggestion?: ConfigSuggestion
+  fingerprint?: Fingerprint
+  vendor: string
   pagesTried: string[]
   error?: string
 }
@@ -62,9 +71,9 @@ async function guessSite(bodyId: string, name: string): Promise<string | undefin
 }
 
 async function survey(target: Target, name: string, sites: Map<string, { url: string; from: SiteFrom }>): Promise<Row> {
-  const row: Row = { label: target.label, bodyId: target.bodyId, platforms: [], pagesTried: [] }
+  const row: Row = { label: target.label, bodyId: target.bodyId, platforms: [], vendor: 'no site', pagesTried: [] }
   const adapter = platformSources.get(target.bodyId)
-  if (adapter) return { ...row, platforms: [{ platform: adapter, url: '' }], error: `already ingesting through the ${adapter} adapter` }
+  if (adapter) return { ...row, platforms: [{ platform: adapter, url: '' }], vendor: adapter, error: `already ingesting through the ${adapter} adapter` }
   const site = sites.get(target.bodyId)
   if (!site) return { ...row, error: `no website found for "${name}"; search by hand` }
   row.site = site.url
@@ -75,6 +84,7 @@ async function survey(target: Target, name: string, sites: Map<string, { url: st
     row.builder = siteBuilder(home)
     row.platforms = boardPlatforms(home, site.url)
     row.suggestion = suggestConfig(home, site.url)
+    row.fingerprint = fingerprint(home, site.url)
     // Two levels: the platform link is often under Board > Meetings. At most MAX_PAGES fetches.
     const queue = agendaPageLinks(home, site.url, 5).map((url) => ({ url, depth: 1 }))
     const seen = new Set([site.url, ...queue.map((q) => q.url)])
@@ -85,12 +95,16 @@ async function survey(target: Target, name: string, sites: Map<string, { url: st
       row.pagesTried.push(page)
       if (depth < 2) for (const next of agendaPageLinks(html, page, 3)) if (!seen.has(next)) { seen.add(next); queue.push({ url: next, depth: 2 }) }
       for (const p of boardPlatforms(html, page)) if (!row.platforms.some((q) => q.platform === p.platform)) row.platforms.push(p)
+      row.fingerprint = mergeFingerprints(row.fingerprint!, fingerprint(html, page))
       const s = suggestConfig(html, page)
       if (s && betterSuggestion(s, row.suggestion)) row.suggestion = s
     }
   } catch (error) {
     row.error = (error as Error).message
   }
+  row.vendor = row.fingerprint
+    ? vendorKey(row.fingerprint, row.platforms.map((p) => p.platform), row.builder ?? 'unknown', new URL(site.url).host.replace(/^www\./, ''))
+    : 'unknown'
   return row
 }
 
@@ -111,14 +125,40 @@ function report(batchId: string, rows: Row[], today: string): string {
   }
   const byVendor = new Map<string, string[]>()
   for (const r of rows) {
-    const key = r.platforms[0]?.platform ?? r.builder ?? 'no site'
+    const key = r.vendor
     byVendor.set(key, [...(byVendor.get(key) ?? []), r.bodyId])
   }
   lines.push('', '## By vendor', '', ...[...byVendor].map(([v, ids]) => `- **${v}:** ${ids.join(', ')}`), '')
   return lines.join('\n')
 }
 
+/** One row per district across every W report (spec §2 step 2). */
+function combine() {
+  const files = readdirSync('tmp/survey').filter((f) => /^W\d+\.json$/.test(f)).sort((a, b) => Number(a.slice(1, -5)) - Number(b.slice(1, -5)))
+  const all = files.flatMap((f) => {
+    const batch = f.slice(0, -5)
+    return (JSON.parse(readFileSync(`tmp/survey/${f}`, 'utf8')) as Row[]).map((r) => ({
+      id: r.bodyId,
+      batch,
+      label: r.label,
+      website: r.site ?? null,
+      site_from: r.siteFrom ?? null,
+      // Recomputed so a vendorKey() change applies without fetching again.
+      vendor: r.site ? vendorKey(r.fingerprint ?? { themes: [], cdnHosts: [], docHosts: [] }, r.platforms.map((p) => p.platform), r.builder ?? 'unknown', new URL(r.site).host.replace(/^www\./, '')) : (r.vendor ?? 'unknown'),
+      fingerprint: r.fingerprint ?? null,
+      agenda_index_url: r.suggestion?.index_url ?? null,
+      link_pattern: r.suggestion?.link_pattern ?? null,
+      date_format: r.suggestion?.date_from ?? null,
+      newest: r.suggestion?.newest ?? null,
+      notes: [r.error, r.suggestion ? `${r.suggestion.dated} dated` : r.site ? 'no dated agenda links found' : undefined].filter(Boolean).join('; '),
+    }))
+  })
+  writeFileSync('tmp/survey/all.json', JSON.stringify(all, null, 2))
+  console.log(`tmp/survey/all.json: ${all.length} districts from ${files.length} batches`)
+}
+
 async function main() {
+  if (process.argv.includes('--combine')) return combine()
   if (batchIds.length === 0) throw new Error('Usage: npx tsx scripts/survey-district-sites.ts --batch W1 [--batch pilot]')
   const batches = parseBatches(readFileSync('.plans/district-rollout-batches.md', 'utf8'))
   const hcad = z.object({ jurisdictions: z.record(z.string(), z.string()) }).parse(JSON.parse(readFileSync('data/hcad-jurisdictions.json', 'utf8'))).jurisdictions

@@ -160,3 +160,132 @@ export function namesDistrict(html: string, bodyId: string, name: string): boole
   if (m) return new RegExp(`${KIND_WORDS[m[1]!]}\\s*(?:no\\.?|number|#)?\\s*0*${m[2]}(?![0-9])`, 'i').test(text);
   return text.toLowerCase().includes(name.toLowerCase().replace(/ no\. .*$/, ''));
 }
+
+// Vendor fingerprints (MUD rollout spec §2 step 3). Many water districts share a web firm or a
+// manager's portal; districts with the same fingerprint can share one adapter.
+
+export type Fingerprint = {
+  generator?: string;
+  /** WordPress theme folder names, e.g. "astra". */
+  themes: string[];
+  /** Off-site hosts that serve the page's scripts, styles and images. */
+  cdnHosts: string[];
+  /** Hosts of the document links (PDFs, Drive files) on the page, most common first. */
+  docHosts: string[];
+  /** A "website by …" or "powered by …" credit, lower case. */
+  credit?: string;
+};
+
+function hostOf(raw: string, baseUrl: string): string | undefined {
+  try {
+    return new URL(raw, baseUrl).host.toLowerCase().replace(/^www\./, '');
+  } catch {
+    return undefined;
+  }
+}
+
+/** Common CDNs that say nothing about who built the site. */
+const GENERIC_HOSTS = /(^|\.)(googleapis\.com|gstatic\.com|google\.com|googletagmanager\.com|google-analytics\.com|jquery\.com|jsdelivr\.net|cloudflare\.com|cdnjs\.cloudflare\.com|bootstrapcdn\.com|fontawesome\.com|typekit\.net|gravatar\.com|w\.org|wp\.com|youtube\.com|facebook\.net|recaptcha\.net|unpkg\.com|polyfill\.io)$/;
+
+export function fingerprint(html: string, baseUrl: string): Fingerprint {
+  const $ = load(html);
+  const self = hostOf(baseUrl, baseUrl);
+  const generator = $('meta[name="generator"]').attr('content')?.trim() || undefined;
+  const themes = new Set<string>();
+  for (const m of html.matchAll(/wp-content\/themes\/([a-z0-9_-]+)/gi)) themes.add(m[1]!.toLowerCase());
+  const cdn = new Set<string>();
+  $('script[src], link[href][rel="stylesheet"], img[src]').each((_, el) => {
+    const h = hostOf($(el).attr('src') ?? $(el).attr('href') ?? '', baseUrl);
+    if (h && h !== self && !GENERIC_HOSTS.test(h)) cdn.add(h);
+  });
+  const docs = new Map<string, number>();
+  $('a[href]').each((_, a) => {
+    const href = $(a).attr('href')!;
+    if (!/\.pdf(\?|$)|drive\.google\.com\/(file|drive|open)|docs\.google\.com/i.test(href)) return;
+    const h = hostOf(href, baseUrl);
+    if (h) docs.set(h, (docs.get(h) ?? 0) + 1);
+  });
+  const foot = ($('footer').text() || $('body').text().slice(-2000)).replace(/\s+/g, ' ');
+  const credit = /\b(?:website|site|web design|designed|developed|built|hosted|powered|managed)(?: and \w+)? by:?\s+([A-Za-z0-9&.' -]{2,40}?)(?=\s*(?:[|©.,]|$|\s{2}|\s(?:all rights|copyright|\d{4})))/i.exec(foot)?.[1]?.trim().toLowerCase();
+  return {
+    generator,
+    themes: [...themes],
+    cdnHosts: [...cdn].sort(),
+    docHosts: [...docs].sort((a, b) => b[1] - a[1]).map(([h]) => h),
+    credit: credit ? cleanCredit(credit) : undefined,
+  };
+}
+
+/** "infinity services llc privacy policy" → "infinity services". */
+export function cleanCredit(credit: string): string | undefined {
+  const c = credit.replace(/\s+(?:privacy|facebook|twitter|instagram|linkedin|terms|contact|home|sitemap)\b.*$/, '').replace(/[\s,]+(?:llc|inc|co)\.?$/, '').trim();
+  return c.length > 1 ? c : undefined;
+}
+
+/** Hosts that stand for one vendor: per-district S3 buckets named website-media-<district>. */
+export function vendorHost(host: string): string {
+  return /^website-media-[a-z0-9-]+\.s3[.a-z0-9-]*\.amazonaws\.com$/.test(host) ? 'website-media-*.s3.amazonaws.com' : host;
+}
+
+/** State agencies whose forms (TCEQ, Secretary of State) many sites link; they host no agendas. */
+const AGENCY_HOSTS = /(^|\.)(texas\.gov|state\.tx\.us|tx\.us|gov)$/;
+
+/** Tax offices' and law firms' district listings: the "website" is a page on their site, not the district's own. */
+const LISTING_HOSTS = /(^|\.)(utilitytaxservice\.com|bli-tax\.com|sklawdistrictdata\.org|districtdirectory\.org|wheelerassoc\.com)$/;
+
+/** Merge a later page's fingerprint into the site's; the home page's fields come first. */
+export function mergeFingerprints(a: Fingerprint, b: Fingerprint): Fingerprint {
+  const union = (x: string[], y: string[]) => [...new Set([...x, ...y])];
+  return { generator: a.generator ?? b.generator, themes: union(a.themes, b.themes), cdnHosts: union(a.cdnHosts, b.cdnHosts), docHosts: union(a.docHosts, b.docHosts), credit: a.credit ?? b.credit };
+}
+
+/** Builder themes that many unrelated sites use, so they don't name a vendor on their own. */
+const STOCK_THEMES = /^(twenty\w*|astra|divi|avada|hello-elementor|generatepress|oceanwp|kadence|neve|enfold|salient|bridge|betheme|x|pro|genesis|flatsome|storefront|blocksy|extra|uncode|the7|jupiter|porto|sydney|hestia|go|understrap|bootstrap\w*)$/;
+
+/**
+ * One vendor key per district: a board platform first, then a web firm's credit, then an
+ * off-site document host (a firm's or manager's portal), then a custom theme, then Drive plus the
+ * builder, then the builder alone. `platforms` excludes google-drive, which is a document host.
+ */
+export function vendorKey(fp: Fingerprint, platforms: string[], builder: string, selfHost: string): string {
+  const platform = platforms.find((p) => p !== 'google-drive');
+  if (platform) return platform;
+  const credit = fp.credit && cleanCredit(fp.credit);
+  if (credit) return `credit:${credit}`;
+  const portal = fp.docHosts.find((h) => h !== selfHost && !/google\.com$/.test(h) && !AGENCY_HOSTS.test(h));
+  if (portal) return `docs:${vendorHost(portal)}`;
+  const theme = fp.themes.find((t) => !STOCK_THEMES.test(t));
+  if (theme) return `theme:${theme}`;
+  const drive = fp.docHosts.some((h) => /google\.com$/.test(h)) || platforms.includes('google-drive');
+  if (drive) return `google-drive/${builder}`;
+  if (LISTING_HOSTS.test(selfHost)) return `listing:${selfHost}`;
+  const generator = fp.generator?.replace(/[\s\d.]+$/, '').toLowerCase();
+  if (builder === 'unknown' && generator) return `generator:${generator}`;
+  return builder;
+}
+
+/**
+ * Buckets of about `size` districts (spec §3). A vendor stays in one bucket unless it has more
+ * than `size`, when it fills consecutive buckets. The bucket holding `firstId` goes first, then
+ * the largest. Input: vendor → district IDs. Output: buckets of [vendor, ids][] parts.
+ */
+export function bucketize(groups: Map<string, string[]>, firstId: string, size = 20): { vendors: string[]; ids: string[] }[] {
+  const out: { vendors: string[]; ids: string[] }[] = [];
+  const vendors = [...groups].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
+  const small: [string, string[]][] = [];
+  for (const [v, ids] of vendors) {
+    if (ids.length <= size) { small.push([v, ids]); continue; }
+    const parts = Math.ceil(ids.length / size);
+    const per = Math.ceil(ids.length / parts);
+    for (let i = 0; i < ids.length; i += per) out.push({ vendors: [v], ids: ids.slice(i, i + per) });
+  }
+  // First-fit decreasing into mixed buckets.
+  const mixed: { vendors: string[]; ids: string[] }[] = [];
+  for (const [v, ids] of small) {
+    const slot = mixed.find((b) => b.ids.length + ids.length <= size);
+    if (slot) { slot.vendors.push(v); slot.ids.push(...ids); } else mixed.push({ vendors: [v], ids: [...ids] });
+  }
+  out.push(...mixed);
+  out.sort((a, b) => Number(b.ids.includes(firstId)) - Number(a.ids.includes(firstId)) || b.ids.length - a.ids.length);
+  return out;
+}
