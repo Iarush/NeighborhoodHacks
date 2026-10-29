@@ -92,7 +92,7 @@ export type RunMode =
       known?: { meetings: Meeting[]; items: Item[] };
     };
 
-export const AdapterKindSchema = z.enum(['legistar', 'boardbook', 'primegov', 'llm_extract', 'manual']);
+export const AdapterKindSchema = z.enum(['legistar', 'boardbook', 'primegov', 'llm_extract', 'manual', 'diligent', 'boarddocs', 'utilitytaxservice']);
 export type AdapterKind = z.infer<typeof AdapterKindSchema>;
 
 // §5.2 source registry entry. `config` is adapter-specific and validated by each adapter.

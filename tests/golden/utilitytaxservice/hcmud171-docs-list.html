@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+
+    <link href="_content/Syncfusion.Blazor.Themes/bootstrap5.css" rel="stylesheet" />
+
+    <!-- these added for Syncfusion 23.2.xx -->
+    <script src="_content/Syncfusion.Blazor.Core/scripts/syncfusion-blazor.min.js" type="text/javascript"></script>
+    <script src="_content/Syncfusion.Blazor.PdfViewer/scripts/syncfusion-blazor-pdfviewer.min.js" type="text/javascript"></script>
+    <script src="_content/Syncfusion.Blazor.SfPdfViewer/scripts/syncfusion-blazor-sfpdfviewer.min.js" type="text/javascript"></script>
+
+    <!-- this needed for horizantal menu and other stuff -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+
+
+    <link href="css/site.css" rel="stylesheet" />
+    <!-- this messes with horiz menu
+        <link href="UTSWeb.styles.css" rel="stylesheet" />
+    -->
+
+    <link rel="icon" type="image/png" href="favicon.png"/>
+
+    <!--<component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />-->
+    <!--Blazor:{"sequence":0,"type":"server","descriptor":"CfDJ8NQcLsBMVX1Mrcm6x4\u002Bj57Ta93GC01iwtE5GCmEM6zUDyqoTlzat1xCOEk7OzDq69ZstPT/\u002BZRQpjEcdeheDTZE2Y8\u002BwDhYmwxZfMhEYcJRB64ym\u002BoRXOWR3N3B3xaq1jR6ZtbB\u002BSbaqljIZz266ZtTnOnGvaeIPxABno5I4BLNKcebjLH0T7Ym\u002BBl5Kjhu/E\u002Bq0iGV/Yf9ORv2Ehk45irSbbhOOOd4MYJshS3xe5sPT5g\u002BvWu3xohYFFH44tlcAa\u002BOG\u002BreXfJVu1LOuypyE/F9rlRDM6WEuBHAAGNRJ6BLJDYEZYIULRmvribIY5vj\u002B8cnpJVUxr2H1OWFbhsLpU5d5mfTesh5ygKkpgEMlYv8CwV2GvHcqvgjZTL9KQTgVbyv/lWE1953VCe8bpHQs1TKJ6zxl7ev/u7xftIHhoGHX"}-->
+</head>
+<body>
+    <!--Blazor:{"sequence":1,"type":"server","prerenderId":"abc7f7be87884684955b1808ed52dd49","descriptor":"CfDJ8NQcLsBMVX1Mrcm6x4\u002Bj57SfcDzVVyJFE0lEL7ZywSyRB2qZuzkJE33TgOb60CDS0SSk3HKJ7RZVmUzwtSew9UuM7bh\u002B4q//9JUsylUgf7GYl\u002BBtHUhIYB23vWuoc1i11gbIZr4boagFeS8YmlYQtNWuscY8JWCHfA/AteKwIk2e/wY3ANSzy4zX0A5YFsztMJ9Vjvn4dZrfWC36LPfsodv278RmTpJ/CtEUdqGnNQ7PaVelqqMm4P91W5UECDT17J2UykD5fa11Bqxc0FUvjThQ2N1eQLDV0zwRAs/DMbQtPHeLF9ENX6UNTdR7dezhx/Ts3fUlZn86FLPvBE1OtKs="}--><header b-7mfv0va7l6><nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top" b-uny93ex8yy><div class="container-fluid" b-uny93ex8yy><a class="navbar-brand myLogo text-dark" asp-area asp-page="/Index" b-uny93ex8yy><img class="img-fluid" src="img/uts_logo_landscape_400_2.png" alt="Utility Tax Service, LLC Logo" b-uny93ex8yy></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" b-uny93ex8yy><span class="navbar-toggler-icon" b-uny93ex8yy></span></button>
+        <div class="collapse navbar-collapse d-sm-inline-flex" b-uny93ex8yy><ul class="navbar-nav w-100 justify-content-center" b-uny93ex8yy><li class="nav-item" b-uny93ex8yy><a class="nav-link text-dark" href Match="NavLinkMatch.All" b-uny93ex8yy>Home</a></li>
+                <li class="nav-item" b-uny93ex8yy><a class="nav-link text-dark" href="AccountSrch" b-uny93ex8yy>Accounts</a></li>
+                <li class="nav-item" b-uny93ex8yy><a class="nav-link text-dark" href="DistrictList" b-uny93ex8yy>Districts</a></li>
+                
+                <li class="nav-item" b-uny93ex8yy><a class="nav-link text-dark" href="Links" b-uny93ex8yy>Links</a></li>
+                <li class="nav-item" b-uny93ex8yy><a class="nav-link text-dark" href="FAQS" b-uny93ex8yy>FAQs</a></li>
+                </ul>
+            <ul class="navbar-nav w-100 justify-content-end" b-uny93ex8yy><li class="nav-item" b-uny93ex8yy><a class="nav-link text-dark" href="Identity/Account/Login" b-uny93ex8yy>Log in</a></li></ul></div></div></nav>
+<style b-uny93ex8yy></style></header>
+
+
+<div class="container-fluid" b-7mfv0va7l6><main role="main" class="pb-3" b-7mfv0va7l6><div class="container-fluid"><h5>Harris County M.U.D. #171 Public Information and Documents</h5>
+        <a href="DistrictDetail/471" class="card-link">(back to Harris County M.U.D. #171 Information)</a>
+        <p>Click on the Document Name to view or download the document</p><div class="bg-light text-dark py-1 px-2"><h4><b>District Information and Documents</b></h4></div><div class="card-deck"><div class="card text-left"><h6 class="card-header">District Contact Information</h6>
+
+                        <div class="card-body"><div class="row"><div class="col-sm-6"><ul class="list-unstyled"><li class="list-unstyled">Allen Boone Humphries Robinson LLP</li><li class="list-unstyled">3200 Southwest Freeway, Suite 2600</li><li class="list-unstyled">Houston, Texas 77027</li></ul></div>
+                                <div class="col-sm-6"><ul class="list-unstyled"><li class="list-unstyled">Phone: (713) 860-6400</li><li class="list-unstyled">General Manager: N/A</li><li class="list-unstyled">E-Mail:  <a href="mailto:har171@txdistricts.info" target="_blank">har171@txdistricts.info</a></li></ul></div></div></div></div></div><div class="row"><div class="col-sm-6 col-xl-4"><div class="card text-left"><h5 class="card-header">District Information</h5>
+
+                            <div class="card-body"><div class="list-group"><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/40148">Board of Directors</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/9324">Tax Assessor-Collector</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/7839">Utility Operator</a></li></div></div></div></div><div class="col-sm-6 col-xl-4"><div class="card text-left"><h5 class="card-header">Meeting Notices and Agendas</h5>
+
+                            <div class="card-body"><p class="card-text" style="transform: rotate(0);"><p><b>Regular Meeting Date and Time</b><br>Second Monday of the month @ 1:00 p.m.
+<br><b>Regular Meeting Place</b><br>Allen Boone Humphries Robinson LLP
+<br>3200 Southwest Freeway, Suite 2600
+<br>Houston, TX 77027</p></p><div class="list-group"><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/42725">10/20/2026</a><div class="py-1 px-2"><small>Special Meeting - Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/42600">October 12, 2026</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/42599">October 12, 2026</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/42235">September 14, 2026</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/42234">September 14, 2026</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/41802">August 10, 2026</a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/41614">July 13, 2026</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/41616">July 13, 2026</a><div class="py-1 px-2"><small>internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/41288">June 8, 2026</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/41286">June 8, 2026</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/39012">May 11, 2026</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/39011">May 11, 2026</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/38803">April 13, 2026</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/38804">April 13, 2026</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/37380">March 9, 2026</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/37374">March 9, 2026</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/37092">February 10, 2026</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/37091">February 10, 2026</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/35811">January 12, 2026</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/35810">January 12, 2026</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/35685">December 8, 2025</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/35684">December 8, 2025</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/32437">November 10, 2025</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/32436">November 10, 2025</a><div class="py-1 px-2"><small>Master </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/32093">October 13, 2025</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/30954">September 24, 2025</a><div class="py-1 px-2"><small>Special Meeting </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/29579">August 11, 2025</a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/29578">August 11, 2025</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/29452">July 14, 2025</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/29451">July 14, 2025</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/28308">June 9, 2025</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/28307">June 9, 2025</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/26138">May 12, 2025</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/26137">May 12, 2025</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/25909">April 14, 2025</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/25908">April 15, 2025</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/21720">March 10, 2025</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/21719">March 10, 2025</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/21488">February 10, 2025</a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/21487">February 10, 2025</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/21324">January 13, 2025</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/21323">January </a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/21108">December 9, 2024</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/21107">December  9, 2024</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20936">November 12, 2024</a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20935">November 12, 2024</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20814">October 21, 2024</a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20732">October 14, 2024</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20728">October 14, 2024</a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20565">September 30, 2024</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20342">September 9, 2024</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20341">September 9, 2024</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20157">8/12/2024</a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20150">8/12/2024</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20016">July 17, 2024</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20015">July 17, 2024</a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19990">July 8, 2024</a><div class="py-1 px-2"><small>Cancelled - Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19989">July 8, 2024</a><div class="py-1 px-2"><small>Cancelled - Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19815">June 17, 2024</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19753">June 10, 2024</a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19752">June 10, 2024</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19545">May 13, 2024</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19543">May 13, 2024</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19274">April 8, 2024</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19273">April 8, 2024</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19135">March 11, 2024</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19136">March 11, 2024</a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/16005">February 12, 2024</a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/16004">February 12, 2024</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/14784">January 8, 2024</a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/14783">January 8, 2024</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/14683">December 11, 2023</a><div class="py-1 px-2"><small>Master </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/14682">December 11, 2023</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/14521">November 13, 2023</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/14520">November 13, 2023 </a><div class="py-1 px-2"><small>Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/14284">October 9, 2023</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/14270">October 9, 2023</a><div class="py-1 px-2"><small>Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/14160">September 28, 2023</a><div class="py-1 px-2"><small>Master </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/13958">September 11, 2023</a><div class="py-1 px-2"><small>Internal</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/13949">September 11, 2023 Supplemental </a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/13930">September 11, 2023 Master</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/13703">August 14, 2023 Master</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/13704">August 14, 2023 Internal</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/12462">July 10, 2023 Internal</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/12461">July 10, 2023 Master</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/12082">6/12/2023</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/1396">3/14/2022 Internal at 1:00pm</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/1394">3/14/2022 Master at 1:00pm</a></li></div></div></div></div><div class="col-sm-6 col-xl-4"><div class="card text-left"><h5 class="card-header">Request Designation of Meeting Place</h5>
+
+                            <div class="card-body"><p class="card-text" style="transform: rotate(0);">Residents of the District have the right to request the designation of a meeting location within the District under Section 49.062 (g), Water Code. A description of this process can be found at www.tceq.texas.gov/waterdistricts. </p><div class="list-group"></div></div></div></div><div class="col-sm-6 col-xl-4"><div class="card text-left"><h5 class="card-header">Tax Rate Publications</h5>
+
+                            <div class="card-body"><div class="list-group"><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/42414">2026 Tax Rate Hearing Notice</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/32249">2025 Tax Rate Hearing Notice</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20845">2024 Tax Rate Hearing Notice </a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/14026">2023 Tax Rate Hearing Notice </a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/6063">2022 Tax Rate Hearing Notice</a></li></div></div></div></div><div class="col-sm-6 col-xl-4"><div class="card text-left"><h5 class="card-header">Tax Rate Resolutions</h5>
+
+                            <div class="card-body"><div class="list-group"><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/42763">2026 Tax Rate</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/32198">2025 Tax Rate</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/20392">2024 Tax Rate  </a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/14406">2023 Tax Rate</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/7832">2022 Tax Rate</a></li></div></div></div></div><div class="col-sm-6 col-xl-4"><div class="card text-left"><h5 class="card-header">Budget Information</h5>
+
+                            <div class="card-body"><div class="list-group"><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/40172">2026 Budget</a><div class="py-1 px-2"><small>Internal and Master</small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/21234">2025- Budget - Internal </a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/21233">2025 Budget Variances and Taxes - Internal</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/21232">2025 Budget - Master</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/21231">2025 Budget Variances and Taxes - Master</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19536">2024 Budget </a><div class="py-1 px-2"><small>Master and Internal </small></div></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19537">2024 Budget Variances and Taxes - Internal</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19538">2024 Budget and Variances - Master</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/7836">2023 Budget - Master</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/7838">2023 Budget Variances and Taxes - Master</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/7840">2023 Budget - Internal</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/7841">2023 Budget Variances and Taxes - Internal</a></li></div></div></div></div><div class="col-sm-6 col-xl-4"><div class="card text-left"><h5 class="card-header">Financial Information</h5>
+
+                            <div class="card-body"><div class="list-group"><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/40081">2025 Audit</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/28186">2024 Audit</a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/19573">2023 Audit </a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/9647">2022 Audit </a></li><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/1709">2021 Audit</a></li></div></div></div></div><div class="col-sm-6 col-xl-4"><div class="card text-left"><h5 class="card-header">Notice To Purchaser</h5>
+
+                            <div class="card-body"><div class="list-group"><li class="list-group-item"><a target="_blank" href="PDFViewerEx/471/12544">Notice to Purchaser</a></li></div></div></div></div></div></div>
+
+<div class="container-fluid py-0"><div class="row border-top px-0 py-0 mx-1"><div class="col-sm-4 px-0" style="font-size:small; text-align:left"><p>Data current as of 10/27/2026</p></div>
+        <div class="col-sm-8 px-0 float-end text-end" style="font-size:small;margin-left:auto; margin-right:0;"><p class="text-right">Data Pages &copy; 2005-2026 Copperfield Software LLC</p></div></div></div>
+
+<style>
+    .cardx {
+        max-width: calc(50% - 30px);
+    }
+
+    .list-group {
+        max-height: 400px;
+        margin-bottom: 10px;
+        overflow-y:auto;
+        -webkit-overflow-scrolling: touch;
+    }
+</style></main></div>
+
+<footer class="page-footer border-top text-muted pt-2 " b-7mfv0va7l6><div class="col-12 text-center" b-7mfv0va7l6><p style="font-size:small" b-7mfv0va7l6>
+            &copy; 2007-2026 Utility Tax Service LLC.<br b-7mfv0va7l6>
+            Information contained in this website is subject to change without notice.<br b-7mfv0va7l6>
+            Please contact the tax office if you have any questions.
+        </p></div></footer>
+
+<style b-7mfv0va7l6>
+    body {
+        /* RO Margin top by navbar height 146 for UTS Image */
+        margin-top: 118px;
+        /* Margin bottom by footer height */
+        /*margin-bottom: 48px;*/
+    }
+footer{
+	background-color: #282a2b;
+	border-top-width: 1px;
+	border-color: #4b4c4d;
+}
+footer p{
+	margin: 0;
+	color: #ffffff;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+footer p a{
+	color: #9e9e9e;
+	font-family: Arial, Helvetica, sans-serif;
+}
+footer p a:hover{
+	color: #bfbfbf;
+}
+</style><!--Blazor:{"prerenderId":"abc7f7be87884684955b1808ed52dd49"}-->
+
+    <div id="blazor-error-ui">
+        
+            An error has occurred. This application may no longer respond until reloaded.
+        
+        
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <!-- added file wwwroot/boot.js to handle reconnect prompt -->
+    <!-- added to handle reconnect prompt -->
+    <div id="reconnect-modal" style="display: none;"></div>
+    <!-- added autostart="false" to handle reconnect prompt -->
+    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <!-- added to handle reconnect prompt -->
+    <script src="boot.js"></script>
+
+
+</body>
+</html>

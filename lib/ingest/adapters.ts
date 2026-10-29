@@ -10,6 +10,9 @@ const LOADERS: Record<AdapterKind, () => Promise<Adapter>> = {
   llm_extract: async () => (await import('@/lib/adapters/llmExtract')).llmExtractAdapter,
   primegov: async () => (await import('@/lib/adapters/primegov')).primeGovAdapter,
   manual: async () => (await import('@/lib/adapters/manual')).manualAdapter,
+  diligent: async () => (await import('@/lib/adapters/diligent')).diligentAdapter,
+  boarddocs: async () => (await import('@/lib/adapters/boarddocs')).boardDocsAdapter,
+  utilitytaxservice: async () => (await import('@/lib/adapters/utilitytaxservice')).utilityTaxServiceAdapter,
 };
 
 export function loadAdapter(kind: AdapterKind): Promise<Adapter> {

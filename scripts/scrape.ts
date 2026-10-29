@@ -19,6 +19,9 @@ const GOLDEN_DIR: Record<AdapterKind, string> = {
   primegov: 'primegov',
   llm_extract: 'llm-extract',
   manual: 'manual',
+  diligent: 'diligent',
+  boarddocs: 'boarddocs',
+  utilitytaxservice: 'utilitytaxservice',
 };
 
 function fail(msg: string): never {

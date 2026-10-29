@@ -822,3 +822,123 @@
     match_link_text: true
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+- id: hcmud_559
+  body_id: hcmud_559
+  adapter: utilitytaxservice
+  config:
+    district: "740"                                       # Utility Tax Service listing (M12): link-only, agendas open only in a viewer
+    expected_max_gap_days: 45
+- id: hcmud_458
+  body_id: hcmud_458
+  adapter: utilitytaxservice
+  config:
+    district: "378"                                       # Utility Tax Service listing (M12): link-only, agendas open only in a viewer
+    expected_max_gap_days: 45
+- id: hcmud_171
+  body_id: hcmud_171
+  adapter: utilitytaxservice
+  config:
+    district: "471"                                       # Utility Tax Service listing (M12): link-only, agendas open only in a viewer
+    expected_max_gap_days: 45
+- id: hcmud_457
+  body_id: hcmud_457
+  adapter: utilitytaxservice
+  config:
+    district: "376"                                       # Utility Tax Service listing (M12): link-only, agendas open only in a viewer
+    expected_max_gap_days: 45
+- id: hcmud_534
+  body_id: hcmud_534
+  adapter: utilitytaxservice
+  config:
+    district: "739"                                       # Utility Tax Service listing (M12): link-only, agendas open only in a viewer
+    expected_max_gap_days: 45
+- id: hcmud_532
+  body_id: hcmud_532
+  adapter: utilitytaxservice
+  config:
+    district: "A10"                                       # Utility Tax Service listing (M12): link-only, agendas open only in a viewer
+    expected_max_gap_days: 45
+- id: hcmud_547
+  body_id: hcmud_547
+  adapter: utilitytaxservice
+  config:
+    district: "A03"                                       # Utility Tax Service listing (M12): link-only, agendas open only in a viewer
+    expected_max_gap_days: 45
+- id: hcmud_406
+  body_id: hcmud_406
+  adapter: utilitytaxservice
+  config:
+    district: "249"                                       # Utility Tax Service listing (M12): link-only, agendas open only in a viewer
+    expected_max_gap_days: 45
+- id: hcmud_558
+  body_id: hcmud_558
+  adapter: utilitytaxservice
+  config:
+    district: "478"                                       # Utility Tax Service listing (M12): link-only, agendas open only in a viewer
+    expected_max_gap_days: 45
+- id: hcmud_518
+  body_id: hcmud_518
+  adapter: utilitytaxservice
+  config:
+    district: "460"                                       # Utility Tax Service listing (M12): link-only, agendas open only in a viewer
+    expected_max_gap_days: 45
+- id: hcmud_525
+  body_id: hcmud_525
+  adapter: utilitytaxservice
+  config:
+    district: "413"                                       # Utility Tax Service listing (M12): link-only, agendas open only in a viewer
+    expected_max_gap_days: 45
+- id: nwhcmud_9
+  body_id: nwhcmud_9
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/northwest-harris-county-mud-9/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12): link text "October 2026", date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_113
+  body_id: hcwcid_113
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/harris-county-wcid-113-2/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12): link text "October 2026", date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_216
+  body_id: hcmud_216
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/harris-county-mud-216/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12): link text "October 2026", date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: harris_waller_counties_mud_5
+  body_id: harris_waller_counties_mud_5
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/harris-waller-co-mud-5/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12): link text "October 2026", date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_321
+  body_id: hcmud_321
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/harris-county-mud-321/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12): link text "October 2026", date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: spanish_cove_pud
+  body_id: spanish_cove_pud
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/spanish-cove-pud/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12): link text "October 2026", date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
