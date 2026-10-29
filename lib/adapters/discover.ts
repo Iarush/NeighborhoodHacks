@@ -9,6 +9,7 @@ import { ZONE } from '@/lib/ingest/normalize';
 
 export const DiscoveryConfigSchema = z
   .object({
+    // {yyyy}, {m} and {mm} in the URL: a month page ("handler.php?month={m}&year={yyyy}"); this and next month are read.
     index_url: z.string().url(),
     link_pattern: z.string(),
     // data_file_name: the anchor's data-file-name attribute (Finalsite: the URL is an opaque UUID).
@@ -56,7 +57,7 @@ export type DiscoveryResult = {
   pages: { url: string; html: string }[];
 };
 
-export type DiscoverDeps = { http?: HttpOptions };
+export type DiscoverDeps = { http?: HttpOptions; now?: () => Date };
 
 /** Config regexes are written Python-style ("(?i)…"); JS has no inline flags. */
 export function toRegExp(pattern: string): RegExp {
@@ -286,6 +287,18 @@ export function firstPdfLink(html: string, baseUrl: string): string | undefined 
   return href ? new URL(href, baseUrl).toString() : undefined;
 }
 
+/** The index URL with its month placeholders filled for this month and next (America/Chicago); else just the URL. */
+export function indexUrls(template: string, now: Date): string[] {
+  if (!/\{(yyyy|mm|m)\}/.test(template)) return [template];
+  const start = DateTime.fromJSDate(now, { zone: ZONE }).startOf('month');
+  return [start, start.plus({ months: 1 })].map((d) =>
+    template
+      .replaceAll('{yyyy}', String(d.year))
+      .replaceAll('{mm}', String(d.month).padStart(2, '0'))
+      .replaceAll('{m}', String(d.month)),
+  );
+}
+
 /** discover(config, window): fetch the index, pick dated PDFs inside the window, one per date. */
 export async function discover(
   rawConfig: unknown,
@@ -293,11 +306,14 @@ export async function discover(
   deps: DiscoverDeps = {},
 ): Promise<DiscoveryResult> {
   const cfg = DiscoveryConfigSchema.parse(rawConfig);
-  const html = await getText(cfg.index_url, deps.http);
-  const pages = [{ url: cfg.index_url, html }];
-  const parsed = parseIndex(html, cfg.index_url, cfg);
+  const pages: { url: string; html: string }[] = [];
+  let docs: DiscoveredDoc[] = [];
+  for (const url of indexUrls(cfg.index_url, deps.now?.() ?? new Date())) {
+    const html = await getText(url, deps.http);
+    pages.push({ url, html });
+    docs.push(...parseIndex(html, url, cfg).docs.filter((d) => inWindow(d, window)));
+  }
   const warnings: string[] = [];
-  let docs = parsed.docs.filter((d) => inWindow(d, window));
   if (cfg.follow_notice_page) {
     const followed: DiscoveredDoc[] = [];
     for (const d of docs) {

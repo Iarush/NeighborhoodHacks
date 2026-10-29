@@ -1565,3 +1565,9 @@
   no_agendas_online:
     reason: The Comptroller's self-reported website is the district's page on bli-tax.com (Bob Leared Interests), which lists only budgets, tax rate components and an audit, no agendas; a web search for "Harris County MUD 535 agenda" found only a TCEQ permit file.
     checked_on: '2026-10-29'
+- id: hcmud_136
+  website: http://hcmud136.org/
+  checked_on: '2026-10-29'
+  no_agendas_online:
+    reason: "The Comptroller-listed site hcmud136.org shows only a \"Coming Soon\" placeholder (HTTPS doesn't connect); the survey found nothing else, and a web search for \"Harris County MUD 136 agenda\" found only aggregator and other districts' pages."
+    checked_on: '2026-10-29'

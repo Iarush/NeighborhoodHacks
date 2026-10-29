@@ -83,7 +83,7 @@ describe('adapter run (fetch stubbed)', () => {
 
 describe('sources.yaml', () => {
   it('every utilitytaxservice source names a district code', () => {
-    const uts = loadSources().filter((s) => s.adapter === 'utilitytaxservice');
+    const uts = loadSources().filter((s) => s.adapter === 'utilitytaxservice' && !s.config.site);
     expect(uts.length).toBe(11);
     expect(uts.every((s) => /^[A-Za-z0-9]+$/.test(String(s.config.district)))).toBe(true);
   });

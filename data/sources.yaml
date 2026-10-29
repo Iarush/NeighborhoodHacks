@@ -1280,3 +1280,45 @@
     date_from: row_text                                  # the first date in the row is the meeting's; the second is the posting date
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+# --- MUD bucket M15 (sites the survey couldn't fetch or recognize) ---
+- id: hcmud_105
+  body_id: hcmud_105
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud105.com/
+    link_pattern: "(?i)/docs/agenda-[0-9]{4}-[0-9]{2}-[0-9]{2}[^/]*[.]pdf$"   # hand-built static site (M15): "docs/agenda-2026-10-27.pdf", link text "Agenda (Amended)"
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_81
+  body_id: hcmud_81
+  adapter: llm_extract
+  config:
+    index_url: http://www.hcmud81.com/meetings.html     # the site has no working HTTPS
+    link_pattern: "(?i)/AgendaMinutes/Agenda[0-9]{2}_[0-9]{2}_[0-9]{2}HCMUD81[.]pdf$"   # hand-built site (M15): "Agenda10_22_26HCMUD81.pdf"; the STP and Cinco Regional agendas on the same page are joint bodies
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_449
+  body_id: hcmud_449
+  adapter: utilitytaxservice
+  config:
+    site: https://www.taxtech.net/
+    district: "332"                                       # Tax Tech listing (M15): the same portal as Utility Tax Service, link-only
+    expected_max_gap_days: 45
+- id: hcmud_287
+  body_id: hcmud_287
+  adapter: utilitytaxservice
+  config:
+    site: https://www.taxtech.net/
+    district: "187"                                       # Tax Tech listing (M15): the same portal as Utility Tax Service, link-only
+    expected_max_gap_days: 45
+- id: cimarron_mud
+  body_id: cimarron_mud
+  adapter: llm_extract
+  config:
+    index_url: "https://cimarronmudtx.gov/public-docs/handler.php?month={m}&year={yyyy}"   # hand-built site (M15): one page per month, "October 21, 2026 Agenda.pdf"
+    link_pattern: "(?i)/public-docs/documents/.+agenda[^/]*[.]pdf$"
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45

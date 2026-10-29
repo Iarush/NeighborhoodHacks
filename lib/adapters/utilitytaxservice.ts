@@ -15,22 +15,29 @@ import { toChicagoIso } from '@/lib/ingest/normalize';
 //   PDFViewerEx is a Syncfusion Blazor viewer: the PDF bytes arrive only over its SignalR
 //   circuit, and no plain download URL exists. So this adapter is link-only: it records the
 //   meeting date and the official viewer link, and never extracts items. Times stay 00:00.
+// Tax Tech (www.taxtech.net, bucket M15) runs the same portal; its sources set `site`.
 
-export const UtilityTaxServiceConfigSchema = z.object({ district: z.string().regex(/^[A-Za-z0-9]+$/) }).loose();
+export const UtilityTaxServiceConfigSchema = z
+  .object({
+    district: z.string().regex(/^[A-Za-z0-9]+$/),
+    /** Another host of the same portal ("https://www.taxtech.net/"). Default: Utility Tax Service. */
+    site: z.string().url().endsWith('/').optional(),
+  })
+  .loose();
 
 export type UtilityTaxServiceDeps = { http?: HttpOptions };
 
 export const SITE = 'https://www.utilitytaxservice.com/';
-export const listUrl = (district: string) => `${SITE}DistrictDocsList/${district}`;
+export const listUrl = (district: string, site = SITE) => `${site}DistrictDocsList/${district}`;
 
 export const LINK_ONLY_WARNING = 'link_only: Utility Tax Service agendas open only in a viewer; items are never extracted';
 
 export type ListedAgenda = { url: string; date: string; label: string };
 
 /** Agenda links from the "Meeting Notices and Agendas" card, in page order. Undated links are skipped. */
-export function parseAgendaList(html: string): ListedAgenda[] {
+export function parseAgendaList(html: string, site = SITE): ListedAgenda[] {
   const $ = load(html);
-  const base = new URL($('base[href]').attr('href') ?? '/', SITE).toString();
+  const base = new URL($('base[href]').attr('href') ?? '/', site).toString();
   const card = $('.card')
     .filter((_, c) => /agendas/i.test($(c).children('.card-header').text()))
     .first();
@@ -68,12 +75,12 @@ export function createUtilityTaxServiceAdapter(deps: UtilityTaxServiceDeps = {})
     async run(source: SourceConfig, mode: RunMode, window): Promise<AdapterResult> {
       const result: AdapterResult = { meetings: [], items: [], documents: [], result_updates: [], warnings: [] };
       if (mode.kind === 'results') return result; // minutes are viewer-only too
-      const { district } = UtilityTaxServiceConfigSchema.parse(source.config);
+      const { district, site = SITE } = UtilityTaxServiceConfigSchema.parse(source.config);
       const bodyId = source.body_id ?? source.id;
-      const url = listUrl(district);
+      const url = listUrl(district, site);
       const html = await getText(url, deps.http);
       result.documents.push({ url, fetched_at: new Date().toISOString(), content_hash: documentContentHash(html), raw: html, kind: 'html' });
-      const picked = pickPerDate(parseAgendaList(html)).filter((l) => inWindow(l, window));
+      const picked = pickPerDate(parseAgendaList(html, site)).filter((l) => inWindow(l, window));
       result.meetings.push(...picked.map((l) => mapMeeting(source.id, bodyId, l)));
       if (picked.length) result.warnings.push(LINK_ONLY_WARNING);
       return result;
