@@ -26,6 +26,8 @@ export const DiscoveryConfigSchema = z
     date_range: z.enum(['first', 'last']).optional(),
     /** Only anchors matching this CSS selector ("td:first-child a": an Agendas column beside Minutes). */
     link_selector: z.string().optional(),
+    /** Date from the text of the link's closest ancestor matching this selector (Avada toggles: ".fusion-panel", date in the panel title). */
+    date_container: z.string().optional(),
   })
   .loose();
 export type DiscoveryConfig = z.infer<typeof DiscoveryConfigSchema>;
@@ -207,8 +209,9 @@ export function parseIndex(html: string, baseUrl: string, cfg: DiscoveryConfig):
     if (seen.has(url)) return;
     seen.add(url);
     const filename = lastSegment(url);
-    const dateSource =
-      cfg.date_from === 'filename' ? filename : cfg.date_from === 'data_file_name' ? dataName : cfg.date_from === 'line_text' || cfg.date_from === 'row_text' ? line : text;
+    const dateSource = cfg.date_container
+      ? line
+      : cfg.date_from === 'filename' ? filename : cfg.date_from === 'data_file_name' ? dataName : cfg.date_from === 'line_text' || cfg.date_from === 'row_text' ? line : text;
     const parsed = parseDocDate(dateSource, cfg.date_range);
     if (!parsed) {
       undated.push(url);
@@ -231,7 +234,13 @@ export function parseIndex(html: string, baseUrl: string, cfg: DiscoveryConfig):
   const anchors = $(cfg.link_selector ? `${cfg.link_selector}[href]` : 'a[href]').toArray();
   anchors.forEach((a, i) => {
     const text = $(a).text().replace(/\s+/g, ' ').trim();
-    const line = cfg.date_from === 'line_text' ? lineText($, a) : cfg.date_from === 'row_text' ? rowText($, a, cfg.date_range) : text;
+    const line = cfg.date_container
+      ? $(a).closest(cfg.date_container).text().replace(/\s+/g, ' ').trim()
+      : cfg.date_from === 'line_text'
+        ? lineText($, a)
+        : cfg.date_from === 'row_text'
+          ? rowText($, a, cfg.date_range)
+          : text;
     consider($(a).attr('href')!.trim(), text, ($(a).attr('data-file-name') ?? '').trim(), i, line);
   });
   if (cfg.embedded_links) {

@@ -225,6 +225,9 @@
 - id: hcmud_127
   website: http://www.hcmud127.com/
   checked_on: '2026-10-28'
+  no_agendas_online:
+    reason: "hcmud127.com/meetings/ (Off Cinco) lists agendas only through 2025-05-19; the Comptroller gives no other site, and a web search for \"Harris County MUD 127 agenda\" found only other districts' and county pages."
+    checked_on: '2026-10-29'
 - id: hcmud_132
   website: https://www.hcmud132.com
   checked_on: '2026-10-28'
@@ -237,6 +240,9 @@
 - id: hcmud_149
   website: https://www.hcmud149.org/
   checked_on: '2026-10-28'
+  no_agendas_online:
+    reason: "hcmud149.org forwards to its districtdirectory.org page (Off Cinco), which has board, tax and contact sections but no meetings or agendas; a web search for \"Harris County MUD 149 agenda\" found only other districts' pages."
+    checked_on: '2026-10-29'
 - id: hcmud_150
   website: https://www.hcmud150.com
   checked_on: '2026-10-28'
@@ -462,6 +468,9 @@
 - id: hcmud_438
   website: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-438/
   checked_on: '2026-10-28'
+  no_agendas_online:
+    reason: "The Comptroller's self-reported districtdirectory.org page (Off Cinco) has board, tax and contact sections but no meetings or agendas; a web search for \"Harris County MUD 438 agenda\" found only a 2007 fiscal note, a TCEQ permit and other districts' pages."
+    checked_on: '2026-10-29'
 - id: hcmud_439
   website: https://bli-tax.com/harris-county-mud-439/
   checked_on: '2026-10-28'

@@ -2538,3 +2538,135 @@
     date_from: link_text
     meeting_type_from_text: { special: "(?i)special|hearing" }
     expected_max_gap_days: 75
+# M25 (credit:off cinco): Off Cinco's Avada layout "2026-10-21 – Regular: Agenda | Minutes<br>", agendas on Drive
+- id: hcmud_167
+  body_id: hcmud_167
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-167/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_188
+  body_id: hcmud_188
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-188/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_531
+  body_id: hcmud_531
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-531/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_6
+  body_id: hcmud_6
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-6/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: clay_road_mud
+  body_id: clay_road_mud
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/clay-road-municipal-utility-district/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_71
+  body_id: hcmud_71
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud71.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_495
+  body_id: hcmud_495
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-495/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_538
+  body_id: hcmud_538
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-538/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_540
+  body_id: hcmud_540
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-540/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_64
+  body_id: hcmud_64
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-64/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_365
+  body_id: hcmud_365
+  adapter: llm_extract
+  config:
+    index_url: https://www.mud365.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: cornerstones_mud
+  body_id: cornerstones_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.cornerstonesmud.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: northampton_mud
+  body_id: northampton_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.northamptonmud.com/meetings/
+    link_pattern: "(?i)^agenda$"                          # Off Cinco toggles: date in the panel title, Minutes | Agenda Packet | Agenda inside
+    match_link_text: true
+    link_selector: '.fusion-panel a'
+    date_container: '.fusion-panel'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
