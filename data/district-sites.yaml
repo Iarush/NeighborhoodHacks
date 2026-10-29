@@ -186,6 +186,9 @@
 - id: harris_waller_counties_mud_4
   website: https://bli-tax.com/harris-waller-co-mud-4/
   checked_on: '2026-10-28'
+  no_agendas_online:
+    reason: "The Comptroller's self-reported page (bli-tax.com/harris-waller-co-mud-4/, Bob Leared Interests) lists budgets, tax rates and an audit but no agendas or meeting notices; the survey found no other site, and a web search for \"Harris-Waller Counties MUD 4 agenda\" found only legislative and other districts' pages."
+    checked_on: '2026-10-29'
 - id: hcfwsd_1a
   website: https://www.hcfwsd1a.org/
   checked_on: '2026-10-28'
@@ -384,6 +387,9 @@
 - id: hcmud_358
   website: https://bli-tax.com/harris-county-mud-358/
   checked_on: '2026-10-28'
+  no_agendas_online:
+    reason: "The Comptroller's self-reported page (bli-tax.com/harris-county-mud-358/, Bob Leared Interests) lists budgets, tax rates and audits but no agendas or meeting notices; the survey found no other site, and a web search for \"Harris County MUD 358 agenda\" found only aggregator pages for other districts."
+    checked_on: '2026-10-29'
 - id: hcmud_359
   website: http://www.hcmud359.com
   checked_on: '2026-10-28'
@@ -624,6 +630,9 @@
 - id: hcwcid_74
   website: https://www.harriscowcid74.org/
   checked_on: '2026-10-28'
+  no_agendas_online:
+    reason: "The district's Wix site (harriscowcid74.org/minutes) links its \"Meeting Agendas\" folder on SharePoint, which redirects to a Microsoft sign-in, so the agendas aren't public; a web search for \"Harris County WCID 74 agenda\" found only a TCEQ permit and county court pages."
+    checked_on: '2026-10-29'
 - id: hcwcid_84
   website: https://www.hcwcid84.org/
   checked_on: '2026-10-28'

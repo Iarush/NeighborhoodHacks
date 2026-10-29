@@ -1134,3 +1134,149 @@
     date_from: filename
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+# MUD rollout bucket M14 (.plans/mud-buckets.md)
+- id: hcmud_155
+  body_id: hcmud_155
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/harris-county-mud-155/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12 config): date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_503
+  body_id: hcmud_503
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/harris-county-mud-503/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12 config): date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_355
+  body_id: hcmud_355
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/harris-county-mud-355/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12 config): date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 70                            # meets about every other month (Jan, Mar, Jul, Sep 2026)
+- id: hcmud_439
+  body_id: hcmud_439
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/harris-county-mud-439/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12 config): date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_158
+  body_id: hcmud_158
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/harris-county-mud-158/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12 config): date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_147
+  body_id: hcmud_147
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/harris-county-mud-147/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12 config): date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: nehcmud_1
+  body_id: nehcmud_1
+  adapter: llm_extract
+  config:
+    index_url: https://bli-tax.com/ne-hc-mud-1/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # Bob Leared listing (M12 config): date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_23
+  body_id: hcmud_23
+  adapter: llm_extract
+  config:
+    index_url: https://www.harriscountymud23.com/meetings/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # WordPress (Avada) site (M14): link text "Agenda 10-08-26"
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: nottingham_country_mud
+  body_id: nottingham_country_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.nottinghammud.com/meetings/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # WordPress (Avada) site (M14): link text "10-19-26 Agenda"
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_132
+  body_id: hcmud_132
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud132.com/meetings/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # WordPress (Avada) site (M14): link text "October 15, 2026 Agenda"
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_390
+  body_id: hcmud_390
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud390.com/meetings
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # WordPress (Elementor) site (M14): link text "View Agenda", date in the filename
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: interstate_mud
+  body_id: interstate_mud
+  adapter: llm_extract
+  config:
+    index_url: https://interstatemud.com/interstate-mud/
+    link_pattern: "(?i)^(agenda|english)$"               # WordPress site (M14): "2026-10-13: Agenda | Minutes", agenda on Google Drive
+    match_link_text: true                                # Drive URLs are opaque IDs
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_238
+  body_id: hcmud_238
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud238.com/copy-of-board-meetings
+    link_pattern: "(?i)^[a-z]+ [0-9]{1,2}, [0-9]{4}$"         # Wix site (M14): the newest meeting's date links its agenda; older rows say only "Agenda"
+    match_link_text: true                                # Wix file URLs are opaque IDs
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_110
+  body_id: hcwcid_110
+  adapter: llm_extract
+  config:
+    index_url: https://www.wcid110.com/board-meetings
+    link_selector: "#comp-mi92mrnb a"                    # the "Board Meeting Agendas" list; the Minutes list beside it repeats the dates
+    link_pattern: "(?i)^[a-z]+ [0-9]{1,2}, [0-9]{4}( - special)?$"   # Wix site (M14): "Board Meeting Agendas" list, link text "November 4, 2026 - SPECIAL"
+    match_link_text: true                                # Wix file URLs are opaque IDs
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: oakmont_pud
+  body_id: oakmont_pud
+  adapter: llm_extract
+  config:
+    index_url: https://oakmontpud.org/board/archives/
+    link_pattern: "(?i)(general|special) meeting$"      # WordPress site (M14): "October 8, 2026 – General Meeting" links a meeting page
+    match_link_text: true
+    follow_notice_page: true                             # the meeting page links its agenda on Google Drive
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: clear_lake_city_wa
+  body_id: clear_lake_city_wa
+  adapter: llm_extract
+  config:
+    index_url: https://www.clcwa.org/board-information
+    link_pattern: "(?i)^view document$"                  # Wix site (M14): row "October 8 2026 Regular Board Meeting (Agenda) · October 2, 2026 · View Document"
+    match_link_text: true                                # Wix file URLs are opaque IDs
+    date_from: row_text                                  # the first date in the row is the meeting's; the second is the posting date
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45

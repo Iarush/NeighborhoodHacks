@@ -13,7 +13,8 @@ export const DiscoveryConfigSchema = z
     link_pattern: z.string(),
     // data_file_name: the anchor's data-file-name attribute (Finalsite: the URL is an opaque UUID).
     // line_text: the link's line, from the previous <br> or block start ("2026-10-21 – Regular: Agenda").
-    date_from: z.enum(['link_text', 'filename', 'data_file_name', 'line_text']).default('link_text'),
+    // row_text: the nearest ancestor with a date and no other link (Wix repeaters: "View Document" beside its title).
+    date_from: z.enum(['link_text', 'filename', 'data_file_name', 'line_text', 'row_text']).default('link_text'),
     meeting_type_from_text: z.object({ special: z.string() }).partial().optional(),
     follow_notice_page: z.boolean().optional(),
     /** Also match absolute URLs anywhere in the page source (Apptegy's embedded document JSON). */
@@ -172,6 +173,16 @@ export function lineText($: CheerioAPI, a: DomNode): string {
   return parts.reverse().join(' ').replace(/\s+/g, ' ').trim();
 }
 
+/** Text of the nearest ancestor that holds a date and no other link; '' when a row boundary comes first. */
+export function rowText($: CheerioAPI, a: DomNode, dateRange?: DiscoveryConfig['date_range']): string {
+  for (let node = $(a).parent(); node.length && !node.is('body'); node = node.parent()) {
+    if (node.find('a[href]').length > 1) return '';
+    const text = node.text().replace(/\s+/g, ' ').trim();
+    if (parseDocDate(text, dateRange)) return text;
+  }
+  return '';
+}
+
 /** Parse an index page into dated documents (no window filter, no dedup). */
 export function parseIndex(html: string, baseUrl: string, cfg: DiscoveryConfig): { docs: DiscoveredDoc[]; undated: string[] } {
   const $ = load(html);
@@ -196,7 +207,7 @@ export function parseIndex(html: string, baseUrl: string, cfg: DiscoveryConfig):
     seen.add(url);
     const filename = lastSegment(url);
     const dateSource =
-      cfg.date_from === 'filename' ? filename : cfg.date_from === 'data_file_name' ? dataName : cfg.date_from === 'line_text' ? line : text;
+      cfg.date_from === 'filename' ? filename : cfg.date_from === 'data_file_name' ? dataName : cfg.date_from === 'line_text' || cfg.date_from === 'row_text' ? line : text;
     const parsed = parseDocDate(dateSource, cfg.date_range);
     if (!parsed) {
       undated.push(url);
@@ -208,7 +219,10 @@ export function parseIndex(html: string, baseUrl: string, cfg: DiscoveryConfig):
       filename,
       date: parsed.date,
       day_known: parsed.day_known,
-      type: specialRe && (specialRe.test(text) || specialRe.test(filename) || specialRe.test(dataName)) ? 'special' : 'regular',
+      type:
+        specialRe && (specialRe.test(text) || specialRe.test(filename) || specialRe.test(dataName) || (cfg.date_from === 'row_text' && specialRe.test(line)))
+          ? 'special'
+          : 'regular',
       version: versionSuffix(filename),
       index: i,
     });
@@ -216,7 +230,8 @@ export function parseIndex(html: string, baseUrl: string, cfg: DiscoveryConfig):
   const anchors = $(cfg.link_selector ? `${cfg.link_selector}[href]` : 'a[href]').toArray();
   anchors.forEach((a, i) => {
     const text = $(a).text().replace(/\s+/g, ' ').trim();
-    consider($(a).attr('href')!.trim(), text, ($(a).attr('data-file-name') ?? '').trim(), i, cfg.date_from === 'line_text' ? lineText($, a) : text);
+    const line = cfg.date_from === 'line_text' ? lineText($, a) : cfg.date_from === 'row_text' ? rowText($, a, cfg.date_range) : text;
+    consider($(a).attr('href')!.trim(), text, ($(a).attr('data-file-name') ?? '').trim(), i, line);
   });
   if (cfg.embedded_links) {
     // Apptegy (Thrillshare) pages ship their document list as JSON in the page, not as anchors.
@@ -262,12 +277,12 @@ export function pickPerDate(docs: DiscoveredDoc[]): { docs: DiscoveredDoc[]; sup
   return { docs: chosen, superseded, warnings };
 }
 
-/** First PDF link on a notice page (`follow_notice_page: true`). */
+/** First PDF link on a notice page (`follow_notice_page: true`); failing that, its first Google Drive file link. */
 export function firstPdfLink(html: string, baseUrl: string): string | undefined {
-  const href = load(html)('a[href]')
+  const hrefs = load(html)('a[href]')
     .toArray()
-    .map((a) => a.attribs.href!)
-    .find((h) => /\.pdf(?:$|[?#])/i.test(h));
+    .map((a) => a.attribs.href!);
+  const href = hrefs.find((h) => /\.pdf(?:$|[?#])/i.test(h)) ?? hrefs.find((h) => /^https:\/\/drive\.google\.com\/file\/d\/[\w-]+/.test(h));
   return href ? new URL(href, baseUrl).toString() : undefined;
 }
 
