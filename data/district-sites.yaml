@@ -1589,3 +1589,43 @@
   no_agendas_online:
     reason: "The Comptroller-listed site ngcmud2.org doesn't resolve (NXDOMAIN, retried over HTTP and HTTPS); a web search for \"Northgate Crossing MUD 2 agenda\" found only other districts' pages."
     checked_on: '2026-10-29'
+- id: hcmud_410
+  no_agendas_online:
+    reason: "No website found by the survey, the Comptroller or districtdirectory.org (no page); a web search for \"Harris County MUD 410 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: kirkmont_mud
+  no_agendas_online:
+    reason: "No website found by the survey, the Comptroller or districtdirectory.org (no page); a web search for \"Kirkmont MUD agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_148
+  no_agendas_online:
+    reason: "No website found by the survey, the Comptroller or districtdirectory.org (no page); a web search for \"Harris County MUD 148 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_403
+  no_agendas_online:
+    reason: "No website found by the survey, the Comptroller or districtdirectory.org (no page); a web search for \"Harris County MUD 403 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: royalwood_mud
+  no_agendas_online:
+    reason: "No website found by the survey, the Comptroller or districtdirectory.org (no page); a web search for \"Royalwood MUD agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcwcid_21
+  no_agendas_online:
+    reason: "No website found by the survey, the Comptroller or districtdirectory.org (no page); a web search for \"Harris County WCID 21 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_53
+  no_agendas_online:
+    reason: "No website found by the survey, the Comptroller or districtdirectory.org (its slug redirects to MUD 530's page); a web search for \"Harris County MUD 53 agenda\" found only Houston City Council and legislative pages."
+    checked_on: '2026-10-29'
+- id: hcfwsd_6
+  no_agendas_online:
+    reason: "No website found by the survey, the Comptroller or districtdirectory.org (no page); a web search for \"Harris County FWSD 6 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: memorial_villages_wa
+  no_agendas_online:
+    reason: "No website found by the survey, the Comptroller or districtdirectory.org (no page); a web search for \"Memorial Villages Water Authority agenda\" found only Piney Point and Hedwig Village council agendas that mention the Authority."
+    checked_on: '2026-10-29'
+- id: hcmud_541
+  no_agendas_online:
+    reason: "No website found by the survey, the Comptroller or districtdirectory.org (no page); a web search for \"Harris County MUD 541 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'

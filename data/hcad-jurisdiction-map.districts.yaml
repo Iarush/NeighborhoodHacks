@@ -373,6 +373,9 @@ mappings:
   - code: "253"
     source_name: BRAZORIA COUNTY MUD 018
     body_id: bcmud_18
+  - code: "254"
+    source_name: KINGS MANOR MUD
+    body_id: kings_manor_mud
   - code: "255"
     source_name: HC MUD 501
     body_id: hcmud_501
@@ -772,6 +775,9 @@ mappings:
   - code: "474"
     source_name: HC MUD 565
     body_id: hcmud_565
+  - code: "476"
+    source_name: HC MUD 561
+    body_id: hcmud_561
   - code: "478"
     source_name: HC MUD 558
     body_id: hcmud_558
@@ -1525,6 +1531,9 @@ mappings:
   - code: A67
     source_name: HARRIS COUNTY MUD 582
     body_id: hcmud_582
+  - code: A69
+    source_name: HARRIS COUNTY MUD 541
+    body_id: hcmud_541
   - code: A71
     source_name: HARRIS-WALLER CO MUD 10
     body_id: harris_waller_counties_mud_10

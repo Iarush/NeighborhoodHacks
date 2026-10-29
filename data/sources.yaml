@@ -1375,3 +1375,63 @@
     site: https://www.taxtech.net/
     district: "091"                                       # Tax Tech listing (M15 config): link-only
     expected_max_gap_days: 45
+- id: hcmud_544
+  body_id: hcmud_544
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-544/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout (M17), as hcmud_36
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: harris_brazoria_counties_mud_509
+  body_id: harris_brazoria_counties_mud_509
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-brazoria-counties-municipal-utility-district-no-509/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout (M17), as hcmud_36
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: bcmud_23
+  body_id: bcmud_23
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/brazoria-county/brazoria-county-municipal-utility-district-no-23/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout (M17), as hcmud_36
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_421
+  body_id: hcmud_421
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-421/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout (M17), as hcmud_36
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcfwsd_47
+  body_id: hcfwsd_47
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-fresh-water-supply-district-no-47/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout (M17), as hcmud_36
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: kings_manor_mud
+  body_id: kings_manor_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.kmmud.org/meetings/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout (M17) on the district's own site, as hcmud_36
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
