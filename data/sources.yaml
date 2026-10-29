@@ -331,3 +331,31 @@
 - id: manual
   adapter: manual
   config: { dir: data/manual }
+- id: whcmud_10
+  body_id: whcmud_10
+  adapter: llm_extract
+  config:
+    index_url: https://whcmud10tx.gov/news
+    link_pattern: "(?i)board meeting$"                   # Triton site: notice card "October 15, 2026 Regular Board Meeting"; the notice page links the agenda PDF on tmc.tritoncg.com
+    match_link_text: true
+    follow_notice_page: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_370
+  body_id: hcmud_370
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud370.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda_.+\\.pdf$"          # Gatsby layout as hcmud_489: "Agenda_October_27_2026_HCMUD_418_….pdf"
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_418
+  body_id: hcmud_418
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud418.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda_.+\\.pdf$"          # Gatsby layout as hcmud_489: "Agenda_October_27_2026_HCMUD_418_….pdf"
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45

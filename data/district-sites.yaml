@@ -818,3 +818,79 @@
   no_agendas_online:
     reason: The Comptroller's self-reported website is the JohnsonPetrov.com law firm site, which has no page or documents for the district; a web search for "Harris County Fresh Water Supply District 45 agenda" found nothing.
     checked_on: '2026-10-29'
+- id: whcmud_10
+  website: https://whcmud10tx.gov/
+  checked_on: '2026-10-29'
+- id: hcmud_370
+  website: https://hcmud370.com/
+  checked_on: '2026-10-29'
+- id: hcmud_418
+  website: https://hcmud418.com/
+  checked_on: '2026-10-29'
+- id: barker_cypress_mud
+  website: https://www.barkercypressmud.org/
+  checked_on: '2026-10-29'
+- id: hcwcid_157
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"Harris County Water Control and Improvement District No. 157 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: hcwcid_155
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"Harris County Water Control and Improvement District No. 155 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: nwhcmud_12
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains returned only a parked page (nwhcmud12.org); a web search for \"Northwest Harris County Municipal Utility District No. 12 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: hcmud_157
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"Harris County Municipal Utility District No. 157 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: whcmud_11
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"West Harris County Municipal Utility District No. 11 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: langham_creek_ud
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains returned only a parked page (langhamcreek.com); a web search for \"Langham Creek Utility District agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: whcmud_21
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"West Harris County Municipal Utility District No. 21 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: hcmud_354
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"Harris County Municipal Utility District No. 354 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: hcmud_196
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"Harris County Municipal Utility District No. 196 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: cy_champ_pud
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains returned only a parked page (cychamp.org); a web search for \"Cy-Champ Public Utility District agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: whcmud_15
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"West Harris County Municipal Utility District No. 15 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: jackrabbit_road_pud
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"Jackrabbit Road Public Utility District agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: hcmud_375
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"Harris County Municipal Utility District No. 375 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: hcmud_397
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"Harris County Municipal Utility District No. 397 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: reid_road_mud_1
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"Reid Road Municipal Utility District No. 1 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
+- id: reid_road_mud_2
+  no_agendas_online:
+    reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"Reid Road Municipal Utility District No. 2 agenda\" found no agenda (only third-party aggregator or legislative pages)."
+    checked_on: '2026-10-29'
