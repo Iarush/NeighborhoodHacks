@@ -1272,3 +1272,74 @@
   no_agendas_online:
     reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead (northwestfreewaymud.com answers but has no agenda or meeting links), and a web search for \"Northwest Freeway Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
     checked_on: '2026-10-29'
+- id: fallbrook_ud
+  website: https://districtdirectory.org/harris-county/fallbrook-utility-district/
+  checked_on: '2026-10-29'
+- id: hcmud_182
+  website: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-182/
+  checked_on: '2026-10-29'
+- id: hcmud_344
+  website: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-344/
+  checked_on: '2026-10-29'
+- id: hcmud_494
+  website: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-494/
+  checked_on: '2026-10-29'
+- id: intercontinental_mud
+  website: https://districtdirectory.org/harris-county/intercontinental-municipal-utility-district/
+  checked_on: '2026-10-29'
+- id: north_belt_ud
+  website: https://districtdirectory.org/harris-county/north-belt-utility-district/
+  checked_on: '2026-10-29'
+- id: hcmud_231
+  website: https://districtdirectory.org/harris-county-municipal-utility-district-no-231/
+  checked_on: '2026-10-29'
+- id: hunters_glen_mud
+  website: https://www.hgmud.org/
+  checked_on: '2026-10-29'
+- id: hcmud_46
+  website: https://www.hcmud46.org/
+  checked_on: '2026-10-29'
+- id: harris_waller_counties_mud_7
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris-Waller Counties Municipal Utility District No. 7 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_33
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 33 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: richey_road_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Richey Road Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: north_green_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"North Green Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_11
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 11 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_461
+  no_agendas_online:
+    reason: "No district website. The survey gave no site; its districtdirectory.org page lists no meetings or agendas, and a web search for \"Harris County Municipal Utility District No. 461 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: pine_forest_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Pine Forest Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: trail_of_the_lakes_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Trail Of The Lakes Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_342
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 342 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: el_dorado_ud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site; a web search for \"El Dorado Utility District agenda\" found only a homeowners' page giving the meeting schedule (4th Wednesday, 11 a.m.) with no agendas."
+    checked_on: '2026-10-29'
+- id: hcfwsd_48
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Fresh Water Supply District No. 48 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'

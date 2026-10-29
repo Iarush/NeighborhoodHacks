@@ -475,11 +475,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: el_dorado_ud
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: el_dorado_ud
 - id: emerald_forest_ud
   name: Emerald Forest Utility District
   type: mud
@@ -511,11 +511,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: fallbrook_ud
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
-  meeting_info_url: https://spdpid.comptroller.texas.gov/
+  meeting_info_url: https://districtdirectory.org/harris-county/fallbrook-utility-district/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: fallbrook_ud
 - id: fbcmud_163
   name: Fort Bend County Municipal Utility District No. 163
   type: mud
@@ -539,6 +539,18 @@
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
+  source_url: https://public.hcad.org/resources/jurlist.asp
+- id: forest_hills_mud
+  name: Forest Hills Municipal Utility District
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: forest_hills_mud
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://foresthillsmud.com/
   source_url: https://public.hcad.org/resources/jurlist.asp
 - id: fountainhead_mud
   name: Fountainhead Municipal Utility District
@@ -619,11 +631,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: greens_parkway_mud
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: greens_parkway_mud
 - id: greenwood_ud
   name: Greenwood Utility District
   type: mud
@@ -763,11 +775,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcfwsd_45
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcfwsd_45
 - id: hcfwsd_47
   name: Harris County Fresh Water Supply District No. 47
   type: mud
@@ -787,11 +799,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcfwsd_48
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcfwsd_48
 - id: hcfwsd_51
   name: Harris County Fresh Water Supply District No. 51
   type: mud
@@ -883,11 +895,23 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_106
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.hcmud106.org/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_106
+- id: hcmud_109
+  name: Harris County Municipal Utility District No. 109
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: hcmud_109
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://www.waterdistrict109.com
+  source_url: https://public.hcad.org/resources/jurlist.asp
 - id: hcmud_11
   name: Harris County Municipal Utility District No. 11
   type: mud
@@ -895,11 +919,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_11
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_11
 - id: hcmud_115
   name: Harris County Municipal Utility District No. 115
   type: mud
@@ -959,6 +983,18 @@
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
+  source_url: https://public.hcad.org/resources/jurlist.asp
+- id: hcmud_132
+  name: Harris County Municipal Utility District No. 132
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: hcmud_132
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://www.hcmud132.com
   source_url: https://public.hcad.org/resources/jurlist.asp
 - id: hcmud_136
   name: Harris County Municipal Utility District No. 136
@@ -1020,6 +1056,18 @@
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.hcmud150.com
   source_url: https://public.hcad.org/resources/jurlist.asp
+- id: hcmud_151
+  name: Harris County Municipal Utility District No. 151
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: hcmud_151
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://www.hcmud151.com
+  source_url: https://public.hcad.org/resources/jurlist.asp
 - id: hcmud_152
   name: Harris County Municipal Utility District No. 152
   type: mud
@@ -1027,11 +1075,23 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_152
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: http://www.hcmud152.com
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_152
+- id: hcmud_153
+  name: Harris County Municipal Utility District No. 153
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: hcmud_153
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://www.hcmud153.com
+  source_url: https://public.hcad.org/resources/jurlist.asp
 - id: hcmud_154
   name: Harris County Municipal Utility District No. 154
   type: mud
@@ -1255,11 +1315,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_182
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
-  meeting_info_url: https://spdpid.comptroller.texas.gov/
+  meeting_info_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-182/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_182
 - id: hcmud_183
   name: Harris County Municipal Utility District No. 183
   type: mud
@@ -1519,11 +1579,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_231
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
-  meeting_info_url: https://spdpid.comptroller.texas.gov/
+  meeting_info_url: https://districtdirectory.org/harris-county-municipal-utility-district-no-231/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_231
 - id: hcmud_233
   name: Harris County Municipal Utility District No. 233
   type: mud
@@ -1651,11 +1711,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_26
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.hcmud26.org/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_26
 - id: hcmud_261
   name: Harris County Municipal Utility District No. 261
   type: mud
@@ -1703,6 +1763,18 @@
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
+  source_url: https://public.hcad.org/resources/jurlist.asp
+- id: hcmud_278
+  name: Harris County Municipal Utility District No. 278
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: hcmud_278
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://www.hcmud278.com
   source_url: https://public.hcad.org/resources/jurlist.asp
 - id: hcmud_284
   name: Harris County Municipal Utility District No. 284
@@ -1759,11 +1831,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_290
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: http://www.hcmud290.org/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_290
 - id: hcmud_304
   name: Harris County Municipal Utility District No. 304
   type: mud
@@ -1807,11 +1879,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_321
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_321
 - id: hcmud_322
   name: Harris County Municipal Utility District No. 322
   type: mud
@@ -1831,11 +1903,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_33
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_33
 - id: hcmud_341
   name: Harris County Municipal Utility District No. 341
   type: mud
@@ -1855,11 +1927,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_342
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_342
 - id: hcmud_344
   name: Harris County Municipal Utility District No. 344
   type: mud
@@ -1867,11 +1939,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_344
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
-  meeting_info_url: https://spdpid.comptroller.texas.gov/
+  meeting_info_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-344/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_344
 - id: hcmud_345
   name: Harris County Municipal Utility District No. 345
   type: mud
@@ -1963,11 +2035,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_361
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.hcmud361.org/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_361
 - id: hcmud_364
   name: Harris County Municipal Utility District No. 364
   type: mud
@@ -2208,6 +2280,18 @@
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-399/
   source_url: https://public.hcad.org/resources/jurlist.asp
+- id: hcmud_400
+  name: Harris County Municipal Utility District No. 400
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: hcmud_400
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://www.hcmud400.org/
+  source_url: https://public.hcad.org/resources/jurlist.asp
 - id: hcmud_401
   name: Harris County Municipal Utility District No. 401
   type: mud
@@ -2244,6 +2328,18 @@
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
+- id: hcmud_406
+  name: Harris County Municipal Utility District No. 406
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: hcmud_406
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://spdpid.comptroller.texas.gov/
+  source_url: https://public.hcad.org/resources/jurlist.asp
 - id: hcmud_412
   name: Harris County Municipal Utility District No. 412
   type: mud
@@ -2251,11 +2347,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_412
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.hcmud412.org
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_412
 - id: hcmud_418
   name: Harris County Municipal Utility District No. 418
   type: mud
@@ -2299,11 +2395,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_422
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_422
 - id: hcmud_423
   name: Harris County Municipal Utility District No. 423
   type: mud
@@ -2311,11 +2407,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_423
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_423
 - id: hcmud_43
   name: Harris County Municipal Utility District No. 43
   type: mud
@@ -2431,11 +2527,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_450
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.hcmud450.org
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_450
 - id: hcmud_457
   name: Harris County Municipal Utility District No. 457
   type: mud
@@ -2467,11 +2563,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_46
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
-  meeting_info_url: https://spdpid.comptroller.texas.gov/
+  meeting_info_url: https://www.hcmud46.org/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_46
 - id: hcmud_461
   name: Harris County Municipal Utility District No. 461
   type: mud
@@ -2479,11 +2575,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_461
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_461
 - id: hcmud_465
   name: Harris County Municipal Utility District No. 465
   type: mud
@@ -2580,6 +2676,18 @@
   meeting_info_url: https://www.hcmud481.com
   source_url: https://public.hcad.org/resources/jurlist.asp
   tax_set_by_body_id: hcmud_481
+- id: hcmud_49
+  name: Harris County Municipal Utility District No. 49
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: hcmud_49
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: http://www.hcmud49.org
+  source_url: https://public.hcad.org/resources/jurlist.asp
 - id: hcmud_490
   name: Harris County Municipal Utility District No. 490
   type: mud
@@ -2635,11 +2743,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_494
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
-  meeting_info_url: https://spdpid.comptroller.texas.gov/
+  meeting_info_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-494/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_494
 - id: hcmud_495
   name: Harris County Municipal Utility District No. 495
   type: mud
@@ -2659,11 +2767,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcmud_499
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-499/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcmud_499
 - id: hcmud_5
   name: Harris County Municipal Utility District No. 5
   type: mud
@@ -2723,6 +2831,18 @@
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://bli-tax.com/harris-county-mud-503/
+  source_url: https://public.hcad.org/resources/jurlist.asp
+- id: hcmud_504
+  name: Harris County Municipal Utility District No. 504
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: hcmud_504
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://hcmud504.org
   source_url: https://public.hcad.org/resources/jurlist.asp
 - id: hcmud_53
   name: Harris County Municipal Utility District No. 53
@@ -3240,6 +3360,30 @@
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
+- id: hcud_14
+  name: Harris County Utility District No. 14
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: hcud_14
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://www.hcud14.org/
+  source_url: https://public.hcad.org/resources/jurlist.asp
+- id: hcud_15
+  name: Harris County Utility District No. 15
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: hcud_15
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://www.hcud15.org/
+  source_url: https://public.hcad.org/resources/jurlist.asp
 - id: hcud_16
   name: Harris County Utility District No. 16
   type: mud
@@ -3247,11 +3391,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcud_16
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://hcud16.com
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcud_16
 - id: hcud_6
   name: Harris County Utility District No. 6
   type: mud
@@ -3499,11 +3643,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hcwcid_74
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.harriscowcid74.org/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hcwcid_74
 - id: hcwcid_84
   name: Harris County Water Control and Improvement District No. 84
   type: mud
@@ -3539,6 +3683,18 @@
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://hcwcid92.com/
+  source_url: https://public.hcad.org/resources/jurlist.asp
+- id: hcwcid_96
+  name: Harris County Water Control and Improvement District No. 96
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: hcwcid_96
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://hcwcid96.com
   source_url: https://public.hcad.org/resources/jurlist.asp
 - id: hcwcid_99
   name: Harris County Water Control and Improvement District No. 99
@@ -3607,11 +3763,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: hunters_glen_mud
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
-  meeting_info_url: https://spdpid.comptroller.texas.gov/
+  meeting_info_url: https://www.hgmud.org/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: hunters_glen_mud
 - id: intercontinental_crossing_mud
   name: Intercontinental Crossing Municipal Utility District
   type: mud
@@ -3619,11 +3775,23 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: intercontinental_crossing_mud
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.icmud.org
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: intercontinental_crossing_mud
+- id: intercontinental_mud
+  name: Intercontinental Municipal Utility District
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: intercontinental_mud
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://districtdirectory.org/harris-county/intercontinental-municipal-utility-district/
+  source_url: https://public.hcad.org/resources/jurlist.asp
 - id: interstate_mud
   name: Interstate Municipal Utility District
   type: mud
@@ -3816,6 +3984,18 @@
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
+- id: memorial_hills_ud
+  name: Memorial Hills Utility District
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: memorial_hills_ud
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://districtdirectory.org/harris-county/memorial-hills-utility-district/
+  source_url: https://public.hcad.org/resources/jurlist.asp
 - id: memorial_mud
   name: Memorial Municipal Utility District
   type: mud
@@ -3871,11 +4051,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: mount_houston_road_mud
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: mount_houston_road_mud
 - id: nehcmud_1
   name: Northeast Harris County Municipal Utility District No. 1
   type: mud
@@ -3900,6 +4080,18 @@
   meeting_info_url: https://www.newcaneyisd.org/
   source_url: https://www.newcaneyisd.org/
   tax_set_by_body_id: new_caney_isd_board
+- id: north_belt_ud
+  name: North Belt Utility District
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: north_belt_ud
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://districtdirectory.org/harris-county/north-belt-utility-district/
+  source_url: https://public.hcad.org/resources/jurlist.asp
 - id: north_forest_mud
   name: North Forest Municipal Utility District
   type: mud
@@ -3911,6 +4103,18 @@
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.northforestmud.com/
+  source_url: https://public.hcad.org/resources/jurlist.asp
+- id: north_green_mud
+  name: North Green Municipal Utility District
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: north_green_mud
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
 - id: north_park_pud
   name: North Park Public Utility District
@@ -3991,11 +4195,23 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: northwest_park_mud
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.northwestparkmud.com
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: northwest_park_mud
+- id: northwood_mud_1
+  name: Northwood Municipal Utility District No. 1
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: northwood_mud_1
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://northwoodmud1.org
+  source_url: https://public.hcad.org/resources/jurlist.asp
 - id: nottingham_country_mud
   name: Nottingham Country Municipal Utility District
   type: mud
@@ -4255,11 +4471,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: pine_forest_mud
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: pine_forest_mud
 - id: ponderosa_forest_ud
   name: Ponderosa Forest Utility District
   type: mud
@@ -4355,6 +4571,18 @@
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.ricewoodmud.com/
+  source_url: https://public.hcad.org/resources/jurlist.asp
+- id: richey_road_mud
+  name: Richey Road Municipal Utility District
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: richey_road_mud
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
 - id: rolling_creek_ud
   name: Rolling Creek Utility District
@@ -4507,11 +4735,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: sunbelt_fwsd
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.sunbeltfwsd.com/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: sunbelt_fwsd
 - id: tattor_road_mud
   name: Tattor Road Municipal Utility District
   type: mud
@@ -4579,11 +4807,11 @@
   elected_or_appointed: Board selection details are not loaded; see the district's official notices
   impact_rank: 90
   sms_eligible: true
+  tax_set_by_body_id: trail_of_the_lakes_mud
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://spdpid.comptroller.texas.gov/
   source_url: https://public.hcad.org/resources/jurlist.asp
-  tax_set_by_body_id: trail_of_the_lakes_mud
 - id: waller_isd_board
   name: Waller ISD Board of Trustees
   type: school_board
@@ -4823,4 +5051,16 @@
   description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
   description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
   meeting_info_url: https://www.wfud.org
+  source_url: https://public.hcad.org/resources/jurlist.asp
+- id: woodcreek_mud
+  name: Woodcreek Municipal Utility District
+  type: mud
+  category: tracked
+  elected_or_appointed: Board selection details are not loaded; see the district's official notices
+  impact_rank: 90
+  sms_eligible: true
+  tax_set_by_body_id: woodcreek_mud
+  description_en: A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.
+  description_es: Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.
+  meeting_info_url: https://woodcreekmud.com/
   source_url: https://public.hcad.org/resources/jurlist.asp

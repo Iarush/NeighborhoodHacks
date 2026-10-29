@@ -175,6 +175,9 @@ mappings:
   - code: "155"
     source_name: HC MUD 403
     body_id: hcmud_403
+  - code: "156"
+    source_name: HC MUD 278
+    body_id: hcmud_278
   - code: "159"
     source_name: HC MUD 290
     body_id: hcmud_290
@@ -199,6 +202,9 @@ mappings:
   - code: "171"
     source_name: FALLBROOK UD
     body_id: fallbrook_ud
+  - code: "174"
+    source_name: FOREST HILLS MUD
+    body_id: forest_hills_mud
   - code: "175"
     source_name: FOUNTAINHEAD MUD
     body_id: fountainhead_mud
@@ -292,6 +298,9 @@ mappings:
   - code: "248"
     source_name: HC MUD 481
     body_id: hcmud_481
+  - code: "249"
+    source_name: HC MUD 406
+    body_id: hcmud_406
   - code: "251"
     source_name: HC FWSD 051
     body_id: hcfwsd_51
@@ -388,6 +397,9 @@ mappings:
   - code: "336"
     source_name: HC MUD 036
     body_id: hcmud_36
+  - code: "337"
+    source_name: HC MUD 504
+    body_id: hcmud_504
   - code: "339"
     source_name: HC MUD 530
     body_id: hcmud_530
@@ -409,6 +421,9 @@ mappings:
   - code: "348"
     source_name: HC MUD 048
     body_id: hcmud_48
+  - code: "349"
+    source_name: HC MUD 049
+    body_id: hcmud_49
   - code: "351"
     source_name: HC WCID 161
     body_id: hcwcid_161
@@ -424,6 +439,9 @@ mappings:
   - code: "356"
     source_name: HC MUD 495
     body_id: hcmud_495
+  - code: "357"
+    source_name: INTERCONTINENTAL MUD
+    body_id: intercontinental_mud
   - code: "358"
     source_name: HC MUD 058
     body_id: hcmud_58
@@ -487,6 +505,9 @@ mappings:
   - code: "387"
     source_name: HC MUD 391
     body_id: hcmud_391
+  - code: "389"
+    source_name: HC MUD 400
+    body_id: hcmud_400
   - code: "396"
     source_name: HC MUD 096
     body_id: hcmud_96
@@ -505,6 +526,9 @@ mappings:
   - code: "408"
     source_name: BAUER LANDING WCID
     body_id: bauer_landing_wcid
+  - code: "409"
+    source_name: HC MUD 109
+    body_id: hcmud_109
   - code: "411"
     source_name: HC MUD 536
     body_id: hcmud_536
@@ -532,6 +556,9 @@ mappings:
   - code: "431"
     source_name: HC MUD 552
     body_id: hcmud_552
+  - code: "432"
+    source_name: HC MUD 132
+    body_id: hcmud_132
   - code: "433"
     source_name: HC MUD 423
     body_id: hcmud_423
@@ -559,9 +586,15 @@ mappings:
   - code: "450"
     source_name: HC MUD 150
     body_id: hcmud_150
+  - code: "451"
+    source_name: HC MUD 151
+    body_id: hcmud_151
   - code: "452"
     source_name: HC MUD 152
     body_id: hcmud_152
+  - code: "453"
+    source_name: HC MUD 153
+    body_id: hcmud_153
   - code: "454"
     source_name: HC MUD 154
     body_id: hcmud_154
@@ -754,6 +787,12 @@ mappings:
   - code: "556"
     source_name: HC UD 006
     body_id: hcud_6
+  - code: "564"
+    source_name: HC UD 014
+    body_id: hcud_14
+  - code: "565"
+    source_name: HC UD 015
+    body_id: hcud_15
   - code: "566"
     source_name: HC UD 016
     body_id: hcud_16
@@ -778,6 +817,9 @@ mappings:
   - code: "612"
     source_name: HC WCID 092
     body_id: hcwcid_92
+  - code: "613"
+    source_name: HC WCID 096
+    body_id: hcwcid_96
   - code: "614"
     source_name: HC WCID 155
     body_id: hcwcid_155
@@ -871,6 +913,9 @@ mappings:
   - code: "704"
     source_name: MAYDE CREEK MUD
     body_id: mayde_creek_mud
+  - code: "705"
+    source_name: MEMORIAL HILLS UD
+    body_id: memorial_hills_ud
   - code: "706"
     source_name: MEMORIAL MUD
     body_id: memorial_mud
@@ -898,12 +943,18 @@ mappings:
   - code: "721"
     source_name: NORTHAMPTON MUD
     body_id: northampton_mud
+  - code: "722"
+    source_name: NORTHBELT UD
+    body_id: north_belt_ud
   - code: "724"
     source_name: NE H C MUD 001
     body_id: nehcmud_1
   - code: "725"
     source_name: NORTH FOREST MUD
     body_id: north_forest_mud
+  - code: "726"
+    source_name: NORTH GREEN MUD
+    body_id: north_green_mud
   - code: "728"
     source_name: NORTH PARK PUD
     body_id: north_park_pud
@@ -985,6 +1036,9 @@ mappings:
   - code: "778"
     source_name: NOTTINGHAM CNTRY MUD
     body_id: nottingham_country_mud
+  - code: "779"
+    source_name: NORTHWOOD MUD 001
+    body_id: northwood_mud_1
   - code: "781"
     source_name: OAKMONT PUD
     body_id: oakmont_pud
@@ -1024,6 +1078,9 @@ mappings:
   - code: "809"
     source_name: ROYALWOOD MUD
     body_id: royalwood_mud
+  - code: "810"
+    source_name: RICHEY ROAD MUD
+    body_id: richey_road_mud
   - code: "811"
     source_name: REMINGTON MUD 001
     body_id: remington_mud_1
@@ -1117,6 +1174,9 @@ mappings:
   - code: "901"
     source_name: WINDFERN FOREST UD
     body_id: windfern_forest_ud
+  - code: "902"
+    source_name: WOODCREEK MUD
+    body_id: woodcreek_mud
   - code: "911"
     source_name: CINCO MUD 003
     body_id: cinco_mud_3

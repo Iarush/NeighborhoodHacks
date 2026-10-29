@@ -494,3 +494,73 @@
     date_from: link_text
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+- id: fallbrook_ud
+  body_id: fallbrook_ud
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/fallbrook-utility-district/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-19 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_182
+  body_id: hcmud_182
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-182/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-21 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_344
+  body_id: hcmud_344
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-344/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-15 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_494
+  body_id: hcmud_494
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-494/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-13 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: intercontinental_mud
+  body_id: intercontinental_mud
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/intercontinental-municipal-utility-district/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-09 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: north_belt_ud
+  body_id: north_belt_ud
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/north-belt-utility-district/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-15 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_231
+  body_id: hcmud_231
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county-municipal-utility-district-no-231/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-21 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
