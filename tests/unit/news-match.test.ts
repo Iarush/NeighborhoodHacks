@@ -105,7 +105,8 @@ describe('matchBodies at rollout scale', () => {
       type: i % 5 === 0 ? 'school_board' : 'mud',
       category: 'tracked',
     })) as unknown as CatalogBody[];
-    const big = [...terms, ...districtTerms(catalog, terms)];
+    // Synthetic terms only: the real catalog grows with the rollout and would collide with these numbers.
+    const big = districtTerms(catalog, []);
     const texts = Array.from({ length: 50 }, (_, i) => `Harris County MUD ${i * 12 + 1} weighs tax rate; District ${i * 5} ISD trustees meet`);
     const t0 = performance.now();
     const hits = texts.map((t) => matchBodies(t, big).body_ids);

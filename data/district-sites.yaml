@@ -894,3 +894,79 @@
   no_agendas_online:
     reason: "No district website: the site survey and the Comptroller listing gave none, and guessed domains did not resolve; a web search for \"Reid Road Municipal Utility District No. 2 agenda\" found no agenda (only third-party aggregator or legislative pages)."
     checked_on: '2026-10-29'
+- id: hcmud_378
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcmud378.com/.org/.net were dead, and a web search for "Harris County Municipal Utility District No. 378 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: hcmud_396
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcmud396.com/.org/.net were dead, and a web search for "Harris County Municipal Utility District No. 396 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: hcmud_276
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcmud276.com/.org/.net were dead, and a web search for "Harris County Municipal Utility District No. 276 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: whcmud_1
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, whcmud1.org is a parked page; other guessed domains were dead, and a web search for "West Harris County Municipal Utility District No. 1 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: hcwcid_116
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcwcid116.com/.org/.net were dead, and a web search for "Harris County Water Control and Improvement District No. 116 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: whcmud_14
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, whcmud14.com/.org/.net were dead, and a web search for "West Harris County Municipal Utility District No. 14 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: nwhcmud_29
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, nwhcmud29.com/.org/.net were dead, and a web search for "Northwest Harris County Municipal Utility District No. 29 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: hcmud_379
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcmud379.com/.org/.net were dead, and a web search for "Harris County Municipal Utility District No. 379 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: hcmud_166
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcmud166.com/.org/.net were dead, and a web search for "Harris County Municipal Utility District No. 166 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: hcmud_371
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcmud371.com/.org/.net were dead, and a web search for "Harris County Municipal Utility District No. 371 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: hcmud_376
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcmud376.com/.org/.net were dead, and a web search for "Harris County Municipal Utility District No. 376 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: hcmud_257
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcmud257.com/.org/.net were dead, and a web search for "Harris County Municipal Utility District No. 257 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: hcmud_389
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcmud389.com/.org/.net were dead, and a web search for "Harris County Municipal Utility District No. 389 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: hcmud_220
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcmud220.org is a parked page; other guessed domains were dead, and a web search for "Harris County Municipal Utility District No. 220 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: hcmud_170
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcmud170.org is a parked page; other guessed domains were dead, and a web search for "Harris County Municipal Utility District No. 170 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: hcmud_351
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, hcmud351.com/.org/.net were dead, and a web search for "Harris County Municipal Utility District No. 351 agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: tower_oaks_plaza_mud
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, toweroaksplazamud.com/.org were dead, and a web search for "Tower Oaks Plaza Municipal Utility District agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: white_oak_bend_mud
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, wobmud.org is a parked page; whiteoakbendmud.com/.org were dead, and a web search for "White Oak Bend Municipal Utility District agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
+- id: camfield_mud
+  no_agendas_online:
+    reason: No district website. The survey and the Comptroller listing gave no site, camfieldmud.com/.org were dead, and a web search for "Camfield Municipal Utility District agenda" found only legislative, aggregator or other districts' pages.
+    checked_on: '2026-10-29'
