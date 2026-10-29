@@ -368,3 +368,69 @@
     date_from: filename
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+- id: hcmud_200
+  body_id: hcmud_200
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud200.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"        # Gatsby layout as hcmud_489; names mix "Agenda_2026_07_21_…", "September_15_2026_Agenda_…" and "06_16_2026_Agenda_…"
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_43
+  body_id: hcmud_43
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud43.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"        # Gatsby layout as hcmud_489; "HC_43_Agenda_October_22_2026_…"
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_249
+  body_id: hcmud_249
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud249.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"        # Gatsby layout as hcmud_489; names mix "Agenda_2026_07_09_…" and "…AGENDA_September_10_2026_…"
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_92
+  body_id: hcwcid_92
+  adapter: llm_extract
+  config:
+    index_url: https://hcwcid92.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"        # Gatsby layout as hcmud_489; "09082026_AMENDED_AGENDA_…" (MMDDYYYY)
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_36
+  body_id: hcmud_36
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-36/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-08 – Regular: Agenda | Minutes<br>"; hcmud36.com stops at Feb 2026
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_399
+  body_id: hcmud_399
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-399/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-20 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_189
+  body_id: hcmud_189
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud189.org/meetings/agenda-packets/
+    link_pattern: "(?i)^agenda \\d"                       # Drive links titled "Agenda 9/14/2026"
+    match_link_text: true
+    date_from: link_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45

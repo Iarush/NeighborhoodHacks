@@ -84,7 +84,7 @@ const fullYear = (y: string) => (y.length === 2 ? 2000 + Number(y) : Number(y));
 /**
  * Parse a meeting date from link text or a filename. Accepted forms:
  * `October 1, 2026`, `Oct. 1, 2026`, `Agenda_October_19_2026_…`, `2026 September 16`, `10/1/2026`,
- * `10-01-26`, `Agenda_10_08_26_…`, `2026-10-01`, dotted `10.19-20.26`, and month-only `1710 October 2017 Board Agenda`
+ * `10-01-26`, `Agenda_10_08_26_…`, `2026-10-01`, compact `20261001` or `10012026`, dotted `10.19-20.26`, and month-only `1710 October 2017 Board Agenda`
  * (day_known = false). For a dotted day range, `range: 'last'` takes the end day (Aldine posts the
  * Monday study session and Tuesday vote as one file).
  */
@@ -106,6 +106,15 @@ export function parseDocDate(input: string, range: 'first' | 'last' = 'first'): 
       const d = fn(m);
       if (d) return { date: d, day_known: true };
     }
+  }
+  // Compact 8 digits, 20xx years only: YYYYMMDD first, then MMDDYYYY (`11022026_AGENDA_…`).
+  const compact = s.match(/(?<!\d)(\d{8})(?!\d)/);
+  if (compact) {
+    const n = compact[1]!;
+    const d =
+      (n.startsWith('20') ? ymd(+n.slice(0, 4), +n.slice(4, 6), +n.slice(6, 8)) : null) ??
+      (n.slice(4, 6) === '20' ? ymd(+n.slice(4, 8), +n.slice(0, 2), +n.slice(2, 4)) : null);
+    if (d) return { date: d, day_known: true };
   }
   const mo = s.match(new RegExp(`(?<![a-z])${MONTH_RE}\\.?${SEP}(\\d{4})(?!\\d)`, 'i'));
   if (mo) {

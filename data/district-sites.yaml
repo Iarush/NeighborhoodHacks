@@ -1125,3 +1125,76 @@
   no_agendas_online:
     reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Terranova West Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
     checked_on: '2026-10-29'
+- id: hcmud_200
+  website: https://hcmud200.com/
+  checked_on: '2026-10-29'
+- id: hcmud_43
+  website: https://hcmud43.com/
+  checked_on: '2026-10-29'
+- id: hcmud_249
+  website: https://hcmud249.com/
+  checked_on: '2026-10-29'
+- id: hcwcid_92
+  website: https://hcwcid92.com/
+  checked_on: '2026-10-29'
+- id: hcmud_36
+  website: https://www.hcmud36.com/
+  checked_on: '2026-10-29'
+- id: hcmud_399
+  website: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-399/
+  checked_on: '2026-10-29'
+- id: hcmud_189
+  website: https://www.hcmud189.org/
+  checked_on: '2026-10-29'
+- id: hcmud_48
+  no_agendas_online:
+    reason: "The district's districtdirectory.org page lists audits and documents but no meetings or agendas; guessed domains hcmud48.com/.org are dead; a web search for \"Harris County Municipal Utility District No. 48 agenda\" found only Harris County ESD 48's agendas."
+    checked_on: '2026-10-29'
+- id: hcmud_316
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 316 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_96
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 96 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_115
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 115 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_205
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 205 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_215
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 215 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_16
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 16 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: ponderosa_forest_ud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Ponderosa Forest Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: tattor_road_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Tattor Road Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: westador_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Westador Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: north_park_pud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"North Park Public Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: nwhcmud_21
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Northwest Harris County Municipal Utility District No. 21 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_58
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site; hcmud58.org is a parked '/lander' page and hcmud58.com is dead; a web search for \"Harris County Municipal Utility District No. 58 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'

@@ -48,6 +48,12 @@ describe('parseDocDate', () => {
     ['HARRIS_COUNTY_MUNICIPAL_UTILITY_DISTRICT_NO_489_NOTICE_OF_PUBLIC_MEETING_AGENDA_July_20_2026_85fe68f8c7.pdf', '2026-07-20'],
     ['Agenda_September_21_2026_HCMUD_489_1_0563351dfa.pdf', '2026-09-21'],
     ['Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf', '2026-05-18'],
+    // compact 8 digits (HC WCID 92): YYYYMMDD first, then MMDDYYYY
+    ['11022026_AGENDA_HARRIS_COUNTY_WCID_92_f948ef97e9.pdf', '2026-11-02'],
+    ['10052026_AMENDED_AGENDA_HC_WCID_92_001_1_2f7cfc7f60.pdf', '2026-10-05'],
+    ['Agenda_20261102_final.pdf', '2026-11-02'],
+    ['20101020_Agenda.pdf', '2010-10-20'], // MMDDYYYY would be month 20
+    ['12202020_Agenda.pdf', '2020-12-20'], // YYYYMMDD would be year 1220
   ];
   for (const [input, date, dayKnown = true] of cases) {
     it(input, () => expect(parseDocDate(input)).toEqual({ date, day_known: dayKnown }));
@@ -55,6 +61,8 @@ describe('parseDocDate', () => {
   it('returns null with no date', () => {
     expect(parseDocDate('Printable Citizen Participation Form')).toBeNull();
     expect(parseDocDate('February 30, 2026')).toBeNull();
+    expect(parseDocDate('13022026_AGENDA.pdf')).toBeNull();
+    expect(parseDocDate('02301999_AGENDA.pdf')).toBeNull();
   });
 });
 
