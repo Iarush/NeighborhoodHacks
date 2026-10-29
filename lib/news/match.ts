@@ -21,16 +21,49 @@ export function parseTerms(yamlText: string): BodyTerms[] {
 }
 /** Hand-written terms, plus pattern terms for the rollout's districts (lib/news/districtTerms.ts). */
 export function loadTerms(path = 'data/news_terms.yaml', withDistricts = true): BodyTerms[] {
-  const hand = parseTerms(readFileSync(path, 'utf8'));
-  return withDistricts ? [...hand, ...districtTerms(loadBodyCatalog(), hand, CENSUS_SCHOOL_NAMES)] : hand;
+  const key = `${withDistricts}:${path}`;
+  let terms = loadedTerms.get(key);
+  if (!terms) {
+    const hand = parseTerms(readFileSync(path, 'utf8'));
+    terms = withDistricts ? [...hand, ...districtTerms(loadBodyCatalog(), hand, CENSUS_SCHOOL_NAMES)] : hand;
+    loadedTerms.set(key, terms);
+  }
+  return [...terms];
 }
+// Built once per process: the files don't change while it runs.
+const loadedTerms = new Map<string, BodyTerms[]>();
 
 const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 /** Whole-word, case-insensitive phrase test. "Word" edges are letters/digits, so "CFISD's" matches "CFISD". */
 export function hasPhrase(text: string, phrase: string): boolean {
-  const body = escapeRe(phrase.trim()).replace(/\s+/g, '\\s+');
-  return new RegExp(`(?<![\\p{L}\\p{N}])${body}(?![\\p{L}\\p{N}])`, 'iu').test(text);
+  return phraseTest(text, foldText(text), phrase);
+}
+
+// The district catalog makes thousands of aliases, each tested on every feed item, so each phrase
+// compiles once, and a set lookup of its ASCII words skips the regex for most texts. That is safe:
+// every ASCII letter/digit run in a matching phrase is also a whole run in the (folded) text.
+type CompiledPhrase = { re?: RegExp; words: string[] };
+const compiled = new Map<string, CompiledPhrase>();
+
+// Lowercase ASCII words, after folding the one non-ASCII letter that /iu maps onto an ASCII one but toLowerCase doesn't (ſ -> s).
+const asciiWords = (s: string) => s.toLowerCase().replace(/ſ/g, 's').match(/[a-z0-9]+/g) ?? [];
+const foldText = (text: string) => new Set(asciiWords(text));
+
+function phraseTest(text: string, folded: Set<string>, phrase: string): boolean {
+  let c = compiled.get(phrase);
+  if (!c) {
+    // Numbered words first: "489" rules out more texts than "harris".
+    c = { words: [...new Set(asciiWords(phrase))].sort((a, b) => Number(/\d/.test(b)) - Number(/\d/.test(a))) };
+    compiled.set(phrase, c);
+  }
+  if (!c.words.every((w) => folded.has(w))) return false;
+  // Compiled on first use: most aliases never get past the word check.
+  if (!c.re) {
+    const body = escapeRe(phrase.trim()).replace(/\s+/g, '\\s+');
+    c.re = new RegExp(`(?<![\\p{L}\\p{N}])${body}(?![\\p{L}\\p{N}])`, 'iu');
+  }
+  return c.re.test(text);
 }
 
 export type BodyMatch = { body_ids: string[]; matched_terms: string[] };
@@ -39,16 +72,18 @@ export type BodyMatch = { body_ids: string[]; matched_terms: string[] };
 export function matchBodies(text: string, terms: BodyTerms[]): BodyMatch {
   const body_ids: string[] = [];
   const matched_terms: string[] = [];
+  const folded = foldText(text);
+  const has = (phrase: string) => phraseTest(text, folded, phrase);
   for (const b of terms) {
     const hits: string[] = [];
     for (const a of b.aliases) {
       const term = typeof a === 'string' ? a : a.term;
-      if (!hasPhrase(text, term)) continue;
-      if (typeof a !== 'string' && !hasPhrase(text, a.requires)) continue;
+      if (!has(term)) continue;
+      if (typeof a !== 'string' && !has(a.requires)) continue;
       hits.push(term);
     }
     if (hits.length === 0) continue;
-    if (b.exclude_terms.some((x) => hasPhrase(text, x))) continue;
+    if (b.exclude_terms.some((x) => has(x))) continue;
     body_ids.push(b.body_id);
     for (const h of hits) if (!matched_terms.includes(h)) matched_terms.push(h);
   }

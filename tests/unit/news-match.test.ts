@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import type { Item, Meeting, NewsMention } from '@/lib/adapters/types';
 import { hasPhrase, isForwardLooking, linkMentions, loadTerms, matchBodies, sortMentions } from '@/lib/news/match';
+import type { CatalogBody } from '@/lib/ingest/catalog';
+import { districtTerms } from '@/lib/news/districtTerms';
 
 const terms = loadTerms();
 const bodies = (t: string) => matchBodies(t, terms).body_ids;
@@ -92,5 +94,24 @@ describe('linkMentions', () => {
   it('ignores items of other bodies', () => {
     const other = [it_('i9', 'Flock cameras agreement', { body_id: 'hisd_board' })];
     expect(linkMentions([mention('Flock cameras agreement')], other, [meeting], terms)).toEqual([]);
+  });
+});
+
+describe('matchBodies at rollout scale', () => {
+  it('matches a 600-body synthetic catalog well under 1 s', () => {
+    const catalog = Array.from({ length: 600 }, (_, i) => ({
+      id: i % 5 === 0 ? `isd_${i}` : `mud_${i}`,
+      name: i % 5 === 0 ? `District ${i} ISD Board of Trustees` : `${i % 2 ? 'Harris' : 'Fort Bend'} County Municipal Utility District No. ${i}`,
+      type: i % 5 === 0 ? 'school_board' : 'mud',
+      category: 'tracked',
+    })) as unknown as CatalogBody[];
+    const big = [...terms, ...districtTerms(catalog, terms)];
+    const texts = Array.from({ length: 50 }, (_, i) => `Harris County MUD ${i * 12 + 1} weighs tax rate; District ${i * 5} ISD trustees meet`);
+    const t0 = performance.now();
+    const hits = texts.map((t) => matchBodies(t, big).body_ids);
+    expect(performance.now() - t0).toBeLessThan(1000);
+    expect(hits[1]).toEqual(['isd_5', 'mud_13']);
+    expect(hits[2]).toEqual(['isd_10']); // 25 is a school district here, so no MUD 25
+    expect(hits[3]).toEqual(['isd_15', 'mud_37']);
   });
 });
