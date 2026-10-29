@@ -1665,3 +1665,163 @@
     date_from: line_text
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+- id: hcmud_264
+  body_id: hcmud_264
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud264.org/meetings/
+    link_pattern: "(?i)^agenda$"                          # theme:church layout (M19, same as M18)
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_341
+  body_id: hcmud_341
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud341.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: rolling_fork_pud
+  body_id: rolling_fork_pud
+  adapter: llm_extract
+  config:
+    index_url: https://www.rollingforkpud.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_156
+  body_id: hcmud_156
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud156.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_261
+  body_id: hcmud_261
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud261.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcud_6
+  body_id: hcud_6
+  adapter: llm_extract
+  config:
+    index_url: https://www.harriscountyud6.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: weston_mud
+  body_id: weston_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.westonmud.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_61
+  body_id: hcmud_61
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud61.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: harris_fort_bend_counties_mud_3
+  body_id: harris_fort_bend_counties_mud_3
+  adapter: llm_extract
+  config:
+    index_url: https://www.hfbmud3.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: dowdell_pud
+  body_id: dowdell_pud
+  adapter: llm_extract
+  config:
+    index_url: https://www.dowdellpud.info/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_1
+  body_id: hcmud_1
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud1.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: cypress_forest_pud
+  body_id: cypress_forest_pud
+  adapter: llm_extract
+  config:
+    index_url: https://www.cyforestpud.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: nwhcmud_19
+  body_id: nwhcmud_19
+  adapter: llm_extract
+  config:
+    index_url: https://www.nwhcmud19.org/about-us-meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_368
+  body_id: hcmud_368
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud368.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_367
+  body_id: hcmud_367
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud367.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_114
+  body_id: hcwcid_114
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcwcid114.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
