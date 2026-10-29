@@ -762,6 +762,9 @@
 - id: post_wood_mud
   website: https://www.districtdata.org/harris-county/post-wood-municipal-utility-district/
   checked_on: '2026-10-28'
+  no_agendas_online:
+    reason: "The Comptroller's self-reported page (districtdata.org, Infinity Services layout) still lists agendas, but the newest is dated 2023-08-07; the survey found no other site, and a web search for \"Post Wood Municipal Utility District agenda\" found only other districts' pages."
+    checked_on: '2026-10-29'
 - id: prestonwood_forest_ud
   website: https://www.prestonwoodforestud.org
   checked_on: '2026-10-28'

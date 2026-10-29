@@ -2408,3 +2408,133 @@
     link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+# --- M24 (more Infinity Services sites: M23's "Meeting Agendas" h3 layout; S&K Law district pages: Agendas column) ---
+- id: shasla_pud
+  body_id: shasla_pud
+  adapter: llm_extract
+  config:
+    index_url: https://www.shaslapud.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_154
+  body_id: hcmud_154
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud154.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: bammel_ud
+  body_id: bammel_ud
+  adapter: llm_extract
+  config:
+    index_url: https://www.bammelud.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_86
+  body_id: hcmud_86
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud86.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: nwhcmud_20
+  body_id: nwhcmud_20
+  adapter: llm_extract
+  config:
+    index_url: https://www.nwhcmud20.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_91
+  body_id: hcwcid_91
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcwcid91.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: nwhcmud_22
+  body_id: nwhcmud_22
+  adapter: llm_extract
+  config:
+    index_url: https://www.nwhcmud22.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_136
+  body_id: hcwcid_136
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcwcid136.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: northwest_park_mud
+  body_id: northwest_park_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.northwestparkmud.com/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcud_14
+  body_id: hcud_14
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcud14.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_153
+  body_id: hcmud_153
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud153.com/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_551
+  body_id: hcmud_551
+  adapter: llm_extract
+  config:
+    index_url: https://www.sklawdistrictdata.org/harris-county/harris-county-municipal-utility-district-no-551/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'td:first-child a'
+    date_from: link_text
+    meeting_type_from_text: { special: "(?i)special|hearing" }
+    expected_max_gap_days: 45
+- id: hcmud_44
+  body_id: hcmud_44
+  adapter: llm_extract
+  config:
+    index_url: https://www.sklawdistrictdata.org/harris-county/harris-county-municipal-utility-district-no-44/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'td:first-child a'
+    date_from: link_text
+    meeting_type_from_text: { special: "(?i)special|hearing" }
+    expected_max_gap_days: 45
+- id: mount_houston_road_mud
+  body_id: mount_houston_road_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.sklawdistrictdata.org/harris-county/mount-houston-road-municipal-utility-district/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'td:first-child a'
+    date_from: link_text
+    meeting_type_from_text: { special: "(?i)special|hearing" }
+    expected_max_gap_days: 75
