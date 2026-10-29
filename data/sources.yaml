@@ -1986,3 +1986,144 @@
     date_from: line_text
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+- id: pine_village_pud
+  body_id: pine_village_pud
+  adapter: llm_extract
+  config:
+    index_url: https://www.pinevillagepud.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_120
+  body_id: hcmud_120
+  adapter: llm_extract
+  config:
+    index_url: http://www.hcmud120.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: bissonnet_mud
+  body_id: bissonnet_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.bissonnetmud.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: chelford_one_mud
+  body_id: chelford_one_mud
+  adapter: llm_extract
+  config:
+    index_url: http://www.comud.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_359
+  body_id: hcmud_359
+  adapter: llm_extract
+  config:
+    index_url: http://www.hcmud359.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: chelford_city_mud
+  body_id: chelford_city_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.chelfordcitymud.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: north_mission_glen_mud
+  body_id: north_mission_glen_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.northmissionglenmud.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: faulkey_gully_mud
+  body_id: faulkey_gully_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.faulkeygullymud.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_481
+  body_id: hcmud_481
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud481.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: sagemeadow_ud
+  body_id: sagemeadow_ud
+  adapter: llm_extract
+  config:
+    index_url: https://www.sagemeadowud.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: bcmud_28
+  body_id: bcmud_28
+  adapter: llm_extract
+  config:
+    index_url: https://www.bcmud28.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: parkway_ud
+  body_id: parkway_ud
+  adapter: llm_extract
+  config:
+    index_url: https://www.parkwayud.org/meetings/
+    link_pattern: "(?i)^pdf$"
+    link_selector: 'a:has(+ a[href*="/meeting-agenda-"])'
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: sheldon_road_mud
+  body_id: sheldon_road_mud
+  adapter: llm_extract
+  config:
+    index_url: https://srmud.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcfwsd_51
+  body_id: hcfwsd_51
+  adapter: llm_extract
+  config:
+    index_url: https://www.fwsd51.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
