@@ -1049,3 +1049,79 @@
 - id: westlake_mud_1
   website: https://westlakemud1.com/
   checked_on: '2026-10-29'
+- id: cinco_mud_3
+  website: https://www.cincomuds.org/cinco-municipal-utility-district-no-3/
+  checked_on: '2026-10-29'
+- id: cinco_mud_6
+  website: https://www.cincomuds.org/cinco-municipal-utility-district-no-6/
+  checked_on: '2026-10-29'
+- id: cinco_mud_9
+  website: https://www.cincomuds.org/cinco-municipal-utility-district-no-9/
+  checked_on: '2026-10-29'
+- id: baker_road_mud
+  website: https://www.h2oinnovation.com/baker-road-district-reports/
+  checked_on: '2026-10-29'
+- id: morton_road_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Morton Road Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: longhorn_town_ud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Longhorn Town Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: whcmud_17
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"West Harris County Municipal Utility District No. 17 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_608
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 608 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: harris_waller_counties_mud_2
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris-Waller Counties Municipal Utility District No. 2 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: harris_fort_bend_counties_mud_1
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris-Fort Bend Counties Municipal Utility District No. 1 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: harris_fort_bend_counties_mud_5
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris-Fort Bend Counties Municipal Utility District No. 5 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: fbcmud_163
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Fort Bend County Municipal Utility District No. 163 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: meadowhill_regional_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Meadowhill Regional Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: nwhcmud_30
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Northwest Harris County Municipal Utility District No. 30 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: nwhcmud_32
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Northwest Harris County Municipal Utility District No. 32 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: spring_west_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Spring West Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_118
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 118 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_104
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 104 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_366
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 366 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: terranova_west_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Terranova West Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
