@@ -85,9 +85,9 @@ describe('discover index_url month placeholders', () => {
 });
 
 describe('sources.yaml (M15)', () => {
-  it('the Tax Tech sources name the Tax Tech site and a district code', () => {
+  it('the Tax Tech sources (M15, plus hcmud_477 from M16) name the Tax Tech site and a district code', () => {
     const tt = loadSources().filter((s) => (s.config as { site?: string }).site === TAXTECH);
-    expect(tt.map((s) => s.id).sort()).toEqual(['hcmud_287', 'hcmud_449']);
+    expect(tt.map((s) => s.id).sort()).toEqual(['hcmud_287', 'hcmud_449', 'hcmud_477']);
     expect(tt.every((s) => s.adapter === 'utilitytaxservice')).toBe(true);
   });
 });

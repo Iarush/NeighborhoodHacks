@@ -1571,3 +1571,21 @@
   no_agendas_online:
     reason: "The Comptroller-listed site hcmud136.org shows only a \"Coming Soon\" placeholder (HTTPS doesn't connect); the survey found nothing else, and a web search for \"Harris County MUD 136 agenda\" found only aggregator and other districts' pages."
     checked_on: '2026-10-29'
+- id: hcmud_478
+  website: https://www.taxtech.net/DistrictDetail/A40
+  checked_on: '2026-10-29'
+  no_agendas_online:
+    reason: "The Comptroller's self-reported website is the district's Tax Tech page (district A40), which lists no agendas (the scraper finds none since 2024); the survey found nothing else, and a web search for \"Harris County MUD 478 agenda\" found only other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcwcid_132
+  no_agendas_online:
+    reason: "The Comptroller-listed site hcwcid132.com doesn't resolve (NXDOMAIN, retried with and without www); a web search for \"Harris County WCID 132 agenda\" found only county and city agendas."
+    checked_on: '2026-10-29'
+- id: nwhcmud_28
+  no_agendas_online:
+    reason: "The Comptroller-listed site nwhcmud28.com doesn't resolve (NXDOMAIN, retried over HTTP and HTTPS); a web search for \"Northwest Harris County MUD 28 agenda\" found only other districts' pages."
+    checked_on: '2026-10-29'
+- id: northgate_crossing_mud_2
+  no_agendas_online:
+    reason: "The Comptroller-listed site ngcmud2.org doesn't resolve (NXDOMAIN, retried over HTTP and HTTPS); a web search for \"Northgate Crossing MUD 2 agenda\" found only other districts' pages."
+    checked_on: '2026-10-29'

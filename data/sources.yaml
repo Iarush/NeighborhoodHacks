@@ -1322,3 +1322,56 @@
     date_from: filename
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+# --- MUD bucket M16 (sites the survey couldn't fetch) ---
+- id: mayde_creek_mud
+  body_id: mayde_creek_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.maydecreekmud.com/meetings/
+    link_pattern: "(?i)agenda"                          # Texas Network WordPress layout (M11): link text "Agenda 10-26-26"
+    match_link_text: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: west_park_mud
+  body_id: west_park_mud
+  adapter: llm_extract
+  config:
+    index_url: https://westparkmud.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*[.]pdf$"        # Gatsby layout (M11): "10_26_26_Agenda_WP_….pdf"
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_304
+  body_id: hcmud_304
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud304.com/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*[.]pdf$"        # Gatsby layout (M11): "304_October_29_2026_Agenda_….pdf"
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_221
+  body_id: hcmud_221
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud221.org/board-meetings/
+    link_pattern: "(?i)/static/.+agenda.*[.]pdf$"        # Gatsby layout (M11): "2026_09_22_Agenda_….pdf", "HC_MUD_221_Agenda_2026_10_27_….pdf"
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: timber_lane_ud
+  body_id: timber_lane_ud
+  adapter: llm_extract
+  config:
+    index_url: https://timberlaneud.com/meetings/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$"   # WordPress site (M16): link text "Timber Lane UD Agenda 10-8-26"
+    match_link_text: false
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_477
+  body_id: hcmud_477
+  adapter: utilitytaxservice
+  config:
+    site: https://www.taxtech.net/
+    district: "091"                                       # Tax Tech listing (M15 config): link-only
+    expected_max_gap_days: 45
