@@ -359,3 +359,12 @@
     date_from: filename
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+- id: westlake_mud_1
+  body_id: westlake_mud_1
+  adapter: llm_extract
+  config:
+    index_url: https://westlakemud1.com/documents
+    link_pattern: "(?i)/static/.+agenda.*\\.pdf$"        # Gatsby layout as hcmud_489; names mix "AGENDA_2026_08_24_…" and "Agenda_September_28_2026_…"
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45

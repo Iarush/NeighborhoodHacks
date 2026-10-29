@@ -970,3 +970,82 @@
   no_agendas_online:
     reason: No district website. The survey and the Comptroller listing gave no site, camfieldmud.com/.org were dead, and a web search for "Camfield Municipal Utility District agenda" found only legislative, aggregator or other districts' pages.
     checked_on: '2026-10-29'
+- id: hcmud_25
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, hcmud25.org is a parked \"/lander\" page and .com/.net were dead, and a web search for \"Harris County Municipal Utility District No. 25 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_185
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, hcmud185.org is a parked \"/lander\" page and .com/.net were dead, and a web search for \"Harris County Municipal Utility District No. 185 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_437
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, hcmud437.com/.org/.net were dead, and a web search for \"Harris County Municipal Utility District No. 437 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: fenske_road_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, fenskeroadmud.com/.org/.net were dead, and a web search for \"Fenske Road Municipal Utility District agenda\" found only the 2025 creation bill (HB 5666); the district may be too new to post agendas."
+    checked_on: '2026-10-29'
+- id: mason_creek_ud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, masoncreekud.com/.org/.net and masoncreekutilitydistrict.com/.org were dead, and a web search for \"Mason Creek Utility District agenda\" found only third-party aggregator summaries, no official agenda page."
+    checked_on: '2026-10-29'
+- id: addicks_ud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, addicksud.com/.org/.net were dead, and a web search for \"Addicks Utility District agenda\" found only the district's enabling statute and other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_432
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, hcmud432.com/.org/.net were dead, and a web search for \"Harris County Municipal Utility District No. 432 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_536
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, hcmud536.com/.org/.net were dead, and a web search for \"Harris County Municipal Utility District No. 536 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_569
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, hcmud569.com/.org/.net were dead, and a web search for \"Harris County Municipal Utility District No. 569 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_65
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, hcmud65.com/.org/.net were dead, and a web search for \"Harris County Municipal Utility District No. 65 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: whcmud_7
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, whcmud7.com/.org/.net were dead, and a web search for \"West Harris County Municipal Utility District No. 7 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: willow_fork_drainage
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, willowforkdd.com/.org/.net and willowforkdrainage.com/.org/.net were dead, and a web search for \"Willow Fork Drainage District agenda\" found only old Fort Bend County Drainage District records about the Willow Fork channel and other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_533
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, hcmud533.com/.org/.net were dead, and a web search for \"Harris County Municipal Utility District No. 533 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_63
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, hcmud63.com/.org/.net were dead, and a web search for \"Harris County Municipal Utility District No. 63 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_465
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, hcmud465.com/.org/.net were dead, and a web search for \"Harris County Municipal Utility District No. 465 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_492
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, hcmud492.com/.org/.net were dead, and a web search for \"Harris County Municipal Utility District No. 492 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: katy_west_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, katywestmud.com/.org/.net were dead, and a web search for \"Katy West Municipal Utility District agenda\" found only City of Katy council items that mention the district and other districts' pages."
+    checked_on: '2026-10-29'
+- id: whcmud_5
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, whcmud5.com/.org/.net were dead, and a web search for \"West Harris County Municipal Utility District No. 5 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: green_trails_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, greentrailsmud.com/.org/.net were dead, and a web search for \"Green Trails Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: westlake_mud_1
+  website: https://westlakemud1.com/
+  checked_on: '2026-10-29'

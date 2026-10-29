@@ -79,6 +79,9 @@ mappings:
   - code: "100"
     source_name: HC MUD 421
     body_id: hcmud_421
+  - code: "101"
+    source_name: ADDICKS UD
+    body_id: addicks_ud
   - code: "105"
     source_name: HC MUD 264
     body_id: hcmud_264
@@ -112,6 +115,9 @@ mappings:
   - code: "131"
     source_name: CNP UD
     body_id: cnp_ud
+  - code: "134"
+    source_name: CASTLEWOOD MUD
+    body_id: castlewood_mud
   - code: "135"
     source_name: CEDAR BAYOU PARK UD
     body_id: cedar_bayou_park_ud
@@ -121,12 +127,18 @@ mappings:
   - code: "139"
     source_name: CHIMNEY HILL MUD
     body_id: chimney_hill_mud
+  - code: "140"
+    source_name: CIMARRON MUD
+    body_id: cimarron_mud
   - code: "141"
     source_name: CLAY ROAD MUD
     body_id: clay_road_mud
   - code: "142"
     source_name: CLEAR LAKE CITY WA
     body_id: clear_lake_city_wa
+  - code: "145"
+    source_name: CORNERSTONES MUD
+    body_id: cornerstones_mud
   - code: "147"
     source_name: CY-CHAMP PUD
     body_id: cy_champ_pud
@@ -175,6 +187,9 @@ mappings:
   - code: "171"
     source_name: FALLBROOK UD
     body_id: fallbrook_ud
+  - code: "176"
+    source_name: FRY ROAD MUD
+    body_id: fry_road_mud
   - code: "179"
     source_name: HC MUD 304
     body_id: hcmud_304
@@ -184,9 +199,15 @@ mappings:
   - code: "183"
     source_name: GREENWOOD UD
     body_id: greenwood_ud
+  - code: "185"
+    source_name: GREEN TRAILS MUD
+    body_id: green_trails_mud
   - code: "186"
     source_name: GREENS PARKWAY MUD
     body_id: greens_parkway_mud
+  - code: "187"
+    source_name: HC MUD 287
+    body_id: hcmud_287
   - code: "190"
     source_name: HC MUD 284
     body_id: hcmud_284
@@ -226,6 +247,9 @@ mappings:
   - code: "245"
     source_name: HC FWSD 045
     body_id: hcfwsd_45
+  - code: "246"
+    source_name: HC MUD 432
+    body_id: hcmud_432
   - code: "247"
     source_name: HC FWSD 047
     body_id: hcfwsd_47
@@ -244,6 +268,9 @@ mappings:
   - code: "255"
     source_name: HC MUD 501
     body_id: hcmud_501
+  - code: "257"
+    source_name: HC MUD 500
+    body_id: hcmud_500
   - code: "261"
     source_name: HC FWSD 061
     body_id: hcfwsd_61
@@ -304,6 +331,9 @@ mappings:
   - code: "326"
     source_name: HC MUD 026
     body_id: hcmud_26
+  - code: "332"
+    source_name: HC MUD 449
+    body_id: hcmud_449
   - code: "333"
     source_name: HC MUD 033
     body_id: hcmud_33
@@ -331,9 +361,18 @@ mappings:
   - code: "355"
     source_name: HC MUD 055
     body_id: hcmud_55
+  - code: "356"
+    source_name: HC MUD 495
+    body_id: hcmud_495
   - code: "361"
     source_name: HC MUD 061
     body_id: hcmud_61
+  - code: "362"
+    source_name: HC MUD 062
+    body_id: hcmud_62
+  - code: "363"
+    source_name: HC MUD 063
+    body_id: hcmud_63
   - code: "364"
     source_name: HC MUD 064
     body_id: hcmud_64
@@ -346,15 +385,24 @@ mappings:
   - code: "370"
     source_name: HC MUD 070
     body_id: hcmud_70
+  - code: "371"
+    source_name: HC MUD 071
+    body_id: hcmud_71
   - code: "372"
     source_name: HC MUD 438
     body_id: hcmud_438
   - code: "375"
     source_name: HC MUD 213B
     body_id: hcmud_213b
+  - code: "376"
+    source_name: HC MUD 457
+    body_id: hcmud_457
   - code: "378"
     source_name: HC MUD 458
     body_id: hcmud_458
+  - code: "381"
+    source_name: HC MUD 081
+    body_id: hcmud_81
   - code: "382"
     source_name: HC MUD 082
     body_id: hcmud_82
@@ -379,6 +427,9 @@ mappings:
   - code: "406"
     source_name: HC MUD 106
     body_id: hcmud_106
+  - code: "411"
+    source_name: HC MUD 536
+    body_id: hcmud_536
   - code: "416"
     source_name: HC MUD 503
     body_id: hcmud_503
@@ -403,6 +454,9 @@ mappings:
   - code: "436"
     source_name: HC MUD 136
     body_id: hcmud_136
+  - code: "441"
+    source_name: HC MUD 538
+    body_id: hcmud_538
   - code: "443"
     source_name: HC FWSD 48
     body_id: hcfwsd_48
@@ -475,9 +529,15 @@ mappings:
   - code: "483"
     source_name: HC MUD 183
     body_id: hcmud_183
+  - code: "485"
+    source_name: HC MUD 185
+    body_id: hcmud_185
   - code: "486"
     source_name: HC MUD 186
     body_id: hcmud_186
+  - code: "487"
+    source_name: HC MUD 465
+    body_id: hcmud_465
   - code: "488"
     source_name: HC MUD 188
     body_id: hcmud_188
@@ -559,6 +619,9 @@ mappings:
   - code: "535"
     source_name: HC MUD 365
     body_id: hcmud_365
+  - code: "538"
+    source_name: HC MUD 238
+    body_id: hcmud_238
   - code: "539"
     source_name: HC MUD 239
     body_id: hcmud_239
@@ -574,6 +637,9 @@ mappings:
   - code: "555"
     source_name: HC MUD 366
     body_id: hcmud_366
+  - code: "556"
+    source_name: HC UD 006
+    body_id: hcud_6
   - code: "566"
     source_name: HC UD 016
     body_id: hcud_16
@@ -652,21 +718,39 @@ mappings:
   - code: "693"
     source_name: LANGHAM CREEK UD
     body_id: langham_creek_ud
+  - code: "694"
+    source_name: LONGHORN TOWN UD
+    body_id: longhorn_town_ud
   - code: "695"
     source_name: LOUETTA NORTH PUD
     body_id: louetta_north_pud
   - code: "699"
     source_name: HC MUD 540
     body_id: hcmud_540
+  - code: "702"
+    source_name: MASON CREEK UD
+    body_id: mason_creek_ud
+  - code: "704"
+    source_name: MAYDE CREEK MUD
+    body_id: mayde_creek_mud
+  - code: "706"
+    source_name: MEMORIAL MUD
+    body_id: memorial_mud
   - code: "707"
     source_name: MEMORIAL VILLAGES WA
     body_id: memorial_villages_wa
   - code: "709"
     source_name: MILLS ROAD MUD
     body_id: mills_road_mud
+  - code: "712"
+    source_name: MORTON ROAD MUD
+    body_id: morton_road_mud
   - code: "714"
     source_name: MT HOUSTON ROAD MUD
     body_id: mount_houston_road_mud
+  - code: "715"
+    source_name: HC MUD 437
+    body_id: hcmud_437
   - code: "721"
     source_name: NORTHAMPTON MUD
     body_id: northampton_mud
@@ -727,6 +811,9 @@ mappings:
   - code: "777"
     source_name: NORTHWEST PARK MUD
     body_id: northwest_park_mud
+  - code: "778"
+    source_name: NOTTINGHAM CNTRY MUD
+    body_id: nottingham_country_mud
   - code: "783"
     source_name: PARK WAY UD
     body_id: parkway_ud
@@ -784,6 +871,12 @@ mappings:
   - code: "861"
     source_name: WEST HC MUD 001
     body_id: whcmud_1
+  - code: "862"
+    source_name: WEST HC MUD 002
+    body_id: whcmud_2
+  - code: "865"
+    source_name: WEST HC MUD 005
+    body_id: whcmud_5
   - code: "867"
     source_name: WEST HC MUD 007
     body_id: whcmud_7
@@ -805,15 +898,54 @@ mappings:
   - code: "879"
     source_name: WEST HC MUD 021
     body_id: whcmud_21
+  - code: "894"
+    source_name: WESTLAKE MUD 001
+    body_id: westlake_mud_1
+  - code: "895"
+    source_name: WEST MEMORIAL MUD
+    body_id: west_memorial_mud
+  - code: "896"
+    source_name: WESTON MUD
+    body_id: weston_mud
+  - code: "897"
+    source_name: WEST PARK MUD
+    body_id: west_park_mud
   - code: "899"
     source_name: WHITE OAK BEND MUD
     body_id: white_oak_bend_mud
   - code: "901"
     source_name: WINDFERN FOREST UD
     body_id: windfern_forest_ud
+  - code: "914"
+    source_name: CINCO MUD 009
+    body_id: cinco_mud_9
   - code: "915"
     source_name: HARRIS-FT BEND CO MUD 005
     body_id: harris_fort_bend_counties_mud_5
+  - code: "917"
+    source_name: WILLOW FORK DRNG DIST
+    body_id: willow_fork_drainage
+  - code: A05
+    source_name: KATY WEST MUD
+    body_id: katy_west_mud
+  - code: A09
+    source_name: HARRIS COUNTY MUD 539
+    body_id: hcmud_539
+  - code: A10
+    source_name: HARRIS COUNTY MUD 532
+    body_id: hcmud_532
+  - code: A15
+    source_name: HARRIS COUNTY MUD 569
+    body_id: hcmud_569
+  - code: A29
+    source_name: HARRIS COUNTY MUD 533
+    body_id: hcmud_533
+  - code: A52
+    source_name: HC MUD 492
+    body_id: hcmud_492
   - code: A89
     source_name: FT BEND CO MUD 163
     body_id: fbcmud_163
+  - code: A94
+    source_name: FENSKE ROAD MUD
+    body_id: fenske_road_mud
