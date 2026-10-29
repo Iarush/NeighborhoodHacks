@@ -424,6 +424,66 @@
     date_from: line_text
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+- id: hcwcid_164
+  body_id: hcwcid_164
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-water-control-and-improvement-district-no-164/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-13 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_491
+  body_id: hcmud_491
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-491/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-20 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_434
+  body_id: hcmud_434
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-434/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-28 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_576
+  body_id: hcmud_576
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-576/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-13 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_570c
+  body_id: hcmud_570c
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-570c/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-08 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_565
+  body_id: hcmud_565
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-565/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-15 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
 - id: hcmud_189
   body_id: hcmud_189
   adapter: llm_extract

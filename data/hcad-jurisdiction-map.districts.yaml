@@ -25,6 +25,9 @@ mappings:
   - code: "012"
     source_name: HOUSTON ISD (FORMERLY NFISD)
     body_id: hisd_board
+  - code: "013"
+    source_name: HC MUD 491
+    body_id: hcmud_491
   - code: "014"
     source_name: HC MUD 493
     body_id: hcmud_493
@@ -76,6 +79,9 @@ mappings:
   - code: "031"
     source_name: STAFFORD MSD
     body_id: stafford_municipal_school_district_board
+  - code: "091"
+    source_name: HC MUD 477
+    body_id: hcmud_477
   - code: "100"
     source_name: HC MUD 421
     body_id: hcmud_421
@@ -259,9 +265,15 @@ mappings:
   - code: "229"
     source_name: HC MUD 412
     body_id: hcmud_412
+  - code: "231"
+    source_name: HC MUD 405
+    body_id: hcmud_405
   - code: "232"
     source_name: HC MUD 433
     body_id: hcmud_433
+  - code: "237"
+    source_name: HC MUD 434
+    body_id: hcmud_434
   - code: "242"
     source_name: HC MUD 450
     body_id: hcmud_450
@@ -304,12 +316,18 @@ mappings:
   - code: "271"
     source_name: HARRIS COUNTY MUD 376
     body_id: hcmud_376
+  - code: "272"
+    source_name: HARRIS COUNTY MUD 377
+    body_id: hcmud_377
   - code: "273"
     source_name: HARRIS COUNTY MUD 378
     body_id: hcmud_378
   - code: "274"
     source_name: HARRIS COUNTY MUD 379
     body_id: hcmud_379
+  - code: "275"
+    source_name: HARRIS COUNTY MUD 380
+    body_id: hcmud_380
   - code: "276"
     source_name: HC MUD 396
     body_id: hcmud_396
@@ -409,6 +427,9 @@ mappings:
   - code: "358"
     source_name: HC MUD 058
     body_id: hcmud_58
+  - code: "360"
+    source_name: HC MUD 319
+    body_id: hcmud_319
   - code: "361"
     source_name: HC MUD 061
     body_id: hcmud_61
@@ -481,6 +502,9 @@ mappings:
   - code: "406"
     source_name: HC MUD 106
     body_id: hcmud_106
+  - code: "408"
+    source_name: BAUER LANDING WCID
+    body_id: bauer_landing_wcid
   - code: "411"
     source_name: HC MUD 536
     body_id: hcmud_536
@@ -583,6 +607,9 @@ mappings:
   - code: "473"
     source_name: HC MUD 173
     body_id: hcmud_173
+  - code: "474"
+    source_name: HC MUD 565
+    body_id: hcmud_565
   - code: "479"
     source_name: HC MUD 179
     body_id: hcmud_179
@@ -760,6 +787,9 @@ mappings:
   - code: "617"
     source_name: HC WCID 157
     body_id: hcwcid_157
+  - code: "619"
+    source_name: HC MUD 441
+    body_id: hcmud_441
   - code: "622"
     source_name: HC WCID 109
     body_id: hcwcid_109
@@ -859,6 +889,12 @@ mappings:
   - code: "715"
     source_name: HC MUD 437
     body_id: hcmud_437
+  - code: "716"
+    source_name: HC MUD 490
+    body_id: hcmud_490
+  - code: "717"
+    source_name: HC WCID 158
+    body_id: hcwcid_158
   - code: "721"
     source_name: NORTHAMPTON MUD
     body_id: northampton_mud
@@ -871,6 +907,9 @@ mappings:
   - code: "728"
     source_name: NORTH PARK PUD
     body_id: north_park_pud
+  - code: "730"
+    source_name: NORTHWEST FRWY MUD
+    body_id: northwest_frwy_mud
   - code: "731"
     source_name: N GATE CROSSING MUD 001
     body_id: northgate_crossing_mud_1
@@ -1093,27 +1132,78 @@ mappings:
   - code: "917"
     source_name: WILLOW FORK DRNG DIST
     body_id: willow_fork_drainage
+  - code: A03
+    source_name: HARRIS COUNTY MUD 547
+    body_id: hcmud_547
   - code: A05
     source_name: KATY WEST MUD
     body_id: katy_west_mud
+  - code: A06
+    source_name: HARRIS COUNTY MUD 576
+    body_id: hcmud_576
+  - code: A07
+    source_name: HARRIS COUNTY WCID 164
+    body_id: hcwcid_164
+  - code: A08
+    source_name: HARRIS COUNTY MUD 570A
+    body_id: hcmud_570a
   - code: A09
     source_name: HARRIS COUNTY MUD 539
     body_id: hcmud_539
   - code: A10
     source_name: HARRIS COUNTY MUD 532
     body_id: hcmud_532
+  - code: A11
+    source_name: HARRIS-WALLER COUNTIES MUD 12
+    body_id: harris_waller_counties_mud_12
   - code: A15
     source_name: HARRIS COUNTY MUD 569
     body_id: hcmud_569
   - code: A29
     source_name: HARRIS COUNTY MUD 533
     body_id: hcmud_533
+  - code: A32
+    source_name: HARRIS WALLER COUNTIES MUD 7
+    body_id: harris_waller_counties_mud_7
+  - code: A38
+    source_name: HARRIS COUNTY MUD 535
+    body_id: hcmud_535
+  - code: A39
+    source_name: HC MUD 570C
+    body_id: hcmud_570c
+  - code: A40
+    source_name: HARRIS COUNTY MUD 478
+    body_id: hcmud_478
+  - code: A46
+    source_name: HC MUD 588
+    body_id: hcmud_588
   - code: A52
     source_name: HC MUD 492
     body_id: hcmud_492
+  - code: A56
+    source_name: HC MUD 586
+    body_id: hcmud_586
+  - code: A67
+    source_name: HARRIS COUNTY MUD 582
+    body_id: hcmud_582
+  - code: A71
+    source_name: HARRIS-WALLER CO MUD 10
+    body_id: harris_waller_counties_mud_10
+  - code: A72
+    source_name: HC MUD 597
+    body_id: hcmud_597
+  - code: A81
+    source_name: HC MUD 478B
+    body_id: hcmud_478b
+  - code: A82
+    source_name: HC MUD 600
+    body_id: hcmud_600
   - code: A89
     source_name: FT BEND CO MUD 163
     body_id: fbcmud_163
+  - code: A91
+    source_name: HARRIS COUNTY MUD 609
+    body_id: hcmud_609
   - code: A94
     source_name: FENSKE ROAD MUD
     body_id: fenske_road_mud

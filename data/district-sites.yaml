@@ -1143,6 +1143,24 @@
 - id: hcmud_399
   website: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-399/
   checked_on: '2026-10-29'
+- id: hcwcid_164
+  website: https://districtdirectory.org/harris-county/harris-county-water-control-and-improvement-district-no-164/
+  checked_on: '2026-10-29'
+- id: hcmud_491
+  website: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-491/
+  checked_on: '2026-10-29'
+- id: hcmud_434
+  website: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-434/
+  checked_on: '2026-10-29'
+- id: hcmud_576
+  website: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-576/
+  checked_on: '2026-10-29'
+- id: hcmud_570c
+  website: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-570c/
+  checked_on: '2026-10-29'
+- id: hcmud_565
+  website: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-565/
+  checked_on: '2026-10-29'
 - id: hcmud_189
   website: https://www.hcmud189.org/
   checked_on: '2026-10-29'
@@ -1197,4 +1215,60 @@
 - id: hcmud_58
   no_agendas_online:
     reason: "No district website. The survey and the Comptroller listing gave no site; hcmud58.org is a parked '/lander' page and hcmud58.com is dead; a web search for \"Harris County Municipal Utility District No. 58 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_597
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 597 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_377
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 377 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_405
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 405 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_478b
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 478B agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_600
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 600 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_441
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 441 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_380
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 380 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_582
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 582 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_570a
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead; its districtdirectory.org page lists no meetings, and a web search for \"Harris County Municipal Utility District No. 570A agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_588
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead; its districtdirectory.org page lists no meetings, and a web search for \"Harris County Municipal Utility District No. 588 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_609
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead; its districtdirectory.org page lists no meetings, and a web search for \"Harris County Municipal Utility District No. 609 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: bauer_landing_wcid
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Bauer Landing Water Control and Improvement District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: harris_waller_counties_mud_10
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris-Waller Counties Municipal Utility District No. 10 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: northwest_frwy_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead (northwestfreewaymud.com answers but has no agenda or meeting links), and a web search for \"Northwest Freeway Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
     checked_on: '2026-10-29'
