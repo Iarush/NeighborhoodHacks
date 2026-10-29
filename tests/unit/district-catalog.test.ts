@@ -1,7 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import { parse } from 'yaml';
 import { parseBodyCatalog, parseJurisdictionMap } from '@/lib/ingest/catalog';
-import { COMPTROLLER_SEARCH_URL, parseBatches, sameDistrict, schoolBody, schoolCode, waterBody, waterDistrict } from '@/lib/ingest/districtCatalog';
+import { COMPTROLLER_SEARCH_URL, districtSites, parseBatches, sameDistrict, schoolBody, schoolCode, waterBody, waterDistrict } from '@/lib/ingest/districtCatalog';
 
 const batches = parseBatches(readFileSync('.plans/district-rollout-batches.md', 'utf8'));
 
@@ -90,5 +91,19 @@ describe('helpers', () => {
   it('rejects repeated HCAD codes across map files', () => {
     const a = 'mappings:\n  - { code: "189", source_name: HC MUD 489, body_id: hcmud_489 }\n';
     expect(() => parseJurisdictionMap([a, a])).toThrow(/duplicate HCAD code/);
+  });
+});
+
+describe('districtSites (data/district-sites.yaml)', () => {
+  it('skips a no_agendas_online row that has no website', () => {
+    const sites = districtSites([
+      { id: 'hcmud_1', website: 'https://hcmud1.example/', checked_on: '2026-10-29' },
+      { id: 'hcmud_2', no_agendas_online: { reason: 'no website found', checked_on: '2026-10-29' } },
+    ]);
+    expect([...sites.keys()]).toEqual(['hcmud_1']);
+  });
+
+  it('parses the real file', () => {
+    expect(() => districtSites(parse(readFileSync('data/district-sites.yaml', 'utf8')))).not.toThrow();
   });
 });

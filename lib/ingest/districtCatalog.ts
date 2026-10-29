@@ -1,3 +1,5 @@
+import { z } from 'zod';
+import { CENSUS_SCHOOL_NAMES } from '@/lib/lookup/schoolDistricts';
 import { schoolBoardId } from '@/lib/lookup/standIn';
 import type { CatalogBody } from './catalog';
 
@@ -97,6 +99,19 @@ export function waterDistrict(layerName: string): WaterDistrict {
 
 export type DistrictSite = { id: string; website: string; checked_on: string };
 
+/**
+ * Hand-checked websites from data/district-sites.yaml (parsed YAML in). A `no_agendas_online` row
+ * may have no website (none found); it is skipped here and the page links the Comptroller search.
+ */
+export function districtSites(rows: unknown): Map<string, DistrictSite> {
+  const parsed = z
+    .array(z.object({ id: z.string(), website: z.string().url().optional(), checked_on: z.string().date().optional() }).loose())
+    .parse(rows ?? []);
+  return new Map(
+    parsed.flatMap((s): [string, DistrictSite][] => (s.website && s.checked_on ? [[s.id, { id: s.id, website: s.website, checked_on: s.checked_on }]] : [])),
+  );
+}
+
 const WATER_DESCRIPTION = {
   en: 'A special district under the Texas Water Code that provides water, sewer or drainage services and can set a property tax; exact services and tax details depend on the parcel.',
   es: 'Un distrito especial bajo el Código de Aguas de Texas que presta servicios de agua, drenaje o alcantarillado y puede fijar un impuesto a la propiedad; los servicios e impuestos dependen de la parcela.',
@@ -130,34 +145,8 @@ export function waterBody(entry: BatchEntry, sites: ReadonlyMap<string, District
   };
 }
 
-/** The Census name for each batch-list ISD name (plan 0.5 uses the same table). */
-export const CENSUS_SCHOOL_NAMES: Record<string, string> = {
-  'Katy ISD': 'Katy Independent School District',
-  'Aldine ISD': 'Aldine Independent School District',
-  'Klein ISD': 'Klein Independent School District',
-  'Alief ISD': 'Alief Independent School District',
-  'Spring Branch ISD': 'Spring Branch Independent School District',
-  'Pasadena ISD': 'Pasadena Independent School District',
-  'Humble ISD': 'Humble Independent School District',
-  'Spring ISD': 'Spring Independent School District',
-  'Clear Creek ISD': 'Clear Creek Independent School District',
-  'Tomball ISD': 'Tomball Independent School District',
-  'Galena Park ISD': 'Galena Park Independent School District',
-  'Sheldon ISD': 'Sheldon Independent School District',
-  'Channelview ISD': 'Channelview Independent School District',
-  'Goose Creek CISD': 'Goose Creek Consolidated Independent School District',
-  'La Porte ISD': 'La Porte Independent School District',
-  'Deer Park ISD': 'Deer Park Independent School District',
-  'Crosby ISD': 'Crosby Independent School District',
-  'Huffman ISD': 'Huffman Independent School District',
-  'New Caney ISD': 'New Caney Independent School District',
-  'Waller ISD': 'Waller Independent School District',
-  'Dayton ISD': 'Dayton Independent School District',
-  'Pearland ISD': 'Pearland Independent School District',
-  'Stafford MSD': 'Stafford Municipal School District',
-  'Houston ISD': 'Houston Independent School District',
-  'Cypress-Fairbanks ISD': 'Cypress-Fairbanks Independent School District',
-};
+// The Census name for each batch-list ISD name lives with the lookup, which uses it too (plan 0.5).
+export { CENSUS_SCHOOL_NAMES } from '@/lib/lookup/schoolDistricts';
 
 /** A school board row. It needs a checked website: there is no shared fallback for ISDs. */
 export function schoolBody(shortName: string, sites: ReadonlyMap<string, DistrictSite>): CatalogBody {

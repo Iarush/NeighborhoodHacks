@@ -9,7 +9,7 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { parse, stringify } from 'yaml'
 import { z } from 'zod'
 import { loadBodyCatalog, loadJurisdictionMap, parseBodyCatalog, parseJurisdictionMap, type CatalogBody, type JurisdictionMapping } from '../lib/ingest/catalog'
-import { LAYER_NAME_FIXES, parseBatches, sameDistrict, schoolBody, schoolCode, waterBody, type DistrictSite } from '../lib/ingest/districtCatalog'
+import { LAYER_NAME_FIXES, districtSites, parseBatches, sameDistrict, schoolBody, schoolCode, waterBody } from '../lib/ingest/districtCatalog'
 
 const BODIES_OUT = 'data/bodies.districts.yaml'
 const MAP_OUT = 'data/hcad-jurisdiction-map.districts.yaml'
@@ -19,11 +19,7 @@ const HEADER = (what: string) =>
 const batchIds = process.argv.flatMap((arg, i) => (process.argv[i - 1] === '--batch' ? arg.split(',') : []))
 const checkOnly = process.argv.includes('--check')
 
-const sites = new Map(
-  z.array(z.object({ id: z.string(), website: z.string().url(), checked_on: z.string().date() }))
-    .parse(parse(readFileSync('data/district-sites.yaml', 'utf8')) ?? [])
-    .map((s): [string, DistrictSite] => [s.id, s]),
-)
+const sites = districtSites(parse(readFileSync('data/district-sites.yaml', 'utf8')))
 const hcad = z.object({ jurisdictions: z.record(z.string(), z.string()) }).parse(JSON.parse(readFileSync('data/hcad-jurisdictions.json', 'utf8'))).jurisdictions
 const batches = parseBatches(readFileSync('.plans/district-rollout-batches.md', 'utf8'))
 

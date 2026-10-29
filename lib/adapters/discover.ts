@@ -1,4 +1,4 @@
-import { load } from 'cheerio';
+import { load, type CheerioAPI } from 'cheerio';
 import { DateTime } from 'luxon';
 import { z } from 'zod';
 import { getText, type HttpOptions } from './http';
@@ -11,9 +11,19 @@ export const DiscoveryConfigSchema = z
   .object({
     index_url: z.string().url(),
     link_pattern: z.string(),
-    date_from: z.enum(['link_text', 'filename']).default('link_text'),
+    // data_file_name: the anchor's data-file-name attribute (Finalsite: the URL is an opaque UUID).
+    // line_text: the link's line, from the previous <br> or block start ("2026-10-21 – Regular: Agenda").
+    date_from: z.enum(['link_text', 'filename', 'data_file_name', 'line_text']).default('link_text'),
     meeting_type_from_text: z.object({ special: z.string() }).partial().optional(),
     follow_notice_page: z.boolean().optional(),
+    /** Also match absolute URLs anywhere in the page source (Apptegy's embedded document JSON). */
+    embedded_links: z.boolean().optional(),
+    /** Also test link_pattern against the anchor text (Google Drive folders: the URL is an opaque ID). */
+    match_link_text: z.boolean().optional(),
+    /** Which day of a dotted day range ("10.19-20.26") is the meeting. Default first. */
+    date_range: z.enum(['first', 'last']).optional(),
+    /** Only anchors matching this CSS selector ("td:first-child a": an Agendas column beside Minutes). */
+    link_selector: z.string().optional(),
   })
   .loose();
 export type DiscoveryConfig = z.infer<typeof DiscoveryConfigSchema>;
@@ -74,15 +84,21 @@ const fullYear = (y: string) => (y.length === 2 ? 2000 + Number(y) : Number(y));
 /**
  * Parse a meeting date from link text or a filename. Accepted forms:
  * `October 1, 2026`, `Oct. 1, 2026`, `Agenda_October_19_2026_…`, `2026 September 16`, `10/1/2026`,
- * `10-01-26`, `2026-10-01`, and month-only `1710 October 2017 Board Agenda` (day_known = false).
+ * `10-01-26`, `Agenda_10_08_26_…`, `2026-10-01`, dotted `10.19-20.26`, and month-only `1710 October 2017 Board Agenda`
+ * (day_known = false). For a dotted day range, `range: 'last'` takes the end day (Aldine posts the
+ * Monday study session and Tuesday vote as one file).
  */
-export function parseDocDate(input: string): { date: string; day_known: boolean } | null {
+export function parseDocDate(input: string, range: 'first' | 'last' = 'first'): { date: string; day_known: boolean } | null {
   const s = input.replace(/%20/g, ' ');
   const tries: [RegExp, (m: RegExpMatchArray) => string | null][] = [
-    [/(?<!\d)(\d{4})-(\d{2})-(\d{2})(?!\d)/, (m) => ymd(+m[1]!, +m[2]!, +m[3]!)],
+    [/(?<!\d)(\d{4})[-_](\d{2})[-_](\d{2})(?!\d)/, (m) => ymd(+m[1]!, +m[2]!, +m[3]!)],
     [new RegExp(`(?<![a-z])${MONTH_RE}\\.?${SEP}(\\d{1,2})(?:-\\d{1,2})?(?:st|nd|rd|th)?${SEP}(\\d{4})(?!\\d)`, 'i'), (m) => ymd(+m[3]!, monthNum(m[1]!)!, +m[2]!)],
     [new RegExp(`(?<!\\d)(\\d{4})${SEP}${MONTH_RE}\\.?${SEP}(\\d{1,2})(?!\\d)`, 'i'), (m) => ymd(+m[1]!, monthNum(m[2]!)!, +m[3]!)],
-    [/(?<!\d)(\d{1,2})[/-](\d{1,2})[/-](\d{4}|\d{2})(?!\d)/, (m) => ymd(fullYear(m[3]!), +m[1]!, +m[2]!)],
+    [/(?<!\d)(\d{1,2})([/_-])(\d{1,2})\2(\d{4}|\d{2})(?!\d)/, (m) => ymd(fullYear(m[4]!), +m[1]!, +m[3]!)],
+    [
+      /(?<![\d.])(\d{1,2})\.(\d{1,2})(?:-(\d{1,2}))?\.(\d{4}|\d{2})(?!\d)/,
+      (m) => ymd(fullYear(m[4]!), +m[1]!, range === 'last' && m[3] ? +m[3] : +m[2]!),
+    ],
   ];
   for (const [re, fn] of tries) {
     const m = s.match(re);
@@ -102,7 +118,15 @@ export function parseDocDate(input: string): { date: string; day_known: boolean 
 /** `_1` revision suffix before an optional upload hash: `…_HCMUD_489_1_0563351dfa.pdf` -> 1. */
 export function versionSuffix(filename: string): number {
   const m = filename.match(/_(\d{1,2})(?:_[0-9a-f]{6,})?\.pdf$/i);
-  return m ? Number(m[1]) : 0;
+  const n = m ? Number(m[1]) : 0;
+  // "…-REVISED.pdf", "UpdatedBoardAgenda.pdf": a re-posted agenda beats the original.
+  return /revised|amended|updated/i.test(filename) ? Math.max(n, 1) : n;
+}
+
+/** The URL to download a document from: a Drive `/file/d/<id>/view` page becomes its file download. */
+export function downloadUrl(url: string): string {
+  const id = url.match(/^https:\/\/drive\.google\.com\/file\/d\/([\w-]+)\//)?.[1];
+  return id ? `https://drive.google.com/uc?export=download&id=${id}` : url;
 }
 
 const lastSegment = (url: string) => {
@@ -123,6 +147,22 @@ const decodedUrl = (url: string) => {
   }
 };
 
+const INLINE = new Set(['a', 'span', 'strong', 'b', 'em', 'i', 'u', 'small', 'font', 'mark']);
+type DomNode = Parameters<CheerioAPI['contains']>[1];
+const isInline = (n: DomNode | null) => !!n && 'name' in n && INLINE.has(n.name);
+
+/** Text before an anchor on its line, back to the previous <br> or the start of its block, plus the link text. */
+export function lineText($: CheerioAPI, a: DomNode): string {
+  const parts: string[] = [$(a).text()];
+  for (let node: DomNode | null = a; node; node = isInline(node.parent) ? node.parent : null) {
+    for (let prev = node.prev; prev; prev = prev.prev) {
+      if ('name' in prev && !isInline(prev)) return parts.reverse().join(' ').replace(/\s+/g, ' ').trim();
+      parts.push($(prev).text());
+    }
+  }
+  return parts.reverse().join(' ').replace(/\s+/g, ' ').trim();
+}
+
 /** Parse an index page into dated documents (no window filter, no dedup). */
 export function parseIndex(html: string, baseUrl: string, cfg: DiscoveryConfig): { docs: DiscoveredDoc[]; undated: string[] } {
   const $ = load(html);
@@ -133,20 +173,22 @@ export function parseIndex(html: string, baseUrl: string, cfg: DiscoveryConfig):
   // constant page furniture and would only add noise to the health check.
   const undated: string[] = [];
   const seen = new Set<string>();
-  $('a[href]').each((i, a) => {
-    const href = $(a).attr('href')!.trim();
+  const consider = (href: string, text: string, dataName: string, i: number, line = text) => {
     let url: string;
     try {
       url = new URL(href, baseUrl).toString();
     } catch {
       return;
     }
-    if (!linkRe.test(decodedUrl(url)) && !linkRe.test(href)) return;
+    const matched =
+      linkRe.test(decodedUrl(url)) || linkRe.test(href) || (dataName && linkRe.test(dataName)) || (cfg.match_link_text && text && linkRe.test(text));
+    if (!matched) return;
     if (seen.has(url)) return;
     seen.add(url);
-    const text = $(a).text().replace(/\s+/g, ' ').trim();
     const filename = lastSegment(url);
-    const parsed = parseDocDate(cfg.date_from === 'filename' ? filename : text);
+    const dateSource =
+      cfg.date_from === 'filename' ? filename : cfg.date_from === 'data_file_name' ? dataName : cfg.date_from === 'line_text' ? line : text;
+    const parsed = parseDocDate(dateSource, cfg.date_range);
     if (!parsed) {
       undated.push(url);
       return;
@@ -157,11 +199,21 @@ export function parseIndex(html: string, baseUrl: string, cfg: DiscoveryConfig):
       filename,
       date: parsed.date,
       day_known: parsed.day_known,
-      type: specialRe && (specialRe.test(text) || specialRe.test(filename)) ? 'special' : 'regular',
+      type: specialRe && (specialRe.test(text) || specialRe.test(filename) || specialRe.test(dataName)) ? 'special' : 'regular',
       version: versionSuffix(filename),
       index: i,
     });
+  };
+  const anchors = $(cfg.link_selector ? `${cfg.link_selector}[href]` : 'a[href]').toArray();
+  anchors.forEach((a, i) => {
+    const text = $(a).text().replace(/\s+/g, ' ').trim();
+    consider($(a).attr('href')!.trim(), text, ($(a).attr('data-file-name') ?? '').trim(), i, cfg.date_from === 'line_text' ? lineText($, a) : text);
   });
+  if (cfg.embedded_links) {
+    // Apptegy (Thrillshare) pages ship their document list as JSON in the page, not as anchors.
+    let i = anchors.length;
+    for (const m of html.matchAll(/https?:\/\/[^\s"'<>\\]+/g)) consider(m[0], '', '', i++);
+  }
   return { docs, undated };
 }
 

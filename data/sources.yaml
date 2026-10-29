@@ -51,6 +51,283 @@
     minutes_date_tolerance_days: 2                          # May agenda 19th vs minutes 18th
     results_max_days: 75                                    # minutes lag 1–2 cycles (§2)
     expected_max_gap_days: 45
+- id: klein_isd_board
+  body_id: klein_isd_board
+  adapter: boardbook
+  config: { org_id: 921, expected_max_gap_days: 45 }
+- id: alief_isd_board
+  body_id: alief_isd_board
+  adapter: boardbook
+  config: { org_id: 770, expected_max_gap_days: 45 }
+- id: spring_branch_isd_board
+  body_id: spring_branch_isd_board
+  adapter: boardbook
+  config: { org_id: 889, expected_max_gap_days: 45 }
+- id: pasadena_isd_board
+  body_id: pasadena_isd_board
+  adapter: boardbook
+  config: { org_id: 1894, expected_max_gap_days: 45 }
+- id: clear_creek_isd_board
+  body_id: clear_creek_isd_board
+  adapter: boardbook
+  config: { org_id: 1940, expected_max_gap_days: 45 }
+- id: galena_park_isd_board
+  body_id: galena_park_isd_board
+  adapter: boardbook
+  config: { org_id: 1860, expected_max_gap_days: 45 }
+- id: sheldon_isd_board
+  body_id: sheldon_isd_board
+  adapter: boardbook
+  config: { org_id: 1876, expected_max_gap_days: 45 }
+- id: goose_creek_consolidated_isd_board
+  body_id: goose_creek_consolidated_isd_board
+  adapter: boardbook
+  config: { org_id: 1195, expected_max_gap_days: 45 }
+- id: la_porte_isd_board
+  body_id: la_porte_isd_board
+  adapter: boardbook
+  config: { org_id: 767, expected_max_gap_days: 45 }
+- id: crosby_isd_board
+  body_id: crosby_isd_board
+  adapter: boardbook
+  config: { org_id: 1018, expected_max_gap_days: 45 }
+- id: new_caney_isd_board
+  body_id: new_caney_isd_board
+  adapter: boardbook
+  config: { org_id: 2256, expected_max_gap_days: 45 }
+- id: waller_isd_board
+  body_id: waller_isd_board
+  adapter: boardbook
+  config: { org_id: 737, expected_max_gap_days: 45 }
+- id: stafford_municipal_school_district_board
+  body_id: stafford_municipal_school_district_board
+  adapter: boardbook
+  config: { org_id: 1043, expected_max_gap_days: 45 }
+- id: tomball_isd_board
+  body_id: tomball_isd_board
+  adapter: llm_extract
+  config:
+    index_url: https://www.tomballisd.net/about-tisd/leadership/board-of-trustees/meetings-and-minutes
+    link_pattern: "(?i)-notice\\.pdf$"                       # "10132026-RegularMeeting-Notice.pdf"
+    date_from: link_text                                    # "Oct 13 2026-Regular Meeting-Notice"
+    meeting_type_from_text: { special: "(?i)special" }
+    minutes_index_url: https://www.tomballisd.net/about-tisd/leadership/board-of-trustees/meetings-and-minutes
+    minutes_link_pattern: "(?i)-minutes\\.pdf$"
+    expected_max_gap_days: 45
+- id: huffman_isd_board
+  body_id: huffman_isd_board
+  adapter: llm_extract
+  config:
+    index_url: https://www.huffmanisd.net/board-of-trustees/agendas-2026-2027
+    link_pattern: "(?i)agenda"                    # Finalsite: the file name is in data-file-name, not the URL
+    date_from: data_file_name                     # "10-26-2026BoardAgenda.pdf"
+    meeting_type_from_text: { special: "(?i)special|called" }
+    expected_max_gap_days: 45
+- id: pearland_isd_board
+  body_id: pearland_isd_board
+  adapter: llm_extract
+  config:
+    index_url: https://www.pearlandisd.org/board-of-trustees/meeting-schedule
+    link_pattern: "(?i)agenda"
+    date_from: data_file_name                     # "2026_10_13_BoardAgenda.pdf"
+    expected_max_gap_days: 45
+- id: spring_isd_board
+  body_id: spring_isd_board
+  adapter: llm_extract
+  config:
+    # Apptegy: the document list is JSON inside the page; PDFs are on Thrillshare's asset host.
+    index_url: https://www.springisd.org/documents/our-district/board-of-trustees/board-meetings/2026/meeting-notices%2C-agendas/864365
+    link_pattern: "(?i)thrillshare\\.com/.+agenda[^/]*\\.pdf"   # "Signed-Agenda-Notice---October-13-2026---Regular-Meeting.pdf"
+    embedded_links: true
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: aldine_isd_board
+  body_id: aldine_isd_board
+  adapter: llm_extract
+  config:
+    # aldineisd.org "Board Material" is a Google Drive folder (Use-your-Drive plugin). This is its public
+    # "Agenda and Meeting Notice/2026" subfolder. A new year means a new folder ID; the gap check will flag it.
+    index_url: https://drive.google.com/embeddedfolderview?id=1F9L5Tc3g6LCH6lDBPryNpozDnyhI-Vrz
+    # Regular and special meetings only. The folder also holds grievance-hearing notices whose
+    # file names carry private people's names; this pattern must keep excluding them.
+    link_pattern: "(?i)^posting of (regular|special called) meeting"
+    match_link_text: true
+    date_from: link_text                          # "Posting of Regular Meeting_10.19-20.26.pdf"
+    date_range: last                              # Monday study session + Tuesday vote; the vote day
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: channelview_isd_board
+  body_id: channelview_isd_board
+  adapter: boardbook
+  config: { org_id: 791, expected_max_gap_days: 45 }   # linked from cvisd.org/page/school-board
+- id: dayton_isd_board
+  body_id: dayton_isd_board
+  adapter: llm_extract
+  config:
+    # ParentSquare Smart Sites. One page per year ("2026 Agendas"); a new year means a new page ID.
+    index_url: https://www.daytonisd.net/194288_3
+    link_pattern: "(?i)parentsquare\\.com/.+agenda[^/]*\\.pdf$"   # "20260818_agenda-3.pdf"
+    date_from: link_text                          # "August 18, 2026 Agenda"
+    meeting_type_from_text: { special: "(?i)special|called" }
+    expected_max_gap_days: 45
+- id: deer_park_isd_board
+  body_id: deer_park_isd_board
+  adapter: llm_extract
+  config:
+    index_url: https://www.dpisd.org/apps/pages/index.jsp?uREC_ID=1563698&type=d&pREC_ID=1691104   # Edlio "Board of Trustees Agendas"
+    # Matched on the link text: the page also lists hearings and grievance notices whose titles
+    # carry private people's names, and they share dates with the agenda. Keep excluding them.
+    link_pattern: "(?i)agenda summary|workshop"
+    match_link_text: true
+    date_from: link_text                          # "October 19, 2026 - Agenda Summary"
+    meeting_type_from_text: { special: "(?i)special|called" }
+    expected_max_gap_days: 45
+- id: humble_isd_board
+  body_id: humble_isd_board
+  adapter: diligent
+  config: { portal: humbleisd, expected_max_gap_days: 45 }
+# MUD rollout bucket M01 (.plans/mud-buckets.md)
+- id: ricewood_mud
+  body_id: ricewood_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.ricewoodmud.com/board-meetings/
+    link_pattern: "(?i)agenda[^/]*\\.pdf$"
+    date_from: filename                                 # "Agenda_October_20_2026_Ricewood_MUD_….pdf"
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: emerald_forest_ud
+  body_id: emerald_forest_ud
+  adapter: llm_extract
+  config:
+    index_url: https://emeraldforestud.com/board-meetings/
+    link_pattern: "(?i)agenda[^/]*\\.pdf$"
+    date_from: filename                                 # "Emerald_Agenda_10_08_26_….pdf"
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: encanto_real_ud
+  body_id: encanto_real_ud
+  adapter: llm_extract
+  config:
+    index_url: https://www.encantorealud.com/documents
+    link_pattern: "(?i)agenda[^/]*\\.pdf$"
+    date_from: filename                                 # "10_20_2026_Agenda_Encanto_….pdf"
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_36
+  body_id: hcwcid_36
+  adapter: llm_extract
+  config:
+    index_url: https://hcwcid36.com/board-meetings/
+    link_pattern: "(?i)agenda[^/]*\\.pdf$"
+    date_from: filename                                 # "Agenda_10_27_26_….pdf"
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_285
+  body_id: hcmud_285
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud285.org/documents.html
+    link_pattern: "(?i)agenda[^/]*\\.pdf$"
+    date_from: link_text                                # link text; file "Agenda10_19_26HCMUD285.pdf"
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: northgate_crossing_mud_1
+  body_id: northgate_crossing_mud_1
+  adapter: llm_extract
+  config:
+    index_url: https://northgatecrossingmud1.com/meetings/
+    link_pattern: "(?i)agenda[^/]*\\.pdf$"
+    date_from: filename                                 # "NG1-Agenda-October-8-2026.pdf"
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcfwsd_61
+  body_id: hcfwsd_61
+  adapter: llm_extract
+  config:
+    index_url: https://harriscountyfwsd61.org/hcfwsd61-notice-of-public-meeting/   # the archive page lags a month
+    link_pattern: "(?i)HCFWSD61_Notice_\\d{6}\\.pdf$"
+    date_from: link_text                                # "Click Here to view HCFWSD #61 10/28/26 Agenda"
+    expected_max_gap_days: 45
+- id: hcmud_248
+  body_id: hcmud_248
+  adapter: llm_extract
+  config:
+    index_url: https://harriscountyfwsd61.org/hc-mud-248-notice-of-public-meeting/   # shares FWSD 61's site
+    link_pattern: "(?i)HCMUD248_Notice_\\d{6}\\.pdf$"
+    date_from: link_text                                # "HC MUD #248, Notice Public Meeting, October 14, 2026"
+    expected_max_gap_days: 45
+- id: hcmud_24
+  body_id: hcmud_24
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud24.com/meetings/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-21 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: clear_brook_city_mud
+  body_id: clear_brook_city_mud
+  adapter: llm_extract
+  config:
+    index_url: https://cbcmud.com/meetings
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-21 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_130
+  body_id: hcmud_130
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud130.org/meetings/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-21 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: harris_waller_counties_mud_3
+  body_id: harris_waller_counties_mud_3
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-waller-counties-municipal-utility-district-no-3/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-21 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_422
+  body_id: hcmud_422
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-422/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-21 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_423
+  body_id: hcmud_423
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-423/
+    link_pattern: "(?i)^agenda$"                          # ABHR layout: "2026-10-21 – Regular: Agenda | Minutes<br>"
+    match_link_text: true                               # Drive links: the URL is an opaque ID
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: northgate_crossing_road_ud
+  body_id: northgate_crossing_road_ud
+  adapter: llm_extract
+  config:
+    index_url: https://www.sklawdistrictdata.org/harris-county/northgate-crossing-road-utility-district/
+    link_pattern: "(?i)drive\\.google\\.com/file/d/"
+    link_selector: "td:first-child a"                   # Agendas column; Minutes beside it carry the same dates
+    date_from: link_text                                # "2026-10-16 – Public Hearing on Tax Rate"
+    meeting_type_from_text: { special: "(?i)special|hearing" }
+    expected_max_gap_days: 120                          # meets about quarterly
 - id: manual
   adapter: manual
   config: { dir: data/manual }
