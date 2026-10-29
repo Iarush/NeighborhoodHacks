@@ -1629,3 +1629,31 @@
   no_agendas_online:
     reason: "No website found by the survey, the Comptroller or districtdirectory.org (no page); a web search for \"Harris County MUD 541 agenda\" found only legislative, aggregator or other districts' pages."
     checked_on: '2026-10-29'
+- id: hcmud_529
+  website: https://www.taxtech.net/DistrictDetail/331
+  checked_on: '2026-10-29'
+  no_agendas_online:
+    reason: "The Comptroller's self-reported page (taxtech.net/DistrictDetail/331, a tax collector) lists tax information but no agendas or meeting notices; the survey found no other site, and a web search for \"Harris County MUD 529 agenda\" found only other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_407
+  website: https://www.taxtech.net/DistrictDetail/230
+  checked_on: '2026-10-29'
+  no_agendas_online:
+    reason: "The Comptroller's self-reported page (taxtech.net/DistrictDetail/230, a tax collector) lists tax information but no agendas or meeting notices; the survey found no other site, and a web search for \"Harris County MUD 407 agenda\" found only other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_572
+  website: https://www.taxtech.net/DistrictDetail/687
+  checked_on: '2026-10-29'
+  no_agendas_online:
+    reason: "The Comptroller's self-reported page (taxtech.net/DistrictDetail/687, a tax collector) lists tax information but no agendas or meeting notices; the survey found no other site, and a web search for \"Harris County MUD 572 agenda\" found only other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_537
+  checked_on: '2026-10-29'
+  no_agendas_online:
+    reason: "The Comptroller's self-reported site (www.hcmud537.org) does not resolve in DNS (retried); the survey found no other site, and a web search for \"Harris County MUD 537 agenda\" found only other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_473
+  checked_on: '2026-10-29'
+  no_agendas_online:
+    reason: "The Comptroller's self-reported page (bamunitax.com/DistrictDetail/442, a tax collector) returns HTTP 503 (retried); the survey found no other site, and a web search for \"Harris County MUD 473 agenda\" found only other districts' pages."
+    checked_on: '2026-10-29'

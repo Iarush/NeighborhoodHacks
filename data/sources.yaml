@@ -2127,3 +2127,102 @@
     date_from: line_text
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+# --- M22 (sites the survey couldn't fetch; church ones reuse M18's config) ---
+- id: hcmud_49
+  body_id: hcmud_49
+  adapter: llm_extract
+  config:
+    index_url: http://www.hcmud49.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_290
+  body_id: hcmud_290
+  adapter: llm_extract
+  config:
+    index_url: http://www.hcmud290.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_106
+  body_id: hcmud_106
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud106.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_450
+  body_id: hcmud_450
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud450.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_415
+  body_id: hcmud_415
+  adapter: llm_extract
+  config:
+    index_url: http://www.hcmud415.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_412
+  body_id: hcmud_412
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud412.org/about/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_152
+  body_id: hcmud_152
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud152.com/meetings/
+    link_pattern: '^\d{4}-\d\d-\d\d(?!.*(?i:hearing))'
+    link_selector: 'h3:contains("Meeting Agendas") + h5 + p a'
+    match_link_text: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: crosby_mud
+  body_id: crosby_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.crosbymud.org/meetings/
+    link_pattern: "(?i)agenda$"
+    match_link_text: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: newport_mud
+  body_id: newport_mud
+  adapter: llm_extract
+  config:
+    index_url: https://newportmudtx.org/board-meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_361
+  body_id: hcmud_361
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud361.org/board-meetings
+    link_pattern: '^[A-Z][a-z]+ \d{1,2}, 20\d\d$'
+    match_link_text: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 100
