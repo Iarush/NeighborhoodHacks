@@ -1419,3 +1419,79 @@
 - id: hcmud_280
   website: https://districtdirectory.org/harris-county-municipal-utility-district-no-280/
   checked_on: '2026-10-29'
+- id: the_woodlands_road_ud_1
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"The Woodlands Road Utility District No. 1 agenda\" found only Woodlands Township agendas, news and legislative pages."
+    checked_on: '2026-10-29'
+- id: hcmud_213a
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 213A agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: spring_meadows_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Spring Meadows Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_528
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 528 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: cedar_bayou_park_ud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Cedar Bayou Park Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_213b
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 213B agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_373
+  website: https://districtdirectory.org/harris-county-municipal-utility-district-no-373/
+  checked_on: '2026-10-29'
+- id: hcwcid_156
+  website: https://www.clcwa.org/156
+  checked_on: '2026-10-29'
+- id: hcmud_568
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 568 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_514
+  no_agendas_online:
+    reason: "The Comptroller's districtdirectory.org page lists no meetings, the survey gave no site, and a web search for \"Harris County Municipal Utility District No. 514 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: luce_bayou_pud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Luce Bayou Public Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_517
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 517 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_516
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 516 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_515
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 515 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcwcid_160
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Water Control and Improvement District No. 160 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: pine_bough_pud
+  no_agendas_online:
+    reason: "The Comptroller's districtdirectory.org page lists no meetings, the survey gave no site, and a web search for \"Pine Bough Public Utility District agenda\" found only another state's district with a similar name."
+    checked_on: '2026-10-29'
+- id: hcmud_50
+  website: https://districtdirectory.org/harris-county-municipal-utility-district-no-50/
+  checked_on: '2026-10-29'
+- id: lago_bello_mud_1a
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Lago Bella Municipal Utility District No. 1A agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcfwsd_58
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Fresh Water Supply District No. 58 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_578
+  website: https://districtdirectory.org/harris-county-municipal-utility-district-no-578/
+  checked_on: '2026-10-29'
