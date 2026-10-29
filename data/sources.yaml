@@ -942,3 +942,195 @@
     date_from: filename
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+# MUD rollout bucket M13 (.plans/mud-buckets.md)
+- id: champions_mud
+  body_id: champions_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.championsmud.com/news
+    link_pattern: "(?i)board meeting$"                   # Triton site (M13): notice card links a notice page; the agenda PDF is on tmc.tritoncg.com
+    match_link_text: true
+    follow_notice_page: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_222
+  body_id: hcmud_222
+  adapter: llm_extract
+  config:
+    index_url: https://www.mud222.org/news
+    link_pattern: "(?i)board meeting$"                   # Triton site (M13): notice card links a notice page; the agenda PDF is on tmc.tritoncg.com
+    match_link_text: true
+    follow_notice_page: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: nwhcmud_16
+  body_id: nwhcmud_16
+  adapter: llm_extract
+  config:
+    index_url: https://www.nwhcmud16.com/news
+    link_pattern: "(?i)board meeting$"                   # Triton site (M13): notice card links a notice page; the agenda PDF is on tmc.tritoncg.com
+    match_link_text: true
+    follow_notice_page: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: whcmud_2
+  body_id: whcmud_2
+  adapter: llm_extract
+  config:
+    index_url: https://whcmud2.com/news
+    link_pattern: "(?i)board meeting$"                   # Triton site (M13): notice card links a notice page; the agenda PDF is on tmc.tritoncg.com
+    match_link_text: true
+    follow_notice_page: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: louetta_north_pud
+  body_id: louetta_north_pud
+  adapter: llm_extract
+  config:
+    index_url: https://www.louettanorthpud.com/news
+    link_pattern: "(?i)board meeting$"                   # Triton site (M13): notice card links a notice page; the agenda PDF is on tmc.tritoncg.com
+    match_link_text: true
+    follow_notice_page: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_82
+  body_id: hcmud_82
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud82.com/news
+    link_pattern: "(?i)board meeting$"                   # Triton site (M13): notice card links a notice page; the agenda PDF is on tmc.tritoncg.com
+    match_link_text: true
+    follow_notice_page: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: forest_hills_mud
+  body_id: forest_hills_mud
+  adapter: llm_extract
+  config:
+    index_url: https://foresthillsmud.com/news
+    link_pattern: "(?i)board meeting$"                   # Triton site (M13): notice card links a notice page; the agenda PDF is on tmc.tritoncg.com
+    match_link_text: true
+    follow_notice_page: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: woodcreek_mud
+  body_id: woodcreek_mud
+  adapter: llm_extract
+  config:
+    index_url: https://woodcreekmud.com/news
+    link_pattern: "(?i)board meeting$"                   # Triton site (M13): notice card links a notice page; the agenda PDF is on tmc.tritoncg.com
+    match_link_text: true
+    follow_notice_page: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: mission_bend_mud_2
+  body_id: mission_bend_mud_2
+  adapter: llm_extract
+  config:
+    index_url: https://www.missionbendmud2.com/news
+    link_pattern: "(?i)board meeting$"                   # Triton site (M13): notice card links a notice page; the agenda PDF is on tmc.tritoncg.com
+    match_link_text: true
+    follow_notice_page: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: kingsbridge_mud
+  body_id: kingsbridge_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.kingsbridgemud.com/news
+    link_pattern: "(?i)board meeting$"                   # Triton site (M13): notice card links a notice page; the agenda PDF is on tmc.tritoncg.com
+    match_link_text: true
+    follow_notice_page: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: lake_mud
+  body_id: lake_mud
+  adapter: llm_extract
+  config:
+    index_url: https://lakemud.com/news
+    link_pattern: "(?i)board meeting$"                   # Triton site (M13): notice card links a notice page; the agenda PDF is on tmc.tritoncg.com
+    match_link_text: true
+    follow_notice_page: true
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_159
+  body_id: hcwcid_159
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcwcid159.org/board-meetings/
+    link_pattern: "(?i)agenda[^/]*[.]pdf$"               # Gatsby site with documents on website-media-*.s3.amazonaws.com (M13)
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_284
+  body_id: hcmud_284
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud284.com/board-meetings/
+    link_pattern: "(?i)agenda[^/]*[.]pdf$"               # Gatsby site with documents on website-media-*.s3.amazonaws.com (M13)
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: bridgestone_mud
+  body_id: bridgestone_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.bridgestonemud.com/board-meetings/
+    link_pattern: "(?i)agenda[^/]*[.]pdf$"               # Gatsby site with documents on website-media-*.s3.amazonaws.com (M13)
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_109
+  body_id: hcwcid_109
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcwcid109.com/board-meetings/
+    link_pattern: "(?i)agenda[^/]*[.]pdf$"               # Gatsby site with documents on website-media-*.s3.amazonaws.com (M13)
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_158
+  body_id: hcwcid_158
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcwcid158.com/board-meetings/
+    link_pattern: "(?i)agenda[^/]*[.]pdf$"               # Gatsby site with documents on website-media-*.s3.amazonaws.com (M13)
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_490
+  body_id: hcmud_490
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud490.org/board-meetings/
+    link_pattern: "(?i)agenda[^/]*[.]pdf$"               # Gatsby site with documents on website-media-*.s3.amazonaws.com (M13)
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_504
+  body_id: hcmud_504
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud504.org/board-meetings/
+    link_pattern: "(?i)agenda[^/]*[.]pdf$"               # Gatsby site with documents on website-media-*.s3.amazonaws.com (M13)
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: mission_bend_mud_1
+  body_id: mission_bend_mud_1
+  adapter: llm_extract
+  config:
+    index_url: https://www.missionbendmud1.com/board-meetings/
+    link_pattern: "(?i)agenda[^/]*[.]pdf$"               # Gatsby site with documents on website-media-*.s3.amazonaws.com (M13)
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_8
+  body_id: hcmud_8
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud8.com/board-meetings/
+    link_pattern: "(?i)/static/.+(agenda|_ntc_)[^/]*[.]pdf$"   # Gatsby/S3 site (M13); since Oct 2026 agendas are posted as "10_28_26_NTC_….pdf" notices
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
