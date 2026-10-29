@@ -294,6 +294,9 @@
 - id: hcmud_183
   website: https://www.hcmud183.org/
   checked_on: '2026-10-28'
+  no_agendas_online:
+    reason: "hcmud183.org (Infinity Services) now leads to a districtdata.org page with only text and email alert sign-ups, no agendas or meeting notices; the Comptroller lists no website, and a web search for \"Harris County MUD 183 agenda\" found only other districts' pages."
+    checked_on: '2026-10-29'
 - id: hcmud_186
   website: https://hcmud186.com
   checked_on: '2026-10-28'
@@ -1114,6 +1117,9 @@
   no_agendas_online:
     reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Northwest Harris County Municipal Utility District No. 32 agenda\" found only legislative, aggregator or other districts' pages."
     checked_on: '2026-10-29'
+- id: nwhcmud_36
+  website: https://www.nwhcmud36.org/
+  checked_on: '2026-10-29'
 - id: spring_west_mud
   no_agendas_online:
     reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Spring West Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
@@ -1189,6 +1195,9 @@
   no_agendas_online:
     reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 115 agenda\" found only legislative, aggregator or other districts' pages."
     checked_on: '2026-10-29'
+- id: hcmud_208
+  website: https://www.harriscountymud208.com/
+  checked_on: '2026-10-29'
 - id: hcmud_205
   no_agendas_online:
     reason: "No district website. The survey and the Comptroller listing gave no site, guessed domains were dead, and a web search for \"Harris County Municipal Utility District No. 205 agenda\" found only legislative, aggregator or other districts' pages."

@@ -2226,3 +2226,185 @@
     match_link_text: true
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 100
+
+# --- M23 (Infinity Services Avada sites: an "Agendas" h3 section, or year tabs; agendas on Google Drive) ---
+- id: hcwcid_145
+  body_id: hcwcid_145
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcwcid145.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: cypress_hill_mud_1
+  body_id: cypress_hill_mud_1
+  adapter: llm_extract
+  config:
+    index_url: http://www.cypresshillmud1.com/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: '.fusion-tabs-1 .tab-pane a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_360
+  body_id: hcmud_360
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud360.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_364
+  body_id: hcmud_364
+  adapter: llm_extract
+  config:
+    index_url: https://www.mud364.com/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_163
+  body_id: hcmud_163
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud163.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_191
+  body_id: hcmud_191
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud191.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_186
+  body_id: hcmud_186
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud186.com/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_144
+  body_id: hcmud_144
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud144.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_69
+  body_id: hcmud_69
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud69.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_179
+  body_id: hcmud_179
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud179.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_250
+  body_id: hcmud_250
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud250.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: bilma_pud
+  body_id: bilma_pud
+  adapter: llm_extract
+  config:
+    index_url: https://www.bilmapud.com/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: '.fusion-tabs-1 .tab-pane a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: cypresswood_ud
+  body_id: cypresswood_ud
+  adapter: llm_extract
+  config:
+    index_url: https://www.districtdata.org/harris-county/cypresswood-utility-district/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'td:first-child a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: louetta_road_ud
+  body_id: louetta_road_ud
+  adapter: llm_extract
+  config:
+    index_url: https://www.louettarud.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_168
+  body_id: hcmud_168
+  adapter: llm_extract
+  config:
+    index_url: https://www.mud168.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: grant_road_pud
+  body_id: grant_road_pud
+  adapter: llm_extract
+  config:
+    index_url: https://www.grantroadpud.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_208
+  body_id: hcmud_208
+  adapter: llm_extract
+  config:
+    index_url: https://www.harriscountymud208.com/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_62
+  body_id: hcmud_62
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud62.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_5
+  body_id: hcmud_5
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud5.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: nwhcmud_36
+  body_id: nwhcmud_36
+  adapter: llm_extract
+  config:
+    index_url: https://www.nwhcmud36.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
