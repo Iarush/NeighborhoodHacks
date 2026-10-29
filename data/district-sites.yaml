@@ -1343,3 +1343,79 @@
   no_agendas_online:
     reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Fresh Water Supply District No. 48 agenda\" found only legislative, aggregator or other districts' pages."
     checked_on: '2026-10-29'
+- id: hcwcid_89
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Water Control and Improvement District No. 89 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_393
+  website: https://districtdirectory.org/harris-county-municipal-utility-district-no-393/
+  checked_on: '2026-10-29'
+- id: hcmud_90
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 90 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_122
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 122 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_589
+  no_agendas_online:
+    reason: "No district website. The survey gave no site; the Comptroller districtdirectory.org page lists no meetings or agendas, and a web search for \"Harris County Municipal Utility District No. 589 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: fbcwcid_2
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Fort Bend County Water Control and Improvement District No. 2 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: swhcmud_1
+  no_agendas_online:
+    reason: "No district website. The survey gave no site; the Comptroller districtdirectory.org page lists no meetings or agendas, and a web search for \"Southwest Harris County Municipal Utility District No. 1 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: whcmud_4
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"West Harris County Municipal Utility District No. 4 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: renn_road_mud
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Renn Road Municipal Utility District agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: whcmud_16
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"West Harris County Municipal Utility District No. 16 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: fbcmud_30
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Fort Bend County Municipal Utility District No. 30 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: harris_montgomery_counties_mud_386
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris-Montgomery Counties Municipal Utility District No. 386 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: northpointe_wcid
+  website: https://districtdirectory.org/northpointe-water-control-and-improvement-district/
+  checked_on: '2026-10-29'
+- id: malcomson_road_ud
+  website: https://districtdirectory.org/malcomson-road-utility-district/
+  checked_on: '2026-10-29'
+- id: hcmud_416
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 416 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: nwhcmud_15
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site; a web search for \"Northwest Harris County Municipal Utility District No. 15 agenda\" found only aggregator summaries (CivicIQ, Starbridge), no official agendas."
+    checked_on: '2026-10-29'
+- id: hcmud_282
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 282 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_281
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 281 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_583
+  no_agendas_online:
+    reason: "No district website. The survey and the Comptroller listing gave no site, and a web search for \"Harris County Municipal Utility District No. 583 agenda\" found only legislative, aggregator or other districts' pages."
+    checked_on: '2026-10-29'
+- id: hcmud_280
+  website: https://districtdirectory.org/harris-county-municipal-utility-district-no-280/
+  checked_on: '2026-10-29'
