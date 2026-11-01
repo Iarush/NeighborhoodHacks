@@ -34,7 +34,7 @@ import type { BodyFacts, DocumentWrite, IngestStore, ItemWrite, MeetingWrite, So
 export const MAX_DOCUMENT_RAW = 1_000_000;
 
 /** Adapters whose items are read from agenda PDFs by the AI (they go through review when they could text). */
-const AI_ADAPTERS: ReadonlySet<AdapterKind> = new Set(['llm_extract', 'primegov']);
+const AI_ADAPTERS: ReadonlySet<AdapterKind> = new Set(['llm_extract', 'primegov', 'diligent', 'boarddocs']);
 
 export type Tier = 'sms' | 'weekly' | 'timeline';
 export type IngestClassification = { item_type: string; tier: Tier; rule_fired?: string };

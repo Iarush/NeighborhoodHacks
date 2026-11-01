@@ -64,8 +64,8 @@ const DEFAULT_CHECK_EVERY_HOURS = 24;
 /** Rotation runs per call that may read a new agenda with the model. Skipped AI sources stay most overdue, so they go first next call. */
 const AI_READS_PER_CALL = 2;
 
-const AI: ReadonlySet<AdapterKind> = new Set(['primegov', 'llm_extract']);
-const SWEEP_ORDER: AdapterKind[] = ['legistar', 'manual', 'boardbook', 'primegov', 'llm_extract'];
+const AI: ReadonlySet<AdapterKind> = new Set(['primegov', 'llm_extract', 'diligent', 'boarddocs']);
+const SWEEP_ORDER: AdapterKind[] = ['legistar', 'manual', 'boardbook', 'primegov', 'diligent', 'boarddocs', 'llm_extract'];
 
 /** Stable shard for a source ID (FNV-1a), so a source always lands in the same matrix job. */
 export function shardOf(id: string, count: number): number {
@@ -105,7 +105,7 @@ export function pickResultsMeetings(cands: ResultsCandidate[], sources: SourceCo
   return cands
     .filter((c) => {
       const s = byId.get(c.source_id);
-      if (!s || s.adapter === 'boardbook' || s.adapter === 'manual') return false; // no results mode for these yet
+      if (!s || s.adapter === 'boardbook' || s.adapter === 'manual' || s.adapter === 'diligent' || s.adapter === 'boarddocs') return false; // no results mode for these yet
       const maxDays = typeof s.config.results_max_days === 'number' ? s.config.results_max_days : DEFAULT_RESULTS_MAX_DAYS;
       if (now.getTime() - Date.parse(c.date) > maxDays * DAY) return false;
       return !c.last_results_check || now.getTime() - Date.parse(c.last_results_check) >= RESULTS_RECHECK_MS;

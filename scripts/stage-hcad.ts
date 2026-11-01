@@ -46,7 +46,7 @@ async function main() {
   const year = arg('--source-year')
   const zipInput = arg('--zips')
   if (!sourceDir || !outputDir || !/^20\d{2}$/.test(year ?? '') || !zipInput) {
-    throw new Error('Usage: npm run stage:hcad -- --source-dir tmp/scratch/hcad/raw-YYYY --output tmp/scratch/hcad/<slice> --source-year YYYY --zips 77004,77433')
+    throw new Error('Usage: npm run stage:hcad -- --source-dir tmp/scratch/hcad/raw-YYYY --output tmp/scratch/hcad/<slice> --source-year YYYY --zips 77004,77433|all')
   }
   const source = realpathSync(inScratch(sourceDir))
   const outputRequest = inScratch(outputDir)
@@ -54,8 +54,11 @@ async function main() {
   mkdirSync(outputRequest, { recursive: true })
   const output = realpathSync(outputRequest)
   if (relative(root, output).startsWith('..')) throw new Error('Staging output must remain inside tmp/scratch/hcad/.')
-  const zips = new Set(zipInput.split(',').map((zip) => zip.trim()).filter((zip) => /^\d{5}$/.test(zip)))
-  if (!zips.size) throw new Error('Provide one or more five-digit ZIP codes.')
+  // "all" stages the whole county for the packed tables (district-coverage plan §2.1).
+  const zips: ReadonlySet<string> | 'all' = zipInput === 'all'
+    ? 'all'
+    : new Set(zipInput.split(',').map((zip) => zip.trim()).filter((zip) => /^\d{5}$/.test(zip)))
+  if (zips !== 'all' && !zips.size) throw new Error('Provide one or more five-digit ZIP codes, or all.')
   const accountFile = join(source, 'real_acct.txt')
   const jurisdictionFile = join(source, 'jur_value.txt')
   // Parcel points are optional: the lookup locates addresses with the Census point and uses a
@@ -71,7 +74,7 @@ async function main() {
     const account = String(feature.properties?.HCAD_NUM ?? '').trim()
     const zip = String(feature.properties?.Zip ?? '').replace(/\D/g, '').slice(0, 5)
     const coordinates = feature.geometry?.type === 'Point' ? feature.geometry.coordinates : null
-    if (!zips.has(zip) || !/^\d{6,25}$/.test(account) || !Array.isArray(coordinates) || coordinates.length < 2) continue
+    if ((zips !== 'all' && !zips.has(zip)) || !/^\d{6,25}$/.test(account) || !Array.isArray(coordinates) || coordinates.length < 2) continue
     const point: [number, number] = [Number(coordinates[0]), Number(coordinates[1])]
     if (!point.every(Number.isFinite) || point[0] < -96 || point[0] > -94.8 || point[1] < 29.4 || point[1] > 30.2) throw new Error('GIS centroid file contains invalid Harris County coordinates.')
     if (pointByAccount.has(account)) throw new Error('GIS centroid file contains duplicate HCAD accounts.')

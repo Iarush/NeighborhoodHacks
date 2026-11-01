@@ -7,6 +7,7 @@
   - **HISD Spanish agendas are deferred** (§13)
   - a **news "might come up" collector** is added (D26). This **overrides** the plan's "news is never a data source" rule, in a limited way: news gives headline links on body pages only, never items, alerts or stories.
 - v1.3 adds **news coverage perspectives** (D27–D35, Steps 11b and 11c). P2 now fetches article text from outlets with no paywall, stores it admin-only, and uses Gemini to match articles to agenda items. P3 turns these into the "What news coverage says" block on weekly stories. The full feature spec is `.plans/news-coverage-perspectives-spec.md`. News still never creates or edits items and never feeds classify, alerts, the review queue or story text.
+- v1.4 (Oct 29, 2026) adds the rule for **cancelled and postponed meetings** (§5.7). It uses the existing `Meeting.status` values, so the contract doesn't change.
 **Owner:** P2 (Agenda Data)
 **Reader:** a coding agent (Claude Code or similar) working in long, autonomous sessions.
 **Parent docs:** `Project_Plan.md` (what and why) and `Technical_Implementation_Plan.md` §6, §7, §16, §20, §22 (how). Where this spec and those docs disagree, **this spec wins**. Every disagreement is listed in §12 so P5 and P3 can update their docs.
@@ -429,6 +430,27 @@ Phase 1 ships `lib/ingest/classifyStub.ts`, which returns `{item_type: 'other', 
 - tax rates: `$0.3891 per $100` and `0.389100`, tagged as rate amounts with `{value, text, kind: 'rate'}`; add `kind` to `Amount`
 
 It returns the exact substring in `text`. Unit-test it with at least 15 real strings taken from the Legistar fixtures.
+
+### 5.7 Cancelled and postponed meetings (v1.4)
+
+Every adapter must set `Meeting.status` from what the source says, not only the Legistar adapter. `status` stays `'scheduled' | 'cancelled'`. There is no `postponed` value.
+
+- **What counts as cancelled:** the source says so for that meeting. That can be a Legistar `EventComment`, a BoardBook or PrimeGov status, or, for `discover` sources, words in the link text, the filename or the notice page's title.
+  - The default pattern is `(?i)\b(cancel+ed|cancel+ation|postponed|rescheduled|not be held)\b`.
+  - A `discover` source can override it with `meeting_status_from_text: { cancelled: "<regex>" }`, next to `meeting_type_from_text`.
+- **Agenda text never cancels a meeting.** "Cancel the contract" or "postpone the item" is an agenda item, not a meeting status. Only labels about the meeting itself count.
+- **Postponed or rescheduled meetings:** the original date gets `status = 'cancelled'`. The new date becomes a separate meeting only when the source posts it (its own agenda or notice). The scraper never guesses a new date from text like "moved to next week".
+- **A moved meeting is not cancelled.** When a source changes a meeting's date under the same `external_id`, that's a move:
+  - `content_hash` changes and `meetings.previous_date` is set (§5.5, Phase 2 step 3).
+  - P3's `meeting_moved` handles it.
+- **Cancelled after being scheduled:** upsert the same `external_id` with `status = 'cancelled'`. The hash change lets P3 alert anyone following an item on that meeting. Keep the meeting's items; don't delete them.
+- **A cancelled meeting is never its date's best agenda.** In `pickPerDate`, a document for the same date that isn't marked cancelled wins over one that is (for example, an amended agenda posted after a cancellation notice).
+- **Items:** items on a cancelled meeting aren't `upcoming`.
+  - They don't feed alerts, Speak up deadlines or the review queue.
+  - They never move to `awaiting_result`.
+  - If an item comes back on a later agenda, it's a new item on that meeting.
+- **Display (P1/P3):** show the meeting as "Cancelled" with the official link. Show "Postponed" instead only when the source's own label says postponed or rescheduled. Never give a reason unless the source states one.
+- **Tests:** each adapter's golden fixtures include one cancelled meeting, where the source has one. For example, Bridgestone MUD's `CANCELLED_Agenda_9_15_26_….pdf` is in `tests/golden/gatsby-s3/`.
 
 ---
 
@@ -1039,6 +1061,11 @@ The whole run is idempotent: running it twice changes nothing.
 20. **(v1.3) P5:** add `news_articles`, `news_article_items` and `item_perspectives` to §16; add `GEMINI_JUDGE_MODEL` to the env vars; extend the privacy page (article text stored for summarizing and deleted after 90 days); confirm the Gemini budget for the news calls (perspectives spec §10).
 21. **(v1.3) P4:** the Day 1 news watchlist also picks the demo item for the coverage block: a real upcoming item covered by 2+ outlets with no paywall.
 22. **(v1.3) AI-crawler blocks: decided (D36, literal).** Five of the six reachable outlets block AI crawlers by name, and HPM, Community Impact and ABC13 block `Google-Extended` (§2). The owner chose to follow only the `*` group or our own User-Agent's group, so every outlet is fetched. **P5 (pitch):** be ready for a judge question on this. The honest answer is that we follow each site's general robots rules, identify our bot by name, show only short quotes with links, and don't get around paywalls.
+23. **(v1.4) Cancelled and postponed meetings (§5.7), for P1, P3 and P4:**
+    - Every adapter now sets `status = 'cancelled'` from the source's own labels, including for postponed and rescheduled meetings.
+    - Items on a cancelled meeting aren't upcoming: no alerts, no Speak up deadline, no review queue.
+    - P3 shows the meeting as cancelled or postponed, with its official link.
+    - No contract change. The `discover` option `meeting_status_from_text` and the `pickPerDate` rule are P2 work, not yet built.
 
 ---
 

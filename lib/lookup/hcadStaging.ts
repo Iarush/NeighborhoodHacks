@@ -1,4 +1,5 @@
 import { normalizeHcadAddress } from './normalize'
+import { subdivisionFromLegalDescription } from './hoa'
 
 export type HcadParcelStage = {
   account: string
@@ -131,4 +132,29 @@ export function planHcadLoad(stage: HcadStageResult): HcadLoadPlan {
     sharedAddressCount: stage.ambiguousAddressCount,
     unmappedCodes: stage.unmappedCodes,
   }
+}
+
+/** One packed row per street address and code set (district-coverage plan §2.1). */
+export type HcadPackedRow = {
+  address: string
+  codes: string[]
+  subdivision: string | null
+}
+
+/**
+ * Packs a load plan for load_hcad_packed_batch: condo accounts that share an address and a code set
+ * become one row, and only the subdivision is kept from the legal description. Accounts and
+ * coordinates are dropped. The database hashes the address; its text is never stored.
+ */
+export function packHcadLoad(plan: HcadLoadPlan): HcadPackedRow[] {
+  const rows = new Map<string, HcadPackedRow>()
+  for (const parcel of plan.parcels) {
+    const codes = [...new Set(parcel.jurisdiction_codes)].sort()
+    const key = `${parcel.site_address_norm}|${codes.join(',')}`
+    const subdivision = subdivisionFromLegalDescription(parcel.legal_description)
+    const existing = rows.get(key)
+    if (!existing) rows.set(key, { address: parcel.site_address_norm, codes, subdivision })
+    else if (!existing.subdivision && subdivision) existing.subdivision = subdivision
+  }
+  return [...rows.values()]
 }

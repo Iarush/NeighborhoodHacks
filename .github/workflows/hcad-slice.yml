@@ -2,7 +2,8 @@
 # Downloads HCAD's public property files on GitHub's runner, keeps only the chosen ZIP codes and the
 # allowed columns (account, street address, legal description, tax codes; no owner, mail, value or
 # exemption fields), checks the slice, and saves it as a private artifact for 3 days.
-# Nothing is written to Supabase here: download the artifact and run npm run load:hcad.
+# Nothing is written to Supabase here: download the artifact and run npm run load:hcad (it loads the
+# packed tables; zips=all stages the whole county, district-coverage plan §2.1).
 name: HCAD lookup slice
 
 on:
@@ -13,7 +14,7 @@ on:
         required: true
         default: '2026'
       zips:
-        description: Comma-separated ZIP codes to keep
+        description: Comma-separated ZIP codes to keep, or all for the whole county
         required: true
         default: '77002,77003,77004,77006,77007,77008,77019,77021,77098,77433'
 
@@ -37,7 +38,7 @@ jobs:
       - name: Check the inputs
         run: |
           [[ "$YEAR" =~ ^20[0-9]{2}$ ]] || { echo "year must look like 2026"; exit 1; }
-          [[ "$ZIPS" =~ ^[0-9]{5}(,[0-9]{5})*$ ]] || { echo "zips must be comma-separated 5-digit codes"; exit 1; }
+          [[ "$ZIPS" == all || "$ZIPS" =~ ^[0-9]{5}(,[0-9]{5})*$ ]] || { echo "zips must be comma-separated 5-digit codes, or all"; exit 1; }
       - name: Download HCAD property files
         run: |
           mkdir -p "tmp/scratch/hcad/dl" "tmp/scratch/hcad/raw-$YEAR"

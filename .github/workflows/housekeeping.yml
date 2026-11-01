@@ -1,0 +1,26 @@
+# Daily database packing (district-coverage plan §2.3–2.4). Calls /api/cron/housekeeping, which
+# deletes old operational rows, archives items past the 8-month window and removes stored agenda
+# text past 24 months. Uses the repo secret CRON_SECRET and the repo variable APP_URL, like ingest.yml.
+name: Housekeeping
+
+on:
+  schedule:
+    - cron: '40 9 * * *' # UTC, 4:40 a.m. Houston time (CDT)
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: housekeeping
+  cancel-in-progress: false
+
+jobs:
+  housekeeping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - name: Call the housekeeping route
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          APP_URL: ${{ vars.APP_URL }}
+        run: curl -fsS --max-time 310 -H "Authorization: Bearer ${CRON_SECRET}" "${APP_URL}/api/cron/housekeeping"

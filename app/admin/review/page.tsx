@@ -4,6 +4,8 @@ import { getFormatter, getTranslations } from 'next-intl/server'
 import { Button } from '@/components/ui/button'
 import { requireAdmin } from '@/lib/adminAuth'
 import { db } from '@/lib/db'
+import { rawDb, rows as rpcResult } from '@/lib/db/raw'
+import { DATABASE_STOP_BYTES, STORAGE_STOP_BYTES, megabytes } from '@/lib/ingest/archive'
 import { approveItem, rejectItem } from './actions'
 
 // The review queue (agent-scraper-spec §9 P2-E, minimal version): pending items, soonest meeting
@@ -33,7 +35,7 @@ export default async function ReviewPage() {
   const t = await getTranslations('Admin.review')
   const format = await getFormatter()
 
-  const [items, sources] = await Promise.all([
+  const [items, sources, sizes] = await Promise.all([
     db()
       .from('items')
       .select('id, title, agenda_number, section, tier, rule_fired, source_quote, quote_verified, source_url, body_id, meeting:meetings!inner(date)')
@@ -41,6 +43,8 @@ export default async function ReviewPage() {
       .is('removed_at', null)
       .limit(200),
     db().from('sources').select('id, last_flags, last_error').order('id'),
+    // Database and Storage sizes (district-coverage plan §2.5). Missing until the migration is applied.
+    rpcResult<{ database_bytes: number; storage_bytes: number }>(rawDb().rpc('storage_sizes', {})).catch(() => []),
   ])
   if (items.error) throw new Error(items.error.message)
   if (sources.error) throw new Error(sources.error.message)
@@ -65,6 +69,16 @@ export default async function ReviewPage() {
         <h2 id="health" className="text-xl font-bold text-ink">
           {t('healthTitle')}
         </h2>
+        {sizes[0] ? (
+          <p className="mt-2">
+            {t('sizes', { database: megabytes(Number(sizes[0].database_bytes)), storage: megabytes(Number(sizes[0].storage_bytes)) })}
+            {(Number(sizes[0].database_bytes) > DATABASE_STOP_BYTES || Number(sizes[0].storage_bytes) > STORAGE_STOP_BYTES) && (
+              <strong className="ml-1 font-semibold text-brick">{t('sizeStop')}</strong>
+            )}
+          </p>
+        ) : (
+          <p className="mt-2 text-muted-foreground">{t('sizesMissing')}</p>
+        )}
         {unhealthy.length === 0 ? (
           <p className="mt-2">{t('healthy')}</p>
         ) : (

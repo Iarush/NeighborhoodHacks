@@ -33,6 +33,549 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-10-29: MUD bucket M24 (`credit:infinity services`): 14 sources, 1 no agendas online
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main
+- **What changed:**
+  - **Vendor:** owned by M23, so no adapter or golden fixtures here. M23's "Meeting Agendas" h3 config (`link_selector 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'`) fits 11 sites, all at `/meetings/`: shasla_pud, hcmud_154, bammel_ud, hcmud_86, nwhcmud_20, hcwcid_91, nwhcmud_22, hcwcid_136, northwest_park_mud, hcud_14, hcmud_153.
+  - **S&K Law pages (3):** hcmud_551, hcmud_44, mount_houston_road_mud self-report sklawdistrictdata.org pages; they use the Agendas column (`td:first-child a`, `date_from: link_text`), like northgate_crossing_road_ud. mount_houston_road_mud's gap is 75 days (Jul 9 to Sep 10, 2026); the rest are 45.
+  - **Sources (14)** in `data/sources.yaml` (M24 block at the end), all `llm_extract`, link-only.
+  - **No agendas online** (`data/district-sites.yaml`): post_wood_mud. Its districtdata.org page's newest agenda is dated 2023-08-07; the survey and the Comptroller give no other site, and one web search found nothing.
+  - `.plans/mud-buckets.md`: updated the M24 line's status.
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `.plans/mud-buckets.md`
+- **Contract changes:** None
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-08-20 --to 2026-12-31` for all 14: 2 to 5 agendas each, newest from Oct 2, 2026 (hcmud_86) to Nov 3, 2026 (hcud_14, nwhcmud_20, nwhcmud_22), all inside the gap. Where two PDFs share a date it is a regular agenda plus a tax-rate hearing agenda (checked on hcwcid_91), not minutes. No AI key, so no items extracted.
+  - `check-district-batch.ts` on W25, W26, W27, W29, W30, W35, W36, W38: all 15 M24 districts PASS; DB checks skipped (no keys).
+  - `npx vitest run`: 108 files, 1048 tests passed. `npm run typecheck`: no errors outside scraper P2/tmp. No TS files changed, so no eslint run needed.
+- **Open issues / next:**
+  - Seeding, ingest and live lookups are still blocked on keys.
+
+### 2026-10-29: MUD bucket M23 (`credit:infinity services`): 20 sources, 1 no agendas online
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main
+- **What changed:**
+  - **Vendor (owned by M23):** the Infinity Services sites (Avada WordPress) all list agendas as Google Drive links whose text is the date ("2026-10-19 (PDF)"). Minutes use the same link text, so each `discover` config uses `link_selector` to keep only the agendas. No dedicated adapter was needed. There are three layouts:
+    - a "Meeting Agendas" h3 section: `h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a` (17 sites)
+    - year tabs: `.fusion-tabs-1 .tab-pane a` (cypress_hill_mud_1, bilma_pud)
+    - an Agendas/Minutes table on districtdata.org: `td:first-child a` (cypresswood_ud)
+  - **Golden fixtures:** `tests/golden/infinity/` holds one page per layout (hcmud_360, cypress_hill_mud_1, cypresswood_ud) with a README. `tests/unit/mud-m23.test.ts` checks that agendas are found and minutes are left out. It doesn't use the network.
+  - **Sources (20)** (`data/sources.yaml`, M23 block at the end), all `llm_extract`, link-only, gap 45: hcwcid_145, cypress_hill_mud_1, hcmud_360, hcmud_364, hcmud_163, hcmud_191, hcmud_186, hcmud_144, hcmud_69, hcmud_179, hcmud_250, bilma_pud, cypresswood_ud, louetta_road_ud, hcmud_168, grant_road_pud, hcmud_208, hcmud_62, hcmud_5, nwhcmud_36.
+  - **No agendas online** (`data/district-sites.yaml`): hcmud_183. hcmud183.org now leads to a districtdata.org page that only has alert sign-ups. The Comptroller lists no site for it, and one web search found nothing.
+  - `data/district-sites.yaml`: added the sites for hcmud_208 (harriscountymud208.com) and nwhcmud_36 (nwhcmud36.org, not the Comptroller's nwchmud36.org). I checked that each page title names the district.
+  - **Catalog:** reran `scripts/build-district-catalog.ts --batch W10 --batch W25`, which updated `meeting_info_url` for those 2 districts in `data/bodies.districts.yaml`. The generator also moved `tax_set_by_body_id` to a different line in other W10/W25 entries; the values are unchanged.
+  - `.plans/mud-buckets.md`: updated the M23 line's status.
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `data/bodies.districts.yaml` (generated), `.plans/mud-buckets.md`, `tests/golden/infinity/*`, `tests/unit/mud-m23.test.ts`
+- **Contract changes:** None
+- **Checked:**
+  - Ran `npm run scrape -- --source <id> --from 2026-08-20 --to 2026-12-31` for all 20. Each found 2 to 6 agendas. The newest are dated Oct 1, 2026 (bilma_pud) to Nov 6, 2026 (hcmud_186), all within the 45-day gap. With no AI key, no items were extracted.
+  - hcmud_208 found nothing on the first run: its server sometimes sends an empty 200 response. It found 3 agendas on the retry.
+  - `check-district-batch.ts`, run on W1, W2, W3, W4, W5, W7, W8, W9, W10, W11, W12, W17, W22, W24, W25 and W27: all 21 M23 districts PASS. DB checks are blocked (no keys).
+  - `npx vitest run`: 108 files and 1048 tests passed. `npm run typecheck`: no errors outside scraper P2/tmp. eslint is clean on `tests/unit/mud-m23.test.ts`.
+- **Open issues / next:**
+  - hcmud_208's empty responses could show up as false gaps in health checks.
+  - The remaining Infinity Services districts are in M24 and M27. They should reuse these configs.
+  - Seeding, ingest and live lookups are still blocked on keys.
+
+### 2026-10-29: MUD bucket M22 (`unknown`): 10 sources, 5 no agendas online
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main
+- **What changed:**
+  - **Vendor check:** M22 owns no vendor. No adapter, fixtures or tests were added.
+  - **Sources (10)** (`data/sources.yaml`, M22 block at the end), all `llm_extract`:
+    - **M18's church config** (`/meetings/`, `link_pattern "(?i)^agenda$"`, `match_link_text`, `date_from: line_text`, gap 45): hcmud_49, hcmud_290, hcmud_106, hcmud_450 and hcmud_415. hcmud_412 uses the same config with index `/about/meetings/`.
+    - **hcmud_152:** link text is the date. `link_selector 'h3:contains("Meeting Agendas") + h5 + p a'` keeps the minutes out, and a lookahead in the pattern drops the tax-hearing notice.
+    - **crosby_mud:** the date is in the link text ("10-20-2026 Agenda").
+    - **newport_mud:** `date_from: filename`.
+    - **hcmud_361 (Wix):** the "Upcoming Meetings" date link points to the newest agenda, so it finds only that one. The gap is 100 days, because its 2026 meetings are up to 70 days apart.
+  - **No agendas online** (`data/district-sites.yaml`): hcmud_529, hcmud_407 and hcmud_572 have only taxtech.net tax pages. hcmud_537's site doesn't resolve in DNS. hcmud_473's bamunitax page returns 503 (retried). One web search was run per district and found nothing.
+  - `.plans/mud-buckets.md`: the M22 line's status was updated.
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `.plans/mud-buckets.md`
+- **Contract changes:** None
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-08-20 --to 2026-12-31` for all 10: each found 1–6 agendas. The newest are between Oct 9 (hcmud_361) and Nov 3 (crosby_mud), 2026, all within their gap.
+    - Agenda URLs were spot-checked against the pages for hcmud_152, hcmud_361 and newport_mud.
+    - With no AI key, no items were extracted.
+  - `check-district-batch.ts`, run on W38, W39, W40, W42, W43, W47, W48, W50 and W51 one at a time: all 15 M22 districts PASS. DB checks are blocked (no keys).
+  - `npx vitest run`: 107 files, 1045 tests passed. `npm run typecheck`: no errors outside scraper P2/tmp. No TS files were changed, so there was nothing to lint.
+- **Open issues / next:**
+  - Recheck hcmud_537 and hcmud_473 if their sites come back.
+  - hcmud_361 can only see the newest agenda.
+  - Seeding, ingest and live lookups are still blocked on keys.
+
+### 2026-10-29: MUD sources for bucket M21 (church theme)
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main
+- **What changed:** Added 14 of M21's 15 districts to `data/sources.yaml` (M21 block at the end). All are `llm_extract` with index `<site>/meetings/`, `date_from: line_text`, `match_link_text` and `expected_max_gap_days: 45`, reusing M18's config. 13 use `link_pattern "(?i)^agenda$"`. parkway_ud labels its links "PDF" and puts Minutes PDFs on the same line, so it uses `link_pattern "(?i)^pdf$"` with `link_selector 'a:has(+ a[href*="/meeting-agenda-"])'`. That selector picks the PDF link just before the agenda's "Screen Reader" link. No adapter or code changes.
+  - Sources: pine_village_pud, hcmud_120, bissonnet_mud, chelford_one_mud, hcmud_359, chelford_city_mud, north_mission_glen_mud, faulkey_gully_mud, hcmud_481, sagemeadow_ud, bcmud_28, parkway_ud, sheldon_road_mud, hcfwsd_51.
+  - Pending: hcwcid_50 has no source yet. Its `/meetings/` page returns 404 (retried). The home page's "Upcoming Meetings" widget lists a meeting on Nov 13, 2026, but its agenda links are commented out until the agenda is posted. Recheck after 2026-11-06 using the home page as the index. This district does post agendas, so it is not marked `no_agendas_online`.
+- **Files:** `data/sources.yaml`, `.plans/mud-buckets.md` (M21 line)
+- **Contract changes:** None
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-08-20 --to 2026-12-31` for all 14 sources: each found 2–5 agendas. The newest are between Oct 8 (hcmud_120) and Nov 4 (hcmud_359), 2026, so all are within 45 days. For parkway_ud, the agenda Drive links were checked against the page. The default window (upcoming meetings only) finds 0 for most of these. With no AI key, no items were extracted.
+  - `check-district-batch.ts --batch W41,W44,W45,W46,W49,W52,W53`: 14 M21 districts PASS. hcwcid_50 FAILs, as expected while it's pending. Database checks were skipped (no Supabase keys, blocked).
+  - `npx vitest run`: 107 files, 1045 tests passed. `npm run typecheck`: no errors outside scraper P2/tmp. No TS files were changed, so there was nothing to lint.
+- **Open issues / next:** Recheck hcwcid_50 after 2026-11-06. Its date is in an `<h5>` above the link, so the `date_from` setting needs testing then. Seeding, ingest and live lookups are still blocked on keys.
+
+### 2026-10-29: MUD bucket M20 (`theme:church`): 16 sources, 0 no agendas online
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Vendor check:** M20 owns no vendor. All 16 `theme:church` sites use M18's layout (dated lines with "Agenda | Minutes" links, agendas on Google Drive), so M18's `discover` config was reused. No adapter, fixtures or tests were added.
+  - **Sources (16)** (`data/sources.yaml`, M20 block at the end), all `llm_extract` with index `<site>/meetings/`, `link_pattern "(?i)^agenda$"`, `match_link_text`, `date_from: line_text`, `expected_max_gap_days: 45`: hcmud_119, fountainhead_mud, hcmud_180, hcwcid_133, cypress_klein_ud, nwhcmud_6, klein_pud, heatherloch_mud, nwhcmud_23, rankin_road_west_mud, north_forest_mud, hcmud_26, northwood_mud_1, hcud_15, intercontinental_crossing_mud, hcwcid_96.
+  - `.plans/mud-buckets.md`: the M20 line's status was updated.
+- **Contract changes:** None
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-08-20 --to 2026-12-31` for all 16: each found 1–6 agendas. The newest are between Oct 6 (intercontinental_crossing_mud) and Nov 9 (nwhcmud_6), 2026, all within 45 days. With no AI key, no items were extracted (`llm_unavailable` warning).
+  - `scripts/check-district-batch.ts --batch <W>` run one batch at a time for W22–W25, W28–W30, W35–W38: file checks pass for all 16 M20 districts. The FAILs in those batches are other buckets' districts that aren't done yet. Database checks are blocked (no Supabase/AI keys).
+  - `npx vitest run`: 107 files, 1045 tests passed. `npm run typecheck`: no errors outside scraper P2/tmp. No TS files were changed, so there was nothing to lint.
+- **Open issues / next:** Items need an ingest run with the AI key, which is blocked on the cost estimate (coverage plan §6). Note: `check-district-batch.ts` takes one `--batch` value per run (extra values are ignored).
+
+### 2026-10-29: MUD bucket M19 (`theme:church`): 16 sources, 0 no agendas online
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Vendor check:** M19 owns no vendor. All 16 `theme:church` sites use M18's layout (dated lines "2026-10-13 – Regular: Agenda | Minutes<br>", agendas on Google Drive), so M18's `discover` config was reused. No adapter, fixtures or tests were added.
+  - **Sources (16)** (`data/sources.yaml`, M19 block at the end), all `llm_extract` with `link_pattern "(?i)^agenda$"`, `match_link_text`, `date_from: line_text`, `expected_max_gap_days: 45`: hcmud_264, hcmud_341, rolling_fork_pud, hcmud_156, hcmud_261, hcud_6, weston_mud, hcmud_61, harris_fort_bend_counties_mud_3, dowdell_pud, hcmud_1, cypress_forest_pud, nwhcmud_19, hcmud_368, hcmud_367, hcwcid_114. Index is `<site>/meetings/`, except nwhcmud_19, which uses `/about-us-meetings/` (its `/meetings/` returns 404).
+  - `.plans/mud-buckets.md`: the M19 line's status was updated.
+- **Contract changes:** None
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-08-20 --to 2026-12-31` for all 16: each found 2–6 agendas. The newest are between Oct 8 (hcmud_261) and Nov 5 (hcmud_368), 2026, so all are within 45 days. With no AI key, no items were extracted.
+  - `scripts/check-district-batch.ts --batch W10 W11 W12 W14 W15 W16 W21 W22`: file checks pass for all 16 M19 districts. The 19 FAILs in those batches are other buckets' districts that aren't done yet. Database checks are blocked (no Supabase/AI keys).
+  - `npx vitest run`: 107 files, 1045 tests passed. `npm run typecheck`: no errors outside scraper P2/tmp. No TS files were changed, so there was nothing to lint.
+- **Open issues / next:** Items need an ingest run with the AI key, which is blocked on the cost estimate (coverage plan §6).
+
+### 2026-10-29: MUD bucket M18 (`theme:church`): 23 sources, 0 no agendas online
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Vendor check:** every M18 site (the 16 `theme:church` districts plus the 7 moved in from M15/M16, whose fetches now succeed) lists meetings as dated lines ("2026-10-28 – Regular: Agenda | Minutes<br>") with agendas on Google Drive. That is the ABHR layout already handled by `discover` with `date_from: line_text`, so no dedicated adapter was written; the vendor is covered by a config.
+  - **Sources (23)** (`data/sources.yaml`, M18 block at the end), all `llm_extract` with `link_pattern "(?i)^agenda$"`, `match_link_text`, `date_from: line_text`, `expected_max_gap_days: 45`: remington_mud_1, nwhcmud_10, hcmud_502, hcmud_102, hcmud_433, lake_forest_ud, rolling_creek_ud, hcmud_230, hcmud_70, cypress_creek_ud, hcmud_239, mills_road_mud, hcmud_18, hcmud_173, prestonwood_forest_ud, hcmud_162, hcmud_374, spencer_road_pud, chimney_hill_mud, hcmud_172, fry_road_mud, castlewood_mud, hcmud_150. Index is `<site>/meetings/`, except chimney_hill_mud (`/meetings/meeting-documents/`; its `/meetings/` page has only the "Upcoming Meetings" widget).
+  - **Golden fixtures:** `tests/golden/church/` (remington_mud_1 and chimney_hill_mud pages, README), test `tests/unit/mud-m18.test.ts`.
+  - No catalog rebuild needed (all 23 already in `bodies.districts.yaml`); `district-sites.yaml` unchanged.
+- **Files:** `data/sources.yaml`, `tests/golden/church/*`, `tests/unit/mud-m18.test.ts`, `.plans/mud-buckets.md` (line M18).
+- **Contract changes:** None.
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-09-14 --to 2026-12-31` for all 23: each found 1–6 agendas, newest between Oct 8 and Nov 6, 2026 (all within 45 days). No AI key, so no items extracted.
+  - `check-district-batch.ts --batch W1,W2,W3,W4,W5,W6,W7,W8,W10,W18,W27`: all 23 M18 districts PASS (other buckets' districts in those batches not counted). Database checks skipped (no Supabase keys, blocked).
+  - `npx vitest run`: 107 files, 1045 tests passed. `npm run typecheck`: no errors outside scraper P2/tmp. `npx eslint tests/unit/mud-m18.test.ts`: clean.
+- **Open issues / next:**
+  - With `date_from: line_text`, `meeting_type_from_text` only tests the link text ("Agenda"), so "Special:" on the line isn't detected and these meetings come out `regular` (same for hcmud_36 and the M17 sources). Fix would be in `discover.ts` (test the line for `line_text` as already done for `row_text`); not changed here since the file isn't this bucket's.
+  - M19–M22 (`theme:church`) can reuse this config.
+  - Seeding, ingest and live lookups blocked (no service-role or AI key). Drive downloads may hit "Quota exceeded" as in earlier buckets. Not committed.
+
+### 2026-10-29: MUD bucket M17 ("no site"): 6 sources, 10 no agendas online
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Sources (6)** (`data/sources.yaml`, M17 block at the end), all `llm_extract` with the hcmud_36 ABHR config (`link_pattern "(?i)^agenda$"`, `match_link_text`, `date_from: line_text`). No new adapter.
+    - districtdirectory.org pages: hcmud_544, harris_brazoria_counties_mud_509, bcmud_23 (brazoria-county path), hcmud_421, hcfwsd_47.
+    - kings_manor_mud: its own site https://www.kmmud.org/meetings/ (Off Cinco-built, same ABHR layout). Flagged for the coordinator, since M25 owns the Off Cinco credit.
+  - **No agendas online (10)** (`data/district-sites.yaml`): hcmud_410, kirkmont_mud, hcmud_148, hcmud_403, royalwood_mud, hcwcid_21, hcmud_53, hcfwsd_6, memorial_villages_wa, hcmud_541. The survey, the Comptroller and districtdirectory.org had nothing (hcmud_53's slug redirects to MUD 530's page). One web search each found only legislative, aggregator, city council or other districts' pages.
+  - **Catalog:** ran `scripts/build-district-catalog.ts --batch W55`, which added hcmud_541 and kings_manor_mud to `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml`.
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml` (generated), `.plans/mud-buckets.md` (line M17).
+- **Contract changes:** None.
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-08-20 --to 2026-12-31` for all 6 sources. Newest agendas: hcmud_544 and bcmud_23 Nov 4, hcfwsd_47 Oct 22, harris_brazoria_counties_mud_509 and hcmud_421 Oct 15, kings_manor_mud Oct 8, 2026. All links go to Google Drive. Items weren't extracted because there's no AI key.
+  - `check-district-batch.ts --batch W52,W53,W54,W55`: all 16 M17 districts PASS (other buckets' districts in these batches still fail). Database checks skipped (no Supabase keys, blocked).
+  - `npx vitest run`: 106 files, 1043 tests passed. `npm run typecheck`: no errors outside scraper P2/tmp. No TS files changed, so there was nothing to lint.
+- **Open issues / next:** Seeding, ingest and live lookups are blocked (no service-role or AI key). The Drive downloads may hit "Quota exceeded" as in M02/M05/M08. kings_manor_mud may move to M25 if the coordinator wants the Off Cinco sites together.
+
+### 2026-10-29: MUD bucket M16 ("unknown" sites): 6 sources, 4 no agendas online, 7 moved
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Retried all 17 sites.** 13 now load; 4 didn't. 7 of the ones that load belong to vendors owned by later buckets. The coordinator moved them, and no configs were written for them:
+    - M23 (Avada + Infinity Services): hcmud_62, hcmud_5, nwhcmud_36. nwhcmud_36's real site is nwhcmud36.org, not the Comptroller's nwchmud36.org.
+    - M18 (theme:church + Off Cinco): fry_road_mud, castlewood_mud, hcmud_150
+    - M25 (Off Cinco, theme "reach"): cornerstones_mud
+  - **Sources (6)** (`data/sources.yaml`, M16 block at the end), all existing adapters and configs, no new adapter:
+    - mayde_creek_mud: Texas Network layout (M11 config), link text "Agenda 10-26-26".
+    - west_park_mud, hcmud_304, hcmud_221: Gatsby layout (M11 config), `/static/…Agenda….pdf`, `date_from: filename`.
+    - timber_lane_ud: a one-off WordPress page; the href `wp-content/uploads/…/Timber-Lane-Agenda-10-8-26.pdf` is matched.
+    - hcmud_477: Tax Tech district 091 on `utilitytaxservice` with `site` (M15 config), link-only.
+  - **No agendas online (4)** (`data/district-sites.yaml`): hcmud_478 (its Tax Tech page, A40, lists no agendas; the scraper found none since 2024); hcwcid_132, nwhcmud_28 and northgate_crossing_mud_2 (the Comptroller-listed domains don't resolve: NXDOMAIN on every retry). One web search each found nothing.
+  - **Test change:** `tests/unit/mud-m15.test.ts` now expects hcmud_477 among the Tax Tech sources.
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `tests/unit/mud-m15.test.ts`, `.plans/mud-buckets.md` (lines M16, M18, M23, M25).
+- **Contract changes:** None.
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-08-20 --to 2026-12-31` for all 6 sources. Newest agendas: hcmud_304 Oct 29, hcmud_477 Oct 28, hcmud_221 Oct 27, mayde_creek_mud and west_park_mud Oct 26, timber_lane_ud Oct 8, 2026. Items weren't extracted because there's no AI key.
+  - `check-district-batch.ts --batch W17,W18,W25,W27,W28,W32,W34`: all 10 remaining M16 districts PASS. Database checks were skipped (no Supabase keys, blocked). The moved districts weren't checked.
+  - `npx vitest run`: 106 files, 1043 tests passed. `npm run typecheck`: no errors outside the known scraper P2/tmp ones. `npx eslint tests/unit/mud-m15.test.ts`: clean.
+- **Open issues / next:** Seeding, ingest, boundaries and live lookups are blocked (no service-role or AI key). The 7 moved districts go to M18, M23 and M25.
+
+### 2026-10-29: MUD bucket M15 ("unknown" sites): 5 sources, 1 no agendas online, 3 pending, 8 moved
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Retried all 17 sites.** 14 now load with curl; the survey's fetches had failed. 8 of them belong to vendors owned by later buckets. The coordinator moved them, and no configs were written for them:
+    - M18 (theme:church + Off Cinco): hcmud_374, spencer_road_pud, chimney_hill_mud, hcmud_172
+    - M23 (Avada + Infinity Services): hcmud_168, grant_road_pud, hcmud_208
+    - M25 (Avada + Off Cinco): hcmud_365
+  - **Sources (5):**
+    - hcmud_105 and hcmud_81 are hand-built sites with dated PDF filenames. hcmud_81 is HTTP only. Its STP and Cinco Regional agendas are left out, because those are joint bodies.
+    - cimarron_mud lists agendas on one page per month (`handler.php?month=10&year=2026`).
+    - hcmud_449 and hcmud_287 are on the Tax Tech portal (taxtech.net), the same Blazor portal as Utility Tax Service. They use M12's `utilitytaxservice` adapter with a new `site` option. Like M12's sources they're link-only: the PDF never reaches the scraper, so items are never extracted.
+  - **Adapter changes**, both additive and approved by the coordinator:
+    - `lib/adapters/utilitytaxservice.ts` (M12): an optional `site` (default: Utility Tax Service).
+    - `lib/adapters/discover.ts`: `{yyyy}`, `{m}` and `{mm}` placeholders in `index_url`. They're filled for this month and next in America/Chicago, and both pages are read. `DiscoverDeps` gains an optional `now`.
+  - **No agendas online (1):** hcmud_136 (`data/district-sites.yaml`). hcmud136.org shows only "Coming Soon"; a web search found nothing.
+  - **Pending (3), left out of sources.yaml:**
+    - hcmud_255 (Tax Tech district 108): the newest listed agenda is 9-10-2026, 49 days old, past the 45-day gap. Recheck after 2026-11-12 with the same config as hcmud_449.
+    - hcmud_539: bamunitax.com returned 503 on every retry. Recheck after 2026-11-05.
+    - horsepen_bayou_mud: a Vue app that reads a private JSON API, so it needs its own adapter. The coordinator agreed.
+  - **Golden fixtures:** `tests/golden/taxtech/` (districts 332, 187) and `tests/golden/cimarron/` (month page). Tests are in `tests/unit/mud-m15.test.ts`.
+  - **Test change:** the count check in `tests/unit/utilitytaxservice.test.ts` now skips sources that set `site`, so it still counts M12's 11 sources.
+- **Files:** `data/sources.yaml` (M15 block at the end), `data/district-sites.yaml`, `lib/adapters/discover.ts`, `lib/adapters/utilitytaxservice.ts`, `tests/unit/mud-m15.test.ts`, `tests/unit/utilitytaxservice.test.ts`, `tests/golden/taxtech/`, `tests/golden/cimarron/`, `.plans/mud-buckets.md` (lines M15, M18, M23, M25).
+- **Contract changes:** None to the shared contracts. Two adapter config options were added (`utilitytaxservice.site`, placeholders in discover's `index_url`). Existing configs behave the same.
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-08-20 --to 2026-12-31` for all 5 sources. Newest agendas: hcmud_105 Oct 27, hcmud_81 Oct 22, cimarron_mud Oct 21, hcmud_449 Oct 15 and hcmud_287 Oct 19, 2026. Items weren't extracted because there's no AI key.
+  - `check-district-batch.ts --batch W1,W3,W8,W12,W14,W15`: hcmud_105, hcmud_136, hcmud_449, cimarron_mud, hcmud_81 and hcmud_287 PASS. hcmud_255, hcmud_539 and horsepen_bayou_mud FAIL, as expected while they're pending. Database checks were skipped (no Supabase keys, blocked). The moved districts' batches weren't rechecked.
+  - `npx vitest run`: 106 files, 1043 tests passed.
+  - `tsc --noEmit`: no errors outside `scraper P2/` and `tmp/`.
+  - eslint is clean on the changed TypeScript files.
+- **Open issues / next:** recheck hcmud_255 and hcmud_539 on the dates above. horsepen_bayou_mud needs a JSON adapter. M18, M23 and M25 take the moved districts. Seeding, ingest and live lookups are still blocked (keys).
+
+### 2026-10-29: MUD bucket M14 (bli-tax, WordPress and Wix sites): 16 sources, 3 no agendas online, 1 pending
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **No vendor adapter.** The 9 `theme:citygov` sites are all Bob Leared (bli-tax.com) pages, so they reuse M12's `discover` config. The 6 `wordpress` and 5 `wix` sites share only a builder, not a layout, so each gets its own `discover` config (`llm_extract`).
+  - **Sources (16):**
+    - bli-tax: hcmud_155, hcmud_503, hcmud_439, hcmud_158, hcmud_147 and nehcmud_1. hcmud_355 is the same, with `expected_max_gap_days: 70` because it meets about every other month (Jan, Mar, Jul and Sep 2026).
+    - WordPress: hcmud_23, nottingham_country_mud, hcmud_132 and hcmud_390 (dated PDF links). interstate_mud has "2026-10-13: Agenda | Minutes" lines with agendas on Google Drive (`line_text`). oakmont_pud has an archive of dated meeting pages; each page links its agenda on Drive (`follow_notice_page`).
+    - Wix: hcmud_238, where only the newest date is a link. hcwcid_110 uses `link_selector "#comp-mi92mrnb a"`, because the Minutes list beside the agendas repeats the same dates. That Wix component ID changes if the site is re-edited; the health check will flag it. clear_lake_city_wa uses the new `row_text`.
+  - **`lib/adapters/discover.ts`** (owned by another bucket; the coordinator approved these additive changes):
+    - New `date_from: 'row_text'`: the nearest ancestor that has a date and no other link. It stops at the first ancestor with a date and returns nothing once it reaches a second link, so it never takes a neighboring row's date. With `row_text`, `meeting_type_from_text.special` is also tested against the row.
+    - `firstPdfLink` still prefers a `.pdf` link, and now falls back to the first `drive.google.com/file/d/…` link.
+  - **No agendas online (3), in `data/district-sites.yaml`:**
+    - hcmud_358 and harris_waller_counties_mud_4: their bli-tax pages list budgets, tax rates and audits but no agendas.
+    - hcwcid_74: the "Meeting Agendas" link goes to a SharePoint folder that requires a Microsoft sign-in.
+    - For each, the survey and Comptroller entry were checked, and one web search found nothing.
+  - **Pending (1): memorial_mud.** Agendas are posted in Wix blog posts, but the file widget's PDF URL isn't in the static HTML, so it needs an adapter that reads the rendered page. It's left out of `sources.yaml`, and the coordinator agreed.
+  - Golden fixtures are in `tests/golden/wix/` (clcwa, wcid110, hcmud238, with scripts and styles removed) and `tests/golden/wordpress-mud/` (Oakmont archive and meeting page, Interstate). Tests are in `tests/unit/mud-m14.test.ts`.
+- **Files:** `data/sources.yaml` (M14 block at the end), `data/district-sites.yaml` (3 `no_agendas_online`), `lib/adapters/discover.ts`, `tests/unit/mud-m14.test.ts`, `tests/golden/wix/`, `tests/golden/wordpress-mud/`, `.plans/mud-buckets.md` (M14 line).
+- **Contract changes:** `DiscoveryConfig.date_from` gains `row_text`, and `firstPdfLink` gains a Drive fallback. Both are additive, so existing configs behave the same.
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-08-20 --to 2026-12-31` for all 16. Each found agendas dated from Aug 20 to Nov 4, 2026, within each source's gap. Items weren't extracted because there's no AI key.
+  - `check-district-batch.ts --batch W8,W11,W14,W15,W16,W20,W21,W23,W37,W38,W41,W44,W45,W49,W53`: 19 of the 20 M14 districts PASS. memorial_mud FAILs, as expected while it's pending. Database checks were skipped (no Supabase keys, blocked).
+  - `npx vitest run`: 105 files, 1034 tests passed.
+  - `tsc --noEmit`: no errors outside `scraper P2/` and `tmp/`.
+  - eslint is clean on `lib/adapters/discover.ts` and `tests/unit/mud-m14.test.ts`.
+- **Open issues / next:**
+  - memorial_mud needs a rendered-page adapter.
+  - hcmud_23's Oct 8 meeting picks the "Supplemental" agenda over the original, which is kept as superseded.
+  - Seeding, ingest and live lookups are blocked until keys are available.
+
+### 2026-10-29: Scraper spec v1.4: rule for cancelled and postponed meetings
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:** added §5.7 to `.plans/agent-scraper-spec.md`, at Iarush's request. Every adapter sets `Meeting.status = 'cancelled'` from the source's own labels about the meeting (default pattern covers cancelled, postponed, rescheduled and "not be held"). Text inside an agenda never cancels a meeting. A postponed date counts as cancelled, and the new date is added only when the source posts it. A date change under the same `external_id` is still a move (`previous_date`, `meeting_moved`). Items on a cancelled meeting aren't upcoming. Also added the v1.4 version line and §12 item 23.
+- **Files:** `.plans/agent-scraper-spec.md`
+- **Contract changes:** none to types or schema (`status` stays `scheduled | cancelled`). Behavior rule for P1, P3 and P4 in §12 item 23.
+- **Checked:** spec text only; no code changed, nothing run.
+- **Open issues / next:** build the `discover` option `meeting_status_from_text` with its default pattern, and the `pickPerDate` rule that prefers documents not marked cancelled. Bridgestone MUD's Sep 15 "CANCELLED" agenda is still recorded as scheduled until then.
+
+### 2026-10-29: MUD bucket M13 (Triton and Gatsby/S3 sites): 20 sources, 0 no agendas online
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **No new adapter.** Both vendors in this bucket fit `discover` configs (`llm_extract`).
+    - Triton sites (11): champions_mud, hcmud_222, nwhcmud_16, whcmud_2, louetta_north_pud, hcmud_82, forest_hills_mud, woodcreek_mud, mission_bend_mud_2, kingsbridge_mud, lake_mud. Each meeting is a news card on `<site>/news` ("October 15, 2026 Board Meeting"), and its notice page links the agenda PDF on tmc.tritoncg.com. The config matches whcmud_10's: `match_link_text`, `follow_notice_page`.
+    - Gatsby sites with documents on website-media-*.s3.amazonaws.com (9): hcwcid_159, hcmud_284, bridgestone_mud, hcwcid_109, hcwcid_158, hcmud_490, hcmud_504, mission_bend_mud_1, hcmud_8. They use the Board Meetings page, `link_pattern "(?i)agenda[^/]*[.]pdf$"` and `date_from: filename`. Since October, hcmud_8 posts agendas as `10_28_26_NTC_….pdf` notices, so its pattern also matches `_ntc_`.
+  - Website rows for all 20 were already in `data/district-sites.yaml` from the survey, so that file is unchanged.
+  - Golden fixtures: `tests/golden/tritoncg/` (lake_mud and woodcreek_mud news and notice pages) and `tests/golden/gatsby-s3/` (hcwcid_109, hcmud_8). Network-free tests are in `tests/unit/mud-m13.test.ts`.
+- **Files:** `data/sources.yaml` (M13 block at the end), `tests/golden/tritoncg/`, `tests/golden/gatsby-s3/`, `tests/unit/mud-m13.test.ts`, `.plans/mud-buckets.md` (M13 line).
+- **Contract changes:** None.
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-09-14 --to 2026-12-31` for all 20. Each found agendas dated from Sep 9 to Nov 3, 2026, all within 45 days. Items weren't extracted because there's no AI key.
+  - `check-district-batch.ts` on W1, W3, W7, W9, W10, W15, W21, W22, W24, W27, W32, W36, W38, W44, W45, W48 and W54: all 20 M13 districts PASS. The remaining failures belong to other buckets. Database checks were skipped (no Supabase keys, blocked).
+  - `npx vitest run`: 104 files, 1027 tests passed.
+  - `tsc --noEmit`: no errors outside `scraper P2/` and `tmp/`.
+  - eslint is clean on `tests/unit/mud-m13.test.ts`.
+- **Open issues / next:** Bridgestone's Sep 15 agenda file is named "CANCELLED_…", but discover has no rule for cancelled meetings, so it's recorded as `regular`/`scheduled`. Seeding, ingest and live lookups are blocked until keys are available.
+
+### 2026-10-29: MUD bucket M12 (Utility Tax Service, Bob Leared Interests): 17 sources, 1 no agendas online, 2 pending
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **New adapter `utilitytaxservice` (link-only):** `lib/adapters/utilitytaxservice.ts`. Utility Tax Service lists each district's agendas at `www.utilitytaxservice.com/DistrictDocsList/<district>` in a "Meeting Notices and Agendas" card. Each link opens a Syncfusion Blazor PDF viewer (`PDFViewerEx/<district>/<docId>`). The PDF is sent only over the viewer's SignalR connection; about 10 other URL patterns were tried and none returns the file. So the adapter records the meeting date, special/cancelled from the label and the official viewer link, and never extracts items. Times stay 00:00. Every run warns `link_only: …`. Where a date has two copies, it uses the "Master" one over the "Internal" one. It skips month-only links and does nothing in results mode. The coordinator approved this approach.
+  - **Registration:** I added one line each to `lib/ingest/adapters.ts` (loader) and `scripts/scrape.ts` (`GOLDEN_DIR`, which `tsc` requires). I also added the value to `AdapterKindSchema` in `lib/adapters/types.ts`. Those files also hold other people's uncommitted edits, which I didn't touch. New additive migration `supabase/migrations/20261029010000_utilitytaxservice_adapter.sql` widens `sources_adapter_check`. **Not yet applied** (no keys).
+  - **Sources (17):**
+    - `utilitytaxservice` (11): hcmud_559, hcmud_458, hcmud_171, hcmud_457, hcmud_534, hcmud_532, hcmud_547, hcmud_406, hcmud_558, hcmud_518, hcmud_525. Config `district: "<code>"`.
+    - bli-tax.com WordPress pages (6, `llm_extract` discover): nwhcmud_9, hcwcid_113, hcmud_216, harris_waller_counties_mud_5, hcmud_321, spanish_cove_pud. The link text is only the month, so they use `link_pattern '(?i)/wp-content/uploads/.+agenda[^/]*[.]pdf$'` with `date_from: filename`.
+  - **No agendas online (1):** hcmud_535. Its bli-tax page lists only budget, tax-rate and audit PDFs, and one web search found only a TCEQ permit.
+  - **Pending recheck after 2026-11-12 (2, not in sources.yaml, not no_agendas_online):**
+    - hcmud_273: newest agenda Sep 8; it skipped some months.
+    - hcmud_459: newest dated agenda Sep 10; the October link text is only "October".
+    - Both work with `adapter: utilitytaxservice` (`district` "195" / "235"). Their configs are recorded in the bucket line.
+  - Website rows for the 19 other districts were added to `data/district-sites.yaml`, plus the no_agendas_online row for hcmud_535.
+  - Golden fixtures: `tests/golden/utilitytaxservice/` (hcmud_458, hcmud_171) and `tests/golden/bli-tax/` (hcmud_216, nwhcmud_9). Tests: `tests/unit/utilitytaxservice.test.ts` and `tests/unit/mud-m12.test.ts` (no network).
+- **Files:** `lib/adapters/utilitytaxservice.ts` (new), `lib/adapters/types.ts`, `lib/ingest/adapters.ts`, `scripts/scrape.ts` (one line each), `supabase/migrations/20261029010000_utilitytaxservice_adapter.sql` (new), `data/sources.yaml`, `data/district-sites.yaml`, `tests/golden/utilitytaxservice/`, `tests/golden/bli-tax/`, `tests/unit/utilitytaxservice.test.ts`, `tests/unit/mud-m12.test.ts`, `.plans/mud-buckets.md` (M12 line).
+- **Contract changes:**
+  - `AdapterKind` gains `utilitytaxservice`, and the `sources.adapter` check constraint is widened by the new migration.
+  - **Open, for P3 / owner:** meetings from this adapter never have items because the agenda was not read. `Meeting` has no field for that, so the UI can't yet say "agenda not read; open the official link". For now the only marker is the run warning. The coordinator decided not to change the `Meeting` contract in this bucket.
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-09-14 --to 2026-12-31` for all 19 districts with agendas. The 17 added sources found agendas dated Sep 15 to Nov 3, all within 45 days. hcmud_273 and hcmud_459 found 0 meetings in the window.
+  - No AI key, so no items were extracted.
+  - `check-district-batch.ts --batch W5,W9,W11,W14,W16,W17,W19,W32,W35,W36,W46,W47,W48,W50,W51`: 18 M12 districts PASS. hcmud_273 and hcmud_459 FAIL (pending, as above). Database checks were skipped (no Supabase keys, blocked).
+  - `npx vitest run`: 103 files, 1023 tests passed.
+  - `npm run typecheck`: errors only in scraper P2/tmp.
+  - eslint on the changed TS files: clean.
+- **Open issues / next:**
+  - Apply the migration before seeding these sources.
+  - Recheck hcmud_273 and hcmud_459 after Nov 12.
+  - Getting the agenda text from utilitytaxservice would need a Blazor SignalR client, which is out of scope.
+  - Seeding, ingest, boundaries and live lookups are still blocked (no service-role or AI key).
+
+### 2026-10-29: MUD bucket M11 (Gatsby, the Texas Network): 20 sources
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Sources (20, `llm_extract`):** every M11 district posts current agendas.
+    - Gatsby (16): hcmud_419, hcmud_493, hcmud_391, windfern_forest_ud, hcmud_286, whcmud_9, west_memorial_mud, hcwcid_119, hcmud_383, hcmud_401, cnp_ud, sunbelt_fwsd, hcud_16, hcmud_278, bcmud_18, hcwcid_70. Same layout as hcmud_489: `link_pattern "(?i)/static/.+agenda.*\\.pdf$"`, `date_from: filename`. Index is Board Meetings, or Documents on the older Gatsby 2 sites (whcmud_9, hcwcid_119, bcmud_18, hcwcid_70). The survey had missed 14 of them because it checked only the home page.
+    - The Texas Network (4): kleinwood_mud, hcwcid_99, hcwcid_1 (WordPress Avada, link text "10-22-26 Agenda": `link_pattern "(?i)agenda"`, `match_link_text`) and hcmud_109 (static page, link text is only the date, so `link_pattern "(?i)/(?!ajob)[^/]*agenda\\.pdf$"` on the href, skipping joint "AJOB-…" agendas).
+  - **Adapter:** none written. Both vendors fit `discover` configs (spec §4 step 1 allows this). Golden fixtures: `tests/golden/gatsby/` (hcmud_391, whcmud_9) and `tests/golden/texas-network/` (kleinwood_mud, hcwcid_99, hcmud_109), with network-free tests in `tests/unit/mud-m11.test.ts`.
+  - **Catalog:** ran `scripts/build-district-catalog.ts --batch W52` because hcwcid_70 (W52) was not in the catalog yet (517 bodies now). The builder also moved `tax_set_by_body_id` to the end of every water body's row (generated output; no values changed).
+  - Website rows for all 20 were already in `data/district-sites.yaml`; not changed.
+- **Files:** `data/sources.yaml`, `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml` (generated), `tests/golden/gatsby/`, `tests/golden/texas-network/`, `tests/unit/mud-m11.test.ts`, `.plans/mud-buckets.md` (M11 line).
+- **Contract changes:** None.
+- **Checked:** `npm run scrape -- --source <id> --from 2026-09-14 --to 2026-12-31` for all 20; newest agendas: hcmud_419 Oct 13, hcmud_493 Oct 27, hcmud_391 Oct 19, windfern_forest_ud Oct 20, hcmud_286 Nov 2, whcmud_9 Oct 26, west_memorial_mud Oct 26, hcwcid_119 Oct 12, hcmud_383 Oct 19, hcmud_401 Oct 19, cnp_ud Oct 15, sunbelt_fwsd Oct 15, hcud_16 Oct 9, hcmud_278 Oct 8, bcmud_18 Oct 27, hcwcid_70 Nov 4, kleinwood_mud Oct 22, hcwcid_99 Oct 20, hcmud_109 Oct 20, hcwcid_1 Oct 13. No AI key, so no items extracted. `check-district-batch.ts --batch W1,W2,W3,W7,W8,W17,W22,W23,W27,W29,W35,W38,W48,W49,W52`: all 20 M11 districts PASS (other buckets' districts in those batches still fail, as expected); database checks skipped (no Supabase keys, blocked). `npx vitest run`: 101 files, 1012 tests passed. `npm run typecheck`: errors only in scraper P2/tmp. `npx eslint tests/unit/mud-m11.test.ts`: clean.
+- **Open issues / next:** seeding, ingest, boundaries and live lookups stay blocked (no service-role or AI key). hcud_16 and hcmud_278's newest agendas are Oct 9 and Oct 8, so they reach the 45-day gap around Nov 22 if no new agenda is posted.
+
+### 2026-10-29: MUD bucket M10 (no site): 4 sources, 16 no agendas online
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Sources (4, `llm_extract`):** hcmud_373, hcmud_50 and hcmud_578 had no site in the survey, but their Comptroller districtdirectory.org pages use the ABHR layout ("2026-10-14 – Regular: Agenda | Minutes", Drive links). Config as hcmud_36 (`link_pattern "(?i)^agenda$"`, `match_link_text`, `date_from: line_text`). hcwcid_156 posts "<Month D YYYY> Meeting Notice" PDFs on the Clear Lake City Water Authority's Wix site (clcwa.org/156), found by the web search; config `link_pattern "(?i)meeting notice$"`, `match_link_text`, `expected_max_gap_days: 70` (meets about every other month). Wix belongs to M14, so no adapter was written; it can move to M14's adapter later. Website rows added to `data/district-sites.yaml`.
+  - **No agendas online (16):** the_woodlands_road_ud_1, hcmud_213a, spring_meadows_mud, hcmud_528, cedar_bayou_park_ud, hcmud_213b, hcmud_568, hcmud_514, luce_bayou_pud, hcmud_517, hcmud_516, hcmud_515, hcwcid_160, pine_bough_pud, lago_bello_mud_1a, hcfwsd_58. Survey and Comptroller gave no site (districtdirectory.org pages 404, or for hcmud_514 and pine_bough_pud list no meetings). One web search each found only legislative, aggregator or other districts' pages.
+  - **Catalog:** ran `scripts/build-district-catalog.ts --batch W1,…,W51` (507 bodies; generated files only).
+  - No adapter: M10 owns no vendor.
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml` (generated), `.plans/mud-buckets.md` (M10 line).
+- **Contract changes:** None.
+- **Checked:** `npm run scrape -- --source <id> --from 2026-09-14 --to 2026-12-31`: hcmud_373 (Oct 12, Nov 3), hcmud_50 (Oct 14), hcmud_578 (Oct 1, Oct 29), hcwcid_156 (Sep 17, Oct 15). No AI key, so no items extracted. hcmud_514 and pine_bough_pud scraped 0 meetings and were left out. `check-district-batch.ts --batch W47,W48,W49,W50,W51`: all 20 M10 districts PASS; database checks skipped (no Supabase keys, blocked). `npx vitest run`: 100 files, 1007 tests passed. `npm run typecheck`: 7 errors, all in scraper P2/tmp. No TS files changed, so ESLint had nothing to check.
+- **Open issues / next:** seeding, ingest, boundaries and live lookups stay blocked (no service-role or AI key). hcwcid_156 could move to the M14 Wix adapter once it exists.
+
+### 2026-10-29: MUD bucket M09 (no site): 4 sources, 16 no agendas online
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Sources (4, `llm_extract`):** hcmud_393, northpointe_wcid, malcomson_road_ud and hcmud_280 had no site in the survey, but their Comptroller districtdirectory.org pages use the ABHR layout ("2026-10-19 – Regular: Agenda | Minutes", Drive links). Config as hcmud_36 (`link_pattern "(?i)^agenda$"`, `match_link_text`, `date_from: line_text`). Website rows added to `data/district-sites.yaml`.
+  - **No agendas online (16):** hcwcid_89, hcmud_90, hcmud_122, hcmud_589, fbcwcid_2, swhcmud_1, whcmud_4, renn_road_mud, whcmud_16, fbcmud_30, harris_montgomery_counties_mud_386, hcmud_416, nwhcmud_15, hcmud_282, hcmud_281, hcmud_583. Survey and Comptroller gave no site (districtdirectory.org pages 404, or for hcmud_589 and swhcmud_1 list no meetings); one web search each found only legislative, aggregator or other districts' pages (nwhcmud_15: aggregator summaries only).
+  - **Catalog:** ran `scripts/build-district-catalog.ts --batch W1,…,W47` (422 → 478 bodies; generated files only).
+  - No adapter: M09 owns no vendor.
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml` (generated), `.plans/mud-buckets.md` (M09 line).
+- **Contract changes:** None.
+- **Checked:** `npm run scrape -- --source <id> --from 2026-09-14 --to 2026-12-31`: hcmud_393 (2 meetings: Sep 28, Oct 26), northpointe_wcid (2: Sep 16, Oct 21), malcomson_road_ud (2: Sep 21, Oct 19), hcmud_280 (1: Oct 7); no AI key, so no items extracted. `check-district-batch.ts --batch W41,W42,W45,W46,W47`: all 20 M09 districts PASS; other failures belong to other buckets; database checks skipped (no Supabase keys, blocked). `npx vitest run`: 100 files, 1007 tests passed. `npm run typecheck`: 7 errors, all in scraper P2/tmp. No TS files changed, so ESLint had nothing to check.
+- **Open issues / next:** seeding, ingest, boundaries and live lookups stay blocked (no service-role or AI key).
+
+### 2026-10-29: MUD bucket M08 (no site): 7 sources, 11 no agendas online, 2 pending recheck
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Sources (7, `llm_extract`):** fallbrook_ud, hcmud_182, hcmud_344, hcmud_494, intercontinental_mud, north_belt_ud and hcmud_231 had no site in the survey, but have districtdirectory.org pages on the ABHR layout ("2026-10-19 – Regular: Agenda | Minutes", Drive links). Config as hcmud_36 (`link_pattern "(?i)^agenda$"`, `match_link_text`, `date_from: line_text`). Website rows added to `data/district-sites.yaml`.
+  - **Pending recheck after 2026-10-30 (2):** hunters_glen_mud (hgmud.org/meetings/) and hcmud_46 (hcmud46.org/meetings/) use the same layout with agendas dated Oct 19 and Oct 14, but every Drive download answered "Quota exceeded" on two tries, so the scrape found 0 meetings. Left out of `sources.yaml`; website rows added; working config in the M08 bucket line.
+  - **No agendas online (11):** harris_waller_counties_mud_7, hcmud_33, richey_road_mud, north_green_mud, hcmud_11, hcmud_461, pine_forest_mud, trail_of_the_lakes_mud, hcmud_342, el_dorado_ud, hcfwsd_48. Survey and Comptroller gave no site (hcmud_461's districtdirectory.org page lists no meetings); one web search each found only legislative, aggregator or other districts' pages (El Dorado UD: only a homeowners' page with the meeting schedule).
+  - **Catalog:** ran `scripts/build-district-catalog.ts --batch W1,…,W40` (402 → 422 bodies; generated files only).
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml` (generated), `.plans/mud-buckets.md` (M08 line).
+- **Contract changes:** None.
+- **Checked:** `npm run scrape -- --source <id> --from 2026-09-14 --to 2026-12-31`: fallbrook_ud (Sep 21, Oct 19), hcmud_182 (Sep 16, Oct 21), hcmud_344 (Sep 17, Oct 15), hcmud_494 (Oct 13), intercontinental_mud (Sep 17, Oct 9), north_belt_ud (Sep 14, Sep 17, Oct 8, Oct 12, Oct 15), hcmud_231 (Sep 16, Oct 21); no AI key, so no items extracted. `check-district-batch.ts --batch W34,…,W40`: 18 of 20 M08 districts PASS; hunters_glen_mud and hcmud_46 FAIL (no source yet, pending recheck); other failures belong to other buckets; database checks skipped (no Supabase keys, blocked). `npx vitest run`: 100 files, 1007 tests passed. `npm run typecheck`: 7 errors, all in scraper P2/tmp. No TS files changed, so ESLint had nothing to check.
+- **Open issues / next:** recheck hunters_glen_mud and hcmud_46 once the Drive quota resets; seeding, ingest, boundaries and live lookups stay blocked (no service-role or AI key).
+
+### 2026-10-29: MUD bucket M07 (no site): 6 sources, 14 no agendas online
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Sources (6, `llm_extract`):** hcwcid_164, hcmud_491, hcmud_434, hcmud_576, hcmud_570c and hcmud_565 had no site in the survey, but their Comptroller districtdirectory.org pages use the ABHR layout ("2026-10-13 – Regular: Agenda | Minutes", Drive links). Config as hcmud_36 (`link_pattern "(?i)^agenda$"`, `match_link_text`, `date_from: line_text`). Website rows added to `data/district-sites.yaml`.
+  - **No agendas online (14):** hcmud_597, hcmud_377, hcmud_405, hcmud_478b, hcmud_600, hcmud_441, hcmud_380, hcmud_582, hcmud_570a, hcmud_588, hcmud_609, bauer_landing_wcid, harris_waller_counties_mud_10, northwest_frwy_mud. Guessed .com/.org domains don't resolve (northwestfreewaymud.com answers but has no agenda or meeting links); the districtdirectory.org pages are 404, or list no meetings (570a, 588, 609); one web search each found only legislative, aggregator or other districts' pages.
+  - **Catalog:** ran `scripts/build-district-catalog.ts --batch W1,…,W34` (372 → 402 bodies; generated files only, no earlier body removed).
+  - No adapter: M07 owns no vendor.
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml` (generated), `.plans/mud-buckets.md` (M07 line).
+- **Contract changes:** None.
+- **Checked:** `npm run scrape -- --source <id> --from 2026-09-14 --to 2026-12-31`: hcwcid_164 (Oct 13), hcmud_491 (Sep 15, Oct 20), hcmud_434 (Sep 23, Oct 28), hcmud_576 (Oct 13), hcmud_570c (Oct 8), hcmud_565 (Sep 17, Oct 15); no AI key, so no items extracted. `check-district-batch.ts --batch W32,W33,W34`: all 20 M07 districts PASS; database checks skipped (no Supabase keys, blocked). `npx vitest run`: 100 files, 1007 tests passed. `npm run typecheck`: 7 errors, all in scraper P2/tmp. No TS files changed, so ESLint had nothing to check.
+- **Open issues / next:** Seeding, ingest and boundaries are blocked on keys.
+
+### 2026-10-29: MUD bucket M06 (no site): 7 sources, 13 no agendas online
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Sources (7, `llm_extract`):** the survey had no site for any M06 district, but guessed domains and the Comptroller's districtdirectory.org pages found 7. hcmud_200, hcmud_43, hcmud_249 and hcwcid_92 use the hcmud_489 Gatsby layout (`/board-meetings/`, `date_from: filename`). hcmud_36 and hcmud_399 use the ABHR layout on districtdirectory.org (`date_from: line_text`); hcmud36.com stops at Feb 2026. hcmud_189 links Drive agendas titled "Agenda 9/14/2026" on hcmud189.org. Website rows added to `data/district-sites.yaml`.
+  - **Adapter change (coordinator approved, additive):** `parseDocDate` in `lib/adapters/discover.ts` now reads compact 8-digit dates, 20xx years only: YYYYMMDD first, then MMDDYYYY. hcwcid_92 names its files `11022026_AGENDA_…`. Tests added to `tests/unit/discover.test.ts`, including the YYYYMMDD-first case and invalid dates.
+  - **No agendas online (13):** hcmud_316, hcmud_48, hcmud_96, hcmud_115, hcmud_205, hcmud_215, hcmud_16, hcmud_58, ponderosa_forest_ud, tattor_road_mud, westador_mud, north_park_pud, nwhcmud_21. For each, the survey and Comptroller gave no site with agendas, guessed domains were dead or parked (hcmud58.org is a parked "/lander" page), and one web search found only other districts', legislative or aggregator pages. hcmud_48's districtdirectory.org page lists no meetings.
+  - **Catalog:** ran `scripts/build-district-catalog.ts --batch W18,…,W31` (345 → 372 bodies; generated files only).
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `lib/adapters/discover.ts`, `tests/unit/discover.test.ts`, `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml` (generated), `.plans/mud-buckets.md` (M06 line).
+- **Contract changes:** None. `parseDocDate` accepts one more date form; nothing it parsed before has changed.
+- **Checked:** `npm run scrape -- --source <id> --from 2026-09-14 --to 2026-12-31`: hcmud_200 (Sep 15, Oct 20), hcmud_43 (Sep 17, Oct 13, Oct 22), hcmud_249 (Oct 8), hcwcid_92 (Oct 5, Nov 2), hcmud_36 (Oct 8), hcmud_399 (Sep 15, Oct 20), hcmud_189 (Sep 14). There's no AI key, so no items were extracted. Without `--from`, the scrape finds 0 meetings (the default window is future-only). `check-district-batch.ts --batch W25,…,W31`: all 20 M06 districts PASS; the other failures belong to other buckets; database checks skipped (no Supabase keys, blocked). `npx vitest run`: 100 files, 1007 tests passed. `npm run typecheck`: no errors outside scraper P2/tmp. ESLint is clean on the 2 changed TS files.
+- **Open issues / next:** (1) hcmud_189's Sep 14 agenda is at the edge of the 45-day window. Its upcoming Nov 2 agenda is linked as "Agenda (PDF)" with the date on a separate line, so it isn't matched; recheck after Nov 2, 2026. (2) hcmud_399's website row points at its districtdirectory.org page, because hcmud399.org is parked. (3) Seeding, ingest and boundaries are blocked on keys.
+
+### 2026-10-29: MUD bucket M05 (no site): 16 no agendas online, 4 pending recheck
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main
+- **What changed:** Checked all 20 M05 districts (`no site` vendor, which M02 owns, so this bucket has no adapter). The survey and Comptroller gave no site for any of them, and one web search each was run. 16 have no agendas online and got `no_agendas_online` in `data/district-sites.yaml`. Four have sites and got `website` rows there, but none is in `data/sources.yaml`: Cinco MUD 3, 6 and 9 share cincomuds.org (ABHR Drive layout, newest agendas Oct 15, Oct 15 and Oct 21, 2026), but every Drive download answered "Quota exceeded", so the scrape found 0 meetings. Baker Road MUD's operator page (h2oinnovation.com) links agendas on h2ocustomers.com, but the newest is May 29, 2026, past the 45-day window. Re-ran `scripts/build-district-catalog.ts --batch W18,W19,W20,W22,W23,W24,W25` (315 → 345 bodies; generated files only; every body still has `tax_set_by_body_id`, and the large diff is only git's line alignment).
+- **Files:** `data/district-sites.yaml`, `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml` (generated), `.plans/mud-buckets.md` (M05 line).
+- **Contract changes:** None.
+- **Checked:** `npm run scrape -- --source cinco_mud_{3,6,9}` with temporary entries, which were then removed: 0 meetings each (Drive quota; parseIndex on the live pages returns dated agendas up to 2026-10-15/10-21, and a direct `uc?export=download` fetch returned the "Quota exceeded" page, retried once later with the same result). `check-district-batch.ts --batch W18,W19,W20,W22,W23,W24,W25`: all 16 `no_agendas_online` districts PASS; the 4 pending ones fail only on "no source", as expected; database checks skipped (no Supabase keys, blocked). `npx vitest run`: 100 files, 1002 tests passed. `npm run typecheck`: no errors outside scraper P2/tmp. ESLint: no TS/JS files changed.
+- **Open issues / next:** (1) Retry the Cinco 3/6/9 scrapes when Drive's quota clears, then add them to `data/sources.yaml` with the config in the M05 bucket line. (2) Recheck Baker Road MUD after Dec 1, 2026. (3) The Comptroller step relies on the survey's result (no site); it wasn't re-queried by hand. (4) Other buckets' districts in W18–W25 still fail the batch check; that's theirs.
+
+### 2026-10-29: MUD rollout bucket M04 ("no site"): 1 source, 19 no agendas online
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Source (1, `llm_extract`, existing discover options only, no adapter changes):** westlake_mud_1. The survey had no site, but the guessed domain westlakemud1.com is the district's site (Gatsby layout as hcmud_489; it cites the Harris County Appraisal District). Its `/documents` page lists agenda PDFs whose names mix "AGENDA_2026_08_24_…" and "Agenda_September_28_2026_…"; both parse with `date_from: filename`. Website row added to `data/district-sites.yaml`.
+  - **No agendas online (19):** hcmud_25, hcmud_185, hcmud_437, fenske_road_mud, mason_creek_ud, addicks_ud, hcmud_432, hcmud_536, hcmud_569, hcmud_65, whcmud_7, willow_fork_drainage, hcmud_533, hcmud_63, hcmud_465, hcmud_492, katy_west_mud, whcmud_5, green_trails_mud. Survey and Comptroller listing gave no site; guessed domains (.com/.org/.net) were dead or parked (hcmud25.org and hcmud185.org are "/lander" parked pages); one web search each found only legislative, aggregator, City of Katy council or other districts' pages. fenske_road_mud was created by HB 5666 (2025) and may be too new to post. mason_creek_ud has third-party aggregator summaries of 2026 meetings but no official agenda page was found.
+  - **Catalog:** ran `scripts/build-district-catalog.ts --batch W8,…,W18` (271 → 315 bodies; generated files only).
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml` (generated), `.plans/mud-buckets.md` (M04 line).
+- **Contract changes:** None.
+- **Checked:** `npm run scrape -- --source westlake_mud_1 --from 2026-09-14 --to 2026-12-31`: 2 meetings (Sep 28, Oct 26 amended agenda) within the 45-day gap; no AI key, so no items. `check-district-batch.ts` W12–W18: all 20 M04 districts pass the file checks; other failures are other buckets' districts; DB checks blocked (no Supabase keys). `npx vitest run` 100 files / 1002 tests pass. `tsc --noEmit` has no errors outside `scraper P2/tmp`. ESLint: no TS files changed.
+- **Open issues / next:** mason_creek_ud seems active (aggregator summaries) and may be worth a recheck by hand; seeding, ingest and boundaries blocked on keys.
+
+### 2026-10-29: MUD rollout bucket M03 ("no site"): 0 sources, 19 no agendas online, 1 pending
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **No agendas online (19):** hcmud_378, hcmud_396, hcmud_276, whcmud_1, hcwcid_116, whcmud_14, nwhcmud_29, hcmud_379, hcmud_166, hcmud_371, hcmud_376, hcmud_257, hcmud_389, hcmud_220, hcmud_170, hcmud_351, tower_oaks_plaza_mud, white_oak_bend_mud, camfield_mud. Survey and Comptroller listing gave no site; guessed domains (.com/.org/.net/.gov, with and without www) were dead or parked (whcmud1.org, hcmud220.org, hcmud170.org, wobmud.org are "/lander" parked pages); one web search each found only legislative, aggregator or other districts' pages.
+  - **Pending recheck (1):** hcmud_322. A Sept 11, 2026 myneighborhoodnews.com item says agendas are posted on the district website (meets 2:30 p.m., fourth Monday). hcmud322.org answers 403 to plain fetches, so the site could not be confirmed and no source or website row was added.
+  - **Catalog:** ran `scripts/build-district-catalog.ts --batch W8,W9,W10,W11,W12` (221 → 271 bodies; generated files only).
+  - **Test:** `tests/unit/news-match.test.ts` rollout-scale test now builds its terms from the synthetic catalog only (coordinator approved), because the real hcmud_25 added by the W12 catalog build matched the test's "Harris County MUD 25" text.
+- **Files:** `data/district-sites.yaml`, `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml` (generated), `tests/unit/news-match.test.ts`, `.plans/mud-buckets.md` (M03 line).
+- **Contract changes:** None.
+- **Checked:** no scrapes run (no district site found). `check-district-batch.ts` W6–W12: all M03 districts pass the file checks except hcmud_322 (pending); other failures are other buckets' districts; DB checks blocked (no Supabase keys). `npx vitest run` 100 files / 1002 tests pass. `tsc --noEmit` has no errors outside `scraper P2/tmp`. ESLint clean on `tests/unit/news-match.test.ts`.
+- **Open issues / next:** hcmud_322 needs its site checked by hand (403 to automated fetches); seeding, ingest and boundaries blocked on keys.
+
+### 2026-10-29: MUD rollout bucket M02 ("no site"): 3 sources, 16 no agendas online
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Sources (3, all `llm_extract`, existing discover options only, no adapter changes):** whcmud_10 (Triton site; `/news` notice cards "October 15, 2026 Regular Board Meeting" with `match_link_text` + `follow_notice_page` to the PDF on tmc.tritoncg.com; the Triton adapter itself belongs to M13, and the documents page's embedded JSON can't be used because its URLs contain raw spaces), hcmud_370 and hcmud_418 (Gatsby layout as hcmud_489).
+  - **Websites found** by guessing domains for these "no site" districts: whcmud10tx.gov, hcmud370.com, hcmud418.com, barkercypressmud.org (added to `data/district-sites.yaml`).
+  - **No agendas online (16):** hcwcid_157, hcwcid_155, nwhcmud_12, hcmud_157, whcmud_11, langham_creek_ud, whcmud_21, hcmud_354, hcmud_196, cy_champ_pud, whcmud_15, jackrabbit_road_pud, hcmud_375, hcmud_397, reid_road_mud_1, reid_road_mud_2. Survey and Comptroller listing gave no site, guessed domains were dead (nwhcmud12.org, langhamcreek.com, cychamp.org are parked), and one web search each found only aggregator or legislative pages.
+  - **Pending recheck (1), not in sources.yaml:** barker_cypress_mud: ABHR Drive layout (config as hcmud_24, `date_from: line_text`), Oct 12 agenda listed, but Drive answered "Quota exceeded" on download. Retry the scrape.
+  - **Catalog:** `build-district-catalog.ts --batch W1,W2,W3,W4,W5,W6` re-run: 221 bodies / 222 codes (30 added for W4–W6, none removed). The generator now writes `tax_set_by_body_id` after `sms_eligible`, so existing bodies show moved lines in the diff.
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml` (generated), `.plans/mud-buckets.md` (M02 line).
+- **Contract changes:** None.
+- **Checked:** `npm run scrape -- --source <id> --from 2026-09-14 --to 2026-12-31`: whcmud_10 (Oct 15), hcmud_370 (Sep 14, Oct 12), hcmud_418 (Sep 22, Oct 27) found agendas in the 45-day gap; no AI key, so no items. `check-district-batch.ts` W1–W6: all M02 districts pass the file checks except barker_cypress_mud (pending); the other failures are other buckets' districts; DB checks blocked (no Supabase keys). `npx vitest run` 100 files / 1002 tests pass. `tsc --noEmit` has no errors outside `scraper P2/tmp`. ESLint: no TS files changed.
+- **Open issues / next:** retry barker_cypress_mud when the Drive quota resets; seeding, ingest and boundaries are blocked on keys.
+
+### 2026-10-29 — News term matching scales to the rollout catalog (draft, Orca task task_a7f06829b6fa)
+
+**Why:** with the district catalog at ~199 term sets, `tests/unit/news-match.test.ts` and `news-collect.test.ts` hit vitest's 5 s timeout in the full run. Profiling: `loadTerms()` ~115 ms, but `matchBodies()` ~80 ms per text, because `hasPhrase` compiled a new Unicode regex for every alias on every call.
+
+**Changed (lib/news/match.ts only; no contract change):**
+- `matchBodies`/`hasPhrase`: each phrase's regex is compiled once and cached, lazily, only after a prefilter passes. Prefilter: the phrase's lowercase ASCII letter/digit words must all be words of the text (numbered words checked first). This can't drop a real match: each ASCII run in a matching phrase is a whole run in the text (word edges are guarded by the regex's letter/digit lookarounds); `ſ` is folded to `s` because `/iu` does so and `toLowerCase` doesn't. Matching rules and output order are unchanged.
+- `loadTerms()` memoizes per (path, withDistricts) and returns a fresh array copy.
+- Not done: the brief's "one combined regex" idea; the word prefilter was enough and keeps per-alias `requires`/`exclude_terms` logic untouched.
+
+**Tests:** new `matchBodies at rollout scale` in `tests/unit/news-match.test.ts` builds a synthetic 600-body catalog through `districtTerms()` and matches 50 texts in < 1 s (~300–550 ms observed), checking results too.
+
+**Verified (run locally):** `npx vitest run` 100 files / 1002 tests pass, no timeouts. `eslint` clean on the changed files. `tsc --noEmit` shows no errors outside `scraper P2/tmp`. No edits to plan files, data/, adapters or ingest; no commits.
+
+### 2026-10-29: MUD rollout bucket M01: 15 water-district sources, Drive line dates
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **discover (additive):** `date_from: line_text` reads the date from the text before the link on its line (back to the previous `<br>` or block start: `2026-10-21 – Regular: Agenda`). `link_selector` limits matching to a CSS selector (`td:first-child a`: the Agendas column beside same-dated Minutes). `parseDocDate` accepts underscore `m_d_yy`/`m_d_yyyy` (`Emerald_Agenda_10_08_26_….pdf`), with the same separator required on both sides. The earlier uncommitted Finalsite changes in `discover.ts` are untouched.
+  - **Sources (15, all `llm_extract`):** ricewood_mud, emerald_forest_ud, encanto_real_ud, hcwcid_36, hcmud_285, northgate_crossing_mud_1 (Gatsby/static PDFs); hcfwsd_61 and hcmud_248 (shared site, "notice of public meeting" pages; the archive page lags a month); hcmud_24, clear_brook_city_mud, hcmud_130, harris_waller_counties_mud_3, hcmud_422, hcmud_423 (one law-firm layout on Google Drive, `line_text`); northgate_crossing_road_ud (Drive table, `link_selector`, `expected_max_gap_days: 120` since it meets about quarterly).
+  - **No agendas online (2):** greens_parkway_mud (Comptroller listing page 404, no site, search empty), hcfwsd_45 (Comptroller site is a law firm with no district pages, search empty). These rows have no website, so `scripts/build-district-catalog.ts` now reads the file through the new `districtSites()` in `lib/ingest/districtCatalog.ts`, which skips rows without one (approved by the coordinator).
+  - **Pending recheck (3), not in sources.yaml:** hcmud_165 posts each agenda only in "Upcoming Meetings" days before the meeting (none up on Oct 29; recheck after Nov 2). hcmud_501 and charterwood_mud: in-gap Drive agendas found (Oct 7, Oct 27), but Drive answered "Quota exceeded" on download; retry. Configs are in the M01 line of `.plans/mud-buckets.md`.
+  - **Catalog:** `build-district-catalog.ts` was re-run for W1, W2, W3, W7, W16, W20, W21, W22, W24, W27, W30, W35, W37, W39, W40, W49, W53 and W54 (191 bodies, 192 codes).
+- **Files:** `lib/adapters/discover.ts`, `lib/ingest/districtCatalog.ts`, `scripts/build-district-catalog.ts`, `data/sources.yaml`, `data/district-sites.yaml`, `data/bodies.districts.yaml` and `data/hcad-jurisdiction-map.districts.yaml` (generated), `tests/golden/google-drive/`, `tests/golden/static-pdf/` (new), `tests/unit/mud-discover.test.ts` (new), `tests/unit/district-catalog.test.ts`, `.plans/mud-buckets.md` (M01 line).
+- **Contract changes:** None (new optional source-config keys only).
+- **Checked:**
+  - `npm run scrape -- --source <id> --from 2026-09-14 --to 2026-12-31` for each of the 15: exit 0, each with at least one agenda in the last 45 days; northgate_crossing_road_ud used `--from 2026-07-01` and found Oct 16. There is no AI key, so no items were extracted.
+  - `check-district-batch.ts` on the 18 batches: all 17 resolved M01 districts PASS the file checks, the 3 pending ones fail "no source", and DB checks are skipped (no service-role key). Other buckets' districts in those batches still fail, as expected.
+  - `npx vitest run`: 999/1001. The two failures are 5 s timeouts in `tests/unit/news-match.test.ts` and `tests/unit/news-collect.test.ts`. Both pass alone (`npx vitest run tests/unit/news`: 79 passed). They got slower when the catalog grew from 23 to 191 bodies.
+  - `npm run typecheck`: errors only in `scraper P2/tmp`. ESLint on the changed files: clean.
+- **Open issues / next:** Recheck the 3 pending districts. The news-term matching slows as the catalog grows, and the remaining buckets will add about 300 more bodies, so those two tests need a fix (a faster matcher or a longer timeout). Ingest, seeding and boundaries are blocked on keys. Not committed.
+
+### 2026-10-28: MUD rollout Phase A: vendor survey of all water districts and the bucket file
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Fingerprints:** `lib/ingest/siteSurvey.ts` gains `fingerprint()` (generator tag, WordPress theme folders, off-site asset hosts, document-link hosts, footer "website by …" credit), `mergeFingerprints()`, `vendorKey()` (board platform, then credit, then off-site agenda host, then custom theme, then Drive plus builder, then tax-office listing page, then generator, then builder) and `bucketize()` (spec §3). State agency hosts (TCEQ, SOS) are ignored as agenda hosts. Per-district `website-media-*.s3` buckets count as one vendor.
+  - **Survey script:** `scripts/survey-district-sites.ts` accepts `--batch W1-W55` and `--combine` (writes `tmp/survey/all.json`, recomputing the vendor from the saved fingerprint). New `scripts/build-mud-buckets.ts` writes `.plans/mud-buckets.md`.
+  - **Survey run:** W1–W55 all ran (`tmp/survey/W*.json|md`, logs in `tmp/survey/logs/`). There are 497 districts, not 498: the 498th is a blank, unnamed entry at the end of W48 in `district-rollout-batches.md`, so it has no ID and no bucket.
+  - **Vendors:** no site 196, `theme:church` 63, unknown 49 (mostly fetch failures), `credit:infinity services` 43, `credit:off cinco` 41, `generator:gatsby` 16, `listing:utilitytaxservice.com` 13, `docs:tmc.tritoncg.com` 11, S3 website-media 9, `theme:citygov` 9, plus small ones. 31 vendor keys in all, in 29 buckets (M01–M29). M01 holds W1's `hcmud_165`.
+  - **district-sites.yaml:** 245 water districts added. For each, the Comptroller's self-reported site was fetched and `namesDistrict()` confirmed that the home page names the district. This was an automated check, not a manual open. Tax-office listing pages were left out.
+- **Files:** `lib/ingest/siteSurvey.ts`, `scripts/survey-district-sites.ts`, `scripts/build-mud-buckets.ts` (new), `tests/unit/site-fingerprint.test.ts` (new), `data/district-sites.yaml`, `.plans/mud-buckets.md` (new), `tmp/survey/`.
+- **Contract changes:** None.
+- **Checked:** `npx vitest run`: 97 files, 978 passed. `npm run test:p4`: 72 passed. `npm run typecheck`: errors only in `scraper P2/tmp/*` (pre-existing, as in earlier entries). `npm run lint`: 5 errors, all pre-existing in files this task didn't touch (`app/(prototype)/app/brief/page.tsx`, `app/(public)/alerts/page.tsx`, `app/(public)/weekly/page.tsx`, `components/prototype/app-onboarding-tour.tsx`, react-hooks rules). ESLint on the changed files is clean.
+- **Open issues / next:** The coordinator reviews `.plans/mud-buckets.md`. Generic keys (`wordpress`, `wix`, `unknown`, `no site`) group sites that only share a builder or have no site, so those buckets' workers confirm the adapter fit or set `no_agendas_online`. The 49 unknowns should be re-fetched first (most failed with "fetch failed"). `theme:church` (63) is probably one firm, but that isn't confirmed. Not committed.
+
+### 2026-10-28: MUD scraper rollout spec
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:** New spec `.plans/mud-scrapers-rollout-spec.md` from an interview: survey all 498 water districts, regroup by vendor into buckets of about 20, a dedicated adapter per vendor (Drive fetcher allowed), sources added when a scrape passes (ingest blocked on keys), one Orca worker at a time, one local commit per bucket. X codes are out of scope.
+- **Files:** `.plans/mud-scrapers-rollout-spec.md` (new).
+- **Contract changes:** None.
+- **Checked:** Docs only; nothing run.
+- **Open issues / next:** Phase A (the survey of all 498) is dispatched to the first worker.
+
+### 2026-10-28: District coverage: sources for 8 of the 9 unlisted S1–S3 boards (Katy blocked)
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:** Each source below was added after `npm run scrape -- --from 2026-08-01 --to 2026-11-30` found its agendas on this laptop. Platforms and links were found by fetching each site.
+  - **Huffman** (Finalsite, llm_extract): 4 meetings. **Pearland** (Finalsite, llm_extract): 3. **Spring** (Apptegy, llm_extract): 8, including Nov 2. **Aldine** (public Google Drive folder behind the site's Use-your-Drive plugin, llm_extract): 4. **Deer Park** (Edlio, llm_extract): 5. **Dayton** (ParentSquare, llm_extract): 4. These have no items and save times as 00:00 until the AI pass reads the PDFs; there's no AI key here.
+  - **Channelview** (BoardBook org 791, linked from cvisd.org): 6 meetings, 124 items, real times.
+  - **Humble** (new `diligent` adapter, Diligent Community portal): 10 meetings with real times from `meetingData`, including Nov 2 and Nov 17. The public agenda is inline HTML in `meetingDocuments` and goes to the shared `extractDocument`; there are no items without a key.
+  - **Katy** (BoardDocs `tx/kisd`, committee `AAUJQK4E4D0E`): the new `boarddocs` adapter works on fixtures, but BoardDocs returns 403 to our bot user agent. I did not pose as a browser in the scraper (one survey curl used a browser UA). Not in `sources.yaml`. It isn't "no agendas online", so no reason is recorded. Needs a decision: ask Katy ISD or BoardDocs for access, or leave it.
+  - **Parser (`lib/adapters/discover.ts`), all opt-in except two noted defaults:** `date_from: data_file_name`; `embedded_links`; `match_link_text`; dotted dates (`10.19-20.26`) with `date_range: last`; underscore ISO dates; `downloadUrl()` turns Drive `/file/d/<id>/view` into the file download (also unblocks the Drive MUD cluster). Defaults that changed: a "revised/amended/updated" filename now wins over the original on the same date, and a link whose URL says "canceled/cancelled" makes a cancelled meeting (`llmExtract.ts`).
+  - **Privacy:** Aldine's folder and Deer Park's page also list grievance and hearing notices with private people's names in their titles. Both configs match on link text so those files are never fetched. Keep those patterns tight.
+  - **Plumbing:** `http.ts` gets an optional `form` (POST) for BoardDocs. `AdapterKind` gains `diligent` and `boarddocs` (adapters map, run/scheduled AI sets, sweep order, no results mode, `scripts/scrape.ts` golden folders).
+- **Files:** `lib/adapters/{discover,llmExtract,http,diligent,boarddocs}.ts`, `lib/adapters/types.ts`, `lib/ingest/{adapters,run,scheduled}.ts`, `scripts/scrape.ts`, `data/sources.yaml`, `supabase/migrations/20261028230000_diligent_adapter.sql` (new), tests `tests/unit/{finalsite-links,discover-platforms,diligent,boarddocs}.test.ts` (new).
+- **Contract changes:** **DB schema (§16):** the migration widens `sources_adapter_check` to allow `diligent` and `boarddocs`. Apply it before ingesting Humble, or the `sources` upsert fails. Not applied (no keys). `AdapterKind` grew, so any `Record<AdapterKind, …>` needs the two keys.
+- **Checked:** `npm test`: 99 files, 988 passed. `check-district-batch --batch S1 --batch S2 --batch S3`: 23 pass the file checks, Katy fails ("no source"); database checks skipped. ESLint on the changed files: clean. `npx tsc --noEmit`: my files are clean; there are 6 errors in `lineText()` in `discover.ts` (lines 150–156), the `line_text` option that someone else was adding to that file during this session. Left untouched.
+- **Open issues / next:** Katy access decision. With keys: apply the migration, seed, then ingest (the AI pass fills items and times). Aldine's Drive folder and Dayton's page are per-year, so a new ID is needed in January; the 45-day gap check will flag it. Not committed.
+
+### 2026-10-28: District coverage S1–S3: school-board catalog and sources (steps 1, 3, 4 in part)
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:**
+  - **Catalog (step 1):** ran the builder for S2 and S3. `data/bodies.districts.yaml` now has all 23 boards; the code map has 24 codes, including `012` (HOUSTON ISD, formerly NFISD) → `hisd_board`. Every HCAD name matched the batch name.
+  - **Sources (steps 3–4):** 14 boards added to `data/sources.yaml`, each after `npm run scrape` found an agenda dated within 45 days:
+    - BoardBook, org ID confirmed from the org page title: Klein 921, Alief 770, Spring Branch 889, Pasadena 1894, Clear Creek 1940, Galena Park 1860, Sheldon 1876, Goose Creek 1195, La Porte 767, Crosby 1018, New Caney 2256, Waller 737, Stafford 1043. The newest agendas are dated Oct 5 to Nov 2.
+    - Tomball: `llm_extract` on its Finalsite page (`-Notice.pdf` links, dates from link text). Found 4 meetings, the newest on Oct 13. Items weren't extracted because there's no AI key on this laptop.
+  - **No source yet (not "no agendas online"):**
+    - Katy (BoardDocs: no adapter, and fewer than 3 districts use it);
+    - Aldine (BoardBook org 1722 has nothing after Aug 2026);
+    - Humble, Spring (Apptegy pages);
+    - Channelview (Swagit);
+    - Deer Park, Huffman, Dayton, Pearland: no platform found.
+  - `tests/unit/news-collect.test.ts` now matches its recorded feeds against hand terms only. With Dayton ISD in the catalog, it correctly matched two new Dayton stories, which broke the golden file.
+- **Files:** `data/bodies.districts.yaml`, `data/hcad-jurisdiction-map.districts.yaml` (generated), `data/sources.yaml`, `tests/unit/news-collect.test.ts`, `.plans/district-coverage-plan.md` (progress log).
+- **Contract changes:** Additive. `TRACKED_BODIES` gains the 13 S2/S3 boards, so the next `seed-bodies --apply` adds them. The 14 new sources join the scheduled ingest on the next deploy, and their pages stop showing "not read yet" once seeded.
+- **Checked:** Run on this laptop, Oct 28:
+  - `npm test` (vitest): 94 files, 966 tests, all passed.
+  - `seed-bodies --check`: 34 bodies. `seed-hcad-jurisdictions --check`: 33 codes.
+  - `check-district-batch` for S1–S3: 14 boards and code 012 pass the file checks. The 9 boards above fail on "no source". Database checks were skipped.
+  - Not run: typecheck, lint, build.
+- **Open issues / next:**
+  - **Blocked on `SUPABASE_SERVICE_ROLE_KEY`, which is empty in `.env.local`:** seeding, step 2 (boundaries), ingest dry run and real ingest, and step 5 (live lookups). Step 2 also needs HCAD's School shapefile reprojected to GeoJSON, and no `ogr2ogr` or `mapshaper` is installed here. Step 6 (pages at 390 px) waits on seeding.
+  - **No batch is ticked.**
+  - BoardBook listings log "listing row not parsed" for cancelled and "Notice" rows, and Galena Park and Waller log "0 items" for some meetings. Both are harmless but noisy.
+  - Tomball posts a Special and a Regular notice on the same date, and `llm_extract` keeps only one per date (the Special). The Regular agenda is skipped.
+  - The working tree also has someone's uncommitted 0.1/0.5 work (lookup, HCAD packing migration). This entry didn't touch it.
+
+### 2026-10-28: District coverage: database packing and map lookup code (0.1, 0.5)
+- **Who:** Iarush · P2 Agenda Data
+- **Branch:** main
+- **What changed:** Phase 0's remaining code, written without Supabase keys. Nothing has been applied, measured or loaded.
+  - **0.1 packing:** migration `20261028210000_district_packing.sql` adds the packed HCAD tables (`hcad_code_sets`, `hcad_subdivisions`, `hcad_addresses`, with the address stored as `hashtextextended`), `load_hcad_packed_batch`, `lookup_hcad_packed` (same columns as `lookup_hcad_parcel`), `documents.storage_path`, `items.archive_path`, private buckets `agenda-text` and `item-archive`, `housekeeping_cleanup()` and `storage_sizes()`. It's additive: the old HCAD tables and RPC stay until the packed load checks out, so the route tries packed first and then the old tables. `npm run load:hcad -- --apply` now loads packed rows (`--legacy` for the old tables). `stage:hcad` and the slice workflow take `zips=all` for the whole county. The CSV limit is now 512 MB.
+  - Ingest writes document text gzipped to `agenda-text` instead of `documents.raw`. New `lib/ingest/archive.ts` (`ITEM_HOT_MONTHS = 8`) archives items to `item-archive` as stubs and removes text after 24 months. It runs from `/api/cron/housekeeping`, which `.github/workflows/housekeeping.yml` calls daily (Vercel's two cron slots are taken). `loadItem()` in `lib/weekly/data.ts` reads an archived item back in full. `/admin/review` shows the database and Storage sizes, with the 400/800 MB stop lines.
+  - **0.5 map lookup:** with a Census match, water districts and ISDs come from `lookup_boundary_near` (inside, or within 50 m, which shows "may be in"). A map ISD replaces the Census school hint. `/results` shows "From the district map, not your tax record. Check your tax bill." `KNOWN_SCHOOLS` became the 25-name table `lib/lookup/schoolDistricts.ts` (moved from `districtCatalog.ts`, which re-exports it). Body IDs keep their old spelling (`goose_creek_consolidated_isd_board`).
+- **Files:** the migration; `app/api/lookup/route.ts`, `lib/contracts/lookup.ts`, `lib/lookup/{standIn,schoolDistricts,hcadStaging,hcadSource}.ts`, `scripts/{load-hcad,stage-hcad}.ts`, `.github/workflows/{hcad-slice,housekeeping}.yml`, `lib/ingest/{archive,supabaseArchive,supabaseStore,districtCatalog}.ts`, `app/api/cron/housekeeping/route.ts`, `lib/weekly/data.ts`, `app/admin/review/page.tsx`, `app/(public)/results/page.tsx`, `messages/{en,es}.json`, tests (`tests/unit/archive.test.ts`, `tests/api/lookup-route.test.ts`, `tests/lookup/hcadStaging.test.ts`).
+- **Contract changes:** DB schema (tech plan §16): 3 new tables, 2 new columns, 2 buckets and 5 functions. Additive: `LookupBody.map_match?: 'inside' | 'near'`. Ingest must not run on code with this change before the migration is applied (the document insert writes `storage_path` and uploads to the bucket). `lib/database.types.ts` wasn't regenerated (no keys), so the new columns go through an untyped client.
+- **Checked:** On this laptop:
+  - `npm test`: 966 tests, 963 passed. Failures:
+    - `news-collect` golden: `data/bodies.districts.yaml`, `data/hcad-jurisdiction-map.districts.yaml` and `data/sources.yaml` were changed during this session by something else on this laptop (W2 districts added). This change didn't touch them. With them at HEAD, the news tests pass.
+    - `news-isolation`: the ESLint test timed out during the full run and passes on its own.
+  - Typecheck has no errors outside `scraper P2/tmp/`. ESLint finds 5 errors, all in files this change didn't touch (brief, alerts, weekly, onboarding tour). `npm run build` fails only on `scraper P2/tmp/` type errors (a local scratch folder).
+  - Migrations weren't run against Postgres. The SQL is checked only by `tests/platform/migrations.test.ts`.
+- **Open issues / next:**
+  - **With keys, in order:** measure (plan §2.5), apply the migration, regenerate types, run the whole-county slice and `load:hcad --apply`, check the demo addresses, then a migration that drops `hcad_parcels`/`hcad_jurisdictions`/`lookup_hcad_parcel` (and the route's fallback). Then run the pilot batch checker and record the database size.
+  - **For P3:** plan 2.4's first bullet (build template stories at render instead of storing them) and 0.8's "AI stories only for notable items" are in `lib/stories/` and its readers, and weren't changed. The archive stubs clear `story_en`/`story_es`.
+  - `housekeeping_cleanup` skips `demo_cache`: it has no expiry column, and it holds the recorded demo.
+  - The map fallback needs ISD boundaries in `boundaries`. Today only City, School and College layers plus the MUD/water layers are loaded per batch.
+
 ### 2026-10-28: District coverage: scheduler at ~550 sources (0.8)
 - **Who:** Iarush · P2 Agenda Data
 - **Branch:** main

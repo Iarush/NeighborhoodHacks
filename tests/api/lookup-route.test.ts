@@ -8,6 +8,8 @@ const mocks = vi.hoisted(() => {
     censusResult: null as unknown,
     parcelRows: [] as unknown[],
     gisRows: [] as unknown[],
+    nearRows: [] as unknown[],
+    packedRows: [] as unknown[],
     hoaRows: [] as unknown[],
     tableRows: {} as Record<string, unknown[]>,
     rpcFailure: null as string | null,
@@ -20,7 +22,9 @@ const mocks = vi.hoisted(() => {
     rpcRows: vi.fn(async (name: string, args: unknown) => {
       mocks.calls.push({ kind: 'rpc', name, args })
       if (mocks.rpcFailure === name) throw new Error('database failure')
+      if (name === 'lookup_hcad_packed') return mocks.packedRows
       if (name === 'lookup_hcad_parcel') return mocks.parcelRows
+      if (name === 'lookup_boundary_near') return mocks.nearRows
       if (name === 'lookup_boundary_bodies') return mocks.gisRows
       if (name === 'lookup_hoa_candidates') return mocks.hoaRows
       return []
@@ -149,6 +153,8 @@ describe('POST /api/lookup', () => {
     mocks.censusResult = null
     mocks.parcelRows = []
     mocks.gisRows = []
+    mocks.nearRows = []
+    mocks.packedRows = []
     mocks.hoaRows = []
     mocks.tableRows = {}
     mocks.rpcFailure = null
@@ -375,7 +381,8 @@ describe('POST /api/lookup', () => {
     mocks.geocodeCensus.mockRejectedValueOnce(new mocks.CensusUnavailableError())
     const unavailable = await POST(request())
     expect(unavailable.status).toBe(500)
-    expect(mocks.rpcRows).toHaveBeenCalledTimes(1)
+    // The packed lookup, then the old tables.
+    expect(mocks.rpcRows).toHaveBeenCalledTimes(2)
   })
 
   // Tech plan §5 step 4: "not found" only when neither source matches. Parcel points are optional
@@ -428,5 +435,69 @@ describe('POST /api/lookup', () => {
     const limited = await POST(request())
     expect(limited.status).toBe(429)
     expect(mocks.geocodeCensus).not.toHaveBeenCalled()
+  })
+
+  describe('district map fallback (district-coverage plan 0.5)', () => {
+    const mapCatalog = [
+      ...catalog,
+      ...countywideCatalog,
+      { id: 'katy_isd_board', name: 'Katy ISD Board of Trustees', type: 'school_board', category: 'tracked', elected_or_appointed: null, description_en: null, meeting_info_url: null, impact_rank: 20, operator_name: null },
+    ]
+    const censusOnly = (overrides: Record<string, unknown> = {}) => {
+      mocks.censusResult = matchedCensus(overrides)
+      mocks.geocodeCensus.mockResolvedValueOnce(mocks.censusResult as never)
+      mocks.tableRows = { jurisdiction_map: [], bodies: mapCatalog, tax_rates: [], ballot_offices: [] }
+    }
+
+    it('labels a water district inside its map boundary as from the map, not confirmed', async () => {
+      censusOnly()
+      mocks.gisRows = [{ body_id: 'hcmud_489' }]
+      mocks.nearRows = [{ body_id: 'hcmud_489', inside: true }]
+      const body = await (await POST(request())).json()
+      expect(body.match).toBe('census')
+      const mud = body.bodies.find((b: { id: string }) => b.id === 'hcmud_489')
+      expect(mud).toMatchObject({ verified: false, source_kind: 'gis', map_match: 'inside' })
+      expect(mocks.rpcRows).toHaveBeenCalledWith('lookup_boundary_near', { p_longitude: -95.36, p_latitude: 29.72, p_meters: 50 })
+    })
+
+    it('lists a water district near the point as "may be in" and drops other near boundaries', async () => {
+      censusOnly()
+      mocks.nearRows = [{ body_id: 'hcmud_489', inside: false }, { body_id: 'houston_city_council', inside: false }]
+      const body = await (await POST(request())).json()
+      const ids = body.bodies.map((b: { id: string }) => b.id)
+      expect(body.bodies.find((b: { id: string }) => b.id === 'hcmud_489')).toMatchObject({ verified: false, map_match: 'near' })
+      expect(ids).not.toContain('houston_city_council')
+    })
+
+    it('uses the map ISD over the Census school-district hint', async () => {
+      censusOnly({ schoolDistrict: 'Houston Independent School District' })
+      mocks.gisRows = [{ body_id: 'katy_isd_board' }]
+      mocks.nearRows = [{ body_id: 'katy_isd_board', inside: true }]
+      const body = await (await POST(request())).json()
+      const ids = body.bodies.map((b: { id: string }) => b.id)
+      expect(ids).toContain('katy_isd_board')
+      expect(ids).not.toContain('hisd_board')
+      expect(body.uncovered.map((u: { key: string }) => u.key)).not.toContain('census:hisd_board')
+    })
+
+    it('skips the near check when HCAD has the address', async () => {
+      setupMatchedLookup()
+      mocks.geocodeCensus.mockResolvedValueOnce(mocks.censusResult as never)
+      const body = await (await POST(request())).json()
+      expect(body.match).toBe('hcad')
+      expect(mocks.rpcRows).not.toHaveBeenCalledWith('lookup_boundary_near', expect.anything())
+      expect(body.bodies.every((b: { map_match?: string }) => b.map_match === undefined)).toBe(true)
+    })
+  })
+
+  it('reads the packed HCAD tables first and skips the old ones when they answer', async () => {
+    setupMatchedLookup()
+    mocks.packedRows = [parcel({ account: null, longitude: null, latitude: null })]
+    mocks.parcelRows = []
+    mocks.geocodeCensus.mockResolvedValueOnce(mocks.censusResult as never)
+    const body = await (await POST(request())).json()
+    expect(body.match).toBe('hcad')
+    expect(mocks.rpcRows).toHaveBeenCalledWith('lookup_hcad_packed', { p_site_address_norm: '123 MAIN ST' })
+    expect(mocks.rpcRows).not.toHaveBeenCalledWith('lookup_hcad_parcel', expect.anything())
   })
 })

@@ -1,3 +1,6 @@
+import type { SupabaseClient } from '@supabase/supabase-js'
+import { loadArchivedItem } from '@/lib/ingest/archive'
+import { supabaseArchiveStore } from '@/lib/ingest/supabaseArchive'
 import type { Json } from '@/lib/database.types'
 import { db } from '@/lib/db'
 import { getOptionalEnv } from '@/lib/env'
@@ -177,6 +180,19 @@ async function withCoverage(items: WeeklyItem[]): Promise<WeeklyItem[]> {
   })
 }
 
+/**
+ * Items past the 8-month window are stubs (district-coverage plan §2.3); the full row is read back
+ * from its archive file. archive_path is read untyped until lib/database.types.ts is regenerated.
+ */
+async function withArchive(row: ItemRow): Promise<ItemRow> {
+  const untyped = db() as unknown as SupabaseClient
+  const { data } = await untyped.from('items').select('archive_path').eq('id', row.id).maybeSingle()
+  const path = (data as { archive_path?: string | null } | null)?.archive_path
+  if (!path) return row
+  const archived = await loadArchivedItem(supabaseArchiveStore, path, row.id)
+  return archived ? { ...row, ...(archived as Partial<ItemRow>), meeting: row.meeting } : row
+}
+
 /** One item for its story page, from the database or the sample set. */
 export async function loadItem(id: string, now: Date = new Date()): Promise<WeeklyItem | null> {
   if (id.startsWith('sample-')) return sampleItems(now).find((i) => i.item_id === id) ?? null
@@ -184,7 +200,7 @@ export async function loadItem(id: string, now: Date = new Date()): Promise<Week
   const { data, error } = await db().from('items').select(ITEM_COLUMNS).eq('id', id).is('removed_at', null).maybeSingle()
   if (error) throw error
   if (!data) return null
-  const row = data as unknown as ItemRow
+  const row = await withArchive(data as unknown as ItemRow)
   const { data: body } = await db().from('bodies').select('id, name, type, sms_eligible').eq('id', row.body_id ?? '').maybeSingle()
   const bodies = new Map<string, WeeklyBody>()
   if (body) bodies.set(body.id, { body_id: body.id, body_name: body.name, body_type: body.type ?? 'other', sms_eligible: body.sms_eligible })

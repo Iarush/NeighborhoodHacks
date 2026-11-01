@@ -1,4 +1,7 @@
+import { gzipSync } from 'node:zlib';
+import type { SupabaseClient } from '@supabase/supabase-js';
 import { db } from '@/lib/db';
+import { TEXT_BUCKET, textPath } from './archive';
 import { chunked, fetchAllPages } from '@/lib/paging';
 import type { BodySeed } from './bodies';
 import type {
@@ -92,11 +95,24 @@ export const supabaseIngestStore: IngestStore = {
     for (const part of chunks(rows)) check('items', await db().from('items').upsert(part, { onConflict: 'source_id,external_id' }));
   },
 
-  async insertDocuments(rows: DocumentWrite[]) {
-    let batch: DocumentWrite[] = [];
+  async insertDocuments(input: DocumentWrite[]) {
+    // Raw text goes gzipped to the private agenda-text bucket; the row keeps a pointer (plan §2.2).
+    const rows: Array<DocumentWrite & { storage_path: string | null }> = [];
+    for (const d of input) {
+      if (!d.raw) {
+        rows.push({ ...d, storage_path: null });
+        continue;
+      }
+      const path = textPath(d.source_id, d.content_hash, d.kind);
+      const { error } = await db().storage.from(TEXT_BUCKET).upload(path, new Uint8Array(gzipSync(d.raw)), { contentType: 'application/gzip', upsert: true });
+      if (error) throw new Error(`storage ${TEXT_BUCKET}: ${error.message}`);
+      rows.push({ ...d, raw: null, storage_path: path });
+    }
+    let batch: typeof rows = [];
     let size = 0;
     const flush = async () => {
-      if (batch.length) check('documents', await db().from('documents').insert(batch));
+      // Untyped until lib/database.types.ts is regenerated with documents.storage_path.
+      if (batch.length) check('documents', await (db() as unknown as SupabaseClient).from('documents').insert(batch));
       batch = [];
       size = 0;
     };

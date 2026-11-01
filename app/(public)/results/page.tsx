@@ -62,7 +62,13 @@ export default function ResultsPage() {
                       <div className="min-w-0 flex-1">
                         <p className="font-bold text-ink">{b.name}</p>
                         <p className={`mt-1 text-xs ${b.verified ? 'text-emerald-700' : 'text-amber-800'}`}>
-                          {b.verified ? t('verified') : state.data.match === 'census' ? t('fromCensus') : t('unverified')}
+                          {b.verified
+                            ? t('verified')
+                            : b.map_match === 'near'
+                              ? t('mayBeIn')
+                              : b.map_match === 'inside'
+                                ? t('fromMap')
+                                : state.data.match === 'census' ? t('fromCensus') : t('unverified')}
                         </p>
                       </div>
                     </>

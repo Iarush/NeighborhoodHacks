@@ -17,6 +17,11 @@ export type LookupBody = {
   /** True only when the authoritative jurisdiction source supports this body assignment. */
   verified: boolean
   source_kind: 'hcad' | 'gis' | 'census' | 'manual' | null
+  /**
+   * Census matches only: a water district or ISD found on the district map instead of a tax record.
+   * "inside": the address is inside its boundary. "near": within ~50 m of its edge, so it may be in.
+   */
+  map_match?: 'inside' | 'near'
   /** Source link for the displayed tax rate only; jurisdiction evidence is identified by source_kind. */
   tax_source_url: string | null
   tax_rate: number | null

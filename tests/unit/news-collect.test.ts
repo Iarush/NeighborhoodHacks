@@ -126,7 +126,8 @@ describe('collectNews on recorded feeds', () => {
       ABC13: 'abc13',
       'FOX 26 Houston': 'fox-26-houston',
     };
-    const res = await collectNews(feeds, loadTerms(), {
+    // Hand terms only: the golden file shouldn't change each time a rollout batch joins the catalog.
+    const res = await collectNews(feeds, loadTerms(undefined, false), {
       now: NOW,
       feedText: async (f) => {
         if (f.outlet === 'FOX 26 Houston') throw new Error('boom');

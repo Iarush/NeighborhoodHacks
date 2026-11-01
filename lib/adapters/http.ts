@@ -16,6 +16,8 @@ export type HttpOptions = {
   retries?: number;
   /** Per-request timeout (default 30 s). It also covers reading the body. */
   timeoutMs?: number;
+  /** Send a URL-encoded POST with these fields instead of a GET (BoardDocs' list and print views). */
+  form?: Record<string, string>;
 };
 
 export class HttpError extends Error {
@@ -59,12 +61,17 @@ export async function httpGet(url: string, opts: HttpOptions = {}): Promise<Resp
     await waitForHost(host, sleep);
     try {
       const res = await doFetch(url, {
-        headers: { 'User-Agent': USER_AGENT, ...opts.headers },
+        headers: {
+          'User-Agent': USER_AGENT,
+          ...(opts.form ? { 'Content-Type': 'application/x-www-form-urlencoded' } : {}),
+          ...opts.headers,
+        },
+        ...(opts.form ? { method: 'POST', body: new URLSearchParams(opts.form).toString() } : {}),
         signal: AbortSignal.timeout(opts.timeoutMs ?? TIMEOUT_MS),
         redirect: 'follow',
       });
       if (res.ok) return res;
-      lastErr = new HttpError(`GET ${url} -> ${res.status}`, res.status, url);
+      lastErr = new HttpError(`${opts.form ? 'POST' : 'GET'} ${url} -> ${res.status}`, res.status, url);
       if (res.status < 500) throw lastErr; // 4xx: don't retry
     } catch (e) {
       if (e instanceof HttpError && e.status !== undefined && e.status < 500) throw e;

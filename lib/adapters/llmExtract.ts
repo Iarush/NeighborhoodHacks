@@ -2,7 +2,7 @@ import { DateTime } from 'luxon';
 import { z } from 'zod';
 import type { Adapter, AdapterDocument, AdapterResult, Item, Meeting, RunMode, SourceConfig } from './types';
 import { PDF_TIMEOUT_MS, getBytes, type HttpOptions } from './http';
-import { DiscoveryConfigSchema, discover, type DiscoveredDoc } from './discover';
+import { DiscoveryConfigSchema, discover, downloadUrl, type DiscoveredDoc } from './discover';
 import { getPdfText, type PdfText } from './pdfText';
 import { runMinutesResults } from './minutes';
 import {
@@ -125,7 +125,7 @@ function meetingFrom(ext: Extraction['meeting'] | undefined, ctx: BuildContext, 
     body_id: ctx.body_id,
     date: toChicagoIso(date, time),
     type: ctx.link?.type === 'special' || ext?.type === 'special' ? 'special' : 'regular',
-    status: 'scheduled',
+    status: /cancel+ed/i.test(safeDecode(ctx.url)) ? 'cancelled' : 'scheduled',
     agenda_url: ctx.url,
   };
   const cq = ext?.comment_instructions_quote?.trim();
@@ -282,6 +282,14 @@ export async function extractDocument(input: ExtractInput): Promise<ExtractOutpu
   return { ...best, warnings: [...warnings, ...best.warnings], documents, model };
 }
 
+const safeDecode = (url: string) => {
+  try {
+    return decodeURIComponent(url);
+  } catch {
+    return url;
+  }
+};
+
 /** Meeting from the index link alone (used when no LLM key is configured). */
 export function meetingFromLink(sourceId: string, bodyId: string, doc: Pick<DiscoveredDoc, 'date' | 'type' | 'url'>, defaultTime?: string): Meeting {
   return {
@@ -289,7 +297,7 @@ export function meetingFromLink(sourceId: string, bodyId: string, doc: Pick<Disc
     body_id: bodyId,
     date: toChicagoIso(doc.date, defaultTime),
     type: doc.type,
-    status: 'scheduled',
+    status: /cancel+ed/i.test(safeDecode(doc.url)) ? 'cancelled' : 'scheduled',
     agenda_url: doc.url,
   };
 }
@@ -345,7 +353,7 @@ export function createLlmExtractAdapter(deps: LlmExtractDeps = {}): Adapter {
       result.warnings.push(...found.warnings);
 
       const fetchText = async (doc: DiscoveredDoc) => {
-        const bytes = await getBytes(doc.url, http);
+        const bytes = await getBytes(downloadUrl(doc.url), http);
         const hash = documentContentHash(bytes);
         if (prev?.documentHashes[doc.url] === hash) return { bytes, hash, unchanged: true as const };
         const text = await pdfText(bytes);

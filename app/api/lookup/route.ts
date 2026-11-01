@@ -81,7 +81,9 @@ async function matchParcel(addresses: readonly string[], trackedCodes: ReadonlyS
   for (const address of addresses) {
     const normalized = normalizeHcadAddress(address)
     if (!normalized) continue
-    const found = await rpcRows<ParcelRow>('lookup_hcad_parcel', { p_site_address_norm: normalized })
+    // The packed tables (district-coverage plan §2.1) first; the old per-account tables until they're dropped.
+    const packed = await rpcRows<ParcelRow>('lookup_hcad_packed', { p_site_address_norm: normalized })
+    const found = packed.length ? packed : await rpcRows<ParcelRow>('lookup_hcad_parcel', { p_site_address_norm: normalized })
     const resolved = resolveSharedAddress(found, trackedCodes)
     if (resolved) return resolved
   }
@@ -90,6 +92,14 @@ async function matchParcel(addresses: readonly string[], trackedCodes: ReadonlyS
 
 /** Every Harris County address is in these (the Census fallback lists them without an HCAD record). */
 const COUNTYWIDE_BODY_IDS = ['commissioners_court', 'flood_control', 'port_houston', 'hcad']
+
+/**
+ * Without an HCAD record (a new street), water districts and ISDs come from the district map
+ * (district-coverage plan 0.5). A boundary within this many meters of the point, but not around
+ * it, is listed as "may be in".
+ */
+const NEAR_EDGE_METERS = 50
+const MAP_FALLBACK_TYPES = new Set(['mud', 'water_authority', 'school_board'])
 
 const CATALOG_COLUMNS = 'id,name,type,category,elected_or_appointed,description_en,meeting_info_url,impact_rank,operator_name'
 
@@ -162,13 +172,17 @@ async function buildPayload(address: string): Promise<LookupPayload> {
   // HCAD appraises property countywide and is not normally a parcel tax code.
   const hcadIds = parcel ? [...new Set(['hcad', ...bodyForCode.values()])] : []
   const gisIds = [...new Set(gisRows.map((row) => row.body_id))]
+  const nearRows = hasPoint && match === 'census'
+    ? await rpcRows<{ body_id: string; inside: boolean }>('lookup_boundary_near', { p_longitude: longitude, p_latitude: latitude, p_meters: NEAR_EDGE_METERS })
+    : []
+  const nearIds = [...new Set(nearRows.filter((row) => !row.inside && !gisIds.includes(row.body_id)).map((row) => row.body_id))]
   const censusBodies = census
     ? bodiesFromCensus(census).filter(
         (body) => match === 'census' || body.type === 'city_council' || body.type === 'school_board' || body.type === 'college_board',
       )
     : []
   const censusIds = [...new Set([...censusBodies.map((body) => body.id), ...(match === 'census' ? COUNTYWIDE_BODY_IDS : [])])]
-  const resolvedIds = [...new Set([...hcadIds, ...gisIds, ...censusIds])]
+  const resolvedIds = [...new Set([...hcadIds, ...gisIds, ...nearIds, ...censusIds])]
   const [catalog, rates, ballotRows, regionalRows, notGovernmentRows] = await Promise.all([
     resolvedIds.length
       ? selectRows<BodyCatalogRow>('bodies', CATALOG_COLUMNS, (query) => query.in('id', resolvedIds))
@@ -190,7 +204,15 @@ async function buildPayload(address: string): Promise<LookupPayload> {
     selectRows<BodyCatalogRow>('bodies', CATALOG_COLUMNS, (query) => query.eq('category', 'regional_coming_soon').order('impact_rank')),
     selectRows<BodyCatalogRow>('bodies', CATALOG_COLUMNS, (query) => query.eq('category', 'not_government').order('impact_rank')),
   ])
-  const catalogIds = new Set(catalog.map((body) => body.id))
+  // "May be in" only applies to water districts and ISDs; other near boundaries are dropped.
+  const mapNearIds = nearIds.filter((id) => MAP_FALLBACK_TYPES.has(catalog.find((body) => body.id === id)?.type ?? ''))
+  // When the map places the address in an ISD, the Census school-district hint is dropped.
+  const mapIds = [...gisIds, ...mapNearIds]
+  const mapHasSchool = match === 'census' && catalog.some((body) => body.type === 'school_board' && mapIds.includes(body.id))
+  const censusSchoolDropped = (body: { id: string; type: string | null }) => mapHasSchool && body.type === 'school_board' && !mapIds.includes(body.id)
+  const catalogIds = new Set(
+    catalog.filter((body) => (!nearIds.includes(body.id) || mapNearIds.includes(body.id)) && !censusSchoolDropped(body)).map((body) => body.id),
+  )
 
   // Governments we don't track yet are listed by their official name instead of failing the lookup.
   const uncovered: LookupPayload['uncovered'] = []
@@ -210,18 +232,23 @@ async function buildPayload(address: string): Promise<LookupPayload> {
     ...catalog.filter((body) => hcadIds.includes(body.id)).map((body) => body.type),
   ])
   for (const body of censusBodies) {
-    if (catalogIds.has(body.id)) continue
+    if (catalogIds.has(body.id) || censusSchoolDropped(body)) continue
     // With an HCAD record, its own code for this kind of body wins over the Census hint.
     if (match === 'hcad' && knownTypes.has(body.type)) continue
     uncovered.push({ key: `census:${body.id}`, name: body.name, type: body.type ?? 'other', source_kind: 'census' })
   }
 
   const bodies = mergeLookupBodies({
-    catalog,
+    catalog: catalog.filter((body) => catalogIds.has(body.id)),
     hcadIds: hcadIds.filter((id) => catalogIds.has(id)),
-    gisIds,
+    gisIds: mapIds,
     censusIds: censusIds.filter((id) => catalogIds.has(id)),
     rates,
+  }).map((body) => {
+    // Labeled "From the district map, not your tax record" (or "may be in") on /results.
+    if (match !== 'census' || !body.type || !MAP_FALLBACK_TYPES.has(body.type)) return body
+    if (mapNearIds.includes(body.id)) return { ...body, map_match: 'near' as const }
+    return gisIds.includes(body.id) ? { ...body, map_match: 'inside' as const } : body
   })
   if (!bodies.length) throw new LookupFailure('not_found', 'We could not find local governments for that address yet.')
   // With HCAD, only confirmed bodies go into the token. With the Census fallback, every listed body

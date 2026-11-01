@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { parseHcadStaging, planHcadLoad } from '@/lib/lookup/hcadStaging'
+import { packHcadLoad, parseHcadStaging, planHcadLoad } from '@/lib/lookup/hcadStaging'
 import { csvCell, hcadAccountFromRaw, hcadHeader, hcadJurisdictionFromRaw, parseHcadTsvRow, parseHcadTsvRowLoose } from '@/lib/lookup/hcadSource'
 
 const parcels = (rows: string[]) => [
@@ -97,5 +97,27 @@ describe('HCAD source field conversion', () => {
     expect(csvCell('LOT "A", BLOCK 2')).toBe('"LOT ""A"", BLOCK 2"')
     expect(() => hcadHeader('acct\tacct', ['acct'], 'input')).toThrow()
     expect(() => parseHcadTsvRow('a\tb', ['acct'], 'input')).toThrow()
+  })
+})
+
+describe('packHcadLoad', () => {
+  it('folds condo accounts with one code set into one row and keeps only the subdivision', () => {
+    const plan = planHcadLoad(parseHcadStaging(
+      parcels([
+        '1000000000001,100 Main St,LOT 1 BLK 2 MAIN PLACE SEC 3,-95.37,29.73',
+        '1000000000002,100 Main St,,-95.37,29.73',
+        '1000000000003,100 Main St,LOT 4 MAIN PLACE,,',
+        '1000000000004,200 Oak St,LT 9 OAK HOLLOW,,',
+      ]),
+      jurisdictions(['1000000000001,189', '1000000000001,001', '1000000000002,001', '1000000000002,189', '1000000000003,001', '1000000000004,001']),
+      new Set(['001', '189']),
+    ))
+    const rows = packHcadLoad(plan)
+    expect(rows).toEqual([
+      { address: '100 MAIN ST', codes: ['001', '189'], subdivision: 'MAIN PLACE' },
+      { address: '100 MAIN ST', codes: ['001'], subdivision: 'MAIN PLACE' },
+      { address: '200 OAK ST', codes: ['001'], subdivision: 'OAK HOLLOW' },
+    ])
+    expect(JSON.stringify(rows)).not.toMatch(/1000000000/)
   })
 })

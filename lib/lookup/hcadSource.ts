@@ -2,11 +2,12 @@ import { normalizeHcadAddress } from './normalize'
 
 export type HcadRawAccount = Record<string, string | undefined>
 
-export function hcadAccountFromRaw(row: HcadRawAccount, selectedZips: ReadonlySet<string>) {
+/** `selectedZips` is 'all' for a whole-county load (district-coverage plan §2.1). */
+export function hcadAccountFromRaw(row: HcadRawAccount, selectedZips: ReadonlySet<string> | 'all') {
   const account = (row.acct ?? '').trim()
   const zip = (row.site_addr_3 ?? '').replace(/\D/g, '').slice(0, 5)
   const address = normalizeHcadAddress(`${row.site_addr_1 ?? ''}, ${row.site_addr_2 ?? ''}, TX ${zip}`)
-  if (!selectedZips.has(zip) || !/^\d{6,25}$/.test(account) || !address) return null
+  if ((selectedZips !== 'all' && !selectedZips.has(zip)) || !/^\d{6,25}$/.test(account) || !address) return null
   const legalDescription = ['lgl_1', 'lgl_2', 'lgl_3', 'lgl_4']
     .map((key) => row[key]?.trim() ?? '')
     .filter(Boolean)

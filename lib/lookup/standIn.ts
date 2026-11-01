@@ -1,5 +1,6 @@
 import type { BodyType } from '@/lib/contracts/bodyTypes'
 import type { CensusMatch } from './census'
+import { CENSUS_SCHOOL_NAMES } from './schoolDistricts'
 
 // TEMPORARY stand-in for P1's address lookup (Technical Plan §3-§4).
 //
@@ -22,13 +23,25 @@ const slug = (s: string) =>
     .replace(/[^a-z0-9]+/g, '_')
     .replace(/^_+|_+$/g, '')
 
+/** Census name -> short name, for all 25 Harris County school districts. */
+const SHORT_SCHOOL: Record<string, string> = Object.fromEntries(Object.entries(CENSUS_SCHOOL_NAMES).map(([short, census]) => [census, short]))
+
 /** "Houston Independent School District" -> "Houston ISD" */
-const shortSchool = (name: string) => name.replace(/\s+Independent School District$/i, ' ISD').replace(/\s+Consolidated Independent School District$/i, ' CISD')
+const shortSchool = (name: string) =>
+  SHORT_SCHOOL[name] ??
+  name
+    .replace(/\s+Consolidated Independent School District$/i, ' CISD')
+    .replace(/\s+Independent School District$/i, ' ISD')
+    .replace(/\s+Municipal School District$/i, ' MSD')
 
 /** The body ID for a Census school-district name, e.g. "Katy Independent School District" -> "katy_isd_board". */
-export const schoolBoardId = (censusName: string) => KNOWN_SCHOOLS[censusName]?.id ?? `${slug(shortSchool(censusName))}_board`
+export const schoolBoardId = (censusName: string) => SCHOOL_OVERRIDES[censusName]?.id ?? `${slug(idStem(censusName))}_board`
 
-const KNOWN_SCHOOLS: Record<string, { id: string; college?: StandInBody }> = {
+/** IDs keep their first spelling ("goose_creek_consolidated_isd_board"), which data files already use. */
+const idStem = (name: string) => name.replace(/\s+Independent School District$/i, ' ISD')
+
+/** The two boards first seeded under other IDs, and the college district each one sits in. */
+const SCHOOL_OVERRIDES: Record<string, { id: string; college?: StandInBody }> = {
   'Houston Independent School District': {
     id: 'hisd_board',
     college: { id: 'hcc_board', name: 'Houston Community College Board of Trustees', type: 'college_board', category: 'tracked' },
@@ -54,7 +67,7 @@ export function bodiesFromCensus(match: CensusMatch): StandInBody[] {
   bodies.push({ id: 'flood_control', name: 'Harris County Flood Control District', type: 'flood_control', category: 'tracked' })
   bodies.push({ id: 'port_houston', name: 'Port of Houston Authority', type: 'port', category: 'tracked' })
   if (match.schoolDistrict) {
-    const known = KNOWN_SCHOOLS[match.schoolDistrict]
+    const known = SCHOOL_OVERRIDES[match.schoolDistrict]
     bodies.push({
       id: schoolBoardId(match.schoolDistrict),
       name: `${shortSchool(match.schoolDistrict)} Board`,
