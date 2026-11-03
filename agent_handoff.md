@@ -33,6 +33,15 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-11-03: Rewrite README
+- **Who:** Iarush · docs
+- **Branch:** claude/fervent-feynman-cjj72l
+- **What changed:** Replaced the outdated README with one covering the problem, the solution, every feature, the stack, repo layout, local setup, env variables, current status and limits, roadmap, project rules and contributing notes. Content is drawn from the plan files, `.plans/`, `docs/` and the handoff log.
+- **Files:** `README.md`, `agent_handoff.md`
+- **Contract changes:** None
+- **Checked:** Read against the plan files and the repo tree; commands and env variable names match `package.json` and `.env.example`. No code changed, so tests, lint and typecheck were not run. The status and limits section reflects the Oct 21–29 docs and handoff entries, not a fresh check of production.
+- **Open issues / next:** A teammate should confirm the "Current status" and "Known limits" lists against production before the next release.
+
 ### 2026-10-29: MUD bucket M24 (`credit:infinity services`): 14 sources, 1 no agendas online
 - **Who:** Iarush · P2 Scrapers
 - **Branch:** main
