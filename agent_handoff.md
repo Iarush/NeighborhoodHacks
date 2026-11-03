@@ -41,7 +41,7 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 - **Contract changes:** None
 - **Checked:** `check-district-batch.ts` S1, S2, S3: all PASS except Katy ISD (no source). Items were extracted for 15 boards (BoardBook ones, plus HISD and CFISD). 0 items for tomball, spring, huffman, pearland, aldine, deer_park, dayton, humble (`llm_extract`/`diligent`; no AI key here) and for galena_park and waller (their BoardBook meetings list no agenda items).
 - **Open issues / next:**
-  - **Katy ISD** is still unfinished. It uses BoardDocs, whose adapter needs the district's `site` and `committee_id`. `go.boarddocs.com` returns 403 from CloudFront to this sandbox, and katyisd.org's pages don't link to it, so the config can't be confirmed. Someone on a normal network should open Katy's BoardDocs public page, then add the source (`adapter: boarddocs`, `config: {state: tx, site, committee_id}`) or record `no_agendas_online` in `data/district-sites.yaml`.
+  - **Katy ISD** is still unfinished. Its BoardDocs config is known from the Oct 28 entry (`tx/kisd`, committee `AAUJQK4E4D0E`), but BoardDocs' CloudFront returns 403 to the scraper, so it isn't in `sources.yaml`. The team still has to decide whether to ask Katy ISD or BoardDocs for access or leave it out. Posing as a browser is not an option.
   - S1-S3 stay unticked in `.plans/district-rollout-batches.md`: seeding, boundaries and live lookups need the Supabase service-role key.
   - Re-run the 10 zero-item boards with an AI key.
 
