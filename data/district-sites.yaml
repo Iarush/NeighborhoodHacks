@@ -483,6 +483,9 @@
 - id: hcmud_468
   website: https://hcmud468.com
   checked_on: '2026-10-28'
+  no_agendas_online:
+    reason: "hcmud468.com/meetings/ posts minutes into 2026, but its newest agenda is dated 2025-12-03; nothing newer is linked."
+    checked_on: '2026-11-03'
 - id: hcmud_480
   website: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-480/
   checked_on: '2026-10-28'
@@ -1678,3 +1681,23 @@
   no_agendas_online:
     reason: "The Comptroller's self-reported page (bamunitax.com/DistrictDetail/442, a tax collector) returns HTTP 503 (retried); the survey found no other site, and a web search for \"Harris County MUD 473 agenda\" found only other districts' pages."
     checked_on: '2026-10-29'
+- id: hcmud_460
+  no_agendas_online:
+    reason: "No site from the survey or the Comptroller; the guessed domain hcmud460.org is parked; one web search found nothing."
+    checked_on: '2026-11-03'
+- id: hcwcid_fondren_road
+  no_agendas_online:
+    reason: "No site from the survey or the Comptroller; one web search for \"Fondren Road water control improvement district agenda\" found only statutes, TxDOT and aggregator pages."
+    checked_on: '2026-11-03'
+- id: hcmud_404
+  no_agendas_online:
+    reason: "No site from the survey or the Comptroller; the guessed domain hcmud404.com is parked; one web search found nothing."
+    checked_on: '2026-11-03'
+- id: hcmud_552
+  no_agendas_online:
+    reason: "No site from the survey or the Comptroller; one web search for \"Harris County Municipal Utility District No. 552 agenda\" found only its 2017 creation bill."
+    checked_on: '2026-11-03'
+- id: hcmud_346
+  no_agendas_online:
+    reason: "Its only listing is the tax office's district list (wheelerassoc.com/DistrictInformation), with tax data but no agendas; one web search found nothing."
+    checked_on: '2026-11-03'
