@@ -33,6 +33,15 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-11-04: MUD keyed pass: all water-district boundaries loaded; ingest blocked on migrations
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main
+- **What changed:** Supabase only: loaded 498 water-district polygons (W1–W55 one batch per call, plus pilot MUD 489) from `MUDandWaterDistricts_HCAD` layers 0+1 fetched Nov 4, merged into one GeoJSON; 13 invalid rings repaired with shapely `make_valid` (areas unchanged). Status added to `.plans/district-rollout-batches.md`, progress-log line in the rollout spec.
+- **Files:** `.plans/district-rollout-batches.md`, `.plans/mud-scrapers-rollout-spec.md`, `agent_handoff.md`
+- **Contract changes:** None
+- **Checked:** `check-district-batch` W1–W55 with keys: 487/497 pass, 10 fail on source only (known pending list). `lookup_boundary_bodies` at a shapely interior point per district: 498/498 correct (the 1 extra feature is the blank, unnamed one). `npm run ingest -- --source hcmud_500 --dry-run`: ok, 1 meeting, 39 items. cypress_hill_mud_1 dry-run: `fetch failed` on its http:// page (once; recheck).
+- **Open issues / next:** `SUPABASE_DB_URL` is empty, so the 3 migrations stay unapplied; they block every real ingest and `lookup_boundary_near`. Then: real ingest (OpenRouter key has $6.73 of $10 left), real-address lookups, 390 px page checks, tick W boxes. Gotcha: loading one water layer after the other wipes the first layer's polygons; always use a merged file. X phase and plan stress test still open.
+
 ### 2026-11-04: School boards S1-S3: code map and boundaries loaded; ingest blocked on migrations
 - **Who:** Iarush · P2 Scrapers
 - **Branch:** main

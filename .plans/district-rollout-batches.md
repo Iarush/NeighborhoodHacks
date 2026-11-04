@@ -45,6 +45,14 @@ The batch lists for `.plans/district-coverage-plan.md`. Each line is one rollout
 | Smaller regions (Goose Creek, Clear Creek, Huffman, Crosby, Pasadena, Sheldon, Galena Park, Channelview, Spring Branch, La Porte, New Caney, 1 outside any ISD) | 73 | W48–W55 |
 | No county boundary (reconcile first) | 60 | X1–X6 |
 
+**Status (Nov 4, 2026):** all 498 county water-district polygons are in Supabase (W1–W55 plus MUD 489; layers 0 and 1 of `MUDandWaterDistricts_HCAD`, fetched Nov 4, merged into one file per load, 13 invalid rings repaired with shapely `make_valid`, areas unchanged). `check-district-batch` W1–W55 with keys: 487 of 497 pass; the 10 failures are the known pending sources (hcmud_165, hcmud_322, hcwcid_50, hcmud_273, hcmud_459, baker_road_mud, hcmud_255, hcmud_539, horsepen_bayou_mud, memorial_mud). Map lookup at one interior point per district (`lookup_boundary_bodies`): 498 of 498 land in the right body. No W box is ticked yet:
+
+- [ ] Real ingest of the MUD sources. Blocked by the same 3 migrations as the school boards (above). A dry-run ingest works (hcmud_500: 1 meeting, 39 items through OpenRouter).
+- [ ] OpenRouter key limit is $10 with $6.73 left (Nov 4). Check that it covers the first full ingest before running it.
+- [ ] Real-address lookups (tax-code answer vs map answer) need HCAD parcels loaded for these areas, and `lookup_boundary_near` needs the migrations.
+- [ ] Pages at 390 px by keyboard, after ingest.
+- **Loading note:** `load-boundaries` removes polygons for any batch body missing from the input file, so load both water layers from one merged file, never one layer after the other.
+
 ### Cypress-Fairbanks ISD: 124 districts
 
 - [ ] **W1:** `465` HARRIS COUNTY MUD 165, `617` HARRIS COUNTY WCID 157, `334` HARRIS COUNTY WCID 159, `614` HARRIS COUNTY WCID 155, `811` REMINGTON MUD 1, `261` HARRIS COUNTY FWSD 61, `632` HARRIS COUNTY WCID 145, `506` HARRIS COUNTY MUD 419, `405` HARRIS COUNTY MUD 105, `752` NORTHWEST HC MUD 012
