@@ -33,6 +33,15 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-11-04: MUD code parser Phase 0: agenda survey script and law-firm fingerprints
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main
+- **What changed:** Built Phase 0 of `.plans/mud-code-parser-spec.md`. `npm run survey:agendas` fetches the newest 2 agendas of every `llm_extract` source (or `--source <id>`; `--offline` re-reports from saved text) into `tmp/survey/agenda-pdfs/` and writes `tmp/survey/agenda-report.{json,md}`: firm, how it was recognized, list shape and likely rung. `lib/adapters/mudAgenda/profiles.ts` holds the firm profiles and `detectFirm()` (name/phone, then doc-ID footer, then template wording; latest match wins). `survey.ts` holds the list-shape estimate, used until Phase 1's parser exists.
+- **Files:** `lib/adapters/mudAgenda/{profiles,survey}.ts`, `scripts/survey-agenda-pdfs.ts`, `package.json` (`survey:agendas`), `tests/unit/mud-agenda-survey.test.ts`, `.plans/mud-code-parser-spec.md` (progress log only), `agent_handoff.md`
+- **Contract changes:** None. The spec's `FirmProfile` type gained optional `phones`, `doc_id`, `template` and `template_phones` fields (P2-internal).
+- **Checked:** Offline report over the saved survey text: of 297 water districts, 278 have a document (183 numbered, 35 unnumbered, 60 scanned). Not identified: 14 of 225 text-layer districts (6.2%, target < 10%), down from 74. Most of the 14 aren't law-firm agendas (tax-rate notices, a committee agenda, office-manager or president-signed notices). No agenda matches two firms. Live fetch with `NODE_USE_ENV_PROXY=1` for hcmud_489 and bcmud_18 worked. `npm test` passes (1062 + 72). `npm run lint` shows 5 errors, all in UI files this task didn't touch. `npm run typecheck` shows 1 error, in the gitignored `tmp/scratch/hcad/lookup.ts`. All three are clean on the new files. Didn't refetch all 305 sources: the saved text is from today's survey.
+- **Open issues / next:** Phase 1 (parser + ~40 golden fixtures). Correction to spec §2: SPH's disability-notice phone is (713) 623-4531 (39 agendas, beside the firm's name). (713) 880-3800 never appears beside a firm name; it's kept as weak SPH evidence. Five profiles are templates whose firm isn't named on the agenda (`matter_002`, `initials_header`, two phone-only ones); `greenberg_traurig` and `hunton` are recognized from the meeting being held at their office.
+
 ### 2026-11-04: Spec for a code parser for MUD agendas and minutes (replaces the LLM)
 - **Who:** Iarush · P2 Scrapers
 - **Branch:** main

@@ -213,3 +213,4 @@ Each phase ends with `npm test`, `npm run typecheck`, `npm run lint`, the attrib
 ## Progress log
 
 - 2026-11-04: Spec written from the interview, after a survey of 305 sources' newest agendas (§2). Plan stress test: already done Oct 28 ("Stress test answers: Iarush (P2)" in `agent_handoff.md`); later notes calling it pending were wrong. Next: Phase 0.
+- 2026-11-04: Phase 0 done. `npm run survey:agendas` (`scripts/survey-agenda-pdfs.ts`, `--offline` to re-report from saved text) and `lib/adapters/mudAgenda/profiles.ts` (16 profiles). Not identified: 14 of 225 text-layer water districts (6.2%). SPH's phone is (713) 623-4531, not 880-3800 (§2). Next: Phase 1.

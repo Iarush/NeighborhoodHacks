@@ -24,7 +24,8 @@
     "seed:hcad-jurisdictions": "node --import tsx scripts/seed-hcad-jurisdictions.ts",
     "load:hcad": "node --import tsx scripts/load-hcad.ts",
     "stage:hcad": "node --import tsx scripts/stage-hcad.ts",
-    "load:boundaries": "node --import tsx scripts/load-boundaries.ts"
+    "load:boundaries": "node --import tsx scripts/load-boundaries.ts",
+    "survey:agendas": "tsx scripts/survey-agenda-pdfs.ts"
   },
   "dependencies": {
     "@google/genai": "^2.30.0",
