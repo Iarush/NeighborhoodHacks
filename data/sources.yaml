@@ -2670,3 +2670,469 @@
     date_container: '.fusion-panel'
     meeting_type_from_text: { special: "(?i)special" }
     expected_max_gap_days: 45
+# M26 (credit:off cinco; line layout as M25)
+- id: hcmud_480
+  body_id: hcmud_480
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-480/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_202
+  body_id: hcmud_202
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-202/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: nwhcmud_24
+  body_id: nwhcmud_24
+  adapter: llm_extract
+  config:
+    index_url: https://www.nwhcmud24.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_530
+  body_id: hcmud_530
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-530/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 70
+- id: spring_creek_forest_pud
+  body_id: spring_creek_forest_pud
+  adapter: llm_extract
+  config:
+    index_url: https://www.scfpud.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_275
+  body_id: hcmud_275
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-275/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_211
+  body_id: hcmud_211
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-211/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 70
+- id: hcmud_233
+  body_id: hcmud_233
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-233/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 70
+- id: hcmud_319
+  body_id: hcmud_319
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-319/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_586
+  body_id: hcmud_586
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-586
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: harris_waller_counties_mud_12
+  body_id: harris_waller_counties_mud_12
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-waller-counties-municipal-utility-district-no-12/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: memorial_hills_ud
+  body_id: memorial_hills_ud
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/memorial-hills-utility-district/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_400
+  body_id: hcmud_400
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud400.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_499
+  body_id: hcmud_499
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-499/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+# M27 (credit:infinity services; h3 config as M23, S&K pages as M24)
+- id: hcmud_151
+  body_id: hcmud_151
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud151.com/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_575
+  body_id: hcmud_575
+  adapter: llm_extract
+  config:
+    index_url: https://www.sklawdistrictdata.org/harris-county/harris-county-municipal-utility-district-no-575/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'td:first-child a'
+    date_from: link_text
+    meeting_type_from_text: { special: "(?i)special|hearing" }
+    expected_max_gap_days: 45
+- id: hcmud_580
+  body_id: hcmud_580
+  adapter: llm_extract
+  config:
+    index_url: https://www.sklawdistrictdata.org/harris-county/harris-county-municipal-utility-district-no-580/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'td:first-child a'
+    date_from: link_text
+    meeting_type_from_text: { special: "(?i)special|hearing" }
+    expected_max_gap_days: 110
+- id: beechnut_mud
+  body_id: beechnut_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.beechnutmud.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: whcmud_6
+  body_id: whcmud_6
+  adapter: llm_extract
+  config:
+    index_url: https://www.whcmud6.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcfwsd_1a
+  body_id: hcfwsd_1a
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcfwsd1a.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcfwsd_27
+  body_id: hcfwsd_27
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcfwsd27.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_55
+  body_id: hcmud_55
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud55.com/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_84
+  body_id: hcwcid_84
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcwcid84.org/meetings/
+    link_pattern: '(?i)drive\.google\.com/file/d/'
+    link_selector: 'h3:contains("Agenda") ~ p:not(h3:contains("Minute") ~ p) a'
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+# M28 (credit:off cinco; line layout as M25)
+- id: hcmud_451
+  body_id: hcmud_451
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-451/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_420
+  body_id: hcmud_420
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-420/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_411
+  body_id: hcmud_411
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-411/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 70
+- id: hcmud_372
+  body_id: hcmud_372
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-372/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: nwhcmud_5
+  body_id: nwhcmud_5
+  adapter: llm_extract
+  config:
+    index_url: https://www.nwmud5.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_542
+  body_id: hcmud_542
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-542/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: baybrook_mud_1
+  body_id: baybrook_mud_1
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/baybrook-municipal-utility-district-no-1/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcwcid_161
+  body_id: hcwcid_161
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-water-control-improvement-district-no-161/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 100
+- id: hcmud_560
+  body_id: hcmud_560
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-560/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_381
+  body_id: hcmud_381
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-381/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 70
+- id: hcmud_382
+  body_id: hcmud_382
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-382/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: greenwood_ud
+  body_id: greenwood_ud
+  adapter: llm_extract
+  config:
+    index_url: https://www.greenwoodud.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_561
+  body_id: hcmud_561
+  adapter: llm_extract
+  config:
+    index_url: https://districtdirectory.org/harris-county/harris-county-municipal-utility-district-no-561/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+# M29 (own themes)
+- id: hcmud_345
+  body_id: hcmud_345
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud345.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_500
+  body_id: hcmud_500
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud500.org/
+    link_pattern: "(?i)/wp-content/uploads/.+master-agenda[^/]*\\.pdf$"   # "HC-500-Master-Agenda-11-10-26.pdf"; the Internal Agenda is skipped
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_217
+  body_id: hcmud_217
+  adapter: llm_extract
+  config:
+    index_url: https://hcmud217.com/
+    link_pattern: "(?i)/wp-content/uploads/.+agenda[^/]*\\.pdf$"   # "10-27-2026-Agenda-HCMUD217.pdf"
+    date_from: filename
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+# Pending rechecks from M01, M02, M05, M08 (Drive answered 'Quota exceeded' then; retried Nov 3)
+- id: hcmud_501
+  body_id: hcmud_501
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud501.org/documents/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: charterwood_mud
+  body_id: charterwood_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.charterwoodmud.com/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: barker_cypress_mud
+  body_id: barker_cypress_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.barkercypressmud.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: cinco_mud_3
+  body_id: cinco_mud_3
+  adapter: llm_extract
+  config:
+    index_url: https://www.cincomuds.org/cinco-municipal-utility-district-no-3/meeting-information/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: cinco_mud_6
+  body_id: cinco_mud_6
+  adapter: llm_extract
+  config:
+    index_url: https://www.cincomuds.org/cinco-municipal-utility-district-no-6/meeting-information/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: cinco_mud_9
+  body_id: cinco_mud_9
+  adapter: llm_extract
+  config:
+    index_url: https://www.cincomuds.org/cinco-municipal-utility-district-no-9/meeting-information/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hunters_glen_mud
+  body_id: hunters_glen_mud
+  adapter: llm_extract
+  config:
+    index_url: https://www.hgmud.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45
+- id: hcmud_46
+  body_id: hcmud_46
+  adapter: llm_extract
+  config:
+    index_url: https://www.hcmud46.org/meetings/
+    link_pattern: "(?i)^agenda$"
+    match_link_text: true
+    date_from: line_text
+    meeting_type_from_text: { special: "(?i)special" }
+    expected_max_gap_days: 45

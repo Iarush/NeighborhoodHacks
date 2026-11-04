@@ -33,6 +33,24 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-11-03: MUD buckets M26–M29 and Drive-quota rechecks: 47 sources, 6 no agendas online
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main (merged from claude/fervent-feynman-cjj72l, now deleted)
+- **What changed:**
+  - `data/sources.yaml`: 39 sources for M26 (14), M27 (9), M28 (13), M29 (3), all `llm_extract` link-only and reusing the M23/M24/M25 configs. No new adapter or fixtures. hcmud_500 and hcmud_217 use `date_from: filename` on their home pages.
+  - 8 earlier rechecks added (hcmud_501, charterwood_mud, barker_cypress_mud, cinco_mud_3/6/9, hunters_glen_mud, hcmud_46): Drive downloads work again.
+  - `data/district-sites.yaml`: no agendas online for hcmud_460, hcmud_404, hcwcid_fondren_road, hcmud_552, hcmud_346, hcmud_468.
+  - `.plans/mud-buckets.md` statuses and a Rechecks section; progress-log line in the rollout spec.
+- **Files:** `data/sources.yaml`, `data/district-sites.yaml`, `.plans/mud-buckets.md`, `.plans/mud-scrapers-rollout-spec.md`, `agent_handoff.md`
+- **Contract changes:** None
+- **Checked:**
+  - Each source scraped with `--from 2026-06-01` (or `2026-08-01`) `--to 2026-12-31` through the proxy (`NODE_USE_ENV_PROXY=1`): every one found an agenda within its gap; newest dates Oct 8 to Nov 10, 2026. nwhcmud_24's paired dates are real executive plus regular meetings.
+  - `check-district-batch.ts` on the 26 affected W batches: every M26–M29 district passes. 7 failures are the earlier pending districts (cinco_mud_3/6 now fixed by this change; the rest are listed below). DB checks skipped (no keys).
+  - `npx vitest run`: 109 files, 1050 tests passed. `npm run typecheck`: clean. No TS changed, so lint not rerun.
+- **Open issues / next:**
+  - Still pending: hcmud_165, hcmud_322, hcwcid_50 (after Nov 6), hcmud_273 and hcmud_459 (after Nov 12), baker_road_mud (after Dec 1).
+  - The keyed pass (seeding, ingest, boundaries, lookups, ticking W boxes) and the X phase stay open. Plan stress test not run for this teammate.
+
 ### 2026-11-03: School board scrape check (S1-S3)
 - **Who:** Iarush · P2 Scrapers
 - **Branch:** claude/fervent-feynman-cjj72l

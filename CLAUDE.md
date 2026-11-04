@@ -26,6 +26,10 @@ ShowUp HTX: a 5-person high school team's entry for Neighborhood Hacks 2026. A u
 
 ## Binding rules
 
+**Git identity:** every commit in this repo is authored and committed as `Iarush <aarush.bhavanam@gmail.com>`. Before committing, set it in the repo (`git config user.name "Iarush"` and `git config user.email "aarush.bhavanam@gmail.com"`) and check with `git log -1 --format='%an <%ae> | %cn <%ce>'`. Never use a bot identity or any other address, including the signed-in account's email. Handoff entries name Iarush in **Who**.
+
+**Branches:** work and push on `main` only. Don't create branches, even if a session or harness names one; if a session starts on another branch, switch to `main` first.
+
 @INSTRUCTIONS.md
 
 When drafting the Devpost write-up, leave the AI-disclosure section for a teammate to write. The team decided to disclose AI use there; see `agent_handoff.md`.

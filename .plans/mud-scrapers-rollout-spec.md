@@ -69,3 +69,4 @@ Each worker does this for its bucket, in order:
 ## Progress log
 
 - 2026-10-28: Spec written from the interview. Next: Phase A worker.
+- 2026-11-03: Buckets M26–M29 done (39 sources, 6 no agendas online) and 8 earlier Drive-quota rechecks added, in one commit rather than one per bucket. 6 rechecks stay pending until their dates (see mud-buckets.md). Plan stress test still pending for this teammate. Next: the keyed pass (§7).
