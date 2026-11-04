@@ -16,12 +16,14 @@ The batch lists for `.plans/district-coverage-plan.md`. Each line is one rollout
 - [ ] **S2:** Galena Park ISD, Sheldon ISD, Channelview ISD, Goose Creek CISD, La Porte ISD, Deer Park ISD, Crosby ISD, Huffman ISD
 - [ ] **S3:** New Caney ISD, Waller ISD, Dayton ISD, Pearland ISD, Stafford MSD, plus HCAD code `012` (HOUSTON ISD, formerly NFISD) mapped to the existing `hisd_board`
 
-**Status (Nov 3, 2026):** 23 of 24 boards have a source and scrape live (2–13 meetings each, Aug 20 to Dec 31, 2026). File checks pass for all but Katy. Left to do before S1–S3 can be ticked:
+**Status (Nov 4, 2026):** 23 of 24 boards have a source and scrape live. Bodies, the HCAD code map (530 codes, including `012` → HISD) and all 25 Harris County school polygons are in Supabase. `check-district-batch` with keys passes every S1–S3 district except Katy (no source). Left to do before S1–S3 can be ticked:
 
-- [ ] Apply `supabase/migrations/20261028230000_diligent_adapter.sql` (allows the `diligent` and `boarddocs` adapters; Humble's ingest fails without it). Needs the Supabase service-role key.
-- [ ] Seed the boards and the code map (`npm run ingest -- --seed`), then load boundaries (`load:boundaries`), one batch at a time.
-- [ ] Ingest all 23 boards with `OPENROUTER_API_KEY` set. The AI pass fills items and meeting times for Tomball, Spring, Huffman, Pearland, Aldine, Deer Park, Dayton and Humble, which return meetings only.
-- [ ] Rerun `scripts/check-district-batch.ts --batch S1|S2|S3` with keys, so the database checks run, then do plan §4 steps 5–6 by hand: one real address per district, and the pages at 390 px by keyboard.
+- [ ] **Apply 3 migrations in Supabase** (SQL editor, or set `SUPABASE_DB_URL` so an agent can): `20261028210000_district_packing.sql`, `20261028230000_diligent_adapter.sql`, `20261029010000_utilitytaxservice_adapter.sql`. Until then every ingest fails in `syncSources` on `sources_adapter_check`, because `sources.yaml` already holds `diligent` and `utilitytaxservice` sources. `district_packing` also adds `lookup_boundary_near` and the packed HCAD tables the lookup calls.
+- [x] Seed the boards and the code map (`seed-hcad-jurisdictions --apply`), then load boundaries (HCAD `School.zip`, Oct 5, 2026 release).
+- [ ] Ingest all 23 boards with `OPENROUTER_API_KEY` set (fills items for Tomball, Spring, Huffman, Pearland, Aldine, Deer Park, Dayton and Humble). Blocked by the migrations above.
+- [x] Rerun `check-district-batch --batch S1|S2|S3` with keys.
+- [x] Live lookup check (map answer): 19 boards by a real address, 5 cross-county boards by a polygon interior point; all land in the right board. Tax-code answer not compared (HCAD parcels aren't loaded for these areas).
+- [ ] Pages at 390 px by keyboard (plan §4 step 6), after ingest.
 - [ ] **Katy ISD: team decision needed.** BoardDocs (`tx/kisd`, committee `AAUJQK4E4D0E`) returns 403 to the scraper. Either ask Katy ISD or BoardDocs for access and then add the `boarddocs` source, or leave Katy out and say so on its body page. Don't pose as a browser.
 - [ ] Galena Park and Waller list meetings on BoardBook with no agenda items. Check again before launch, in case they post agendas as PDFs only.
 - [ ] January: Aldine's Drive folder and Dayton's page are per-year, so their source config needs the new year's ID. The 45-day gap check will flag them.

@@ -33,6 +33,15 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-11-04: School boards S1-S3: code map and boundaries loaded; ingest blocked on migrations
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main
+- **What changed:** Supabase only: `seed-hcad-jurisdictions --apply` upserted 530 codes (incl. `012` → `hisd_board`); loaded all 25 Harris County school polygons from HCAD `School.zip` (Oct 5, 2026), one body per RPC call (whole layer hit the statement timeout). Dropped one 3-point sliver ring (Pearland) and repaired HISD, Pearland, Spring with shapely `make_valid` (areas unchanged). Status list updated in `.plans/district-rollout-batches.md`.
+- **Files:** `.plans/district-rollout-batches.md`, `agent_handoff.md`
+- **Contract changes:** None
+- **Checked:** `check-district-batch` S1/S2/S3 with keys: all pass except Katy (no source). Live map lookups: 17 real addresses + 6 interior points, all correct. Real ingest of 22 boards: all failed on `sources_adapter_check`; nothing written.
+- **Open issues / next:** Apply migrations `20261028210000_district_packing`, `20261028230000_diligent_adapter`, `20261029010000_utilitytaxservice_adapter` (no `SUPABASE_DB_URL` here); they block all ingest and `lookup_boundary_near`. Then rerun ingest and the 390 px check. Katy decision open. Plan stress test not run.
+
 ### 2026-11-03: MUD buckets M26–M29 and Drive-quota rechecks: 47 sources, 6 no agendas online
 - **Who:** Iarush · P2 Scrapers
 - **Branch:** main (merged from claude/fervent-feynman-cjj72l, now deleted)
