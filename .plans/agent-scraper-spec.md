@@ -162,6 +162,7 @@ These were checked against the real sources while writing this spec. Treat them 
 | D34 | Names (v1.3) | Proof quotes are stored as-is (admin-only). The D9 rule (private individuals by role only) applies to P3's user-facing output. |
 | D35 | Priority (v1.3) | Core, but built after the Phase 1 agenda steps: Steps 11b and 11c come after Step 11. They must not delay Steps 1–10. |
 | D36 | robots.txt interpretation (owner decision, Oct 19) | **Literal:** obey the group for our User-Agent (`NeighborhoodHacks-AgendaBot`), or `*` if there's no specific group. Groups for named AI crawlers (`Google-Extended`, `GPTBot`, `ClaudeBot`, …) are not applied. Never change or spoof the User-Agent to get past a group. If an outlet adds a group naming our bot, or a `*` disallow for article paths, obey it. Terms-of-use checks (Step 11b) still apply. |
+| D37 | Water-district agendas and minutes (Iarush, Nov 4, 2026) | **Code, not the LLM.** Water districts move from `llm_extract` to the `mud_agenda` adapter (`.plans/mud-code-parser-spec.md`): one parser with per-law-firm profiles, a no-AI ladder (text layer → word-position text → Tesseract OCR in GitHub Actions → loose list parser), then the Step 7 LLM path only under a shared cap of $1 or 20 documents a month. Discovery (D15), validation, D9, D11 IDs and D24 are unchanged. Text-layer items skip review; OCR items keep D6 (`quote_verified = false`, all to review). Step 10 for these sources matches minutes in code on the same ladder. |
 
 ---
 
@@ -1066,6 +1067,8 @@ The whole run is idempotent: running it twice changes nothing.
     - Items on a cancelled meeting aren't upcoming: no alerts, no Speak up deadline, no review queue.
     - P3 shows the meeting as cancelled or postponed, with its official link.
     - No contract change. The `discover` option `meeting_status_from_text` and the `pickPerDate` rule are P2 work, not yet built.
+
+24. **(Nov 4) Water districts leave the LLM (D37):** P2 adds the `mud_agenda` adapter kind (migration on `sources_adapter_check`), the `ocr_text` document kind, a `needs_ocr` flag on `documents`, an `llm_spend` table and the `/api/cron/ocr-queue` and `/api/cron/ocr-result` routes. **P3:** urgent OCR items from `mud_agenda` arrive in `/admin/review` with `quote_verified = false`. **P1/P3:** MUD meetings get their real start time from the notice. No change to `Meeting`, `Item`, `bodies_token` or `classify()`. Details in `.plans/mud-code-parser-spec.md` §9.
 
 ---
 

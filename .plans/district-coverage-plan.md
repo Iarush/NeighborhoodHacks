@@ -214,6 +214,7 @@ For each of the batch's districts:
 - **Districts that cross county lines** (Waller, Pearland, Dayton, Fort Bend County MUD 030): describe only the part we know about. Don't claim facts about the rest.
 - **Census points are approximate.** That's why the "may be in" rule exists. Never show a map-based district as certain.
 - **AI cost:** about 500 districts × ~1 agenda a month, plus minutes and stories. Estimate from OpenRouter prices before W1, set a monthly cap, and check spend at each region boundary.
+  - **Nov 4, 2026:** water-district agendas and minutes no longer go through the LLM. They use the code parser `mud_agenda` (`.plans/mud-code-parser-spec.md`), with the LLM only as a last step capped at $1 or 20 documents a month (`llm_spend`). Stories (P3) still need their own estimate.
 - **Neutrality and privacy rules apply unchanged.** MUD agendas often have closed sessions and personnel items: "an employee", never a name.
 
 ## 7. Proposed plan-file changes (for the team; not made)

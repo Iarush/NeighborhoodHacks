@@ -203,6 +203,7 @@ type Item = { external_id: string; meeting_external_id: string;
 ### LLMExtractAdapter (Gemini)
 
 - **Covers:** the demo MUD, the demo college board, City Council (if the PrimeGov check fails), and CFISD (if it isn't on Legistar).
+- **Water districts moved off this adapter (Nov 4, 2026):** MUD, WCID, FWSD and PUD agendas and minutes use the code parser `mud_agenda` (`.plans/mud-code-parser-spec.md`): the PDF text layer, then text rebuilt from word positions, then free OCR (Tesseract, in GitHub Actions), then a looser list parser. The LLM is only the last step, capped at $1 or 20 documents a month across agendas and minutes; past the cap a meeting is stored with its agenda link and no items. A water district stays on `llm_extract` only until it passes the parser.
 - **Process:**
   1. Code downloads the agenda PDF or HTML.
   2. Gemini, with structured output, returns `Meeting` and `Item[]`, including an exact `source_quote` per item. It reads scanned PDFs directly.
@@ -503,7 +504,7 @@ The client removes every `guardrail_hits` quote from the draft and shows its rea
 - **`quiz_responses`:** id, selected_types, actual_types, created_at
 
 **Agendas [P2, P3]**
-- **`sources`:** id, body_id, adapter (`legistar` | `llm_extract` | `manual`), config (JSON), last_checked, last_success
+- **`sources`:** id, body_id, adapter (`legistar` | `llm_extract` | `mud_agenda` | `manual`, plus the other adapter kinds in `lib/adapters/types.ts`), config (JSON), last_checked, last_success
 - **`documents`:** id, source_id, fetched_at, raw, content_hash
 - **`meetings`:** id, source_id, external_id, body_id, date, type, agenda_url, source_url_es, video_url
 - **`items`:** id, meeting_id, external_id, body_id, agenda_number, title, matter_type, item_type, status, action, vote_result, tier, rule_fired, review_status, source_quote, story_en, story_es, story_source, source_url, content_hash

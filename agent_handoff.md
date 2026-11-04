@@ -33,6 +33,15 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-11-04: Spec for a code parser for MUD agendas and minutes (replaces the LLM)
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main
+- **What changed:** Interviewed Iarush and wrote `.plans/mud-code-parser-spec.md`: a `mud_agenda` adapter (one parser plus per-law-firm profiles), a no-AI ladder (text layer → word-position text → Tesseract OCR in GitHub Actions → loose parser), and the LLM only as a last step capped at $1 or 20 docs a month. Minutes outcomes are replaced too. With Iarush's approval, short notes went into the tech plan (LLMExtract section, `sources.adapter` in §16), the scraper spec (D37, §12 item 24) and the coverage plan §6. Spec only; nothing built.
+- **Files:** `.plans/mud-code-parser-spec.md` (new), `Technical_Implementation_Plan.md`, `.plans/agent-scraper-spec.md`, `.plans/district-coverage-plan.md`, `.plans/mud-scrapers-rollout-spec.md`, `agent_handoff.md`
+- **Contract changes:** Planned, not built: `mud_agenda` adapter kind (and migration), `ocr_text` document kind, `documents.needs_ocr`, `llm_spend` table, OCR cron routes; OCR items reach P3's review queue. No change to `Meeting`/`Item`, `bodies_token` or `classify()`.
+- **Checked:** Surveyed the newest 1–2 agendas of all 305 `llm_extract` sources (296 water districts): 60% clean numbered lists, 14% need more work, 20% scanned; ABHR 69, SPH 41, Coats Rose 13. Raw text in `tmp/survey/agenda-pdfs/` (gitignored). Node's fetch needs `NODE_USE_ENV_PROXY=1` in the cloud container. No code changed, so tests weren't run.
+- **Open issues / next:** Phase 0 of the spec. Correction: the plan stress test was done Oct 28 ("Stress test answers: Iarush (P2)"); the Nov 3 and Nov 4 entries calling it pending were wrong.
+
 ### 2026-11-04: MUD keyed pass: all water-district boundaries loaded; ingest blocked on migrations
 - **Who:** Iarush · P2 Scrapers
 - **Branch:** main
