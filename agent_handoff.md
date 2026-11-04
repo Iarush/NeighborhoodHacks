@@ -33,6 +33,15 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-11-04: Spec for regional and state bodies, end to end (plan only)
+- **Who:** Iarush · P2 (spec spans P1–P5)
+- **Branch:** `new-features` (Iarush asked for this branch; an exception to CLAUDE.md's main-only rule. It goes to `main` by PR.)
+- **What changed:** New spec `.plans/regional-bodies-spec.md`, from an interview (Q1–Q16) and a source survey. It covers H-GAC TPC, TxDOT Houston District, TCEQ, PUC, HGSD and Gulf Coast Authority as a tracked "Regional and state" tier, plus the four Harris regional water authorities as local bodies. SJRA is dropped because its territory excludes Harris County. No code changed.
+- **Files:** `.plans/regional-bodies-spec.md`
+- **Contract changes:** None yet. Proposed in the spec's §4: four new `BodyType` values; `bodies.category = 'regional'`; `bodies.affects_you_*`; `items.place` and `Item.comment_deadline`; four adapter kinds; four `item_type` values; a `comment_close` deadline anchor; `LookupPayload.point` (browser-only).
+- **Checked:** Source URLs fetched with curl Nov 4. h-gac.com returns a Cloudflare 403 to this container. TCEQ, PUC, TxDOT, HGSD and SJRA pages return 200. Not run: build, tests (no code).
+- **Open issues / next:** Phase 0 of the spec. The team has to approve the proposed plan-file edits (§10) and the browser-only reader point (§7.3).
+
 ### 2026-11-04: MUD code parser Phase 0: agenda survey script and law-firm fingerprints
 - **Who:** Iarush · P2 Scrapers
 - **Branch:** main
