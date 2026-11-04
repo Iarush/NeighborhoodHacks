@@ -1,0 +1,102 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "johnson_petrov",
+  "meeting": {
+    "date": "2026-11-04T18:30:00-06:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Comments from the public (3 minutes allotted time per speaker)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Approve minutes and official records of previous Board of Directors meetings (October 7, 2026, regular meeting, and October 21, 2026, special meeting)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "2026 Tax Rate",
+      "description": "(a) Public hearing on the proposed 2026 property tax rate;\n(b) Adopt Order Setting Rate and Levying Tax for 2026;\n(c) Amend District Information Form and Notice to Purchasers, if necessary;\n(d) Adopt Order appointing Tax Assessor Collector;\n(e) Adopt Resolution Concerning Tax Collection Procedures;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Bookkeeper's Report",
+      "description": "(a) Authorize payments of the District's bills;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Tax Assessor/Collector's Report",
+      "description": "(a) Authorization of payments from the Tax Account;\n(b) Status of delinquent taxes and service terminations;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Operator's Report",
+      "description": "(a) Status of inflow and infiltration investigation;\n(b) Approve all necessary maintenance and repair actions;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Engineer's Report",
+      "description": "(a) Sanitary Sewer Rehabilitation Project;\n(b) Lift Station Rehab Project;\n(c) Approve pay estimates and change orders, approve easements, as necessary;\n(d) Authorize advertisement for bids, and approve recommendation of award and contracts, as necessary;\n(e) ECWAG grant application status;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Billing and Collections Report, including billing disputes/customer complaints, delinquent accounts/service terminations, write-offs, rate adjustments, leak adjustment policy, service rates and billing system/software",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Attorney's Report",
+      "description": "(a) Amendment to District Rate Order related to policies and costs and fees of services;\n(b) District’s boundaries and prior bond authorization election;\n(c) Review insurance renewal proposal from Gallagher;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Comments from the public (3 minutes allotted time per speaker)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Executive Session, as necessary",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Reconvene in Open Session",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Vote on matters considered in Executive Session, if any",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Such other matters, as may come before the Board",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "roach",
+  "meeting": {
+    "date": "2026-11-09T17:30:00-06:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments (note public comment policy in effect)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Minutes of prior Board meeting(s) (October 12, 2026)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Security report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Tax Assessor’s Report",
+      "description": "a) Payment of invoices;\nb) Collection/uncollectible accounts;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Delinquent Tax Attorney Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Bookkeeper’s Report",
+      "description": "a) Financial and investment reports;\nb) Payment of invoices;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Review financing options for District (CIP) and potential developer projects",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Engineer’s Report",
+      "description": "a) Construction Progress and Review/Approve Pay Estimates for Rolling Hills WWTP Expansion, PY2025 CDBG Sheldon Woods Section 4 Water Line Replacement, and Fire Station No. 2 Utility Improvements;\nb) Update on NEHCMUD1/IDS Engineering Uniform Components Force Main Evaluation;\nc) Review and Discuss Interlocal Agreement with Harris County Precinct 1 for Miller Road 1 Lift Station Site;\nd) HDR Task Order #23 – Highway 90 Water Line Extension;\ne) HDR Task Order #24 – Rolling Hills WWTP Phase II PER;\nf) Update on 9314 and 9318 Johns Road Property Acquisition;\ng) Current and On-Going Engineering Projects, including:\ni) ADS Flow Monitoring in Rolling Hills;\nii) Rolling Hills Water Plant Booster Station Replacement (2022 Bond Project);\niii) 2026-2027 Sheldon Woods Sanitary Sewer Rehabilitation;\niv) 9402 Johns Road Re-Plat;\nv) TCEQ Emergency Preparedness Plan;\nvi) Online GIS Utility Platform;\nh) Requests for Utility Service/Annexation/De-Annexation, including;\ni) Chemtrusion (Van Road Development);\nii) Harris County Precinct 1 Miller Road Facility Interlocal Agreement;\niii) Harris County Farms Annexation Agreement;\niv) Uni-Form Components Company (10703 Sheldon Rd) Annexation Agreement;\nv) 10402 Vrana Road Annexation Agreement;\nvi) 15242 Garrett Road Deannexation Request;\nvii) 18003 Van Road;\nviii) CenterPoint Energy Office at Miller Road 1 / Miller Road 2 Intersection;\ni) Update on TWDB HB 500 Water Supply/Infrastructure Grant Application Submission;\nj) Update on Harris County HCD Winter Storm Uri CDBG-DR Grant Application;\nk) Update on Harris County HCD PY2027 RFP Application;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Operator’s Report",
+      "description": "a) Maintenance and repair of District facilities;\nb) District facility improvements/projects and signage options;\nc) Customer/Bankruptcy account issues;\nd) Backflow prevention installation/inspection/grease trap program;\ne) LCRRs & PFAS matters;\nf) Review Emergency Response Plan;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Website/IT review",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Review District Policies, including*",
+      "description": "a) Ethics Policy;\nb) Investment Policy\nc) Qualified Brokers List;\nd) Information Technology Policy;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Attorney’s Report*",
+      "description": "a) North Channel Water Authority (NCWA) updates;\nb) Resolution Appointing Designated Board Member to NCWA;\nc) 2027 Director’s Election, including Notice of Application filing Deadline;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "*Executive Session pursuant to Texas Government Code, Section 551.071, 551.074, et. seq",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Reconvene in open session and authorize any action resulting from executive session",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Discuss pending business and future agenda items (Dec. 14 — Board mtg & tentative Annual Advisor’s Dinner)",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

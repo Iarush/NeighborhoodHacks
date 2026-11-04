@@ -1,0 +1,134 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "norton_rose",
+  "meeting": {
+    "date": "2026-10-21T19:30:00-05:00",
+    "type": "regular",
+    "status": "scheduled",
+    "comment_rules_text": "Public comments (3 minutes)"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Invocation",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Public Hearing on 2026 Tax Rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Close Public Hearing",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Adopt Order Setting Tax Rate and Levying Tax for 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Approve Amended District Information Form",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Public comments (3 minutes)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Approve minutes of the meetings on September 16, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Review and approve Amended District’s Disaster Recovery Plan, including updated of Annual Testing of this Plan",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Review and approve Tax Assessor and Collector’s Report, including status of delinquent tax accounts and authorizing the payment of invoices presented, approving tax refunds, and approve moving of accounts to uncollectible roll",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Review and approve Bookkeeper’s Report, payment of District bills, and monthly check register",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Review and approve Engineer’s Report take any necessary action concerning on-going construction within the District, consider pay estimates, authorize additional construction bid advertisement if necessary, and if timely, award contracts on additional District improvements, consider any change orders, consider capacity commitments; consider approval of job assignment proposal(s); discuss engineering services, and take any necessary action in connection with engineering matters",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Developer’s Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Review and approve Amended Professional Engineering Service Agreement",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Review and approve Administrative Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Review and Approve Operator’s Report and authorization of any necessary maintenance",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "16",
+      "title": "Review and approve a survey to be distributed for District residents (Director Rabe)",
+      "section": "Director-Requested Items",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "17",
+      "title": "Discuss household hazardous waste collection throughout the District and take any necessary actions (Director Rabe)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "18",
+      "title": "Discuss and take action regarding procedures for public comments, including designation of a timekeeper (Director Rabe)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "19",
+      "title": "Consider and discuss letter from Sageglen HOA to the CBC board of directors related to director behavior and participation in HOA meetings and take any necessary action (Director Clark)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "20",
+      "title": "Pending business",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

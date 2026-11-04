@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "radcliffe_bobbitt",
+  "meeting": {
+    "date": "2026-09-19T10:00:00-05:00",
+    "type": "special",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public Comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Presentation of Strategic Plan",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

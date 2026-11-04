@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "abhr",
+  "meeting": {
+    "date": "2026-10-06T18:30:00-05:00",
+    "type": "special",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Mission Bend Greenbelt Association matters, including park maintenance, security, funding and development",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

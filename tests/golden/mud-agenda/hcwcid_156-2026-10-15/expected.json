@@ -1,0 +1,82 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "radcliffe_bobbitt",
+  "meeting": {
+    "date": "2026-10-15T09:30:00-05:00",
+    "type": "special",
+    "status": "scheduled",
+    "comment_rules_text": "Public comments (3 minutes time limit)"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments (3 minutes time limit)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Approve minutes of the regular meeting of September 17, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Public Hearing Regarding Proposed 2026 Tax Rate",
+      "description": "a. adopt Order Setting Rate and Levying Tax for 2026;\nb. adopt Order Appointing Tax Assessor/Collector;\nc. adopt Resolution Concerning Tax Collection Procedures;\nd. adopt and authorize recording of Amended and Restated District Information Form;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Status of Lift Station Generator Project and take any necessary actions on same",
+      "section": "and",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Adopt Order Amending District Rate Order",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Adopt Resolution Establishing Fees of Office and Reimbursement Policy",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Attorney's Report, including review status of statutorily required filings",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Status of updates to District's website and take necessary actions on same",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Discuss appointment of Director to fill vacancy on Board",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Confirm next meeting date of November 19, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Executive Session, as necessary",
+      "description": "a. pursuant to Chapter 551, Texas Government Code, (the Open Meetings Act (\"OMA\")) discuss matters relating to attorney-client privilege, real estate matters, security devices/security audits, and/or critical infrastructure/cybersecurity, respectively;\nb. reconvene in Open Session; and\nc. vote on matters considered in Executive Session, if any.",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

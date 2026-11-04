@@ -1,0 +1,109 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "norton_rose",
+  "meeting": {
+    "date": "2026-09-14T12:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Review and approve minutes of the regular meeting of August 3, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Report in connection with law enforcement agreement and any action regarding District security",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Discuss and consider Energy Physical presentation, and take any necessary action",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Renew District Insurance",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Authorize Indemnification of Directors and take any necessary action",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Receive and approve Tax Assessor and Collector’s Report, including payment of bills",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Discuss tax rate recommendation with Financial Advisor",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Adopt Order Designating Officer to Calculate and Publish Tax Rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Receive and approve Bookkeeper’s Report, payment of certain bills, and investment report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Review Engineer’s Report, including approval of pay estimates/change orders, approval of capacity commitment requests, and authorizing necessary action related to plans",
+      "description": "i. Discuss request for annexation;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Discuss and consider amending the District Rate Order, and take any necessary action",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Review and approve Operator’s Report, including approval of accounts to be written off, approval of hydrant inspections, and necessary action relating to District’s facilities",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Report from Ethoscapes regarding detention ponds, and take any necessary action",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Discuss and consider proposal for additional mowing at Darbydale Pond, and take any necessary action",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "16",
+      "title": "Review monthly website analytics; and any matters that may properly come before the Board",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

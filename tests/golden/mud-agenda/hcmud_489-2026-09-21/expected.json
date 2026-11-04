@@ -1,0 +1,129 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "sph",
+  "meeting": {
+    "date": "2026-09-21T11:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Review and approval of the minutes of the meeting of the Board of Directors held August 17, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Bookkeeper's report, including financial and investment reports and the payment of invoices presented",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Review and approval of audit report for the District's fiscal year ended May 31, 2026, and any filings in connection therewith",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Receive Tax Assessor-Collector report and approve payment of invoices presented and moving of accounts to uncollectible roll",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Receive the Financial Advisor's recommendation concerning the District's proposed 2026 tax rate, determine intended tax rate, and authorize",
+      "description": "a) the required notice that the Board will consider adoption of a tax rate; and\nb) the means of providing such notice;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Report on legal action taken by the District's delinquent tax collections attorney, authorize foreclosure proceedings, installment agreements, and the filing of proofs of claim",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Operator's Report",
+      "description": "a) Monthly report;\nb) Disposition of delinquent utility accounts and referral of accounts for collection;\nc) Appeals of District charges and consideration of customer comments;\nd) Repair and maintenance of District facilities, including:\n(i) Water system flushing program;\n(ii) Sanitary sewer manhole inspection and rehabilitation; and\n(iii) Lift station pretreatment program;\ne) Status of compliance with permits; and\nf) Pending insurance and reimbursement claims;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Status of Garbage and Recycling Collection services, including approval of Interlocal Agreement with Harris County Municipal Utility District Nos. 419, 490, 491 and 493 in connection with the household hazardous waste and electronics recycling event",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Engineer's Report",
+      "description": "a) Authorize the design and/or advertisement for bids for the construction of facilities within the District, and approval of related Storm Water Pollution Prevention Plans;\nb) Authorize the award of construction contracts or concurrence of award of contracts for the construction of facilities within the District;\nc) Status of construction of water, sewer and drainage facilities and paving to serve land within the District, including the approval of any pay estimates and/or change orders, and acceptance by Harris County of streets for maintenance, including:\n(i) Prairie Refuge Crossing — Water, Sanitary Sewer, Drainage & Paving — Millis Equipment, LLC; and\n(ii) Traffic Signal Installation at Tuckerton Road and Copper Breaks Crossing — Larry Young Paving, Inc.;\nd) Authorizing the design, advertisement, or award of construction contracts or concurrence in the award of contracts for the construction of recreational facilities within the District;\ne) Status of construction of recreational facilities to serve land within the District, and the approval of any pay estimates and/or change orders, including:\n(i) Mason Road Section 7 Medians Only Landscaping — Texas Wall Systems, LLC; and\n(ii) Parkland Village BLMZ Westgreen & Tuckerton Phase 2 Landscape Improvements — Allgreen Associates;\nf) Acceptance of site and/or easement conveyances for facilities constructed or to be constructed for the District, and acceptance of facilities for operation and maintenance purposes, including:\n(i) Conveyance of Facilities — Foundry Church 45' BLMZ Landscape Improvements;\n(ii) Conveyance of Facilities — Parkland Village Lift Station No. 8;\n(iii) Conveyance of Facilities — Starling Apartments BLMZ Landscape Improvements;\n(iv) Conveyance of Facilities — Mason Road, Section 7 — Water, Sanitary Sewer, Drainage and Paving; and\n(v) Conveyance of Facilities — Westgreen Boulevard at Parkland Crossing Traffic Signal;\ng) Status of storm sewer and street acceptances by Harris County; and\nh) General engineering matters;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Review and discuss Capital Improvement Plan and authorize action in connection therewith",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Discuss updates and revisions to the District website",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Matters related to the Bridgeland Water Agency (the \"Agency\") and directives to the District's Trustee and Alternate(s)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Matters related to 5-acre administrative facility site jointly owned with Harris County Municipal Utility District No. 419",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Developer's Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "16",
+      "title": "Matters relative to Bridgeland Council, Inc. and/or Parkland Village Homeowners' Association",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "17",
+      "title": "Status of compliance with annual cybersecurity training as required by Chapters 2054 and 2063, Texas Government Code",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "18",
+      "title": "Attorney's Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "19",
+      "title": "Matters for possible placement on future agendas",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

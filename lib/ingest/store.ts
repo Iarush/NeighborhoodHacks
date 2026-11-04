@@ -82,11 +82,21 @@ export type DocumentWrite = {
   source_id: string;
   url: string;
   content_hash: string;
-  kind: 'json' | 'html' | 'pdf_text' | 'llm_output';
+  kind: 'json' | 'html' | 'pdf_text' | 'llm_output' | 'ocr_text';
   raw: string | null;
   fetched_at: string;
   meeting_external_id: string | null;
+  /** mud-code-parser-spec §9: set only by mud_agenda. */
+  needs_ocr?: boolean;
+  parse_rung?: number | null;
+  parse_profile?: string | null;
 };
+
+/** One PDF waiting for OCR (GET /api/cron/ocr-queue). */
+export type OcrJob = { document_id: string; url: string; content_hash: string };
+
+/** OCR text for a queued PDF (POST /api/cron/ocr-result). */
+export type OcrResult = { document_id: string; content_hash: string; pages: string[]; mean_confidence: number | null };
 
 export type SourcePatch = Partial<Pick<StoredSource, 'last_checked' | 'last_success' | 'last_flags' | 'last_error'>>;
 
@@ -123,4 +133,13 @@ export interface IngestStore {
   resultsCandidates(now: Date): Promise<ResultsCandidate[]>;
   /** Source IDs with a stored meeting dated in [from, to] (the near-term sweep at scale). */
   sourcesWithMeetingsBetween(from: Date, to: Date): Promise<string[]>;
+  /** mud_agenda: stored OCR text for a source, keyed by the PDF's sha256 (content_hash). */
+  ocrTexts(sourceId: string): Promise<Record<string, string>>;
+  /** Up to `limit` PDFs marked needs_ocr and not tried since `retryBefore`; marks them tried at `now`. */
+  ocrQueue(limit: number, now: Date, retryBefore: Date): Promise<OcrJob[]>;
+  /**
+   * Store OCR text as an ocr_text document beside the PDF and clear needs_ocr. Returns false when
+   * the document doesn't exist or its content_hash differs (the PDF changed since it was queued).
+   */
+  saveOcrResult(result: OcrResult, now: Date): Promise<'saved' | 'not_found' | 'hash_mismatch' | 'empty'>;
 }

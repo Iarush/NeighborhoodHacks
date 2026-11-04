@@ -1,0 +1,74 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "matter_002",
+  "meeting": {
+    "date": "2026-11-03T18:30:00-06:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Review and approve minutes of the previous meeting(s)",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Public Comments. This provides an opportunity for the public to comment on agenda items or other District business in advance of regular business of the Board. Comments shall be limited to three (3) minutes per person. By state law, comments by the Board members on any item not on the agenda shall be limited to: a) statements of specific factual information given in response to any inquiry; b) a recitation of existing policy in response to any inquiry; or c) a proposal to place the subject on the agenda for a future meeting",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Receive Bookkeeper’s report",
+      "description": "(a) approve financial and investment reports; and\n(b) authorize the payment of invoices presented.",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Receive Tax Assessor-Collector’s report",
+      "description": "(a) authorize the payment of invoices presented;\n(b) receive report on the status of delinquent tax accounts;\n(c) approve tax refunds and requests for waiver of delinquent penalties and interest;\n(d) conduct a public hearing in connection with the levy of the District's 2026 tax rate;\n(e) consider levy of the District's 2026 tax rate and the adoption of an order in connection therewith; and\n(f) approve and execute an Amended District Information Form.",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Receive Engineer’s report",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Discuss park and recreational facilities",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Receive Attorney’s report",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Pending business",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Such other matters that may come before the Board",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Adjournment",
+      "quote_verified": false,
+      "contains_private_person": false
+    }
+  ]
+}

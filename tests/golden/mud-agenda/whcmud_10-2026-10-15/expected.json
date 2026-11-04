@@ -1,0 +1,73 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "initials_header",
+  "meeting": {
+    "date": "2026-10-15T11:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Approve minutes of prior meeting",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Consider consultants reports, as needed",
+      "description": "a. Bookkeeper.\nb. Tax Assessor-Collector.\nc. Operator.\nd. Engineer.\ne. Financial Advisor.\nf. Communications Report and any related matters.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Conduct public hearing on proposed 2026 tax rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Adopt order establishing ad valorem tax rate for 2026 and amend district information form, if necessary",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Approve security camera access agreement",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Convene Executive Session pursuant to Open Meetings Act, Texas Government Code Sec. 5 51. 071 to consider legal matters",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Reconvene public session and take action on any matters discussed during the executive session",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Pay bills",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Pending business",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Adjournment",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

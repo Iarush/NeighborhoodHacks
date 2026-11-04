@@ -1,0 +1,72 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "generic",
+  "meeting": {
+    "date": "2026-11-04T18:00:00-06:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Hear comments from the public",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Consider approval of minutes of the meeting of October 21, 2026",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Discuss any trash/recycling issues and take any necessary action",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Hear tax assessor-collector’s report, consider payment of bills on tax account and hear update on status of delinquent taxes and consider any payment agreement requests regarding same",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Hear operator's report, review SCADA System information and take any necessary action, discuss district operations and any appeals, receive input from operator concerning same and take any necessary action",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Hear engineer’s report, consider approval of any change orders, authorize any advertisements for bids or the award of any contracts, review and consider capital improvement plan as appropriate, and take any necessary action",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Discuss water conservation ideas and methods and take any necessary action",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Hear update on surface water issues and take any necessary action",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Review any new business before the Board",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Adjournment. Closed Session If, during the course of the meting covered by this Notice, the Board should determine that a closed or executive session of the Board should be held or is required in relation to any agenda item included in this Notice, then such closed or executive meeting or session, as authorized by the Texas Open Meetings Act, will be held by the Board at the date, hour, and place given in this Notice concerning any and all subjects for any and all purposes permitted by Sections 551.071-551.084 of Texas Government Code and the Texas Open Meetings Act, including, but not limited to Section 551.071 for the purpose of a private consultation with the Board’s attorney on any or all subjects of matters authorized by law",
+      "quote_verified": false,
+      "contains_private_person": false
+    }
+  ]
+}

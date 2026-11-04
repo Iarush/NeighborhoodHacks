@@ -1,0 +1,78 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "generic",
+  "meeting": {
+    "date": "2026-10-16T11:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public Comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Approve minutes of the regular meeting of September 25, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Discuss Security with Harris County Sheriff’s Office",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Public Hearing on 2026 Tax Rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Adopt Order Setting Tax Rate and Levying Tax Rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Tax Assessor and Collector’s Report, including approval of payment of bills",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Bookkeeper’s Report, including approval of Investment Report and payment of bills",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Operator’s Report and authorize termination of service to delinquent accounts",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Maintenance Report on detention ponds",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Engineer’s Report, including authorization of utility commitment letters, payment of pay estimates and approval of change orders, and such other related matters",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Ratify approval of the Agreement between Harris County and Weston MUD Relating to Joint Elections to be held on November 3, 2026; And such other matters as may properly come before it",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

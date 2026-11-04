@@ -1,0 +1,10 @@
+{
+  "source_id": "hcmud_489",
+  "url": "https://hcmud489.com/static/5b87b10d3d899ec343e89ef87e8b282a/Special_Agenda_April_9_2026_HCMUD_489_c838005a4d.pdf",
+  "date": "2026-04-09",
+  "type": "special",
+  "note": "SPH: HC MUD 489 Apr 9 special meeting, jumbled reading order (needs rung 2). Text copied from tests/golden/llm-extract/mud489-2026-04-09/source.txt",
+  "recorded_at": "2026-10-19",
+  "text": "pdf text layer",
+  "pdf_sha256": "70385cdd22d257c89f5241fddc76d145374a46715d7c390c76c470ea77e6b68e"
+}

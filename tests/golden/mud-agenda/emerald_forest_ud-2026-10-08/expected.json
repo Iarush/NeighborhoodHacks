@@ -1,0 +1,92 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "abhr",
+  "meeting": {
+    "date": "2026-10-08T14:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Approve minutes",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Website and communication matters",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Garbage collection and recycling matters",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Security matters",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Conduct public hearing regarding District’s tax rate, adopt Order Levying Taxes, and authorize execution of Amendment to Information Form",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Tax assessment and collections matters, including delinquent tax collections and matters regarding termination of water and sewer service to delinquent tax accounts, installment agreements, and placement of aged personal property taxes on reserve list",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Financial and bookkeeping matters, including payment of the bills, review of investments, and transfer of funds",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Water/sewer rate analysis and adopt Amended Rate Order, if necessary",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Operation of District facilities, billings, repairs, and maintenance",
+      "description": "a. hearing on termination of water and sewer service to delinquent customers and for rate order violations and authorize termination of service.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Engineering matters, including authorize design, approve plans and specifications, authorize advertisement or solicitation of bids, review bids and award contracts, approve letter financing agreements, approve pay estimates and change orders, authorize final acceptance of projects, and direct engineer to notify insurance company, as appropriate, for the following",
+      "description": "a. feasibility studies, plan reviews, and service requests, including:\ni. Harris County Cypress North Houston Road project and related interlocal agreement;\nb. generator replacement project for wastewater treatment plant, water plant no. 3, and Green Creek lift station;\nc. Linfield Detention Pond rehabilitation;\nd. Lift Station No. 2;\ne. Schroeder Oaks Lift station No. 3 fencing;\nf. air header replacement;\ng. lift station no. 3 and lift station no. 4 recoating;\nh. interconnect options, including update on Texas Water Development Board application;\ni. five-year capital improvement plan;\nj. deeds, easements, and/or consents to encroachment;\nk. annexation agreement;\nl. update on bond application no. 12; and\nm. other engineering matters.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Attorney’s report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Discuss meeting schedule",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

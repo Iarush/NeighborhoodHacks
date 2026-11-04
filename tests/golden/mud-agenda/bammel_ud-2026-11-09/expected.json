@@ -1,0 +1,134 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "initials_header",
+  "meeting": {
+    "date": "2026-11-09T19:00:00-06:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Comments by directors",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Comments by the president",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Approve minutes of prior meetings",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Questions and comments from the public",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Engage auditor for FYE 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Consider and possibly approve AI and cybersecurity consultant contract addendum",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Web consultant report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Tax assessor report and pay bills",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Bookkeeper report and pay bills",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Consider and possibly approve new agreement for bookkeeping services",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Adopt budgets",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Detention pond maintenance contractor report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Landscape architect report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Operator report",
+      "description": "a. Monthly report;\nb. Authorize repairs;\nc. Customer appeals;\nd. New matters;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Engineer report",
+      "description": "a. Water plant improvement items;\nb. WWTP improvement items and budget;\nc. Annexation / service applications;\nd. New matters;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "16",
+      "title": "Authorize any necessary actions in connection with developer project(s)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "17",
+      "title": "Attorney’s report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "18",
+      "title": "Schedule next board meeting",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "19",
+      "title": "Final comments by directors",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "20",
+      "title": "Pending business",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

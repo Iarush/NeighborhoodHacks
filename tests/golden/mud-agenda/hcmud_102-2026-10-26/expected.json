@@ -1,0 +1,116 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "coats_rose",
+  "meeting": {
+    "date": "2026-10-26T18:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Consider comment� and questions from District residents (3-minute limit)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Minutes of the meeting of 28 September 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Discuss status of sale of Series 2026 bonds and authorize actions deemed necessary, including execution of closing documents",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Bookkeeper's Report",
+      "description": "(a) authorize payment of the District's bills;\n(b) review investments in the District's accounts;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Report of the Tax Assessor/Collector",
+      "description": "(a) approve payments from the District's tax account;\n(b) review and authorize actions for the collection of delinquent taxes, including possible termination of service;\n(c) conduct public hearing on Tax Rate;\n(d) adopt Order Levying Taxes;\n(e) approve amendment to the District's Information Form;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Security Report (Harris County Sheriff's Office) including review analysis of patrol statistics",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Solid Waste Collection Report (contract expires 4/30/29; 60-day notice)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Matters for discussion or action",
+      "description": "(a) consider amendment to District's Rate Order (WHCRWA Fee);\n(b) review proposals for preparation of Master Plan for landscaping improvements (parks, trails, pedestrian connections, signage and other amenities);",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Operator's Report",
+      "description": "(a) review monthly operations report and water accountability rate;\n(b) discuss and authorize any repairs or other work by the Operator deemed necessary;\n(c) review termination list and authorize disconnection of service to delinquent accounts;\n(d) discuss replacement of water meters;\n(e) installation of electric gate at Water Plant No. 2;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Engineer's Report",
+      "description": "(a) report regarding maintenance of Concord Colony, Section Two and Waldron Estates detention facilities;\n(b) status of authorized projects, including:\n(i) generator replacement at Water Plant No. 2 (Texas Municipal & Industrial LLC);\n(ii) headworks improvements at WWTP (C3 Constructors, LLC);\n(iii)· construction of sidewalks along West Little York Road (Harris County Precinct 4 I Maintenance Partnership Project);\n(iv) design of proposed improvements to lift stations Nos. 1, 2, and 3;\n(c) annual inspection of 240,000-gallon GST at Water Plant 1;\n(d) status of Emergency Preparedness Plan;\n(e) requests for service;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Attorney's Report",
+      "description": "(a) discuss power supply matters (P3 / Champion Energy Services);\n(b) review and approve rate adjustments to contract with Off Cinco (Sec. 2051.202 monitoring & updates and ADA compliance monitoring & updates);",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Report on District Support and Colonies Neighborhood Center",
+      "description": "(a) status of improvements and repairs;\n(b) authorize any repairs or other work deemed necessary;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Old business",
+      "description": "(a) discuss landscaping matters (contract with Yellowstone Landscape, Inc. expires 10/31/26; 30-day notice);\n(b) status of District's website, including District alerts and communications;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Executive session pursuant to Open Meetings Act, Chapter 551, Government Code, if necessary, to discuss matters relating to pending or contemplated litigation, personnel matters, real estate transactions, or security",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Action on matters discussed in executive session",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "16",
+      "title": "Schedule future meetings as required (next meeting on 23 November 2026)",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

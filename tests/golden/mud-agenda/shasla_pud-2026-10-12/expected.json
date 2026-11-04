@@ -1,0 +1,77 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "generic",
+  "meeting": {
+    "date": "2026-10-12T14:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "District Check Signing",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Public Comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Consider approving the minutes of previous meetings",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Report of the Tax Assessor/Collector",
+      "description": "(a) Authorizing payments from the District’s tax account;\n(b) Review Status of Delinquent accounts and take necessary action;\n(c) Conduct Public Hearing on Proposed Tax Rate\n(d) Adopt Order Establishing Ad Valorem Tax Rate for 2026\n(e) Amend District Information Form",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Engineer’s Report, including and taking necessary action on",
+      "description": "(a) Discuss and take necessary action on additional engineering items as listed on the report;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Operator’s Report",
+      "description": "(a) Discuss and approve repairs within the District as necessary;\n(b) Discuss any issues from residents;\n(c) Amend District Rate Order as necessary;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Discuss and take necessary action on items at the District’s West Detention Pond",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "District Insurance Policy Renewal",
+      "section": "(a) Pond Condition Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Bookkeeper’s Report",
+      "description": "(a) Authorizing payment of District bills;\n(b) Review Bookkeeper’s and Quarterly Investment Reports;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Such other matters as may come before the Board",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

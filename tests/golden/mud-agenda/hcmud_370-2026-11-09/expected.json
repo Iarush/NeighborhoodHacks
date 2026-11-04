@@ -1,0 +1,37 @@
+{
+  "ok": false,
+  "reasons": [
+    "item 6 missing: found 7 after 5",
+    "item 6 missing: found 8 after 5",
+    "item 6 missing: found 9 after 5",
+    "item 1: empty title",
+    "item 2: empty title"
+  ],
+  "profile": "sph",
+  "meeting": {
+    "date": "2026-11-09T12:00:00-06:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "3",
+      "title": "Tax Assessor-Collector's Report, including authorizing the payment of invoices presented, approving refunds and moving of accounts to uncollectible roll",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Report and legal action taken by the District's delinquent tax collections attorney, including authorizing foreclosure proceedings, installment agreements, and the filing of proofs of claim",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Operation and Maintenance Report",
+      "description": "' Monthly report; Compliance with permits and regulatory requirements, including review of any notice of violations, responses to notices and remedial action taken, self-reporting forms as and if required, and correspondence to and from regulatory agencies regarding same; (q (e6. Appeals of District charges; Authorize referral of delinquent accounts to a collection agency and write off of uncollectible accounts; Authorize the repair and maintenance of District facilities, and consider the status of ongoing repair and maintenance projects; Status of pressure monitoring tests, including installation of pressure sensors; Status of Emergency Generator replacement at the District's Water Plant; and Status of emergency repair of sanitary sewer line at the northeast corner of Enclave Vista and Sonora Canyon;\nh)g)f)e)d)c)Drainage and Detention Facilities Maintenance Report by Champions Hydro-Lawn, Inc. d/b/a Ethoscapes (\"Ethoscapes\"), regarding maintenance of Turkey Creek south of the District, the bottom of Turkey Creek, and other District drainage and detention facilities; review and approval of proposals and pay estimates in connection therewith; and authorize acceptance of Texas Ethics Commission (\"TEC\") Form 1295, in connection therewith; Bookkeeper's Report, including the review of financial and investment reports and authorizing the payment of invoices presented; authorize any action necessary in connection therewith; 7. 8. Review Communication Report from Touchstone District Services, LLC, including discussion of residential communications; Engineer's Report, including: Acceptance of site and/or easement conveyances for facilities constructed or to be constructed for the District and acceptance of any related Stormwater Quality Management Plans, and authorize acceptance of TEC Form 1295; Authorization of design, advertisement for bids and/or award or concurrence in the award of contracts for the construction, repair and/or rehabilitation of facilities within the District and authorize acceptance of TEC Form 1295, including:\n(i) Emergency interconnect with Horsepen Bayou Municipal Utility District; Status of construction of facilities to serve land within the District, including the approval of any pay estimates, change orders and/or acceptance of facilities for operation and maintenance purposes; Review of Capital Repair and Maintenance Plan for the District's facilities; and Adoption and submission of Emergency Preparedness Plan to Texas Commission on Environmental Quality;\na) (q\nc)\ne)d)Issuance of utility commitments, and authorize acceptance of TEC Form 1295; Authorize attorney to file Eminent Domain Report with the Texas Comptroller of Public Accounts prior to February 1, 2027, pursuant to § 2206.154, Texas Government Code; Attorney's Report, including:\na) Discussion regarding PFAS-related class action litigation and settlements; consider participation in same; Convene Closed Session for consultation with attorney regarding pending or threatened litigation or matters protected by attorney-client privilege pursuant to Section 551.071; as amended; Reconvene in Open Session and authorize any actions related to matters discussed in Closed Session; and 9. 10. 11. 12. 13. 14.15.Matters for possible placement on future agendas. SS A t t o r n e y s for the District The Board o f Directors reserves the right to adjourn into executive session at any time during the",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

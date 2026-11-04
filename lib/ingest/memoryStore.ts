@@ -3,6 +3,7 @@ import type { BodySeed } from './bodies';
 import type {
   DocumentWrite,
   IngestStore,
+  OcrJob,
   ItemWrite,
   MeetingWrite,
   ResultsCandidate,
@@ -22,11 +23,19 @@ export type MemoryStore = IngestStore & {
     sources: Tables<'sources'>[];
     meetings: Tables<'meetings'>[];
     items: Tables<'items'>[];
-    documents: Tables<'documents'>[];
+    documents: MemoryDocument[];
     tax_rates: Tables<'tax_rates'>[];
   };
   writes: MemoryWrite[];
   resetWrites(): void;
+};
+
+/** The documents row plus the mud-code-parser-spec §9 columns (not yet in database.types.ts). */
+export type MemoryDocument = Tables<'documents'> & {
+  needs_ocr?: boolean;
+  ocr_tried_at?: string | null;
+  parse_rung?: number | null;
+  parse_profile?: string | null;
 };
 
 const key = (sourceId: string, externalId: string) => `${sourceId}\u0000${externalId}`;
@@ -197,6 +206,46 @@ export function createMemoryStore(): MemoryStore {
         .filter((m) => Date.parse(m.date) >= from.getTime() && Date.parse(m.date) <= to.getTime())
         .map((m) => m.source_id);
       return [...new Set(ids)].sort();
+    },
+
+    async ocrTexts(sourceId: string) {
+      const out: Record<string, string> = {};
+      for (const d of tables.documents) if (d.source_id === sourceId && d.kind === 'ocr_text' && d.content_hash && d.raw) out[d.content_hash] = d.raw;
+      return out;
+    },
+
+    async ocrQueue(limit: number, now: Date, retryBefore: Date) {
+      const out: OcrJob[] = [];
+      for (const d of tables.documents) {
+        if (out.length >= limit) break;
+        if (!d.needs_ocr || !d.url || !d.content_hash) continue;
+        if (d.ocr_tried_at && Date.parse(d.ocr_tried_at) >= retryBefore.getTime()) continue;
+        d.ocr_tried_at = now.toISOString();
+        out.push({ document_id: d.id, url: d.url, content_hash: d.content_hash });
+      }
+      log('documents', 'update', out.length);
+      return out;
+    },
+
+    async saveOcrResult(result, now) {
+      const d = tables.documents.find((x) => x.id === result.document_id);
+      if (!d || !d.url) return 'not_found';
+      if (d.content_hash !== result.content_hash) return 'hash_mismatch';
+      const raw = result.pages.join('\f');
+      if (!raw.replace(/\s/g, '')) return 'empty';
+      tables.documents.push({
+        id: id('document'),
+        source_id: d.source_id,
+        url: `${d.url}#ocr`,
+        content_hash: d.content_hash,
+        kind: 'ocr_text',
+        raw,
+        fetched_at: now.toISOString(),
+        meeting_external_id: d.meeting_external_id,
+      });
+      for (const x of tables.documents) if (x.url === d.url && x.content_hash === d.content_hash) x.needs_ocr = false;
+      log('documents', 'insert', 1);
+      return 'saved';
     },
   };
 }

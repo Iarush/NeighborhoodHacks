@@ -1,0 +1,106 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "generic",
+  "meeting": {
+    "date": "2026-11-09T17:30:00-06:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Hear from the public",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Peace Officer’s Report and consider taking action thereon",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Approval of minutes of October 12, 2026, and October 26, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Financial Advisor’s Report, including approval of Preliminary Official Statement and Resolution relating thereto",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Consider engagement of McCall Parkhurst & Horton as Disclosure Counsel and take any action thereon",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Public hearing on proposed 2026 tax rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Adopt Order Setting Tax Rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Approve Amended to Sellers and Purchasers",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Engage auditor for fiscal year ending December 31, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Consider Tax Assessor/Collector's Report and consider taking action thereon",
+      "description": "A. Approval of report, authorize payment of invoices from tax account, and review of Collateral Pledge Report and authorize necessary action in connection therewith.\nB. Review delinquent taxes and authorize termination of water service to accounts delinquent for six months.\nC. Approval of removing certain delinquent personal property accounts to uncollectible tax roll.\nD. Authorize Perdue Brandon Fielder Collins & Mott, L.L.P. to file suit to foreclose tax lien on certain delinquent tax accounts.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Consider Bookkeeper's report and consider taking action thereon",
+      "description": "A. Approval of report, investment report, and bills submitted to the District for payment.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Consider Operator's Report and consider taking action thereon",
+      "description": "A. Authorization of termination of water and sewer service to delinquent accounts.\nB. Authorize repairs to water and sanitary sewer systems.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Consider Engineer's Report and consider taking action thereon",
+      "description": "A. Consider requests for water and sewer service.\nB. Report on status of development within the District and take action related thereto.\nC. Report on repairs, improvements and maintenance to water and sanitary sewer systems and take action related thereto, including preparation of plans and specifications, advertisement/solicitation of bids and award of contracts.\nD. Report on status of construction contracts, including approval of pay estimates and change orders.\nE. Review and edit Long Term Capital Projects Plan.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Consider Attorney's Report including approval of (i) website report, (ii) trash report, (iii) report on status of security system for District facilities, and (iv) amend Rtae Order",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Director reports on water district seminars and related matters",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

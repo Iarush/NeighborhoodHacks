@@ -1,0 +1,70 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "johnson_petrov",
+  "meeting": {
+    "date": "2026-10-27T16:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "(3 mins per person) Receive comments from the public concerning District business",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "(5 mins) Consideration and possible action on approval of the minutes of prior meeting(s)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "(10 mins) Consideration and possible action on the Harris County Sheriff's Office Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "(10 mins) Consideration and possible action on report from NCWA",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "(15 mins) Consideration and possible action on the Bookkeeper's Report",
+      "description": "a. Authorize payment of invoices.\nb. Review Investment Report.\nc. Approve Quarterly Investment Report.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "(15 mins) Consideration and possible action on the Engineer's Report",
+      "description": "a. Approve pay estimates, change orders, and time extensions, if necessary and discussion of projects.\nb. Discussion and possible action regarding potential waste-water easements.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "(20 mins) Consideration and possible action on the General Manager's Report",
+      "description": "a. Update concerning District operations and ongoing projects.\nb. Discussion and possible action regarding temporary field employees.\nc. Discussion and possible action regarding Jet Rig Advertisement.\nd. Discussion and possible action regarding renewal of health insurance.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "(Time needed) Executive Session, as necessary",
+      "description": "a. As permitted pursuant to Section 551.071 of the Texas Government Code concerning consultation with attorney and possible litigation, Section 551.072 of the Texas Government Code concerning real estate matters or Section 551.074 of the Texas Government Code concerning personnel matters.\nb. Reconvene in Open Session.\nc. Vote on matters discussed in Executive Session, if any.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "(Time needed) Receive other presentations, reports or updates from Board members, consultants, employees, or other governmental agencies",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "source_id": "hcmud_231",
+  "url": "https://drive.google.com/file/d/1HPniGX2c0gKSqHwNFa_q9Ahz5asVUzux/view?usp=sharing",
+  "date": "2026-10-21",
+  "type": "regular",
+  "note": "Scan; OCR misreads \"2.\" as \"Dn\", so the parse must be rejected",
+  "recorded_at": "2026-11-04",
+  "text": "tesseract ocr",
+  "pdf_sha256": "d450bfef4f312aa91c8674bb6143add082fffb44ad9770be7c126f074514be66"
+}

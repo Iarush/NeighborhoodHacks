@@ -1,0 +1,83 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "coats_rose",
+  "meeting": {
+    "date": "2026-11-02T14:00:00-06:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments; The District has adopted a policy regarding public comment. A copy of this policy will be available at the meeting. All those wishing to address the Board during the public comment period shall indicate a desire to address the Board on the applicable sign-in sheets provided. Public comments are limited to three (3) minutes per person for a total of thirty (30) minutes",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Constable’s report, including authorization of any necessary action",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Approve minutes and official records of Board of Directors’ special meeting held on October 5, 2026",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Consider proposals from potential tax assessor-collectors",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Bookkeeper’s report, including",
+      "description": "(a) authorization of payment of District bills and approval of investment report; and\n(b) review proposed budget for the fiscal year ending December 31, 2027.",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Operator’s report",
+      "description": "(a) authorization to terminate delinquent accounts; and\n(b) consider out-of-district service agreement for sewer service.",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Amend District’s Rate Order, including amendments in accordance with new fee schedule for operating services",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Engineer’s report",
+      "description": "(a) status of District projects; and\n(b) authorize advertisement for bids, change in scope, and project awards as necessary.",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "General District management items",
+      "description": "(a) Recreation Advisory Committee report, including discussion of park budget and project priorities, and consider taking necessary action related thereto;\n(b) garbage collection matters, as necessary;\n(c) other officer reports and related actions, as necessary;\n(d) discuss ADA matters; and\n(e) discuss contract with American Pool and take any action necessary (expires 12/31/2026).",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Attorney’s report",
+      "description": "(a) Ratify approval of Arthur J. Gallagher insurance proposals.",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Such other matters as they may come before the Board",
+      "quote_verified": false,
+      "contains_private_person": false
+    }
+  ]
+}

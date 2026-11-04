@@ -1,0 +1,73 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "norton_rose",
+  "meeting": {
+    "date": "2026-10-20T17:30:00-05:00",
+    "type": "regular",
+    "status": "scheduled",
+    "comment_rules_text": "Public comments (3 minutes maximum per person)"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments (3 minutes maximum per person)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Approve minutes of the meeting held on September 15, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Report by Harris County Precinct Four Constable and take any necessary action",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Public Hearing on 2026 Tax Rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Adopt Order Setting Tax Rate and Levying Tax for 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Approve Amended District Information Form",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Approve Operations Report, authorize repairs and approve termination of delinquent accounts in accordance with the District’s Rate Order",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Review Tax Collector’s Report and authorize payment of certain bills",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Review Bookkeeper’s Report, and authorize payment of certain bills, and approve quarterly investment report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Review Engineer’s Report, including approval of pay estimates, authorization of change orders to pending construction contracts, proposal for construction materials testing, annexation matters, capital improvement plan, variance request and authorize capacity commitments; and such other matters as may properly come before the Board",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

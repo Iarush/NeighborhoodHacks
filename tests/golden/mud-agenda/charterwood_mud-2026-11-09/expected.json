@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "generic",
+  "meeting": {
+    "date": "2026-11-09T18:30:00-06:00",
+    "type": "special",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Hear from the public",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Hear presentation from l-Tech and consider any action recommended",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Discuss Proposed Sidewalk Improvement Partnership with Harris County Precinct 3 and consider any action recommended",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Discuss Cutten Road Extension Project and consider any action recommended",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "matter_002",
+  "meeting": {
+    "date": "2026-10-21T12:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comment",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Minutes of Board of Directors Meeting",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Bookkeeper’s Report; Payment of Bills",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Tax Assessor/Collector’s Report; Payment of Bills",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Public Hearing on Proposed 2026 Tax Rate",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Order Adopting Appraisal Roll and Levying Tax for 2026",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Amendment of Statement of Directors",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Operator’s Report; Authorize Maintenance and Repairs, as necessary",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Renew District insurance",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Engineer’s Report; Review of Development Activity in District; Rehabilitation of District Facilities, Authorize Engineering, as necessary; Capital Improvements Plan; Bond Application eae Bowham, Ir",
+      "quote_verified": false,
+      "contains_private_person": false
+    }
+  ]
+}

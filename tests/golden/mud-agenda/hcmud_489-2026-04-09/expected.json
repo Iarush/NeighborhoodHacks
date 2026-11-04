@@ -1,0 +1,13 @@
+{
+  "ok": false,
+  "reasons": [
+    "item 1: empty title"
+  ],
+  "profile": "sph",
+  "meeting": {
+    "date": "2026-04-09T13:30:00-05:00",
+    "type": "special",
+    "status": "scheduled"
+  },
+  "items": []
+}

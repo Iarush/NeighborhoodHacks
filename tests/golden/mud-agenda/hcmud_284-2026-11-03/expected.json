@@ -1,0 +1,159 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "sph",
+  "meeting": {
+    "date": "2026-11-03T12:00:00-06:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Review and approval of the minutes of the Board meeting of October 6, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Conduct a public hearing regarding the adoption of the District's 2026 tax rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Levy of the District's 2026 debt service and maintenance tax rates, and the adoption of an Order in connection therewith",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Approval and execution of an Amendment to the Second Amended and Restated District Information Form",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Security Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Bookkeeper's Report, including financial and investment reports; authorize the payment of invoices presented",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Status of compliance by the District with Texas Government Code, Chapter 2265, relative to energy reporting and authorize any action in connection therewith",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Tax Assessor-Collector's Report, including status of delinquent taxes; authorize the payment of invoices presented, approval of tax refunds, and transfer of accounts to the uncollectible roll",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Review of Delinquent Tax Collection Attorneys' Report from Perdue, Brandon, Fielder, Collins & Mott, L.L.P.; authorize any action necessary and appropriate in connection therewith, including authorizing foreclosure proceedings, installment agreements, and the filing of proofs of claim",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Operation and Maintenance Report",
+      "description": "A. Monthly report;Monthly report;\nB. Authorizing the repair and maintenance of District facilities, and the taking of any action in connection therewith, and including authorizing acceptance of TEC Form 1295;\nC. Appeals of District charges;\nD. Refer accounts for collection;\nE. Approve write-offs of uncollectible accounts;\nF. Discussion regarding status of manhole repairs; and\nG. Compliance with permits and regulatory requirements, including review of any notices of violations, responses to notices and remedial action taken, self-reporting forms as and if required, and correspondence to and from regulatory agencies regarding same; and\nH. Amended and Restated Emergency Water Supply Agreement between the District and Harris County Municipal Utility District No. 167;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Review of a Rate Analysis, discussion of Si Environmental LLC's annual rate adjustment effective June 1, 2026, and consideration of amendment to Rate Order in connection therewith",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Discussion of Accurate Meter & Backflow, LLC proposal for improvements to the interconnect vault located at Windy Mark Drive and Keith Harrow Boulevard",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Detention and Drainage Facilities Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Engineer's Report",
+      "description": "A. ...............................................111 Authorizmg the design and/or advertisement for bids for construction of facilities within the District, approving of related storm water plans, and authorize acceptance of TEC Form 1295;\ni. Review and approval of any Storm Water Pollution Prevention Plans or Storm Water Quality Management Plans related to construction within or on behalf of the District, and the execution of any documentation in connection therewith; and\nii. Status of proposed Water Well Improvements schedule;\nB. Authorizing the award of construction contracts or concurrence of award of contracts for the construction of facilities within the District, and approval of any related storm water permits and authorize acceptance of TEC Form 1295;\nC. Status of construction of facilities to serve land within the District, including the approval of any pay estimates and/or change orders and authorize acceptance of TEC Form 1295;\ni. Surface Water Connection to the Water Plant (Tidal Constriction, Inc.);\nD. Acceptance of site and/or easement conveyances for facilities constructed or to be constructed for the District, and the acceptance of facilities for operation and maintenance purposes, including:\ni. Status of Easement to be dedicated from AM Real Estate 2023, Inc.;\nE. West Harris County Regional Water Authority surface water conversion matters, including:\ni. Status of design schedule for District projects to be completed in conjunction with the 12-inch Surface Waterline Project;\n1. Water Plant Valve Repair/Replacement Project; and\n2. Water line construction from:\na. the meter to the Ground Storage Tanks; and\nb. to the disinfection facilities;\nF. Status of acceptance by Harris County of streets and storm sewers for maintenance;\nG. Review proposal for replacement of water valves at water plant; and\nH. Consider approval of Resolution Authorizing Use of Surplus Construction Funds and Interest Earned on Construction Funds in connection with costs associated with completion of the Administration Building;\nI. Status of Detention Pond Maintenance Agreement between the District and Windstone Colony Property Owners Association; and\nJ. Discussion of future projects, including:\ni. Proposed Walking Trail, Pedestrian Bridge and Windstone Colony South Parle with Harris County Flood Control District;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "16",
+      "title": "Approval of Summary of Costs for the District's Unlimited Tax Park Bonds, Series 2027 (the \"Bonds\"), and authorize the preparation of Bond Application Report in connection with the Bonds",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "17",
+      "title": "Issuance of utility commitments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "18",
+      "title": "Discussion regarding recreational facilities financing",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "19",
+      "title": "Discussion regarding the maintenance of the Administration Building and North Park, and discussion of future recreational facilities project",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "20",
+      "title": "Developers' Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "21",
+      "title": "Communications Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "22",
+      "title": "Authorize attorney to file Eminent Domain Report with the Texas Comptroller of Public Accounts prior to February 1, 2027, pursuant to § 2206.154, Texas Government Code",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "23",
+      "title": "Attorney's Report",
+      "description": "A. Authorize Arbitrage Compliance Specialists, Inc. to prepare an Interim Arbitrage Rebate Report for the Series 2017 Bonds;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "24",
+      "title": "Matters for possible placement on future agendas. RCT NO 21 /Nx)SS R //S",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

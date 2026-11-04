@@ -1,0 +1,68 @@
+{
+  "ok": false,
+  "reasons": [
+    "item 1: empty title",
+    "item 2: empty title",
+    "item 3: empty title",
+    "item 4: empty title",
+    "item 5: empty title",
+    "item 6: empty title",
+    "item 7: empty title",
+    "item 8: empty title",
+    "item 9: empty title"
+  ],
+  "profile": "coats_rose",
+  "meeting": {
+    "date": "2026-10-22T18:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "10",
+      "title": "Consider comments and questions from District residents (3-minute limit}: Minutes of the Board of Directors meeting of 24 September 2026; Security Report (Harris County Precinct 4 Constable's Office); Report on maintenance of stormwater detention facilities; Tax Assessor/Collector's Report",
+      "description": "(a) authorize payments from the District's Tax Account;\n(b) status report regarding delinquent tax accounts;\n(c) conduct public hearing on proposed Tax Rate;\n(d) adopt Order Levying Taxes;\n(e) approve amendment to the District's Information Form; Financial Advisor's Report; Engineer's Report, including:\n(a) status of Water Plant No. 1 rebuilding project (R&B Group, Inc.);\n(b) discuss Capital Improvement Plan for the District;\n(c) discuss requests for service and authorize actions deemed necessary; Attorney's Report, including:\n(a) formal approval of yield reduction payment to U.S. Internal Revenue Service (Series 2021 Bonds);\n(b) status of annual cor1tinuing disclosure filing (due 9/30/26); Matters for review and approval, including: reschedule November and December Board meetings (holidays); Operator's Report, including:\n(a) review monthly operations report and District's water accountability rate;\n(b) discuss and authorize repairs to District's facilities;\n(c) authorize action against delinquent accounts, including termination of service;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "District Office Report",
+      "description": "(a) report on District Office operations;\n(b) authorize repairs or improvements to District Office and Walking Park;\n(c) review options and proposals for landscaping improvements in Walking Park;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Bookkeeper's Report",
+      "description": "(a) payment of the bills of the District;\n(b) review District investments;\n(c) review balance of District's Operating Fund;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Old Business",
+      "description": "(a) report on Kleinwood Joint Powers Board;\n(b) discuss matters relating to homeowner associations;\n(c) review Sales Tax Report (Sales Revenue, Inc.);\n(d) status of District's website;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Pursuant to V.T.C.A., Government Code, Chapter 551, the Board of Directors may convene in executive session to discuss matters relating to pending or contemplated litigation, personnel matters, real estate transactions, or security",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Authorize action on matters discussed in executive session",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "16",
+      "title": "Schedule future meetings as required (next meeting on 3 December 2026)",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

@@ -13,6 +13,7 @@ const LOADERS: Record<AdapterKind, () => Promise<Adapter>> = {
   diligent: async () => (await import('@/lib/adapters/diligent')).diligentAdapter,
   boarddocs: async () => (await import('@/lib/adapters/boarddocs')).boardDocsAdapter,
   utilitytaxservice: async () => (await import('@/lib/adapters/utilitytaxservice')).utilityTaxServiceAdapter,
+  mud_agenda: async () => (await import('@/lib/adapters/mudAgenda/adapter')).mudAgendaAdapter,
 };
 
 export function loadAdapter(kind: AdapterKind): Promise<Adapter> {

@@ -1,4 +1,4 @@
-import { gzipSync } from 'node:zlib';
+import { gunzipSync, gzipSync } from 'node:zlib';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { db } from '@/lib/db';
 import { TEXT_BUCKET, textPath } from './archive';
@@ -9,6 +9,7 @@ import type {
   DocumentWrite,
   IngestStore,
   ItemWrite,
+  OcrJob,
   MeetingWrite,
   ResultsCandidate,
   SourcePatch,
@@ -160,4 +161,58 @@ export const supabaseIngestStore: IngestStore = {
     );
     return [...new Set(rows.map((r) => r.source_id))].sort();
   },
+
+  // mud-code-parser-spec §5. The needs_ocr / ocr_tried_at columns come from the
+  // ..._ocr_documents.sql migration and aren't in database.types.ts yet, hence the untyped client.
+  async ocrTexts(sourceId: string) {
+    const rows = check(
+      'documents',
+      await untyped().from('documents').select('content_hash, storage_path, raw').eq('source_id', sourceId).eq('kind', 'ocr_text').order('fetched_at'),
+    ) as { content_hash: string | null; storage_path: string | null; raw: string | null }[];
+    const out: Record<string, string> = {};
+    for (const r of rows ?? []) {
+      if (!r.content_hash) continue;
+      if (r.raw) out[r.content_hash] = r.raw;
+      else if (r.storage_path) {
+        const { data, error } = await db().storage.from(TEXT_BUCKET).download(r.storage_path);
+        if (error || !data) continue;
+        out[r.content_hash] = gunzipSync(new Uint8Array(await data.arrayBuffer())).toString('utf8');
+      }
+    }
+    return out;
+  },
+
+  async ocrQueue(limit: number, now: Date, retryBefore: Date) {
+    const rows = check(
+      'documents',
+      await untyped()
+        .from('documents')
+        .select('id, url, content_hash')
+        .eq('needs_ocr', true)
+        .or(`ocr_tried_at.is.null,ocr_tried_at.lt.${retryBefore.toISOString()}`)
+        .order('fetched_at')
+        .limit(limit),
+    ) as { id: string; url: string | null; content_hash: string | null }[];
+    const jobs: OcrJob[] = (rows ?? []).filter((r) => r.url && r.content_hash).map((r) => ({ document_id: r.id, url: r.url!, content_hash: r.content_hash! }));
+    if (jobs.length) check('documents', await untyped().from('documents').update({ ocr_tried_at: now.toISOString() }).in('id', jobs.map((j) => j.document_id)));
+    return jobs;
+  },
+
+  async saveOcrResult(result, now) {
+    const doc = check(
+      'documents',
+      await untyped().from('documents').select('id, source_id, url, content_hash, meeting_external_id').eq('id', result.document_id).maybeSingle(),
+    ) as { id: string; source_id: string; url: string | null; content_hash: string | null; meeting_external_id: string | null } | null;
+    if (!doc || !doc.url) return 'not_found';
+    if (doc.content_hash !== result.content_hash) return 'hash_mismatch';
+    const raw = result.pages.join('\f');
+    if (!raw.replace(/\s/g, '')) return 'empty';
+    await supabaseIngestStore.insertDocuments([
+      { source_id: doc.source_id, url: `${doc.url}#ocr`, content_hash: result.content_hash, kind: 'ocr_text', raw, fetched_at: now.toISOString(), meeting_external_id: doc.meeting_external_id },
+    ]);
+    check('documents', await untyped().from('documents').update({ needs_ocr: false }).eq('url', doc.url).eq('content_hash', result.content_hash));
+    return 'saved';
+  },
 };
+
+const untyped = () => db() as unknown as SupabaseClient;

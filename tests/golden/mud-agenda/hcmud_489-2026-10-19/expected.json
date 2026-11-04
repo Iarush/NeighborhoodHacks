@@ -1,0 +1,158 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "sph",
+  "meeting": {
+    "date": "2026-10-19T11:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Review and approval of the minutes of the meeting of the Board of Directors held September 21, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Bookkeeper's report, including (i) financial and investment reports and the payment of invoices presented, and (ii) status of compliance by the District with Texas Government Code, Chapter 2265, relative to energy reporting",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Annual review of Order Establishing Policy for Investment of District Funds and appointing Investment Officer, and adoption of Resolution in connection therewith",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Adoption of Resolution Adopting List of Qualified Brokers Authorized to Engage in Investment Transactions with the District",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Receive Tax Assessor-Collector report and approve payment of invoices presented and moving of accounts to uncollectible roll",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Report on legal action taken by the District's delinquent tax collections attorney, authorize foreclosure proceedings, installment agreements, and the filing of proofs of claim",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Conduct a public hearing regarding the adoption of the District's 2026 tax rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Levy of the District's 2026 debt service and maintenance tax rates, and the adoption of an Order in connection therewith",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Approval and execution of an Amendment to the Third Amended and Restated District Information Form",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Preparation and filing of continuing disclosure report for fiscal year ended May 31, 2026 (due November 30, 2026)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Operator's Report",
+      "description": "a) Monthly report;\nb) Disposition of delinquent utility accounts and referral of accounts for collection;\nc) Appeals of District charges and consideration of customer comments;\nd) Repair and maintenance of District facilities, including:\n(i) Water system flushing program;\n(ii) Sanitary sewer manhole inspection and rehabilitation; and\n(iii) Lift station pretreatment program;\ne) Status of compliance with permits; and\nf) Pending insurance and reimbursement claims;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Status of Garbage and Recycling Collection services",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Amendment of District's Rate Order relative to annual CPI increase imposed by Republic Services, Inc",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Engineer's Report",
+      "description": "a) Authorize the design and/or advertisement for bids for the construction of facilities within the District, and approval of related Storm Water Pollution Prevention Plans;\nb) Authorize the award of construction contracts or concurrence of award of contracts for the construction of facilities within the District;\nc) Status of construction of water, sewer and drainage facilities and paving to serve land within the District, including the approval of any pay estimates and/or change orders, and acceptance by Harris County of streets for maintenance, including:\n(i) Prairie Refuge Crossing — Water, Sanitary Sewer, Drainage & Paving — Millis Equipment, LLC; and\n(ii) Traffic Signal Installation at Tuckerton Road and Copper Breaks Crossing — Larry Young Paving, Inc.;\nd) Authorizing the design, advertisement, or award of construction contracts or concurrence in the award of contracts for the construction of recreational facilities within the District;\ne) Status of construction of recreational facilities to serve land within the District, and the approval of any pay estimates and/or change orders, including:\n(i) Parkland Village BLMZ Westgreen & Tuckerton Phase 2 Landscape Improvements — Allgreen Associates;\nf) Acceptance of site and/or easement conveyances for facilities constructed or to be constructed for the District, and acceptance of facilities for operation and maintenance purposes, including:\n(i) Conveyance of Facilities — Foundry Church 45' BLMZ Landscape Improvements;\n(ii) Conveyance of Facilities — Parkland Village Lift Station No. 8;\n(iii) Conveyance of Facilities - Starling Apartments BLMZ Landscape Improvements;\n(iv) Conveyance of Facilities — Mason Road, Section 7— Water, Sanitary Sewer, Drainage and Paving;\n(v) Conveyance of Facilities — Westgreen Boulevard at Parkland Crossing Traffic Signal; and\n(vi) Conveyance of Facilities — Mason Road Section 7 Medians Only Landscaping;\ng) Status of storm sewer and street acceptances by Harris County; and\nh) General engineering matters;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "16",
+      "title": "Review and discuss Capital Improvement Plan and authorize action in connection therewith",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "17",
+      "title": "Discuss updates and revisions to the District website",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "18",
+      "title": "Matters related to the Bridgeland Water Agency (the \"Agency\") and directives to the District's Trustee and Alternate(s)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "19",
+      "title": "Matters related to 5-acre administrative facility site jointly owned with Harris County Municipal Utility District No. 419",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "20",
+      "title": "Developer's Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "21",
+      "title": "Matters relative to Bridgeland Council, Inc. and/or Parkland Village Homeowners' Association",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "22",
+      "title": "Discussion regarding participation in January 1, 2027, Trace Air flyover and participation in the costs for same",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "23",
+      "title": "Attorney's Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "24",
+      "title": "Matters for possible placement on future agendas",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

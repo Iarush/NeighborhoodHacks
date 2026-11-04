@@ -1,0 +1,88 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "radcliffe_bobbitt",
+  "meeting": {
+    "date": "2026-10-21T10:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled",
+    "comment_rules_text": "Public Comment (Members of the public interested in speaking are limited to 3 minutes)"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public Comment (Members of the public interested in speaking are limited to 3 minutes)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Review and approve minutes of previous meeting(s)",
+      "description": "a. September 16, 2026 Regular Meeting",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Patrol Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Bookkeeper's Report",
+      "description": "a. Financial reports\nb. Pay bills from Operating and Construction Funds\nc. Investment Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Setting 2026 Tax Rate",
+      "description": "a. Conduct public hearing on 2026 tax rate\nb. Adopt Order Setting Rate and Levying Tax for 2026\nc. Adopt Order Appointing Tax Assessor/Collector\nd. Adopt Resolution Concerning Tax Collection Procedures\ne. Approve Amended and Restated District Information Form",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Tax Assessor/Collector's Report",
+      "description": "a. Tax collections\nb. Pay bills from tax account",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Delinquent Tax Report",
+      "description": "a. Conduct public hearing to authorize termination of service for non-payment of delinquent taxes",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Operator's Report",
+      "description": "a. Monthly water and wastewater operations\nb. Termination of service to delinquent accounts and/or write-offs of delinquent accounts\nc. Annual review of fire hydrants\nd. Quarterly Safety Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Engineer's Report",
+      "description": "a. Construction contracts, pay estimates, and change orders, authorize as needed\nb. Mirror Lake and The Thicket Detention Ponds\nc. Clay Development Partners – The Roundhouse Cottages, LLC\nd. Gravity Sanitary Sewer Flow Meter\ne. Water Plant Evaluations\nf. Water Well Site\ng. Capital Improvement Plan\nh. Risk and Resilience Assessments\ni. Emergency Response Plan\nj. Sanitary Sewer Cleaning and Televising Project\nk. The Thicket Lift Station Rehabilitation Project\nl. Discuss Detention Pond Maintenance by Harris County Flood Control\nm. Louetta/Mirror Lake Property Development",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Miscellaneous Business",
+      "description": "a. Ponderosa Joint Powers Agency Activities",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Executive Session, as necessary",
+      "description": "a. As may be permitted by Chapter 551, Texas Government Code, concerning matters involving attorney-client privilege, real estate, security, or matters involving cybersecurity and critical infrastructure\nb. Reconvene in Open Session\nc. Vote on matters discussed in Executive Session, if any",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

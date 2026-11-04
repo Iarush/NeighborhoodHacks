@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "abhr",
+  "meeting": {
+    "date": "2026-11-04T12:00:00-06:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Receive comments from the public",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "CONSENT AGENDA: The following items are considered routine by the Board and will be enacted by one motion. No separate discussion will occur on these items unless a Board member so requests, in which event the item will be removed and placed on the Non-Consent Agenda",
+      "description": "a. Approve minutes.\nb. Development in the District and elsewhere in Gleannloch Farms.\nc. Tax assessment and collection matters, including delinquent tax collections and payment of tax bills.\nd. Review Arbitrage Rebate Report for the Series 2016A Refunding Bonds.\ne. Financial and bookkeeping matters, including payment of bills and review of investments.\ni. conduct annual review of Investment Policy and adopt Resolution Regarding Annual Review of Investment Policy; and\nii. review, revise and adopt Resolution Establishing the Authorized Depository Institutions and Adopting List of Qualified Broker/Dealers with Whom the District May Engage in Investment Transactions.\nf. Garbage and recycling matters.\ng. Operation of District facilities, including:\ni. billings, repairs and maintenance, customer correspondence, and message language on water bills; and\nii. sanitary sewer video inspection program and repairs.\nh. District park matters, community improvement projects, and related coordination with community association.\ni. Channel and pond maintenance, including detention and drainage facilities report.\nj. District website and communication matters.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "NON-CONSENT AGENDA",
+      "description": "a. Items removed from Consent Agenda.\nb. Additional tax matters, including:\ni. conduct public hearing regarding District's tax rate, adopt Order Levying Taxes, and authorize execution of Amendment to Information Form.\nc. Storm Water Management Plan matters, including proposals for work.\nd. Additional channel and pond maintenance, including proposals for work.\ne. Update on waterline loop easement acquisition matters and take appropriate action.\nf. Engineering matters, including:\ni. authorize design of District facilities, including: aa. rehabilitation of lift station no. 5;\nii. approve plans and specifications and authorize advertisement for bids for construction projects, including: aa. waterline loop; and bb. wastewater treatment plant modifications;\niii. review bids and award contracts;\niv. approve pay estimates, change orders, and final acceptance as appropriate, for construction projects, including: aa. third water well; bb. wastewater treatment plant improvements; cc. water plant nos. 1 and 2 improvements; and dd. lift station nos. 1 and 2 improvements;\nv. deeds, easements, execution of plats, consents to encroachment requests for annexation and/or service, utility commitment letters, and wastewater service contracts;\nvi. capital improvement plan, including project funding;\nvii. District drainage matters;\nviii. NewQuest detention pond, including maintenance;\nix. other engineering matters, including: aa. nutria removal; and bb. Boudreaux Road realignment, including approve Joint Participation Interlocal Agreement with Harris County, if appropriate.\ng. Additional financial and bookkeeping matters, including:\ni. adopt Resolution Expressing Intent to Reimburse.\nh. Receive presentation from Municipal Information Services regarding EVO report and 10-year budget forecast.\ni. North Harris County Regional Water Authority (“NHCRWA”) matters.\nj. Additional operating matters, including:\ni. Phase 2 sanitary sewer manhole survey;\nii. Phase 5 sanitary sewer repairs;\niii. hearing on termination of water and sewer service to delinquent customers and authorize termination of service; and\niv. write-off of delinquent charges.\nk. Approve Emergency Response Plan and filing of certification of same with the Environmental Protection Agency.\nl. Reports from Directors and District consultants on District matters.",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

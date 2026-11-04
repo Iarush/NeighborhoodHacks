@@ -1,0 +1,75 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "abhr",
+  "meeting": {
+    "date": "2026-10-14T12:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Approve minutes",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Financial and bookkeeping matters, including payment of the bills, and review investments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Review of plan of financing",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Tax assessment and collections matters",
+      "description": "a. delinquent tax collections, installment agreements, and payment of tax bills; and\nb. conduct public hearing regarding District’s tax rate, adopt Order Levying Taxes, and authorize execution of Amendment to Information Form.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Detention and Drainage Facilities Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Operation report",
+      "description": "a. hearing on termination of water and sewer service to delinquent customers and authorize termination of service; and\nb. amend Rate Order.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Engineering matters",
+      "description": "a. preparation of plans and specifications, approval of plans and specifications, advertisement for bids, bid review, contract award, Pay Estimates and Change Orders, and acceptance of projects; and\nb. update on bond application no. 5.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Deeds, easements, consents to encroachment, requests for service or utility commitment letters, waivers of special appraisal, and Phase 1 Environmental Site Assessment Proposals",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Discuss next meeting date",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

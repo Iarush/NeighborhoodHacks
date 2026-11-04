@@ -1,0 +1,57 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "radcliffe_bobbitt",
+  "meeting": {
+    "date": "2026-11-05T17:00:00-06:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public Comment (Public interested in speaking will be limited to three (3) minutes per member of the public)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Minutes of October 1, 2026 Engineering and Operations Meeting",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Operator's Report, including updates on",
+      "description": "a. General Operation, Maintenance and Repair;\nb. Fairgreen/High Meadows Service Area, including: (1) status of water capacity and production; and (2) status of ultrasonic leak detection;\nc. Northline Terrace Service Area;\nd. Oakwilde Service Area;\ne. Oak Glen Service Area;\nf. Woodland Oaks Service Area; and\ng. Heather Glen Service Area;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Engineer's Report, including updates on",
+      "description": "a. Fairgreen/High Meadows Service Area, including: (1) Marquita Water Plant, including:\n1. Surface Water Transmission Line; and\nii. East Aldine District Projects; (2) Service request for 11955 Gloger Street; (3) Service request for Maya Lagoon (2026 Connorvale Road); (4) Service request for 3708 Aldine Mail Route Road; (5) Service request for 3420 Aldine Mail Route Road; (6) Aldine Independent School District/ East Aldine District Water Line Loop Feasibility; and (7) City of Houston Water Supply Contract;\nb. Northline Terrace Service Area, including: (1) Water Plant Improvement Project; (2) West Gulf Bank Road Widening Project; (3) Sweetwater Lane Widening Project; and (4) TWDB Supply & Infrastructure Grant Application for New Water Well;\nc. Oak Glen Service Area, including, Water Line Rehabilitation Project, Phase II;\nd. Oakwilde Service Area, including: (1) Wastewater Treatment Plant; (2) Seven Mile Road Water Plant Project; (3) 11709 Aldine Westfield Road;\n1. Amended and Restated District Information Form related to annexation of 0.884 acres; (4) Oakwilde Smoke Testing Project; (5) Westfield Estates Wastewater Collection and Lift Station Project; (6) Water Line Rehabilitation, Phase 7; (7) Application to Harris County Community Services Department Community Development Block Grants program for Plan Year 2027 for Water Line Replacement, Phase 8 (8) Castlewood Subdivision Wastewater Collection and Lift Station Project; and (9) Castledale Drive Sanitary Sewer Line Extension;\ne. Heather Glen Service Area, including: (1) Houston Food Bank Project; and (2) Water Line Replacement Project;\nf. Woodland Oaks Service Area, including: (1) Woodland Oaks Water Plant improvements, including:\n1. Water Well at Water Plant No. 1; and\nii. Water Plant No. 2 improvements; and (2) Pinehaven Single-Family Residential Subdivision; and\ng. Miscellaneous service requests;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "District Website Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Director's Reports",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Attorney's Report",
+      "description": "a. update on matters related to property owned by the District;\nb. update on request for adjustment to billing to former property owner and customer of the District;\nc. Order Annexing 11 .3102 Acres of Land and Redefining Boundaries of the District; and\nd. Amended and Restated District Information Form.",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "generic",
+  "meeting": {
+    "date": "2026-10-16T11:30:00-05:00",
+    "type": "special",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "PUBLIC HEARING ON PROPOSED 2026 TAX RATE",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Hear from the Public",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Consider approving minutes of meeting of September 11, 2026",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Hear Financial Advisor’s Report and take any action thereon",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Hear Bookkeeper’s Report and take any action thereon",
+      "description": "(a) consider approving payment of the bills;\n(b) consider approving investment report; and\n(c) consider approval of proposed budget for fiscal year ending December 31, 2027;",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Hear Tax Assessor/Collector’s Report and take any action thereon",
+      "description": "(a) consider approving payment of tax bills; and",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Hear Attorney’s Report and take action thereon",
+      "description": "(a) consider approving Order Setting 2026 Tax Rate; and\n(b) consider approving Amendment to Notice to Sellers and Purchasers.",
+      "quote_verified": false,
+      "contains_private_person": false
+    }
+  ]
+}

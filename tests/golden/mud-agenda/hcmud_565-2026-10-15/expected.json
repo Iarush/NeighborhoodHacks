@@ -1,0 +1,89 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "coats_rose",
+  "meeting": {
+    "date": "2026-10-15T12:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Hear from the public",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Conduct public hearing on proposed 2026 tax rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Adopt Order Setting Tax Rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Approve Amended Notice to Sellers and Purchasers",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Consider approving minutes of September 17, 2026 Board of Directors Meeting",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Hear NJ Services’ Report and consider acting thereon",
+      "description": "a. Discuss and ratify repair/landscape proposals and take appropriate action.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Hear Bookkeeper’s Report and consider acting thereon",
+      "description": "a. Approve payment of District bills presented and the investment report.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Hear Tax Assessor-Collector’s Report and consider acting thereon",
+      "description": "a. Authorize payments from tax account;\nb. Discuss delinquent accounts, consider taking action to terminate service to delinquent taxpayers;\nc. Consider approving payment agreements for delinquent tax accounts; and\nd. Approve B&A Assignment to Assessments of the Southwest.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Hear Operator’s Report and consider acting thereon",
+      "description": "a. Authorize repair and maintenance of District’s facilities; and\nb. Authorize termination of water service to delinquent accounts.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Hear Engineer’s Report and consider acting thereon",
+      "description": "a. Authorize the design of District facilities;\nb. Approve plans and specifications for construction of District facilities;\nc. Authorize advertisement for bids for District projects;\nd. Approve pay estimates and change orders for construction projects in the District; and\ne. Authorize and/or ratify construction contracts and related items.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Hear Developer’s Report and consider acting thereon",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Hear Attorney’s Report and consider acting thereon",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

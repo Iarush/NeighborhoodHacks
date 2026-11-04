@@ -362,7 +362,8 @@ export async function runIngest(opts: RunOptions): Promise<RunReport> {
   let result: AdapterResult;
   try {
     const adapter = opts.adapter ?? (await loadAdapter(source.adapter));
-    result = AdapterResultSchema.parse(await adapter.run(runSource, mode, window, { documentHashes: prevDocumentHashes(snap) }));
+    const ocrTexts = source.adapter === 'mud_agenda' && mode.kind !== 'results' ? await store.ocrTexts(source.id) : undefined;
+    result = AdapterResultSchema.parse(await adapter.run(runSource, mode, window, { documentHashes: prevDocumentHashes(snap), ...(ocrTexts ? { ocrTexts } : {}) }));
   } catch (e) {
     const message = errorText(e);
     const h = health({ fetch_error: message }, history, source, now);
@@ -598,6 +599,9 @@ export async function runIngest(opts: RunOptions): Promise<RunReport> {
       raw: d.raw.length > MAX_DOCUMENT_RAW ? null : d.raw,
       fetched_at: d.fetched_at,
       meeting_external_id: urlMeeting.get(d.url) ?? null,
+      ...(d.needs_ocr !== undefined ? { needs_ocr: d.needs_ocr } : {}),
+      ...(d.parse_rung !== undefined ? { parse_rung: d.parse_rung } : {}),
+      ...(d.parse_profile !== undefined ? { parse_profile: d.parse_profile } : {}),
     });
   }
   report.documents = documentWrites.length;

@@ -1,0 +1,10 @@
+{
+  "source_id": "encanto_real_ud",
+  "url": "https://www.encantorealud.com/static/6e30f3ede2f735a109409666d6017755/10_20_2026_Agenda_Encanto_4907_2773_4232_1_7eebd0a1d6.pdf",
+  "date": "2026-10-20",
+  "type": "regular",
+  "note": "Scan (no text layer), read with Tesseract",
+  "recorded_at": "2026-11-04",
+  "text": "tesseract ocr",
+  "pdf_sha256": "c83cbcc416cbdc78dc6be2aa4a355a314ccb0e1c7440b9cbd12c642297d78e42"
+}

@@ -1,0 +1,123 @@
+{
+  "ok": false,
+  "reasons": [
+    "numbering restarts under a CONSENT/REGULAR AGENDA heading; not a single 1..N list"
+  ],
+  "profile": "polley_garza",
+  "meeting": {
+    "date": "2026-10-20T18:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Minutes of prior meetings, including September 22, 2026 special meeting",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Approve pay estimates and change orders to construction contracts, as needed, for ongoing District projects listed under the Engineering Report on the Regular Agenda below",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Approve written consultant reports",
+      "description": "a. Strategic Partnership Agreement Audit Report\nb. Detention Facilities Maintenance Report\nc. Tax Assessor/Collector's Report, including tax-related checks\nd. Delinquent Tax Attorney's Report\ne. Bookkeeper's Report, including payment of bills, issuance of checks, and review of investments\nf. Garbage and Recycling Collection Service Report\ng. Communications Report\nh. Operations Report\ni. Engineering Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Acceptance or conveyance of water line, sanitary sewer line and drainage dedications, easements, deeds or consents to encroachment",
+      "description": "E. REGULAR AGENDA The following items should consist of: (i) action on items not approved under the Consent Agenda; or (ii) additional questions/discussion desired by the Board. Consultants will not discuss items contained in written reports unless requested by the Board or an item requires action by the Board.\n1. 2026 Tax Rate Setting:\na. public hearing on 2026 tax rate\nb. Order Setting Rate and Levying Tax for 2026\nc. Amended District Information Form pursuant to Section 49.455 of the Texas Water Code and filing of same\n2. Detention Facilities Maintenance Report, including authorizing repairs as needed\n3. Tax Assessor/Collector's Report, including additional tax related checks and payment agreements\n4. Delinquent Tax Attorney’s Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Bookkeeper's Report, including payment of additional bills and issuance of additional checks",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Order Regarding Annual Review of Rules, Policies, and Code of Ethics and List of Authorized Brokers for the Investment of District Funds",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Garbage and Recycling Collection Service Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Communications Report, including website update",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Operations Report",
+      "description": "a. maintenance/repairs to District facilities\nb. termination of service to and/or write-off of delinquent accounts",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "General Manager's Report",
+      "description": "a. Rate Order amendment related to sewer rate for residential homeowner's associations\nb. Bridgestone MUD Park report\nc. community events\nd. Allora Gosling request regarding non-taxable multifamily water and sewer rates",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Bridgestone Conservancy non-profit update",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Director's Reports, including monthly inspection report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Engineering Report",
+      "description": "a. Requests for service, annexation and/or feasibility studies\nb. Ongoing District projects, including:\n1. Projects in construction, including:\na. Sanitary Sewer Rehabilitation – Phase IV\nb. SCADA\nc. Water Plant & Lift Station Generator Replacement/Additions\nd. Public Lift Station No. 9 & Utility Extension to Serve Trinity Grove Development\ne. Wastewater Treatment Plant No. 1 Improvements\nf. Water Well No. 5\ng. Sanitary Sewer Cleaning & Televising – PH 21-24\nh. All Seasons Plaza Retail Development Utility Extensions\ni. Waterline Extension to Serve Lin’s International Buffet\nj. Trinity Grove development, including: (1) Water, Sewer & Drainage project (2) Detention and Amenity Pond project\n2. Projects in design, including:\na. Bridgestone Lakes Section Nos. 1 & 2 Amenity Pond\nb. Public Sanitary Sewer Extension to serve Spring BTR Reserve A Development\nc. Lift Station No. 4 & Force Main Relocation/Replacement\nd. Wastewater Treatment Plant No. 2 TPDES Permit Renewal\ne. Multi-Sector General Permit Renewal 2026\nf. Asset Management – Wastewater Treatment Plant No. 1\ng. Gosling Road Sanitary Sewer Extension\nh. Waterline Extension to Serve Jetset Foundation\nc. Proposed projects, including:\n1. NHCRWA Surface Water Delivery to Water Plant Nos. 1, 2 and/or 4\nd. Plan review and encroachment requests, including Mecca Springs\ne. Risk and Resilience Assessment & Emergency Response Plan\nf. Texas Water Development Board Grant Application",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Annexation of 4.9896-acre JAMS LLC tract and 10.026-acre Rebecca Village Business Park, LP/21935 Briar Park, LLC tract",
+      "description": "a. Order Annexing Land and Redefining Boundaries of the District\nb. Amendment to District Information Form\nc. Updated District boundary map and metes and bounds",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Partnership with Harris County Precinct 3 regarding Bridgestone MUD Park maintenance",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "16",
+      "title": "Director's responsibilities for District business",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "17",
+      "title": "Attorney's Report, including the following related to the Mecca Springs development",
+      "description": "a. Access Easement Agreement across District property\nb. Annexation and Service Agreement\nc. Agreement for Financing of Facilities",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

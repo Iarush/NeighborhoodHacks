@@ -1,0 +1,104 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "abhr",
+  "meeting": {
+    "date": "2026-10-19T18:30:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Hear statements from the public and receive written questions",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Minutes of prior meetings",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Financial and bookkeeping matters, including payment of the bills and review of investments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Tax assessment and collections matters, including payment of tax bills, installment agreements, delinquent tax collections, sales tax reports, and requests for estimates of taxable value",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Conduct public hearing regarding District’s tax rate, adopt Order Levying Taxes, and authorize execution of Amendment to Information Form",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "District website matters, including emergency alert/messaging services",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Security services matters, including report from Harris County Sheriff’s Office",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Development in the District",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "North Channel Water Authority report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Detention facilities report, including proposals and task orders for additional maintenance",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Garbage collection and recycling services, including report from Best Trash",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Engineer’s report on construction projects in the District",
+      "description": "a. authorize design of facilities in the service area;\nb. approve plans and specifications and authorize advertisement for bids for construction of facilities in the service area, including:\ni. right turn deceleration lanes to serve Uvalde West tract; and\nii. right turn deceleration lanes to serve New Forest Town Center tract.\nc. review bids and award contracts for construction of facilities in the service area, including:\ni. water plant no. 1 drainage improvements;\nii. water, sewer, drainage and paving facilities to serve New Forest Town Center tract; and\niii. water, sewer and drainage facilities to serve Uvalde West;\nd. approve pay estimates, time extensions, change orders, certificates of completion and final acceptance for projects in the service area, including:\ni. generators for wastewater treatment plant no. 1 and lift station nos. 1, 3, 4, and 5;\ne. review and approve report on electricity consumption and energy efficiency measures and take any necessary action;\nf. deeds, easements, plats, surveys, as-built certifications, appraisals, phase I environmental assessments, consents to encroachment, and utility commitment requests; and\ng. proposals for engineering services.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Operator’s report",
+      "description": "a. operation, maintenance, and repair of District water, sanitary sewer, and storm drainage facilities;\nb. sanitary sewer manhole survey;\nc. customer billing and collection;\nd. smart meter installation program;\ne. amendment of District Rate Order; and\nf. hearing on termination of water and sewer service to delinquent customers and authorize termination of service.",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Emergency Preparedness Plan update",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "District meeting schedule",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

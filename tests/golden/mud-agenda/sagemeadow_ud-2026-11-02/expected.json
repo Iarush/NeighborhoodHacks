@@ -1,0 +1,51 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "generic",
+  "meeting": {
+    "date": "2026-11-02T18:30:00-06:00",
+    "type": "special",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Receive comments or questions from the public [3-minute maximum per speaker], including presentations concerning",
+      "description": "a) customer invoices;\nb) facilities maintenance;\nc) authorize appropriate action;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Discuss District operations",
+      "description": "a) consider customer requests for adjustment pursuant to District Policy;\nb) authorize other appropriate action;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Engineer’s report",
+      "description": "a) authorize preparation of plans and specifications for District projects, and authorize advertisement of bids relating thereto;\nb) consider and approve award of contracts for construction projects;\nc) report on status of construction contracts, and approve pay estimates and change orders in connection therewith;\nd) report on status of emergency repairs;\ne) authorize other appropriate action;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Office Manager’s report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Discuss District Building remodel and authorize appropriate action",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Consider adjournment",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

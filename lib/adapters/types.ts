@@ -69,7 +69,12 @@ export const DocumentSchema = z.object({
   fetched_at: z.string(),
   content_hash: z.string(),
   raw: z.string(),
-  kind: z.enum(['json', 'html', 'pdf_text', 'llm_output']),
+  kind: z.enum(['json', 'html', 'pdf_text', 'llm_output', 'ocr_text']),
+  /** mud-code-parser-spec §5: a PDF that needs OCR (no text layer, or rungs 1-2 failed). */
+  needs_ocr: z.boolean().optional(),
+  /** §3.4/§4: the ladder rung that parsed this document (1-5) and the firm profile used. */
+  parse_rung: z.number().int().min(1).max(5).optional(),
+  parse_profile: z.string().optional(),
 });
 export type AdapterDocument = z.infer<typeof DocumentSchema>;
 
@@ -92,7 +97,7 @@ export type RunMode =
       known?: { meetings: Meeting[]; items: Item[] };
     };
 
-export const AdapterKindSchema = z.enum(['legistar', 'boardbook', 'primegov', 'llm_extract', 'manual', 'diligent', 'boarddocs', 'utilitytaxservice']);
+export const AdapterKindSchema = z.enum(['legistar', 'boardbook', 'primegov', 'llm_extract', 'manual', 'diligent', 'boarddocs', 'utilitytaxservice', 'mud_agenda']);
 export type AdapterKind = z.infer<typeof AdapterKindSchema>;
 
 // §5.2 source registry entry. `config` is adapter-specific and validated by each adapter.
@@ -109,7 +114,11 @@ export interface Adapter {
     source: SourceConfig,
     mode: RunMode,
     window: { from: Date; to: Date },
-    prev?: { documentHashes: Record<string, string> },
+    prev?: {
+      documentHashes: Record<string, string>;
+      /** mud_agenda (§5): stored OCR text, keyed by the sha256 of the PDF it was read from. */
+      ocrTexts?: Record<string, string>;
+    },
   ): Promise<AdapterResult>;
 }
 

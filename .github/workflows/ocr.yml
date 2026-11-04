@@ -1,0 +1,37 @@
+# OCR for scanned water-district agendas (mud-code-parser-spec §5). Every 3 hours at :45, after
+# ingest.yml's :15 run: asks /api/cron/ocr-queue for up to 15 PDFs marked needs_ocr, reads each with
+# Tesseract, and posts the text to /api/cron/ocr-result. The next ingest run parses it.
+# Uses the repo secret CRON_SECRET and the repo variable APP_URL, like ingest.yml. No service-role
+# key is needed here: the job only talks to the app.
+name: OCR scanned agendas
+
+on:
+  schedule:
+    - cron: '45 */3 * * *' # UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ocr
+  cancel-in-progress: false
+
+jobs:
+  ocr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install poppler and tesseract
+        run: sudo apt-get update -q && sudo apt-get install -y -q poppler-utils tesseract-ocr tesseract-ocr-spa
+      - run: npm ci
+      - name: OCR queued documents
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          APP_URL: ${{ vars.APP_URL }}
+        run: npm run ocr

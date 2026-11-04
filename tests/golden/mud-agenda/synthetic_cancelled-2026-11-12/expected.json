@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "generic",
+  "meeting": {
+    "date": "2026-11-12T12:00:00-06:00",
+    "type": "regular",
+    "status": "cancelled"
+  },
+  "items": []
+}

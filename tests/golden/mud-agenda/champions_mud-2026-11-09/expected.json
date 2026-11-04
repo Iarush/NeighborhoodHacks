@@ -1,0 +1,93 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "johnson_petrov",
+  "meeting": {
+    "date": "2026-11-09T15:00:00-06:00",
+    "type": "regular",
+    "status": "scheduled",
+    "comment_rules_text": "PUBLIC COMMENT (MAXIMUM 3 MINUTES PER PERSON)"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "PUBLIC COMMENT (MAXIMUM 3 MINUTES PER PERSON)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "APPROVAL OF MINUTES OF OCTOBER, 2026, BOARD MEETING",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "AUDIT REPORT FOR FISCAL YEAR ENDED JUNE 30, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "GENERAL MATTERS",
+      "description": "A. Champions Colony East private lines;\nB. Green Medians Report;\nC. Kleinwood Joint Powers Board (\"KJPB\") report;\nD. Security Matters;\nE. State of the District 2026;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "LANDSCAPING COMMITTEE REPORT",
+      "description": "A. Commercial Landscaping Maintenance Agreement;\nB. Champions Forest Drive Esplanade Irrigation Systems;\nC. Champions Drive Landscaping and Irrigation;\nD. Paradise Valley Trail;\nE. Sound Wall on FM 1960;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "BOOKKEEPER'S REPORT",
+      "description": "A. Status of account balances and funds transfers;\nB. Approve payment of invoices and issuance of checks, including Pay Estimates;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "TAX COLLECTOR'S REPORT",
+      "description": "A. Tax revenues and collections of delinquent accounts;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "OPERATOR'S REPORT",
+      "description": "A. Monthly operations;\nB. Repairs and/or replacement of District facilities;\nC. Termination of service and/or write off of delinquent accounts;\nD. Water Quality and Drought Contingency;\nE. Rate Order Inspections, Violations, and Enforcement;\nF. Damage to District facilities by third parties;\nG. Customer correspondence, including complaints and billing adjustments;\nH. Water Conservation Plan and Drought Contingency Plan;\nI. Amendment to Agreement for District Operator Services;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "ENGINEER'S REPORT",
+      "description": "A. Design/Construction Projects, including pay applications, change orders, bidding, award of project, and acceptance:\n(a) Water Well 2 and sanitary control easements;\n(b) Reclaimed Water Plant, including improvements for irrigation, redundancy, and storage tank addition;\n(c) Champions Celebrity Colony Water and Sewer Line Replacement;\n(d) Water System Replacement Schedule;\n(e) Sanitary Sewer Replacement;\nB. Reclaimed Water Report;\nC. Construction Warranty Inspections;\nD. Permit/Plant Status;\nE. Miscellaneous Items, including, Capital Improvement Plan;\nF. Utility Commitment Requests;\nG. Annexation Requests;\nH. Update to Champions Colony East Study;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "COMMUNICATIONS REPORT",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "ATTORNEY'S REPORT",
+      "description": "A. Update on NHCRWA projects that concern District, including comments submitted to the NHCRWA;\nB. Reclaimed Water System, Authority Water Credits, and Agreements with KJPB and Champions Golf Club regarding reclaimed water;\nC. Correspondence from Homeowners Associations;\nD. Correspondence with Champions Golf Club Regarding Credits and Water and Sewer Connections;\nE. Acquisition of Real Property;\nF. Amendment to District Rate Order, if needed;\nG. Interconnect System, including 3-way interconnect with Cy-Forest PUD and Cy-Champ PUD;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "EXECUTIVE SESSION, AS NECESSARRY",
+      "description": "A. Pursuant to Chapter 551 of the Texas Government Code, Subchapter D, of the Open Meetings Act, discuss matters relating to attorney-client privilege, potential litigation, security matters and/or real estate matters, respectively;\nB. Reconvene in Open Session; and\nC. Vote on matters considered in Executive Session, if any.",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

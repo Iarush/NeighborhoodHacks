@@ -1,0 +1,108 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "matter_002",
+  "meeting": {
+    "date": "2026-10-14T11:30:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Minutes of meeting held September 9, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Patrol/camera surveillance committee report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Bookkeeper’s report; review of checks and invoices; payment of bills; investment of District funds",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Arbitrage rebate report for Series 2015 and 2016 bonds",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Tax assessor-collector’s reports for District & Defined Area; invoices & checks; status of delinquent taxes; authorize actions for collection of delinquent accounts, including termination of water service",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Public Hearing on Proposed 2026 Tax Rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Order Setting Tax Rate, Approving Tax Roll, and Levying Debt Service Tax and Maintenance & Operation Tax for the Year 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Amendment to Statement of Directors",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Update District website to include adopted 2026 tax rate information",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Engineer’s report: project design; approve advertisement for bids, contract award, pay estimates, and change orders; capital improvements plan; service to 290/ Huffmeister/Hempstead Road triangle tract; letter of no objection to encroachment",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Engage accountants for Agreed Upon Procedures Report - reimbursement of Weiser Business Park entity for left turn lane project serving Defined Area",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Operator’s report; repair and maintenance of District water, sewer, and drainage facilities; customer appeals & account adjustments; termination of service for open delinquent accounts",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Matters related to the North Harris County Regional Water Authority",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Detention pond operator report; authorize repairs and maintenance",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "16",
+      "title": "Pending business",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

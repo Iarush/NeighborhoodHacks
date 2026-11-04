@@ -1,0 +1,158 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "sph",
+  "meeting": {
+    "date": "2026-10-27T11:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Approval of the minutes of the meeting of the Board of Directors held on September 22, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Bookkeeper's Report, including (i) financial and investment reports, and authorizing the payment of invoices presented, and (ii) status of compliance by the District with Texas Government Code, Chapter 2265, relative to energy reporting",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Annual review of Order Establishing Policy for Investment of District Funds and appointing Investment Officer, and adoption of Resolution in connection therewith",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Adoption of Resolution Adopting List of Qualified Brokers Authorized to Engage in Investment Transactions with the District",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Preparation and filing of continuing disclosure report for fiscal year ended May 31, 2026 (due November 30, 2026)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Receive Tax Assessor-Collector report and approve payment of invoices presented and moving of accounts to uncollectible roll",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Report on legal action taken by the District's delinquent tax collections attorney, authorize foreclosure proceedings, installment agreements, and the filing of proofs of claim",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Conduct a public hearing regarding the adoption of the District's 2026 tax rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Levy of the District's 2026 maintenance tax rate, and the adoption of an Order in connection therewith",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Approval and execution of an Amendment to the Seventh Amended and Restated District Information Form",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Operator's Report",
+      "description": "a) Monthly report, including inspections, repairs and maintenance of District facilities and status of compliance with permits; and\nb) Communications with Bridgeland municipal utility districts regarding water and wastewater services provided by the District;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Engineer's Report",
+      "description": "a) Authorizing the design, advertisement for bids and/or award of construction contracts or concurrence in the award of a contract for the construction of water, sanitary sewer and drainage facilities within the District, and authorize acceptance of TEC Form 1295 in connection therewith, including:\ni) Water Well No. 4 Advanced Water Quality Treatment; and\nii) Legacy Point Sewer Extension;\nb) Status of construction contracts, including the approval of any pay estimates, change orders and/or acceptance of facilities for operation and maintenance purposes, and authorize acceptance of TEC Form 1295's in connection therewith including:\ni) Wastewater Treatment Plant No. 3 — 5J Services, LLC;\nii) Wastewater Treatment Plant No. 1 Nitrate Removal — AdEdge Water Technologies;\niii) Wastewater Treatment Plant No. 2 — 5J Services, LLC;\niv) Water Plant No. 3 — Phase 1 — Schier Construction;\nv) Water Well No. 8 — Weisinger Incorporated;\nvi) Bridgeland Peek Road Street Dedication, Section 6 — Unitas Construction, Inc.;\nvii) Prologis Phase 1 Public Infrastructure — Carter Construction;\nviii) Prologis Lift Station — Joeris General Contractors, LLC;\nix) Water Quality Blending Technical Assistance — Corona Environmental Consulting, LLC;\nx) Wastewater Treatment Plant No. 1 Expansion to 3.0 MGD — Reytec Construction Resources, Inc.;\nxi) Water Well No. 9 — Weisinger Incorporated;\nxii) Wastewater Treatment Plant No. 3, Phase II and III — HCG;\nxiii) Prairieland Peek 6 Medians & West Side Landscaping — Shooter & Lindsey, LLC;\nxiv) Water Well No. 10 — Weisinger Incorporated; and\nxv) Wastewater Treatment Plant No. 2 Phase II — HCG;\nc) Acceptance of site deeds, easements, and conveyances for facilities constructed or to be constructed for the District, conveyance of real property interests, and acceptance of TEC Form 1295's in connection therewith, including:\ni) Conveyance — Bridgeland Landscape Management Zone — Landscape Improvements;\nii) Special Warranty Deed — Water Plant No. 4, Phase I;\niii) Conveyance — Water Plant No. 4, Phase I;\niv) Conveyance — Water Plant No. 2 Ground Storage Tank No. 2; and\nv) Conveyance — BLMZ A.135 Landscaping Improvements;\nd) Status of renewal of TPDES Discharge Permit for Wastewater Treatment Plant No. 2;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Review and discuss Capital Improvement Plan and authorize action in connection therewith",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "15",
+      "title": "Report on status of storm water pollution prevention and storm water quality management; including status of storm water permits and the taking of any action relative thereto",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "16",
+      "title": "Status of ninth application with the Texas Commission on Environmental Quality requesting approval of Master District facilities purchase",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "17",
+      "title": "Review and approval of agreed upon procedures and authorize payment to Prologis, LP for facilities constructed on behalf of the District with proceeds from the District's Unlimited Tax Road Bonds, Series 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "18",
+      "title": "Review and approval of agreed upon procedures and authorize payment to Bridgeland Development, LP for Master Facilities with proceeds from the Harris County Municipal Utility District No. 419 and Harris County Municipal Utility District No. 491 Connection Charges",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "19",
+      "title": "Matters related to the Bridgeland Water Agency (the \"Agency\") and directives to the District's Trustee and Alternate(s)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "20",
+      "title": "Receive monthly Communications Report relative to the District's website by Touchstone District Services, LLC",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "21",
+      "title": "Developer's Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "22",
+      "title": "Annexation of certain land into the boundaries of the District, including proposed annexation of approximately 82.90 acres as requested by Bridgeland Development, L.P",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "23",
+      "title": "Attorney's Report, including presentation of Notice of Second Reservation of Capacity by Master District",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "24",
+      "title": "Schedule of future meetings and matters for possible placement on future agendas",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

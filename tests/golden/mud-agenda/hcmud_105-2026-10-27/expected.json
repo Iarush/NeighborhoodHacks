@@ -1,0 +1,90 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "generic",
+  "meeting": {
+    "date": "2026-10-27T18:00:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public Comment (comments limited to three minutes per person; comments regarding items not on this agenda limited to statements of factual information/restatement of existing policy in response to an inquiry or proposal to place the subject on a future agenda)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Minutes of the September 22, 2026 meeting",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Developer reports; annexation/utility commitments; related assignments/consents; status of the petition to the City of Houston for consent to annexation of the approximately 168.88-acre Westgreen Creek tract; defined area and financing agreement",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Update on Harris County Precinct 4 “Places 4 People” grant application; drainage study and right-of-way acquisition appraisal proposals; related authorizations",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Operator’s report; District facility security measures; sludge hauling services; consider and adopt amended Rate Order",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Bookkeeper’s report; approval of disbursements; status of FYE 2026 audit",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Status of NW 12 Joint WWTP Agreement (amended and restated)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Tax Report; hold Public Hearing on the proposed tax rate for the District; adopt Order Setting Tax Rate for the District (proposed total tax rate of $0.62 per $100 for the District); authorize related Truth-in-Taxation filings and District website postings under Section 26.18, Tax Code",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "District Website",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Engineer’s report, contracts, and pay applications",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "District detention pond and drainage channel report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Executive Session pursuant to Section 551.071, Texas Government Code, for consultation with the District’s attorney regarding pending or contemplated litigation arising from the July 25, 2026 chlorine gas release; reconvene in open session and take action as necessary",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Consider engagement of Friedman, Dazzio & Zulanas, P.C. as special litigation counsel on a contingent fee basis in connection with matters arising from the July 25, 2026 chlorine gas release at the District’s Water Plant No. 1; adopt Resolution making the findings required by Section 2254.1036, Texas Government Code; and authorize related actions, including submission of the contract to the Texas Attorney General under Section 2254.1038, Texas Government Code",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

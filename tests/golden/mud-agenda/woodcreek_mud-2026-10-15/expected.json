@@ -1,0 +1,99 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "coats_rose",
+  "meeting": {
+    "date": "2026-10-15T11:30:00-05:00",
+    "type": "regular",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Approve minutes and official records of previous Board of Directors meeting(s)",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Public Hearing on 2026 Tax Rate",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Adopt Order Setting Tax Rate for 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Approve Amended Notice to Sellers and Purchasers",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Engage Auditor",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Approve audit for fiscal year ended May 31, 2026",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Tax Assessor/Collector’s Report, including authorization of payments from the Tax Account",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Bookkeeper’s report, including authorization of payment of the District’s bills and approval of Investment Report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Engineer’s report",
+      "description": "(a) Status of pending development projects;\n(b) Status of City of Houston GRP matter; and\n(c) Approve Pay Estimates, bidding authorization, project awards, and related matters, as necessary;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Drainage Maintenance report",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Operator’s report",
+      "description": "(a) Authorize termination of water and sewer service to delinquent accounts;\n(b) Approve fence repair at wastewater treatment plant; and\n(c) Discuss security at sewer plant and take any necessary action;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "13",
+      "title": "Attorney’s report",
+      "description": "(a) Status of City of Houston Litigation; and\n(b) Consider contribution to homeowners association security contract with Harris County Constable, Precinct No. 4;",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "14",
+      "title": "Such other matters as may come before the Board",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "reasons": [],
+  "profile": "abhr",
+  "meeting": {
+    "date": "2026-10-23T15:00:00-05:00",
+    "type": "special",
+    "status": "scheduled"
+  },
+  "items": [
+    {
+      "agenda_number": "1",
+      "title": "Public comments",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Tour Gary Simpson Memorial Park",
+      "quote_verified": true,
+      "contains_private_person": false
+    }
+  ]
+}

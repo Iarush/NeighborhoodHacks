@@ -22,6 +22,7 @@ const GOLDEN_DIR: Record<AdapterKind, string> = {
   diligent: 'diligent',
   boarddocs: 'boarddocs',
   utilitytaxservice: 'utilitytaxservice',
+  mud_agenda: 'mud-agenda',
 };
 
 function fail(msg: string): never {
