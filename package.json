@@ -26,7 +26,8 @@
     "stage:hcad": "node --import tsx scripts/stage-hcad.ts",
     "load:boundaries": "node --import tsx scripts/load-boundaries.ts",
     "survey:agendas": "tsx scripts/survey-agenda-pdfs.ts",
-    "ocr": "tsx scripts/ocr-documents.ts"
+    "ocr": "tsx scripts/ocr-documents.ts",
+    "shadow:mud": "tsx scripts/mud-shadow.ts"
   },
   "dependencies": {
     "@google/genai": "^2.30.0",

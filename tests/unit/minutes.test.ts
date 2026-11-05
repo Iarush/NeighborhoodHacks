@@ -285,6 +285,11 @@ describe('CLI results flags', () => {
     expect(a.known).toBe('tmp/scrape');
     expect(() => parseCli(['--source', 'x', '--known', 'd'])).toThrow(/only used with --mode results/);
   });
+  it('--adapter overrides the registered adapter kind', () => {
+    expect(parseCli(['--source', 'hcmud_489', '--adapter', 'mud_agenda']).adapter).toBe('mud_agenda');
+    expect(parseCli(['--source', 'hcmud_489']).adapter).toBeUndefined();
+    expect(() => parseCli(['--source', 'x', '--adapter', 'nope'])).toThrow(/unknown --adapter/);
+  });
   it('loadKnown validates meetings.json and items.json', () => {
     expect(() => loadKnown('does-not-exist')).toThrow();
   });

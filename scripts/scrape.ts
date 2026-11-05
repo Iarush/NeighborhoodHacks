@@ -1,5 +1,7 @@
 // CLI: npm run scrape -- --source <id> [--mode rotation|near_term|results] [--meetings id1,id2] [--known <dir>]
-//                       [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--out tmp/scrape] [--record]
+//                       [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--out tmp/scrape] [--record] [--adapter <kind>]
+// --adapter runs another adapter on the source's config (e.g. mud_agenda on an llm_extract MUD, for the
+// mud-code-parser-spec Phase 6 shadow run). It doesn't change data/sources.yaml.
 // Results mode (Step 10) reads the known meetings and items from <dir>/meetings.json and <dir>/items.json
 // (a saved rotation scrape) and writes result_updates.json.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -42,6 +44,7 @@ export function parseCli(argv: string[]) {
       to: { type: 'string' },
       out: { type: 'string', default: 'tmp/scrape' },
       record: { type: 'boolean', default: false },
+      adapter: { type: 'string' },
     },
     strict: true,
   });
@@ -55,7 +58,8 @@ export function parseCli(argv: string[]) {
     mode = { kind: 'results', meeting_external_ids: ids };
   } else throw new Error(`unknown --mode ${values.mode}`);
   if (values.known && mode.kind !== 'results') throw new Error('--known is only used with --mode results');
-  return { source: values.source, mode, known: values.known, from: values.from, to: values.to, out: values.out!, record: values.record! };
+  if (values.adapter && !(values.adapter in GOLDEN_DIR)) throw new Error(`unknown --adapter ${values.adapter}`);
+  return { adapter: values.adapter as AdapterKind | undefined, source: values.source, mode, known: values.known, from: values.from, to: values.to, out: values.out!, record: values.record! };
 }
 
 export function windowFor(
@@ -87,7 +91,8 @@ async function main() {
   } catch (e) {
     fail(`scrape: ${(e as Error).message}`);
   }
-  const source = getSource(args.source);
+  const registered = getSource(args.source);
+  const source = args.adapter ? { ...registered, adapter: args.adapter } : registered;
   const adapter = await loadAdapter(source.adapter);
   const maxDays = typeof source.config.results_max_days === 'number' ? source.config.results_max_days : 45;
   const window = windowFor(args.mode, args.from, args.to, maxDays);
