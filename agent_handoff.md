@@ -33,6 +33,15 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-11-05: MUD code parser Phase 6: shadow run (first round, 87.4%, target not met)
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main
+- **What changed:** Ran Phase 6 of `.plans/mud-code-parser-spec.md`. The new `npm run shadow:mud` (`scripts/mud-shadow.ts`) runs the no-AI ladder (rungs 1-4, with OCR run locally) over every water district's newest 2 agendas, with no DB writes and no LLM. It compares item counts with the LLM items stored in `meetings` (read-only). `npm run scrape -- --adapter mud_agenda` runs a different adapter on a source. Parser fixes from the run: OCR garbled-marker rule, "L," read as 1, the "following listed below." intro, and Wallace & Philbin closing lines. Result: both agendas accepted for 242 of 277 sources (87.4%), up from 220 (79.4%). 10 tax-rate notices are excluded from the count.
+- **Files:** `scripts/mud-shadow.ts`, `scripts/scrape.ts`, `package.json` (`shadow:mud`), `lib/adapters/mudAgenda/{parse,normalize}.ts`, `tests/golden/mud-agenda/hcmud_231-2026-10-21/` (now parses: 12 items, read against the OCR text), `tests/unit/minutes.test.ts`, `.plans/mud-code-parser-spec.md` (progress log only)
+- **Contract changes:** None.
+- **Checked:** `npm test` (1165 vitest + 72 P4 pass); `npm run typecheck` (only the known gitignored `tmp/scratch/hcad/lookup.ts` error); ESLint clean on the changed folders. The live fetch ran once; the tuning was rerun offline from the saved text.
+- **Open issues / next:** (1) **Decision needed:** about 9 sources (Polley Garza, matter_002, ABHR, Johnson Petrov) use CONSENT/REGULAR sections with numbering that restarts. Phase 1 chose to reject them. Accepting them would mean using `item.section`, with agenda numbers that repeat across sections (or prefixed, e.g. "C1"), and that alone would bring the rate to about 91%. (2) About 20 OCR scans lose a mid-list number in ways the new rule doesn't cover. (3) The LLM comparison is nearly empty: only 1 agenda URL has LLM items. (4) Phase 7 (switch-over) waits on ≥95%.
+
 ### 2026-11-05: MUD code parser Phase 5: the monthly LLM cap
 - **Who:** Iarush · P2 Scrapers
 - **Branch:** main (not committed yet)

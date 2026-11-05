@@ -1,8 +1,6 @@
 {
-  "ok": false,
-  "reasons": [
-    "item 2 missing: found 3 after 1"
-  ],
+  "ok": true,
+  "reasons": [],
   "profile": "matter_002",
   "meeting": {
     "date": "2026-10-21T10:00:00-05:00",
@@ -12,7 +10,73 @@
   "items": [
     {
       "agenda_number": "1",
-      "title": "Public Comments Dn Minutes of Board of Directors Meeting(s) 3. Bookkeeper’s Report; Checks and Invoices; Investment of District Funds; Depository Pledge Agreement(s); Tax Collections; 4, Law Enforcement Report Bi Operator’s Report; Operation, Maintenance and Repair of District Facilities; Rate Order 6. Engineer’s Report; Design of Facilities; Advertisement for Bids; Construction Contract(s), Pay Estimate(s) and Change Order(s); Annexation of Land; Permit Matters; Proposal(s); Engineering Report for Bond Authorization; Deposit of Funds for Payment of Engineering Expenses; Feasibility Analysis, Connection Fees; Detention Pond Report, Maintenance and Repairs; Permitting 7. Developer’s Report; Status of Construction; Utility Financing and Reimbursement Agreement(s); Collateral Assignment; Utility Commitments; Waiver of Special Appraisal; Acknowledgement and Consent of Lender 8. Renew District insurance 9. Resolution Adopting Operating Budget 10. Confirm Engagement of Auditor 11. Annual Eminent Domain filing 12. Other Matters: Consultant Contracts; Insurance; Contract for Electric Power; Audit Report; Application to Texas Commission on Environmental Quality; Utility Easements; Annexation of Land; Meeting Schedule",
+      "title": "Public Comments",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Minutes of Board of Directors Meeting(s)",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Bookkeeper’s Report; Checks and Invoices; Investment of District Funds; Depository Pledge Agreement(s); Tax Collections",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "4",
+      "title": "Law Enforcement Report",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "5",
+      "title": "Operator’s Report; Operation, Maintenance and Repair of District Facilities; Rate Order",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "6",
+      "title": "Engineer’s Report; Design of Facilities; Advertisement for Bids; Construction Contract(s), Pay Estimate(s) and Change Order(s); Annexation of Land; Permit Matters; Proposal(s); Engineering Report for Bond Authorization; Deposit of Funds for Payment of Engineering Expenses; Feasibility Analysis, Connection Fees; Detention Pond Report, Maintenance and Repairs; Permitting",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "7",
+      "title": "Developer’s Report; Status of Construction; Utility Financing and Reimbursement Agreement(s); Collateral Assignment; Utility Commitments; Waiver of Special Appraisal; Acknowledgement and Consent of Lender",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "8",
+      "title": "Renew District insurance",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "9",
+      "title": "Resolution Adopting Operating Budget",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "10",
+      "title": "Confirm Engagement of Auditor",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "11",
+      "title": "Annual Eminent Domain filing",
+      "quote_verified": false,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "12",
+      "title": "Other Matters: Consultant Contracts; Insurance; Contract for Electric Power; Audit Report; Application to Texas Commission on Environmental Quality; Utility Easements; Annexation of Land; Meeting Schedule",
       "quote_verified": false,
       "contains_private_person": false
     }

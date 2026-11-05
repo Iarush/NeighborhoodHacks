@@ -47,7 +47,10 @@ type SavedDoc = {
 };
 type Saved = { id: string; docs: SavedDoc[]; error?: string };
 
-export type DocRow = { url: string; date: string; ok: boolean; rung: number; firm: string; items: number; llm_items: number | null; reasons: string[] };
+export type DocRow = { url: string; date: string; ok: boolean; rung: number; firm: string; items: number; llm_items: number | null; reasons: string[]; not_agenda?: boolean };
+
+/** A tax-rate hearing notice posted where agendas go: no item list, so rejecting it is right. */
+const TAX_NOTICE = /public\s+hearing\s+on\s+a\s+proposed\s+tax\s+rate/i;
 export type SourceRow = { id: string; firm: string; docs: DocRow[]; error?: string; newest_ok: boolean | null; all_ok: boolean | null };
 
 const { values } = parseArgs({
@@ -183,9 +186,11 @@ async function main() {
         items: o.ok ? o.result.items.length : 0,
         llm_items: llm.get(d.url) ?? null,
         reasons: o.ok ? [] : o.reasons.slice(0, 3),
+        ...(!o.ok && o.reasons[0] === 'list intro not found' && TAX_NOTICE.test((d.text ?? d.ocr ?? []).join('\f')) ? { not_agenda: true } : {}),
       });
     }
-    const withDoc = docs.filter((d) => !d.reasons[0]?.startsWith('fetch:'));
+    // Pass/fail counts only agendas: fetch failures and tax-rate notices are listed but not counted.
+    const withDoc = docs.filter((d) => !d.reasons[0]?.startsWith('fetch:') && !d.not_agenda);
     rows.push({
       id: src.id,
       firm: withDoc[0]?.firm ?? '',
@@ -199,7 +204,9 @@ async function main() {
   const withDoc = rows.filter((r) => r.newest_ok !== null);
   const newestOk = withDoc.filter((r) => r.newest_ok).length;
   const allOk = withDoc.filter((r) => r.all_ok).length;
-  const docRows = rows.flatMap((r) => r.docs).filter((d) => !d.reasons[0]?.startsWith('fetch:'));
+  const docRows = rows.flatMap((r) => r.docs).filter((d) => !d.reasons[0]?.startsWith('fetch:') && !d.not_agenda);
+  const notAgenda = rows.flatMap((r) => r.docs).filter((d) => d.not_agenda).length;
+  const fetchFailed = rows.flatMap((r) => r.docs).filter((d) => d.reasons[0]?.startsWith('fetch:')).length;
   const byRung: Record<string, number> = {};
   for (const d of docRows) byRung[d.ok ? `rung ${d.rung}` : 'failed'] = (byRung[`${d.ok ? `rung ${d.rung}` : 'failed'}`] ?? 0) + 1;
   const compared = docRows.filter((d) => d.ok && d.llm_items !== null && d.llm_items > 0);
@@ -221,6 +228,8 @@ async function main() {
     pass_rate_all: withDoc.length ? allOk / withDoc.length : 0,
     target_met: withDoc.length > 0 && allOk / withDoc.length >= TARGET,
     documents: docRows.length,
+    tax_notices_skipped: notAgenda,
+    fetch_failed_docs: fetchFailed,
     by_rung: byRung,
     compared_with_llm: compared.length,
     same_item_count: same,
@@ -237,6 +246,7 @@ async function main() {
     '',
     `- **Every fetched agenda accepted: ${allOk} of ${withDoc.length} sources (${pct(allOk, withDoc.length)})**, target ${TARGET * 100}% ${summary.target_met ? 'met' : 'not met'}.`,
     `- Newest agenda accepted: ${newestOk} of ${withDoc.length} (${pct(newestOk, withDoc.length)}).`,
+    `- Not counted: ${notAgenda} tax-rate hearing notices posted as agendas (rightly rejected: no item list) and ${fetchFailed} documents that failed to download.`,
     `- Documents by rung: ${Object.entries(byRung).sort().map(([k, v]) => `${k} ${v}`).join(', ')}.`,
     `- Item counts vs. the LLM's stored items for the same agenda URL: ${compared.length} compared, ${same} equal, ${close} within 1.`,
     '',
@@ -248,7 +258,7 @@ async function main() {
     '',
     '| Source | Firm | Date | Rung | Reasons | URL |',
     '|---|---|---|---|---|---|',
-    ...rows.flatMap((r) => r.docs.filter((d) => !d.ok).map((d) => `| ${r.id} | ${d.firm} | ${d.date} | ${d.rung} | ${cell(d.reasons.join('; ')).slice(0, 160)} | ${d.url} |`)),
+    ...rows.flatMap((r) => r.docs.filter((d) => !d.ok && !d.not_agenda).map((d) => `| ${r.id} | ${d.firm} | ${d.date} | ${d.rung} | ${cell(d.reasons.join('; ')).slice(0, 160)} | ${d.url} |`)),
     '',
     '## Item counts that differ from the LLM by more than 1',
     '',
@@ -260,7 +270,7 @@ async function main() {
     '',
     '| Source | Firm | Docs (date: rung/items, LLM) | All accepted |',
     '|---|---|---|---|',
-    ...rows.map((r) => `| ${r.id} | ${r.firm} | ${r.docs.map((d) => `${d.date}: ${d.ok ? `r${d.rung}/${d.items}` : 'failed'}${d.llm_items !== null ? ` (${d.llm_items})` : ''}`).join(', ') || cell(r.error ?? 'no document')} | ${r.all_ok === null ? '–' : r.all_ok ? 'yes' : 'no'} |`),
+    ...rows.map((r) => `| ${r.id} | ${r.firm} | ${r.docs.map((d) => `${d.date}: ${d.ok ? `r${d.rung}/${d.items}` : d.not_agenda ? 'tax notice' : 'failed'}${d.llm_items !== null ? ` (${d.llm_items})` : ''}`).join(', ') || cell(r.error ?? 'no document')} | ${r.all_ok === null ? '–' : r.all_ok ? 'yes' : 'no'} |`),
     '',
   ].join('\n');
   mkdirSync(OUT, { recursive: true });

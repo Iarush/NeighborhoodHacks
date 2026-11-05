@@ -38,7 +38,7 @@ export type ParseResult = {
 };
 
 export const DEFAULT_LIST_INTRO =
-  /(?:act\s+(?:up)?on|consider(?:ed)?|transacted|discuss(?:ed)?|take\s+action\s+on|business)[^:]{0,160}?\b(?:following|as\s+follows)\b[^:]{0,80}?:|\bfollowing\s+(?:items|matters|agenda|business)\b[^:\n]{0,80}?:|\bas\s+follows\s*:|\b(?:items|matters)\s+(?:listed\s+)?below\b[^\n]{0,40}?[.:]/i;
+  /(?:act\s+(?:up)?on|consider(?:ed)?|transacted|discuss(?:ed)?|take\s+action\s+on|business)[^:]{0,160}?\b(?:following|as\s+follows)\b[^:]{0,80}?:|\bfollowing\s+(?:items|matters|agenda|business)\b[^:\n]{0,80}?:|\bas\s+follows\s*:|\b(?:items|matters)\s+(?:listed\s+)?below\b[^\n]{0,40}?[.:]|\bfollowing\s+listed\s+below\s*[.:]/i;
 
 /** Lettered or roman sub-items: "a.", "a)", "(a)", "(i)", "i.", "ii)", bullets. */
 export const DEFAULT_SUB_ITEM = /^\s*(?:\(?[a-z]{1,2}\)|[a-z]\.|\(?[ivx]{1,5}\)|[ivx]{1,5}\.|\([A-Z]\)|[A-Z]\.(?=\s)|[•▪●◦·\-–*o](?=\s))\s*/;
@@ -55,6 +55,10 @@ const END_MARKERS: RegExp[] = [
   /^\s*If,?\s+during\s+the\s+course\s+of\s+the\s+meeting/i,
   /^\s*(?:The\s+)?Board\s+(?:of\s+Directors\s+)?(?:may|reserves|is\s+authorized)\b[^.]*\b(?:executive|closed)\s+session/i,
   /^\s*(?:NOTE|NOTICE)\s*:/i,
+  // Wallace & Philbin's closing (Phase 6 shadow run): "The public is invited to attend." and
+  // "The Board of Directors of <district> reserves the right to meet in closed session".
+  /^\s*The\s+public\s+is\s+invited\s+to\s+attend\b/i,
+  /^\s*The\s+Board\b[^.]{0,120}\breserves\s+the\s+right\s+to\s+meet\s+in\s+(?:closed|executive)\s+session/i,
   /^\s*Attorneys?\s+for\b/i,
   /^[^;:]{3,60},\s*Attorneys?\s+for\b/i,
   /^\s*[A-Z][\w,.&'’ ]{2,60}\b(?:L\.\s?L\.\s?P\.?|LLP|P\.C\.|PLLC)\s*$/,
@@ -300,6 +304,19 @@ function collectItems(lines: Line[], from: number, profile: FirmProfile, loose: 
         pendingSection = undefined;
         blankBefore = false;
         continue;
+      }
+      // OCR text only: a garbled marker ("Di", "am", "25", "i." for "2.") on a line that starts after a
+      // blank line, with item expected+1 next in the list, is item `expected` (Phase 6 shadow run).
+      const garbled = ocr && blankBefore ? /^(\s*)(\S{1,3})(\s+)(?=[A-Z])/.exec(text) : null;
+      if (garbled && !subRe.test(text) && !/^[A-Za-z]{3}$/.test(garbled[2]!)) {
+        const nextNum = lines.slice(i + 1).find((x) => !x.dropped && readItemNumber(x.text, expected + 1, profile.item_start, ocr)?.n === expected + 1);
+        const between = nextNum ? lines.slice(i + 1, lines.indexOf(nextNum)) : [];
+        if (nextNum && between.length <= 15 && !between.some((x) => !x.dropped && /^\s*\d{1,2}[.)]\s/.test(x.text))) {
+          items.push({ n: expected, lines: [{ text: text.slice(garbled[0].length), line: l, sub: false }], ...(pendingSection ? { section: pendingSection } : {}) });
+          pendingSection = undefined;
+          blankBefore = false;
+          continue;
+        }
       }
       if (num && num.n > expected && num.n <= expected + 3 && items.length) {
         reasons.push(`item ${expected} missing: found ${num.n} after ${expected - 1}`);

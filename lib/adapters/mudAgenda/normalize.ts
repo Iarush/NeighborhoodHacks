@@ -84,7 +84,7 @@ export function joinWrapped(a: string, b: string): string {
   return `${left} ${right}`;
 }
 
-const OCR_DIGIT: Record<string, string> = { l: '1', I: '1', '|': '1', i: '1', O: '0', o: '0' };
+const OCR_DIGIT: Record<string, string> = { l: '1', I: '1', L: '1', '|': '1', i: '1', O: '0', o: '0' };
 
 /**
  * Read a top-level item number from the start of a line, fixing OCR-style misreads only when
@@ -105,7 +105,7 @@ export function readItemNumber(text: string, expected: number, start?: RegExp, o
     const doubled = /^(\s*)[iIl|]{2}[.)](\s+)/.exec(text);
     if (doubled && expected === 1) return { n: 1, marker: doubled[0].length };
   }
-  const m = /^(\s*)([0-9lI|iOoS]{1,2})([.),])(\s+|$)/.exec(text);
+  const m = /^(\s*)([0-9lIL|iOoS]{1,2})([.),])(\s+|$)/.exec(text);
   if (!m) return null;
   const raw = m[2]!;
   const want = String(expected);
