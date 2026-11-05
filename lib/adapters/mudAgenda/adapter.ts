@@ -1,7 +1,8 @@
 import type { Adapter, AdapterDocument, AdapterResult, Item, Meeting, RunMode, SourceConfig } from '../types';
 import { PDF_TIMEOUT_MS, getBytes, type HttpOptions } from '../http';
 import { discover, downloadUrl, type DiscoveredDoc } from '../discover';
-import { LlmExtractConfigSchema, meetingFromLink } from '../llmExtract';
+import { LlmExtractConfigSchema, extractDocument, meetingFromLink } from '../llmExtract';
+import { geminiFromEnv, modelsFromEnv, type GeminiModels, type LlmClient } from '../gemini';
 import { getPdfText, getPositionedText, type PdfText } from '../pdfText';
 import { runMinutesResults, type MinutesOutput } from '../minutes';
 import { documentContentHash } from '@/lib/ingest/hash';
@@ -12,9 +13,10 @@ import { detectFirm, profileById } from './profiles';
 // The mud_agenda adapter (mud-code-parser-spec §3-§4). Finds agenda links exactly like
 // llm_extract (same `discover` config), then walks the no-AI ladder per document:
 //   1 text layer -> 2 text rebuilt from word positions -> 3 stored OCR text -> 4 loose parser
-// and stops at the first accepted parse. Rung 5 (the LLM under a monthly cap) is Phase 5 and
-// isn't wired yet, so a document that fails rungs 1-4 is stored link-only with a parse_failed
-// warning. Rung 3 isn't synchronous: a scan is stored with needs_ocr, the OCR job
+// and stops at the first accepted parse. Rung 5 is the LLM (extractDocument, unchanged), only
+// after OCR has been tried and only under the monthly cap (§4.1, prev.llmBudget): $1 or 20
+// documents per Chicago month. With no budget, no key or a full month, a document that fails
+// rungs 1-4 is stored link-only with a parse_failed warning. Rung 3 isn't synchronous: a scan is stored with needs_ocr, the OCR job
 // (.github/workflows/ocr.yml) stores its text, and a later run parses it here.
 // Results mode (§6) reads minutes on rungs 1-3 the same way (readMinutesLadder) and never calls the LLM.
 
@@ -25,6 +27,9 @@ export type MudAgendaDeps = {
   now?: () => Date;
   pdfText?: (bytes: Uint8Array) => Promise<PdfText>;
   positionedText?: (bytes: Uint8Array) => Promise<PdfText>;
+  /** Rung 5. null = no key. Default: geminiFromEnv() at run time, only when a budget is given. */
+  llm?: LlmClient | null;
+  models?: GeminiModels;
 };
 
 export type LadderInput = {
@@ -208,6 +213,11 @@ export function createMudAgendaAdapter(deps: MudAgendaDeps = {}): Adapter {
         return result;
       }
 
+      const budget = prev?.llmBudget;
+      let llm: LlmClient | null | undefined;
+      let capReached = false;
+      let llmUnavailableWarned = false;
+
       const found = await discover(cfg, window, { http: deps.http });
       const stamp = () => new Date().toISOString();
       for (const p of found.pages) {
@@ -273,12 +283,46 @@ export function createMudAgendaAdapter(deps: MudAgendaDeps = {}): Adapter {
           }
           continue;
         }
+        // Rung 5: the LLM, only once OCR has been tried (a scan never goes straight to it) and under the cap.
+        if (!outcome.needs_ocr && text && budget) {
+          llm ??= deps.llm === undefined ? geminiFromEnv() : deps.llm;
+          if (!llm) {
+            if (!llmUnavailableWarned) result.warnings.push('llm_unavailable: no OPENROUTER_API_KEY or GEMINI_API_KEY is set; rung 5 skipped');
+            llmUnavailableWarned = true;
+          } else if (capReached || !(await budget.reserve(text.pages.length))) {
+            if (!capReached) result.warnings.push(`llm_cap_reached: the monthly MUD LLM cap is used up; documents that fail rungs 1-4 stay link-only until the 1st (America/Chicago)`);
+            capReached = true;
+          } else {
+            const out = await extractDocument({
+              source_id: source.id,
+              body_id: bodyId,
+              url: doc.url,
+              pdf: bytes,
+              text,
+              link: { date: doc.date, type: doc.type },
+              default_time: cfg.default_time,
+              llm,
+              models: deps.models ?? modelsFromEnv(),
+              now,
+            });
+            pdfDoc.parse_rung = 5;
+            result.documents.push(...out.documents);
+            result.warnings.push(...out.warnings);
+            // §4.1: a document should need the LLM once; the fix is a profile.
+            result.warnings.push(`profile_todo: ${source.id} firm=${outcome.profile} ${doc.url}: read by the LLM (rung 5); add or fix a profile`);
+            if (out.meeting) {
+              result.meetings.push(out.meeting);
+              result.items.push(...out.items);
+              continue;
+            }
+          }
+        }
         result.meetings.push(meetingFromLink(source.id, bodyId, doc, cfg.default_time));
         if (outcome.needs_ocr) {
           result.warnings.push(`needs_ocr: ${source.id} ${doc.url}: ${text?.has_text_layer ? `rungs 1-2 failed (${outcome.reasons.slice(0, 2).join('; ')})` : 'no text layer'}; stored link-only until OCR text arrives`);
         } else {
           result.warnings.push(
-            `parse_failed: ${source.id} firm=${outcome.profile} rung=${outcome.rung} ${doc.url}: ${outcome.reasons.slice(0, 3).join('; ')}; stored link-only (LLM rung not wired yet)`,
+            `parse_failed: ${source.id} firm=${outcome.profile} rung=${outcome.rung} ${doc.url}: ${outcome.reasons.slice(0, 3).join('; ')}; stored link-only${budget ? '' : ' (no LLM budget for this run)'}`,
           );
         }
       }

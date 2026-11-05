@@ -1,5 +1,6 @@
 import type { Tables } from '@/lib/database.types';
 import type { BodySeed } from './bodies';
+import { createMemoryLlmSpend } from './llmSpend';
 import type {
   DocumentWrite,
   IngestStore,
@@ -55,6 +56,7 @@ export function createMemoryStore(): MemoryStore {
   const log = (table: MemoryWrite['table'], op: MemoryWrite['op'], n: number) => {
     if (n > 0) writes.push({ table, op, n });
   };
+  const llmSpend = createMemoryLlmSpend();
   let nextId = 1;
   const id = (prefix: string) => `${prefix}-${nextId++}`;
   const clone = <T>(v: T): T => structuredClone(v);
@@ -207,6 +209,10 @@ export function createMemoryStore(): MemoryStore {
         .map((m) => m.source_id);
       return [...new Set(ids)].sort();
     },
+
+    // mud-code-parser-spec §4.1: the llm_spend counters.
+    reserveLlmSpend: llmSpend.reserveLlmSpend,
+    settleLlmSpend: llmSpend.settleLlmSpend,
 
     async ocrTexts(sourceId: string) {
       const out: Record<string, string> = {};

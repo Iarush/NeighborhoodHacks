@@ -15,6 +15,7 @@ import { classify as p3Classify } from '@/lib/rules/classify';
 import { loadAdapter } from './adapters';
 import { itemContentHash, meetingContentHash } from './hash';
 import { DEFAULT_RESULTS_MAX_DAYS, health, type HealthHistory } from './health';
+import { createLlmBudget } from './llmSpend';
 import { ZONE, nearTermWindow, resultsWindow, rotationWindow } from './normalize';
 import type { BodyFacts, DocumentWrite, IngestStore, ItemWrite, MeetingWrite, SourceSnapshot, StoredItem, StoredMeeting, TaxRateRow } from './store';
 
@@ -363,7 +364,11 @@ export async function runIngest(opts: RunOptions): Promise<RunReport> {
   try {
     const adapter = opts.adapter ?? (await loadAdapter(source.adapter));
     const ocrTexts = source.adapter === 'mud_agenda' && mode.kind !== 'results' ? await store.ocrTexts(source.id) : undefined;
-    result = AdapterResultSchema.parse(await adapter.run(runSource, mode, window, { documentHashes: prevDocumentHashes(snap), ...(ocrTexts ? { ocrTexts } : {}) }));
+    // §4.1: the monthly LLM cap. Dry runs get none, so the LLM rung is off and nothing is spent uncounted.
+    const llmBudget = source.adapter === 'mud_agenda' && mode.kind !== 'results' && !opts.dryRun ? createLlmBudget(store, now) : undefined;
+    result = AdapterResultSchema.parse(
+      await adapter.run(runSource, mode, window, { documentHashes: prevDocumentHashes(snap), ...(ocrTexts ? { ocrTexts } : {}), ...(llmBudget ? { llmBudget } : {}) }),
+    );
   } catch (e) {
     const message = errorText(e);
     const h = health({ fetch_error: message }, history, source, now);

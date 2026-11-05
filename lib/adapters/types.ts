@@ -1,3 +1,4 @@
+import type { LlmBudget } from '@/lib/ingest/llmSpend';
 import { z } from 'zod';
 
 // Shared P2 types (agent-scraper-spec §5.1). Each type has a zod schema; the TS
@@ -118,6 +119,8 @@ export interface Adapter {
       documentHashes: Record<string, string>;
       /** mud_agenda (§5): stored OCR text, keyed by the sha256 of the PDF it was read from. */
       ocrTexts?: Record<string, string>;
+      /** mud_agenda (§4.1): the monthly LLM cap. Without it the LLM rung is off (link-only). */
+      llmBudget?: LlmBudget;
     },
   ): Promise<AdapterResult>;
 }

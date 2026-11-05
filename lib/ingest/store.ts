@@ -5,6 +5,8 @@ import type { BodySeed } from './bodies';
 // What the ingest pipeline (run.ts) reads and writes. Two implementations:
 // memoryStore.ts for tests and supabaseStore.ts for the real database.
 
+import type { LlmSpendStore } from './llmSpend';
+
 export type StoredSource = Tables<'sources'>;
 export type StoredMeeting = Tables<'meetings'>;
 export type StoredItem = Tables<'items'>;
@@ -113,7 +115,7 @@ export type ResultsCandidate = {
   last_results_check: string | null;
 };
 
-export interface IngestStore {
+export interface IngestStore extends LlmSpendStore {
   /** Insert-only: rows that already exist are left as they are. */
   ensureBodies(rows: readonly BodySeed[]): Promise<void>;
   /** Mirrors data/sources.yaml. Never touches the last_* columns. */

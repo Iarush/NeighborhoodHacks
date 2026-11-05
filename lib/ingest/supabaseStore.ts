@@ -162,6 +162,19 @@ export const supabaseIngestStore: IngestStore = {
     return [...new Set(rows.map((r) => r.source_id))].sort();
   },
 
+  // mud-code-parser-spec §4.1: the llm_spend functions come from the ..._llm_spend.sql migration
+  // (not in database.types.ts yet). Reserve checks and increments in one statement.
+  async reserveLlmSpend(month: string, usd: number, limits: { max_docs: number; max_usd: number }) {
+    const { data, error } = await untyped().rpc('llm_spend_reserve', { p_month: month, p_usd: usd, p_max_docs: limits.max_docs, p_max_usd: limits.max_usd });
+    if (error) throw new Error(`llm_spend_reserve: ${error.message}`);
+    return data === true;
+  },
+
+  async settleLlmSpend(month: string, extraUsd: number) {
+    const { error } = await untyped().rpc('llm_spend_settle', { p_month: month, p_extra_usd: extraUsd });
+    if (error) throw new Error(`llm_spend_settle: ${error.message}`);
+  },
+
   // mud-code-parser-spec §5. The needs_ocr / ocr_tried_at columns come from the
   // ..._ocr_documents.sql migration and aren't in database.types.ts yet, hence the untyped client.
   async ocrTexts(sourceId: string) {

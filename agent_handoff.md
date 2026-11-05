@@ -33,6 +33,15 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-11-05: MUD code parser Phase 5: the monthly LLM cap
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main (not committed yet)
+- **What changed:** Built Phase 5 of `.plans/mud-code-parser-spec.md` (§4.1). New `llm_spend` table (one row per America/Chicago month; RLS on, no policies) with `llm_spend_reserve()`, which checks and increments in one statement, and `llm_spend_settle()`. `mud_agenda` agendas that fail rungs 1–4 now reach rung 5 (`extractDocument`, unchanged) only after OCR was tried and only if a slot is reserved first, using an estimate of $0.004 a page. Past 20 documents or $1 a month, they're stored link-only, with one `llm_cap_reached` warning per run. Each rung-5 read logs a `profile_todo` warning and sets `parse_rung = 5`. The limits are `MUD_LLM_MAX_DOCS` (20) and `MUD_LLM_MAX_USD` (1.00); 0 turns the LLM off. Dry runs and `npm run scrape` get no budget, so they never call the LLM.
+- **Files:** `lib/ingest/llmSpend.ts`, `supabase/migrations/20261105120000_llm_spend.sql`, `lib/ingest/{store,memoryStore,supabaseStore,run}.ts`, `lib/adapters/types.ts` (`prev.llmBudget`), `lib/adapters/mudAgenda/adapter.ts`, `tests/unit/mud-llm-cap.test.ts`, `.env.example`, `.plans/mud-code-parser-spec.md` (progress log only)
+- **Contract changes:** DB schema: new `llm_spend` table and two functions (additive). It's a 4th migration waiting on `SUPABASE_DB_URL`. Until it's applied, a live `mud_agenda` ingest that reaches rung 5 errors on the reserve call. No source uses `mud_agenda` yet.
+- **Checked:** `npm test` (1164 passed, including the 21st-document test), `npm run typecheck` (only error is in gitignored `tmp/scratch/hcad/lookup.ts`, not this change), `npm run lint` (5 errors, all in prototype/public UI files this change doesn't touch). Not run live.
+- **Open issues / next:** The OpenRouter client doesn't report usage, so `settle()` is never called and the cap counts estimates only. Minutes rung 5 (§6 rule 7, under the same cap) isn't wired; low-match minutes still only warn. `MUD_LLM_*` aren't set in Vercel; the defaults apply. Next: Phase 6 shadow run.
+
 ### 2026-11-04: MUD code parser Phase 4: minutes to outcomes by code
 - **Who:** Iarush · P2 Scrapers
 - **Branch:** main (not committed yet)
