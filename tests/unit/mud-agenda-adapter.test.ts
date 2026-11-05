@@ -81,10 +81,10 @@ describe('mud_agenda adapter', () => {
     expect(r.meetings[0]!.external_id).toBe(meetingNoOcr.meetings[0]!.external_id);
   });
 
-  it('checks no outcomes in results mode yet (minutes are Phase 4)', async () => {
+  it('results mode skips a meeting it does not know (minutes: tests/unit/mud-minutes.test.ts)', async () => {
     const r = await createMudAgendaAdapter({ http, now }).run(source, { kind: 'results', meeting_external_ids: ['x'] }, window);
     expect(r.result_updates).toEqual([]);
-    expect(r.warnings[0]).toMatch(/Phase 4/);
+    expect(r.warnings[0]).toMatch(/meeting x: not in the known meetings/);
   });
 
   it('is registered under the mud_agenda kind', async () => {

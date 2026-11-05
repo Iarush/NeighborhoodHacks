@@ -1,0 +1,68 @@
+{
+  "voted": 4,
+  "matched": 4,
+  "updates": [
+    {
+      "agenda_number": "2",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Upon a motion by Director Garcia, seconded by Director Jaramillo, after full discussion\nand with all Directors present voting aye, the Board approved the July 2, 2026 minutes, subject to\nthe such revisions."
+    },
+    {
+      "agenda_number": "3",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Upon a motion by Director Garcia, seconded by Director Jaramillo, after full discussion\nand with all Directors present voting aye, the Board approved the Operator's Report, including:\n1) STP's proposal in the amount $45,000.00 to replace the headworks influent box at the\nFairgreen's WWTP; 2) authorize RAB to prepare letters to property owners regarding inaccessible\nmeters; and 3) transfer of delinquent accounts for Fairgreen, High Meadows, Heather Glen,\nNorthline, Oak Glen, Oakwilde and Woodland Oaks to an undetermined collection agency for\npayment."
+    },
+    {
+      "agenda_number": "4",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Upon a motion by Director Garcia, seconded by Director Salazar, after full discussion\nand with all Directors present voting aye, the Board approved the Engineer's Report, including:\n1) McKinney's Pay Application No. 3 in the amount of $2 12,684.17; 2) R.P.'s Pay Application\nNo. 18 in the amount of $932,086.26; 3) Subject to TWDB approval, i) approval ofC3's contract\nin the amount of 1,565,000.00 and authorize A&S to issue Notice of Award, ii) authorization to\nexecute the Seven Mile Water Plant Improvements project construction contract, subject to RAB\nreview, and iii) authorization to issue the Notice to Proceed, subject to execution of the related\nconstruction contract; and 4) D.R. Horton deferral of the second half capacity payment of the\nPinehaven project until September 2027, as presented."
+    },
+    {
+      "agenda_number": "5",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Upon a motion by Director Garcia, seconded by Director Santiago, after full discussion\nand with all Directors present voting aye, the Board accepted the initial bid for the 2022 Nissan\nFrontier, subject to finalization of all documentation necessary for transfer of said vehicle."
+    }
+  ],
+  "warnings": [],
+  "sections": [
+    {
+      "heading": "PUBLIC COMMENT",
+      "agenda_number": "1"
+    },
+    {
+      "heading": "MINUTES",
+      "agenda_number": "2",
+      "outcome": "passed"
+    },
+    {
+      "heading": "OPERATOR'S REPORT",
+      "agenda_number": "3",
+      "outcome": "passed"
+    },
+    {
+      "heading": "ENGINEER'S REPORT",
+      "agenda_number": "4",
+      "outcome": "passed"
+    },
+    {
+      "heading": "BIDS FOR PURCHASE OF SURPLUS PROPERTY",
+      "agenda_number": "5",
+      "outcome": "passed"
+    },
+    {
+      "heading": "ATTORNEY'S REPORT",
+      "agenda_number": "8"
+    },
+    {
+      "heading": "THERE BEING NO FURTHER BUSINESS TO COME BEFORE THE BOARD, the"
+    }
+  ]
+}

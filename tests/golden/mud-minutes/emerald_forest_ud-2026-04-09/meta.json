@@ -1,0 +1,12 @@
+{
+  "source_id": "emerald_forest_ud",
+  "date": "2026-04-09",
+  "firm": "abhr",
+  "text": "tesseract ocr",
+  "agenda_url": "https://emeraldforestud.com/static/38bc9de9a3685411f5646398a239bab8/Emerald_Agenda_4_9_26_c5fa484b91.pdf",
+  "agenda_pdf_sha256": "0cd47c42524fe88c7bb49b3619bc6c710b4102e593e481af829e95e6036122f1",
+  "minutes_url": "https://emeraldforestud.com/static/a0bb794f790d1cebca2c9727a9d4a6a1/April_Minutes_Emerald_Forest_UD_1_8ca341b6b4.pdf",
+  "minutes_pdf_sha256": "ac154e60a473cdf328b0dab4c266e6bd2ff4f1ccddc1f35f17ba5b67ca237b4e",
+  "recorded_at": "2026-11-04",
+  "note": "ABHR, scanned minutes (no text layer) read by Tesseract: OCR updates are unverified and go to review. Homeowners' names replaced in minutes.ocr.txt ('three District homeowners', 'a homeowner', 'Two homeowners'); nothing else edited."
+}

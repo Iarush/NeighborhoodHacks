@@ -1,0 +1,12 @@
+{
+  "source_id": "hcmud_489",
+  "date": "2026-07-20",
+  "firm": "sph",
+  "text": "pdf text layer",
+  "agenda_url": null,
+  "agenda_pdf_sha256": null,
+  "minutes_url": "https://hcmud489.com/static/883cda3da805283827c29cbdb02ac063/Minutes_July_20_2026_Approved_HCMUD_489_66d4a09dee.pdf",
+  "minutes_pdf_sha256": null,
+  "recorded_at": "2026-11-04",
+  "note": "The demo MUD (D25). Known items: ../llm-extract/mud489-2026-07-20 (21 items). Minutes text: ../llm-extract/minutes/mud489-2026-07-20/source.txt. Minutes order differs from the agenda (Operator's Report last)."
+}

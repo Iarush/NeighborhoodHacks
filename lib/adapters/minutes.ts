@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import type { AdapterDocument, Item, Meeting, ResultUpdate } from './types';
 import { getBytes, type HttpOptions } from './http';
-import { discover, type DiscoveredDoc } from './discover';
+import { discover, downloadUrl, type DiscoveredDoc } from './discover';
 import { runOutcomes, type GeminiModels, type LlmClient, type Outcome, type Outcomes } from './gemini';
 import { quoteVerified } from './llmExtract';
 import { getPdfText, type PdfText } from './pdfText';
@@ -163,6 +163,12 @@ export type MinutesInput = {
   http?: HttpOptions;
   pdfText?: (bytes: Uint8Array) => Promise<PdfText>;
   fetched_at?: string;
+  /**
+   * Reads outcomes without the LLM (mud_agenda, mud-code-parser-spec §6). When set, it replaces the
+   * LLM call: it gets each minutes PDF and the meeting's open items, and returns updates, the
+   * documents to store and warnings. `llm` is then not needed.
+   */
+  readOutcomes?: (args: { url: string; bytes: Uint8Array; meeting: Meeting; items: Item[] }) => Promise<MinutesOutput>;
 };
 
 export type MinutesOutput = { updates: ResultUpdate[]; documents: AdapterDocument[]; warnings: string[] };
@@ -210,6 +216,18 @@ export async function runMinutesResults(input: MinutesInput): Promise<MinutesOut
   for (const m of meetings) {
     const url = urls.get(m.external_id);
     if (!url) continue; // minutes not posted yet: normal
+    if (input.readOutcomes) {
+      try {
+        const bytes = await getBytes(downloadUrl(url), input.http);
+        const r = await input.readOutcomes({ url, bytes, meeting: m, items: open(m) });
+        out.updates.push(...r.updates);
+        out.documents.push(...r.documents);
+        out.warnings.push(...r.warnings);
+      } catch (e) {
+        out.warnings.push(`${url}: minutes fetch failed: ${(e as Error).message}`);
+      }
+      continue;
+    }
     if (!input.llm) {
       if (!warnedNoLlm) out.warnings.push('llm_unavailable: no OPENROUTER_API_KEY or GEMINI_API_KEY is set; minutes were not read');
       warnedNoLlm = true;

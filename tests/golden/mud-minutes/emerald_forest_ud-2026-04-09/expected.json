@@ -1,0 +1,198 @@
+{
+  "voted": 11,
+  "matched": 9,
+  "updates": [
+    {
+      "agenda_number": "2",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": false,
+      "source_quote": "After review and discussion, Dillard moved to approve the minutes of the\nMarch 12, 2026, regular meeting. Director Schmidt seconded the motion, which passed\nunanimously."
+    },
+    {
+      "agenda_number": "3",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": false,
+      "source_quote": "Following review and discussion, Director Schmidt moved\nto approve the website and communication report. Director Dillard seconded the\nmotion, which passed unanimously."
+    },
+    {
+      "agenda_number": "6",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": false,
+      "source_quote": "After discussion, Director Dillard moved to approve the tax report and payment\nof the tax bills. Director Schmidt seconded the motion, which passed unanimously."
+    },
+    {
+      "agenda_number": "7",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": false,
+      "source_quote": "After review and discussion, Director Dillard\nmoved to approve the bookkeeper’s report and payment of the bills. Director Schmidt\nseconded the motion, which passed unanimously."
+    },
+    {
+      "agenda_number": "8",
+      "action": "no_action",
+      "vote_result": "no_action",
+      "quote_verified": false,
+      "source_quote": "The\nBoard took no action."
+    },
+    {
+      "agenda_number": "9",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": false,
+      "source_quote": "After review and discussion, Director Dillard moved to: (1) approve the\noperator’s report; (2) authorize RWC to perform the valve survey at a cost of $44,685.00.\nDirector Schmidt seconded the motion, which passed unanimously."
+    },
+    {
+      "agenda_number": "10",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": false,
+      "source_quote": "After review and discussion, Director Kimball moved to approve the annual report on\nimplementation of the Water Conservation Plan, subject to final review. Director\nDillard seconded the motion, which passed unanimously."
+    },
+    {
+      "agenda_number": "12",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": false,
+      "source_quote": "Following review and discussion, Director\nDillard moved to adopt an Order Adopting Amended and Restated Drought Contingency\nPlan; Providing for Implementation and Enforcement Thereof; Providing Penalties for\nViolations; and Containing Other Provisions Related to the Subject and direct that the\nOrder be filed appropriately and retained in the District's official records. Director Schmidt\nseconded the motion, which passed unanimously."
+    },
+    {
+      "agenda_number": "13",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": false,
+      "source_quote": "Following review and discussion, Director Dillard moved to approve Pay\nApplication No. 1 in the amount of $54,134.93. Director Schmidt seconded the\nmotion, which passed unanimously."
+    }
+  ],
+  "warnings": [],
+  "sections": [
+    {
+      "heading": "APPROVE MINUTES",
+      "agenda_number": "2",
+      "outcome": "passed"
+    },
+    {
+      "heading": "WEBSITE AND COMMUNICATION MATTERS",
+      "agenda_number": "3",
+      "outcome": "passed"
+    },
+    {
+      "heading": "GARBAGE COLLECTION MATTERS",
+      "agenda_number": "4"
+    },
+    {
+      "heading": "SECURITY MATTERS",
+      "agenda_number": "5"
+    },
+    {
+      "heading": "TAX ASSESSMENT AND COLLECTION MATTERS",
+      "agenda_number": "6",
+      "outcome": "passed"
+    },
+    {
+      "heading": "FINANCIAL AND BOOKKEEPING MATTERS",
+      "agenda_number": "7",
+      "outcome": "passed"
+    },
+    {
+      "heading": "PUBLIC COMMENTS",
+      "agenda_number": "1"
+    },
+    {
+      "heading": "DETENTION POND MAINTENANCE MATTERS",
+      "agenda_number": "8",
+      "outcome": "no_action"
+    },
+    {
+      "heading": "OPERATION OF DISTRICT FACILITIES",
+      "agenda_number": "9",
+      "outcome": "passed"
+    },
+    {
+      "heading": "HEARING REGARDING TERMINATION OF WATER AND SEWER SERVICE",
+      "agenda_number": "9",
+      "outcome": "passed"
+    },
+    {
+      "heading": "ANNUAL REPORT ON IMPLEMENTATION OF WATER CONSERVATION PLAN",
+      "agenda_number": "10",
+      "outcome": "passed"
+    },
+    {
+      "heading": "CONDUCT ANNUAL REVIEW _AND RECEIVE REPORT FROM OPERATOR ON IDENTITY THEFT PREVENTION PROGRAM AND ADOPT IDENTITY THEFT PREVENTION PROGRAM AMENDMENT, IF NECESSARY",
+      "agenda_number": "11"
+    },
+    {
+      "heading": "AMENDED AND RESTATED DROUGHT CONTINGENCY PLAN",
+      "agenda_number": "12",
+      "outcome": "passed"
+    },
+    {
+      "heading": "ENGINEERING MATTERS",
+      "agenda_number": "13"
+    },
+    {
+      "heading": "FEASIBILITY STUDIES, PLAN REVIEWS, AND SERVICE REQUESTS",
+      "agenda_number": "13"
+    },
+    {
+      "heading": "SANITARY SEWER EXTENSION TO SERVE 21-ACRE TRACT",
+      "agenda_number": "13"
+    },
+    {
+      "heading": "GENERATOR REPLACEMENT PROJECT FOR WASTEWATER TREATMENT PLANT, WATER PLANT NO. 3, AND GREEN CREEK LIFT STATION",
+      "agenda_number": "13"
+    },
+    {
+      "heading": "SANITARY SEWER CLEANING AND TELEVISING OF TURTLE LAKES SECTIONS 1 AND 2 AND TURTLE HILL VILLAGE",
+      "agenda_number": "13",
+      "outcome": "passed"
+    },
+    {
+      "heading": "LINNFIELD DETENTION POND REHABILITATION",
+      "agenda_number": "13",
+      "outcome": "passed"
+    },
+    {
+      "heading": "LIFT STATION NO. 2",
+      "agenda_number": "13"
+    },
+    {
+      "heading": "SCHROEDER OAKS LIFT STATION NO. 3 FENCING",
+      "agenda_number": "13"
+    },
+    {
+      "heading": "UPDATE REGARDING _ EXCEPTION REQUESTS FROM TCEQ AND COMPLIANCE WITH ENFORCEMENT ORDER",
+      "agenda_number": "13"
+    },
+    {
+      "heading": "FIVE-YEAR CAPITAL IMPROVEMENT PLAN",
+      "agenda_number": "13"
+    },
+    {
+      "heading": "DEEDS, EASEMENTS, AND/OR CONSENTS TO ENCROACHMENT",
+      "agenda_number": "13"
+    },
+    {
+      "heading": "ANNEXATION AGREEMENT",
+      "agenda_number": "13"
+    },
+    {
+      "heading": "OTHER ENGINEERING MATTERS",
+      "agenda_number": "13"
+    },
+    {
+      "heading": "ATTORNEY’S REPORT",
+      "agenda_number": "14"
+    },
+    {
+      "heading": "DISCUSS MEETING SCHEDULE",
+      "agenda_number": "15"
+    },
+    {
+      "heading": "LIST OF ATTACHMENTS TO MINUTES"
+    }
+  ]
+}

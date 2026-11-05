@@ -1,0 +1,12 @@
+{
+  "source_id": "hcmud_489",
+  "date": "2026-05-18",
+  "firm": "sph",
+  "text": "tesseract ocr",
+  "agenda_url": null,
+  "agenda_pdf_sha256": null,
+  "minutes_url": "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf",
+  "minutes_pdf_sha256": "e421eeed153e30b99d4f3a1c760e9eebda49e2852ffbf72d918518bdb47331d1",
+  "recorded_at": "2026-11-04",
+  "note": "The May pair (agenda filename May 19, minutes May 18). Its text layer (../llm-extract/minutes/mud489-2026-05-18/source.txt) is in column order and must be refused as unreadable; minutes.ocr.txt is the Tesseract text of the same PDF. Known items: ../llm-extract/mud489-2026-05-19 (3 items)."
+}

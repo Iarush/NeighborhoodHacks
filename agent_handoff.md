@@ -33,6 +33,15 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-11-04: MUD code parser Phase 4: minutes to outcomes by code
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main (not committed yet)
+- **What changed:** Built Phase 4 of `.plans/mud-code-parser-spec.md` (§6). `parseMudMinutes()` splits minutes on their ALL-CAPS section headings and matches each section to a **known** item: an "agenda item N" reference first, then heading/title token overlap, then the item's sub-items, then the section's opening. It reads the outcome from fixed phrases (passed, failed, tabled, no action; reports stay `awaiting_result`) and quotes the sentence verbatim. Minutes never create items, and directors' names appear only in the admin-only `source_quote`. `mud_agenda` results mode now finds minutes like `llm_extract` (same `minutes_index_url` config and date tolerance) and reads them on rungs 1–3 (`readMinutesLadder()`). Text-layer updates are quote-verified. OCR updates are unverified and go to review (D6). A PDF with no accepted reading is stored with `needs_ocr`. A text layer in column order is refused, so it goes to OCR. Minutes where code matched under half the voted items get a `minutes_low_match` warning for Phase 5.
+- **Files:** `lib/adapters/mudAgenda/{minutes,adapter}.ts`, `lib/adapters/minutes.ts` (optional `readOutcomes` hook on `runMinutesResults`), `scripts/mud-minutes-golden.ts`, `tests/golden/mud-minutes/` (5 pairs, README), `tests/unit/mud-minutes.test.ts`, `tests/unit/mud-agenda-adapter.test.ts`, `.plans/mud-code-parser-spec.md` (progress log only), `agent_handoff.md`
+- **Contract changes:** None. `ResultUpdate`, `documents` and the schema are unchanged. `MinutesInput` (P2-internal) gains optional `readOutcomes`. P3: once a source is switched, OCR-read `mud_agenda` outcomes reach review with `quote_verified = false`.
+- **Checked:** `npm test`: 1155 vitest + 72 P4 pass. ESLint on every changed file: clean. `npm run lint` and `npm run typecheck` show only the same 5 UI errors and 1 gitignored `tmp/` error as before. Golden results: MUD 489 July 14 of 14 voted sections; May text layer refused, OCR text gives its 3 known items; Kleinwood (Coats Rose) 8; Sunbelt (Radcliffe Bobbitt) 4; Emerald Forest (ABHR, OCR) 9. The minutes PDFs were downloaded live and the two scans OCR'd with `npm run ocr -- --url`. No ingest run against Supabase.
+- **Open issues / next:** (1) The `expected.json` files were written by the parser and read by the agent; a teammate should spot-check them. (2) Emerald Forest's OCR fixture had private homeowners' names replaced (see its README). (3) Rung 5 (LLM under the cap) is still unwired. Next: Phase 5.
+
 ### 2026-11-04: MUD code parser Phases 1-3: parser, golden set, adapter, OCR
 - **Who:** Iarush · P2 Scrapers
 - **Branch:** main

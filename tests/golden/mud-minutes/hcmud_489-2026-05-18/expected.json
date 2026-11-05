@@ -1,0 +1,167 @@
+{
+  "voted": 20,
+  "matched": 3,
+  "updates": [
+    {
+      "agenda_number": "2",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": false,
+      "source_quote": "Following discussion, Director Barrington moved that the minutes of the meeting held on April 9,\n2026, be approved, as presented."
+    },
+    {
+      "agenda_number": "3",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": false,
+      "source_quote": "Following\ndiscussion, it was moved by Director Barrington, seconded by Director McBride and unanimously\ncarried, that the Board approve such Bonds and accept such Qualification Statements of Elected\nOfficers, Oaths of Office, Affidavits of Current Directors and Elections Not To Disclose Certain\nInformation, and declare Arlene Harper-Veith and Melanie Folkert to be duly elected and qualified\nDirectors of the District, each to serve a four (4) year term ending May 4, 2030."
+    },
+    {
+      "agenda_number": "4",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": false,
+      "source_quote": "The Board next considered the election of officers and the reorganization of the Board.\nAfter discussion, it was moved by Director Barrington, seconded by Director McBride and\nunanimously carried, that the current officers of the Board continue to serve in their respective\nofficer positions."
+    }
+  ],
+  "warnings": [
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"LOCAL GOVERNMENT OFFICERS LIST\": no_action not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"BOOKKEEPER'S REPORT\": passed not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"QPERATING BUDGET FOR FISCAL YEAR ENDING MAY 31, 2027; VETERANS MEMORIAL PARK CON\": passed not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"APPROVAL OF JOINT WATER PLANT AND JOINT SEWER PLANT BUDGETS FOR FISCAL YEAR ENDI\": passed not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"ENGAGEMENT OF AUDITOR\": passed not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"TAX ASSESSOR-COLLECTOR'S REPORT\": passed not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"UNCLAIMED PROPERTY REPORTS AS OF MARCH 1, 2026\": passed not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"DELINQUENT TAX COLLECTIONS REPORT\": tabled not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"OPERATOR'S REPORT\": passed not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"CONSUMER CONFIDENCE REPORT\": passed not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"GARBAGE AND RECYCLING COLLECTION SERVICES\": no_action not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"ENGINEER'S REPORT\": passed not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"WEBSITE UPDATES\": tabled not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"BRIDGELAND WATER AGENCY (\\\"AGENCY\\\")\": no_action not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"DEVELOPER'S REPORT\": no_action not applied: no matching item",
+    "https://hcmud489.com/static/56b37e417edc8cc40026cff0c498895d/Minutes_May_18_2026_Approved_HCMUD_489_e276bfac9d.pdf: minutes section \"ANNUAL ARBITRAGE MAINTENANCE REPORT BY MUNICIPAL RISK MANAGEMENT GROUP, LLC (\\\"MR\": passed not applied: no matching item"
+  ],
+  "sections": [
+    {
+      "heading": "PUBLIC COMMENTS"
+    },
+    {
+      "heading": "APPROVAL OF MINUTES",
+      "agenda_number": "2",
+      "outcome": "passed"
+    },
+    {
+      "heading": "ACCEPTANCE OF QUALIFICATION STATEMENTS, BONDS, OATHS OF OFFICE, AFFIDAVITS OF CURRENT DIRECTOR AND ELECTIONS NOT TO DISCLOSE CERTAIN INFORMATION FOR DIRECTORS ARLENE HARPER-VEITH AND MELANIE FOLKERT",
+      "agenda_number": "3",
+      "outcome": "passed"
+    },
+    {
+      "heading": "ELECTION OF OFFICERS",
+      "agenda_number": "4",
+      "outcome": "passed"
+    },
+    {
+      "heading": "DISTRICT REGISTRATION FORM",
+      "agenda_number": "4",
+      "outcome": "passed"
+    },
+    {
+      "heading": "LOCAL GOVERNMENT OFFICERS LIST",
+      "outcome": "no_action"
+    },
+    {
+      "heading": "CYBERSECURITY AND ARTIFICIAL INTELLIGENCE TRAINING REQUIREMENTS"
+    },
+    {
+      "heading": "CONTRACT REGARDING THE FINANCING, CONSTRUCTION, OPERATION AND MAINTENANCE OF THE BRIDGELAND VETERANS MEMORIAL PARK BY AND AMONG THE DISTRICT, HARRIS COUNTY WATER CONTROL AND IMPROVEMENT DISTRICT NO. 157 ('WCID 157\"), WCID 159 AND MUD 419"
+    },
+    {
+      "heading": "INTERLOCAL COOPERATION CONTRACT BETWEEN THE DISTRICT AND NO. 419 RELATIVE TO LAND ACQUIRED FOR ADMINISTRATIVE FACILITIES SITE"
+    },
+    {
+      "heading": "BOOKKEEPER'S REPORT",
+      "outcome": "passed"
+    },
+    {
+      "heading": "QPERATING BUDGET FOR FISCAL YEAR ENDING MAY 31, 2027; VETERANS MEMORIAL PARK CONTRACT (CONT'D)",
+      "outcome": "passed"
+    },
+    {
+      "heading": "APPROVAL OF JOINT WATER PLANT AND JOINT SEWER PLANT BUDGETS FOR FISCAL YEAR ENDING MAY 31, 2027, PREPARED BY HARRIS COUNTY MUNICIPAL UTILITY DISTRICT NO. 418 (\"MUD 418\")",
+      "outcome": "passed"
+    },
+    {
+      "heading": "ENGAGEMENT OF AUDITOR",
+      "outcome": "passed"
+    },
+    {
+      "heading": "TAX ASSESSOR-COLLECTOR'S REPORT",
+      "outcome": "passed"
+    },
+    {
+      "heading": "UNCLAIMED PROPERTY REPORTS AS OF MARCH 1, 2026",
+      "outcome": "passed"
+    },
+    {
+      "heading": "DELINQUENT TAX COLLECTIONS REPORT",
+      "outcome": "tabled"
+    },
+    {
+      "heading": "OPERATOR'S REPORT",
+      "outcome": "passed"
+    },
+    {
+      "heading": "CONSUMER CONFIDENCE REPORT",
+      "outcome": "passed"
+    },
+    {
+      "heading": "GARBAGE AND RECYCLING COLLECTION SERVICES",
+      "outcome": "no_action"
+    },
+    {
+      "heading": "ENGINEER'S REPORT",
+      "outcome": "passed"
+    },
+    {
+      "heading": "CAPITAL IMPROVEMENT PLAN"
+    },
+    {
+      "heading": "UTILITY COMMITMENT LETTERS"
+    },
+    {
+      "heading": "WEBSITE UPDATES",
+      "outcome": "tabled"
+    },
+    {
+      "heading": "BRIDGELAND WATER AGENCY (\"AGENCY\")",
+      "outcome": "no_action"
+    },
+    {
+      "heading": "DEVELOPER'S REPORT",
+      "outcome": "no_action"
+    },
+    {
+      "heading": "MATTERS RELATIVE TO BRIDGELAND COUNCIL, INC. (\"COUNCIL\") AND/OR PARKLAND VILLAGE HOMEOWNERS' ASSOCIATION (\"HOA\")"
+    },
+    {
+      "heading": "ANNUAL ARBITRAGE MAINTENANCE REPORT BY MUNICIPAL RISK MANAGEMENT GROUP, LLC (\"MRMG\")",
+      "outcome": "passed"
+    },
+    {
+      "heading": "ATTORNEY'S REPORT"
+    },
+    {
+      "heading": "MATTERS FOR FUTURE AGENDAS"
+    },
+    {
+      "heading": "S CO. Z"
+    },
+    {
+      "heading": "SOS 2O5"
+    },
+    {
+      "heading": "HARRIS COUNTY MUNICIPAL UTILITY DISTRICT NO. 489 LIST OF ATTACHMENTS TO MINUTES"
+    }
+  ]
+}

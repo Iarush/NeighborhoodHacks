@@ -1,0 +1,136 @@
+{
+  "voted": 11,
+  "matched": 8,
+  "updates": [
+    {
+      "agenda_number": "2",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "After discussion,\nupon a motion duly made and seconded, the Board voted unanimously to approve the\nminutes of the meeting of 27 August 2026, as written."
+    },
+    {
+      "agenda_number": "4",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "After discussion, upon a motion duly made and seconded, the Board voted\nunanimously to (1) accept the Detention Facilities Report; and (2) authorize Mr. Schuett\nto construct the Replacement Section at a cost not to exceed $2,500.00."
+    },
+    {
+      "agenda_number": "5",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Then, after discussion, upon a motion duly made and seconded, the Board voted\nunanimously to approve the Tax Assessor/Collector's Report and to authorize payment\nof the checks listed therein."
+    },
+    {
+      "agenda_number": "6",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Then, upon a motion duly made and seconded, the Board voted 3 to 0 to authorize\npublication of the tax rate calculation showing a debt service rate of $0.266 per $100\nvaluation and a maintenance tax rate of $0.124 per $100 valuation for a combined tax\nrate of $0.39 per $100 valuation."
+    },
+    {
+      "agenda_number": "7",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "After discussion, upon a motion duly made and seconded, the Board voted\nunanimously to (1) authorize payment of Pay Application No. 3 and FINAL to CFG;\n(2) approve Change Order No. 1 and authorize execution of same; and (3) accept the\nHPT Addition project and authorize execution of the Certificate of Acceptance."
+    },
+    {
+      "agenda_number": "8",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "After discussion, upon a motion duly made and seconded, the Board voted\nunanimously to (1) authorize the yield restriction payment to the IRS in the amount of\n$12,790.85; and (2) authorize execution and submission of Form 8038-T. A copy of Form\n8038-T is attached hereto as an exhibit to these minutes."
+    },
+    {
+      "agenda_number": "10",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Then, after review, upon a motion duly made and seconded, the Board voted\nunanimously to accept the Operator's Report, a copy of which is attached hereto."
+    },
+    {
+      "agenda_number": "12",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Then, upon\na motion duly made and seconded, the Board voted unanimously to approve the\nBookkeeper's Report, and to authorize payment of the checks listed therein.\n7\n4899-7852-0277.v1\nDirector Fratangelo presented a report on the activities of the KJPB."
+    }
+  ],
+  "warnings": [
+    "https://www.kleinwoodmud.com/wp-content/uploads/2026/10/kmud-minutes-9-24-2026.pdf: minutes section \"KLEINWOOD CLUBHOUSE / SWIMMING POOL\": no_action not applied: no matching item",
+    "https://www.kleinwoodmud.com/wp-content/uploads/2026/10/kmud-minutes-9-24-2026.pdf: minutes section \"SALES AND USE TAX ALLOCATION REPORT\": passed not applied: no matching item"
+  ],
+  "sections": [
+    {
+      "heading": "MINUTES OF REGULAR MEETING KLEI NWOOD MUNICI PAL UTI LITY DISTRICT HARRIS COUNry, TEXAS"
+    },
+    {
+      "heading": "KLEINWOOD CLUBHOUSE / SWIMMING POOL",
+      "outcome": "no_action"
+    },
+    {
+      "heading": "MINUTES OF THE MEETING OF 27 AUGUST 2026",
+      "agenda_number": "2",
+      "outcome": "passed"
+    },
+    {
+      "heading": "PEACE OFFICER'S REPORT",
+      "agenda_number": "3"
+    },
+    {
+      "heading": "DETENTION AND DRAINAGE FACILITIES REPORT",
+      "agenda_number": "4",
+      "outcome": "passed"
+    },
+    {
+      "heading": "TAX ASSESSOR/COLLECTOR'S REPORT",
+      "agenda_number": "5",
+      "outcome": "passed"
+    },
+    {
+      "heading": "DELINOUENT TAX REPORT",
+      "agenda_number": "5"
+    },
+    {
+      "heading": "CONSIDER SETTING TAX RATE FOR 2026",
+      "agenda_number": "6",
+      "outcome": "passed"
+    },
+    {
+      "heading": "ENGINEER'S REPORT",
+      "agenda_number": "7",
+      "outcome": "passed"
+    },
+    {
+      "heading": "AMENDMENT TO RATE ORDER",
+      "agenda_number": "7"
+    },
+    {
+      "heading": "ATTORNEY'S REPORT",
+      "agenda_number": "8",
+      "outcome": "passed"
+    },
+    {
+      "heading": "OPERATOR'S REPORT",
+      "agenda_number": "10",
+      "outcome": "passed"
+    },
+    {
+      "heading": "TERMINATION OF SERVICE",
+      "agenda_number": "10",
+      "outcome": "passed"
+    },
+    {
+      "heading": "SALES AND USE TAX ALLOCATION REPORT",
+      "outcome": "passed"
+    },
+    {
+      "heading": "BOOKKEEPER'S REPORT",
+      "agenda_number": "12",
+      "outcome": "passed"
+    }
+  ]
+}

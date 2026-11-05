@@ -3,7 +3,9 @@ import { PDF_TIMEOUT_MS, getBytes, type HttpOptions } from '../http';
 import { discover, downloadUrl, type DiscoveredDoc } from '../discover';
 import { LlmExtractConfigSchema, meetingFromLink } from '../llmExtract';
 import { getPdfText, getPositionedText, type PdfText } from '../pdfText';
+import { runMinutesResults, type MinutesOutput } from '../minutes';
 import { documentContentHash } from '@/lib/ingest/hash';
+import { parseMudMinutes, type MinutesParse } from './minutes';
 import { parseMudAgenda, type ParseResult } from './parse';
 import { detectFirm, profileById } from './profiles';
 
@@ -14,6 +16,7 @@ import { detectFirm, profileById } from './profiles';
 // isn't wired yet, so a document that fails rungs 1-4 is stored link-only with a parse_failed
 // warning. Rung 3 isn't synchronous: a scan is stored with needs_ocr, the OCR job
 // (.github/workflows/ocr.yml) stores its text, and a later run parses it here.
+// Results mode (§6) reads minutes on rungs 1-3 the same way (readMinutesLadder) and never calls the LLM.
 
 export const MudAgendaConfigSchema = LlmExtractConfigSchema;
 
@@ -91,6 +94,77 @@ export async function runLadder(input: LadderInput): Promise<LadderOutcome> {
   return { ok: false, rung: tried.at(-1)?.rung ?? 0, reasons: last?.result.reasons ?? ['no text layer'], profile: last?.result.profile ?? 'generic', positioned, needs_ocr: !input.ocr };
 }
 
+export type MinutesLadderInput = {
+  url: string;
+  bytes: Uint8Array;
+  meeting_external_id: string;
+  items: Item[];
+  pdfText: (bytes: Uint8Array) => Promise<PdfText>;
+  positionedText: (bytes: Uint8Array) => Promise<PdfText>;
+  /** Stored OCR text by PDF content hash (prev.ocrTexts). */
+  ocrTexts?: Record<string, string>;
+  fetched_at?: string;
+};
+
+/** A minutes reading is accepted when its text could be split and code matched at least half the voted items. */
+const minutesAccepted = (p: MinutesParse) => !p.unreadable && !p.warnings.some((w) => w.startsWith('minutes_low_match:'));
+
+/**
+ * §6 for one minutes PDF: rung 1 text layer, rung 2 text rebuilt from word positions, rung 3 stored
+ * OCR text. Stops at the first accepted reading; otherwise keeps the reading with the most updates.
+ * A PDF with no accepted reading and no OCR text yet is stored with needs_ocr.
+ */
+export async function readMinutesLadder(input: MinutesLadderInput): Promise<MinutesOutput> {
+  const out: MinutesOutput = { updates: [], documents: [], warnings: [] };
+  const stamp = () => input.fetched_at ?? new Date().toISOString();
+  const hash = documentContentHash(input.bytes);
+  const ctx = { meeting_external_id: input.meeting_external_id, url: input.url };
+  const tried: { rung: 1 | 2 | 3; parse: MinutesParse }[] = [];
+  let text: PdfText | null = null;
+  try {
+    text = await input.pdfText(input.bytes);
+  } catch (e) {
+    out.warnings.push(`${input.url}: minutes PDF text failed: ${(e as Error).message}`);
+  }
+  if (text?.has_text_layer) tried.push({ rung: 1, parse: parseMudMinutes(text.text, input.items, ctx) });
+  let positioned: PdfText | null = null;
+  if (text?.has_text_layer && !minutesAccepted(tried[0]!.parse)) {
+    try {
+      positioned = await input.positionedText(input.bytes);
+    } catch (e) {
+      out.warnings.push(`${input.url}: positioned text failed: ${(e as Error).message}`);
+    }
+    if (positioned?.has_text_layer) tried.push({ rung: 2, parse: parseMudMinutes(positioned.text, input.items, ctx) });
+  }
+  const ocr = input.ocrTexts?.[hash];
+  if (ocr && !tried.some((t) => minutesAccepted(t.parse))) tried.push({ rung: 3, parse: parseMudMinutes(ocr, input.items, { ...ctx, ocr: true }) });
+
+  const accepted = tried.find((t) => minutesAccepted(t.parse));
+  const best = accepted ?? [...tried].sort((a, b) => b.parse.matched - a.parse.matched)[0];
+  const needs_ocr = !accepted && !ocr;
+  out.documents.push({
+    url: input.url,
+    fetched_at: stamp(),
+    content_hash: hash,
+    raw: text?.text ?? '',
+    kind: 'pdf_text',
+    needs_ocr,
+    ...(best && best.parse.updates.length ? { parse_rung: best.rung } : {}),
+  });
+  if (best?.rung === 2 && positioned) {
+    out.documents.push({ url: `${input.url}#positioned`, fetched_at: stamp(), content_hash: hash, raw: positioned.text, kind: 'pdf_text', parse_rung: 2 });
+  }
+  if (best && !best.parse.unreadable) {
+    out.updates.push(...best.parse.updates);
+    out.warnings.push(...best.parse.warnings);
+  } else if (best) {
+    out.warnings.push(...best.parse.warnings);
+  }
+  if (best?.rung === 3 && best.parse.updates.length) out.warnings.push(`${input.url}: outcomes read from OCR text; quotes not verified, updates need review`);
+  if (needs_ocr) out.warnings.push(`needs_ocr: ${input.url}: ${text?.has_text_layer ? 'minutes rungs 1-2 not accepted' : 'no text layer'}; outcomes wait for OCR text`);
+  return out;
+}
+
 export function createMudAgendaAdapter(deps: MudAgendaDeps = {}): Adapter {
   return {
     async run(source: SourceConfig, mode: RunMode, window, prev): Promise<AdapterResult> {
@@ -103,8 +177,34 @@ export function createMudAgendaAdapter(deps: MudAgendaDeps = {}): Adapter {
       const http = { timeoutMs: PDF_TIMEOUT_MS, ...deps.http };
 
       if (mode.kind === 'results') {
-        // §6 (Phase 4) replaces the minutes LLM call; until then mud_agenda sources check no outcomes.
-        result.warnings.push(`${source.id}: mud_agenda outcomes from minutes are not built yet (spec Phase 4); nothing checked`);
+        // §6: outcomes from minutes for known meetings, read by code (rungs 1-3); never creates items.
+        const known = mode.known ?? { meetings: [], items: [] };
+        const meetings = mode.meeting_external_ids.flatMap((id) => {
+          const m = known.meetings.find((x) => x.external_id === id);
+          if (!m) result.warnings.push(`meeting ${id}: not in the known meetings; skipped`);
+          return m ? [m] : [];
+        });
+        const minutesIndex = typeof cfg.minutes_index_url === 'string' && /^https?:\/\//.test(cfg.minutes_index_url) ? cfg.minutes_index_url : undefined;
+        if (!minutesIndex && meetings.some((m) => !m.minutes_url)) {
+          result.warnings.push(`${source.id}: no minutes_index_url configured; only meetings with minutes_url are checked`);
+        }
+        const out = await runMinutesResults({
+          meetings,
+          items: known.items,
+          discovery: minutesIndex
+            ? { ...cfg, index_url: minutesIndex, link_pattern: String(cfg.minutes_link_pattern ?? '(?i)minutes'), follow_notice_page: false }
+            : undefined,
+          tolerance_days: typeof cfg.minutes_date_tolerance_days === 'number' ? cfg.minutes_date_tolerance_days : 0,
+          window: { from: window.from, to: new Date(Math.min(window.to.getTime(), now.getTime())) },
+          llm: null,
+          models: { extract: '', fallback: '' }, // unused: readOutcomes replaces the LLM
+          http,
+          readOutcomes: ({ url, bytes, meeting, items }) =>
+            readMinutesLadder({ url, bytes, meeting_external_id: meeting.external_id, items, pdfText, positionedText, ocrTexts: prev?.ocrTexts }),
+        });
+        result.documents.push(...out.documents);
+        result.result_updates.push(...out.updates);
+        result.warnings.push(...out.warnings);
         return result;
       }
 

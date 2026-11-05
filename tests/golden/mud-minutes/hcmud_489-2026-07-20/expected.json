@@ -1,0 +1,208 @@
+{
+  "voted": 14,
+  "matched": 14,
+  "updates": [
+    {
+      "agenda_number": "2",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Following discussion, Director McBride moved that the minutes of the meeting held on June 15,\n2026, be approved, as presented."
+    },
+    {
+      "agenda_number": "4",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Following discussion, it was moved by\nDirector McBride, seconded by Director Harper-Veith and unanimously carried, that (i) the\nBookkeeper's Report be approved, as presented, and the disbursements listed therein be approved\nfor payment, with the addition of check no. 4880, payable to Gexa Energy, and (ii) the Quarterly\nInvestment Inventory Report be approved, as presented, and the District's Investment Officers be\nauthorized to execute same on behalf of the Board and the District."
+    },
+    {
+      "agenda_number": "5",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Following discussion, it was moved by Director McBride, seconded by Director\nHarper-Veith and unanimously carried, that the Tax Assessor-Collector's Report he approved, as\npresented, and the disbursements listed therein be approved for payment."
+    },
+    {
+      "agenda_number": "6",
+      "action": "tabled",
+      "vote_result": "no_action",
+      "quote_verified": true,
+      "source_quote": "The Board deferred consideration of a Delinquent Tax Collections Report, as it was noted\nthat no report was received nor is due at this time from Perdue, Brandon, Fielder, Collins & Mott,\nL.L.P., delinquent tax attorneys for the District."
+    },
+    {
+      "agenda_number": "3",
+      "action": "no_action",
+      "vote_result": "no_action",
+      "quote_verified": true,
+      "source_quote": "Following\ndiscussion, it was noted that no action was required of the Board at this time."
+    },
+    {
+      "agenda_number": "8",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Following discussion, it was moved by Director McBride, seconded by\nDirector Harper-Veith and unanimously carried, that the Engineer's Report and the action items\nlisted therein, be approved and authorized, as applicable."
+    },
+    {
+      "agenda_number": "9",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Following discussion, it was moved by Director McBride,\nseconded by Director Harper-Veith and unanimously carried, that such proposal be approved."
+    },
+    {
+      "agenda_number": "11",
+      "action": "tabled",
+      "vote_result": "no_action",
+      "quote_verified": true,
+      "source_quote": "The Board deferred consideration of a Communications Report, as it was noted that no\nreport was received from Touchstone District Services, LLC (\"Touchstone\"), website services\nprovider for the District."
+    },
+    {
+      "agenda_number": "12",
+      "action": "no_action",
+      "vote_result": "no_action",
+      "quote_verified": true,
+      "source_quote": "Following discussion,\nit was noted that no action was required by the Board in connection with Agency matters at this\ntime."
+    },
+    {
+      "agenda_number": "14",
+      "action": "no_action",
+      "vote_result": "no_action",
+      "quote_verified": true,
+      "source_quote": "It was\nnoted that no action was required by the Board in connection with such report."
+    },
+    {
+      "agenda_number": "16",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Following\ndiscussion, it was moved by Director McBride, seconded by Director Harper-Veith and\nunanimously carried, that Lift Station No. 3, 18934 % Lake Somerville Crossing, Cypress, Texas\n77433, be designated as the new location for posting notices of meetings in the District, and that\nthe Resolution Designating Location in District for Posting Notices of Meetings be approved in\nconnection therewith."
+    },
+    {
+      "agenda_number": "17",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Following discussion,\nDirector McBride moved that the District's consultants be authorized to prepare the report, and\nthat SPH be authorized to submit same to the Comptroller on the District's behalf."
+    },
+    {
+      "agenda_number": "19",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Following\n-4-\n944689v1\ndiscussion, it was moved by Director McBride, seconded by Director Harper-Veith and\nunanimously carried, that the Board's prior approval of the proposal from Gallagher be approved\nand ratified in all respects."
+    },
+    {
+      "agenda_number": "7",
+      "action": "passed",
+      "vote_result": "passed",
+      "quote_verified": true,
+      "source_quote": "Following discussion of the Operations and Maintenance Report, it was moved by Director\nMcBride, seconded by Director Harper-Veith and unanimously carried, that the Operations and\nMaintenance Report and the action items listed therein, be approved and authorized, as\nappropriate, including (i) the write-off of forty-three uncollectible accounts in the total amount of\n$10,639.81, (ii) the proposal prepared by Inframark for the Level 2 inspection of eight (8) force\nmain manholes in the amount of $1,000.00, (iii) the proposal for the installation of two (2)\nautomatic flushing devices on two (2) District manholes in the amount of $6,782.18, and (iv) the\nrepair of the six (6) fire hydrants in the total amount of $1,200.00."
+    }
+  ],
+  "warnings": [],
+  "sections": [
+    {
+      "heading": "PUBLIC COMMENTS",
+      "agenda_number": "1"
+    },
+    {
+      "heading": "APPROVAL OF MINUTES",
+      "agenda_number": "2",
+      "outcome": "passed"
+    },
+    {
+      "heading": "BOOKKEEPER'S REPORT AND QUARTERLY INVESTMENT REPORT",
+      "agenda_number": "4",
+      "outcome": "passed"
+    },
+    {
+      "heading": "TAX ASSESSOR-COLLECTOR'S REPORT",
+      "agenda_number": "5",
+      "outcome": "passed"
+    },
+    {
+      "heading": "DELINQUENT TAX COLLECTIONS REPORT",
+      "agenda_number": "6",
+      "outcome": "tabled"
+    },
+    {
+      "heading": "GARBAGE AND RECYCLING COLLECTION SERVICES",
+      "agenda_number": "3",
+      "outcome": "no_action"
+    },
+    {
+      "heading": "ENGINEER'S REPORT",
+      "agenda_number": "8",
+      "outcome": "passed"
+    },
+    {
+      "heading": "CAPITAL IMPROVEMENT PLAN",
+      "agenda_number": "10"
+    },
+    {
+      "heading": "BIOSWALE MANAGEMENT AGREEMENT",
+      "agenda_number": "9",
+      "outcome": "passed"
+    },
+    {
+      "heading": "WEBSITE UPDATES",
+      "agenda_number": "11",
+      "outcome": "tabled"
+    },
+    {
+      "heading": "BRIDGELAND WATER AGENCY",
+      "agenda_number": "12",
+      "outcome": "no_action"
+    },
+    {
+      "heading": "SITE PLAN FOR 5-ACRE ADMINISTRATIVE FACILITY SITE",
+      "agenda_number": "13"
+    },
+    {
+      "heading": "DEVELOPER'S REPORT",
+      "agenda_number": "14",
+      "outcome": "no_action"
+    },
+    {
+      "heading": "MATTERS RELATIVE TO BRIDGELAND COUNCIL, INC. (\"COUNCIL\") AND/OR PARKLAND VILLAGE HOMEOWNERS' ASSOCIATION (\"HOA\")",
+      "agenda_number": "15"
+    },
+    {
+      "heading": "ADOPTION OF A NEW POSTING LOCATION FOR NOTICE OF DISTRICT MEETINGS",
+      "agenda_number": "16",
+      "outcome": "passed"
+    },
+    {
+      "heading": "AUTHORIZE FILING OF LOCAL GOVERNMENT BOND, TAX, AND PROJECT DATABASE REPORT",
+      "agenda_number": "17",
+      "outcome": "passed"
+    },
+    {
+      "heading": "CYBERSECURITY TRAINING",
+      "agenda_number": "18"
+    },
+    {
+      "heading": "RATIFY APPROVAL OF BUSINESS TRAVEL ACCIDENT INSURANCE",
+      "agenda_number": "19",
+      "outcome": "passed"
+    },
+    {
+      "heading": "ATTORNEY'S REPORT",
+      "agenda_number": "20"
+    },
+    {
+      "heading": "OPERATOR'S REPORT",
+      "agenda_number": "7",
+      "outcome": "passed"
+    },
+    {
+      "heading": "MATTERS FOR FUTURE AGENDAS",
+      "agenda_number": "21"
+    },
+    {
+      "heading": "HARRIS COUNTY MUNICIPAL UTILITY DISTRICT NO. 489 LIST OF ATTACHMENTS TO MINUTES"
+    }
+  ]
+}
