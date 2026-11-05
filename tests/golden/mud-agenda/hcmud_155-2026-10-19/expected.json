@@ -1,9 +1,6 @@
 {
-  "ok": false,
-  "reasons": [
-    "numbering restarts under a CONSENT/REGULAR AGENDA heading; not a single 1..N list",
-    "numbering restarts inside the list (sections or nested numbers); not a single 1..N list"
-  ],
+  "ok": true,
+  "reasons": [],
   "profile": "matter_002",
   "meeting": {
     "date": "2026-10-19T18:00:00-05:00",
@@ -14,42 +11,70 @@
     {
       "agenda_number": "1",
       "title": "Approve minutes of meeting held September 21, 2026",
+      "section": "Consent Agenda",
       "quote_verified": true,
       "contains_private_person": false
     },
     {
       "agenda_number": "2",
       "title": "Tax assessor-collector’s report and payment of invoices; delinquent accounts",
+      "section": "Consent Agenda",
       "quote_verified": true,
       "contains_private_person": false
     },
     {
       "agenda_number": "3",
-      "title": "Bookkeeper’s report and payment of invoices; review & approve investment report REGULAR AGENDA: Consideration of and action on the following items, plus any items removed from the Consent Agenda. 1. Presentation of public comments 2. Public Hearing on Proposed 2026 Tax Rate 3. Order Setting Tax Rate, Approving Tax Roll, and Levying Maintenance & Operation Tax for the Year 2026",
+      "title": "Bookkeeper’s report and payment of invoices; review & approve investment report",
+      "section": "Consent Agenda",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "1",
+      "title": "Presentation of public comments",
+      "section": "Regular Agenda",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "2",
+      "title": "Public Hearing on Proposed 2026 Tax Rate",
+      "section": "Regular Agenda",
+      "quote_verified": true,
+      "contains_private_person": false
+    },
+    {
+      "agenda_number": "3",
+      "title": "Order Setting Tax Rate, Approving Tax Roll, and Levying Maintenance & Operation Tax for the Year 2026",
+      "section": "Regular Agenda",
       "quote_verified": true,
       "contains_private_person": false
     },
     {
       "agenda_number": "4",
       "title": "Amendment to Statement of Directors; Update Compliance Document/Website for adopted tax rate",
+      "section": "Regular Agenda",
       "quote_verified": true,
       "contains_private_person": false
     },
     {
       "agenda_number": "5",
       "title": "Operator’s report; review active connections and water accountability; operation, maintenance, & repair of District facilities; consider customer appeals; termination of service to delinquent accounts; status of ongoing projects and insurance claim",
+      "section": "Regular Agenda",
       "quote_verified": true,
       "contains_private_person": false
     },
     {
       "agenda_number": "6",
       "title": "Annual comparison of operator’s rates to amounts charged under District’s Fee Schedule; authorize actions as appropriate",
+      "section": "Regular Agenda",
       "quote_verified": true,
       "contains_private_person": false
     },
     {
       "agenda_number": "7",
       "title": "Report from Michael’s Maintenance; authorize repairs and maintenance",
+      "section": "Regular Agenda",
       "quote_verified": true,
       "contains_private_person": false
     },
@@ -57,18 +82,21 @@
       "agenda_number": "8",
       "title": "Engineer’s report",
       "description": "a. status of ongoing projects, including:\n1. regional sewage treatment plant;\n2. rehabilitation of lift stations, and site fencing at offsite lift station;\n3. sidewalk repair;\n4. street lighting on Queenston Blvd.\n5. Buckson’s survey questions regarding community center; distribution of survey;\n6. capital improvement plan for water plant; and\nb. authorize preparation of plans as appropriate; authorize advertising for bids; award contracts; review and approve contractor pay estimates and change orders; request(s) for utility commitment(s)",
+      "section": "Regular Agenda",
       "quote_verified": true,
       "contains_private_person": false
     },
     {
       "agenda_number": "9",
       "title": "Review working draft of new Regional Sewage Treatment Plant contract",
+      "section": "Regular Agenda",
       "quote_verified": true,
       "contains_private_person": false
     },
     {
       "agenda_number": "10",
       "title": "Renewal of District Insurance",
+      "section": "Regular Agenda",
       "quote_verified": true,
       "contains_private_person": false
     },
@@ -76,18 +104,21 @@
       "agenda_number": "11",
       "title": "Pending business",
       "description": "a. status of landscape request from Wheatstone Village POA;\nb. discussion with other regional sewage facilities participants;\nc. matters related to West Harris County Regional Water Authority; and\nd. items for placement on next meeting agenda",
+      "section": "Regular Agenda",
       "quote_verified": true,
       "contains_private_person": false
     },
     {
       "agenda_number": "12",
       "title": "Executive Session as necessary Authorized under Texas Government Code Ann., §551.071, et seq",
+      "section": "Regular Agenda",
       "quote_verified": true,
       "contains_private_person": false
     },
     {
       "agenda_number": "13",
       "title": "Reconvene in Open Session and act on matters discussed in Executive Session, as necessary",
+      "section": "Regular Agenda",
       "quote_verified": true,
       "contains_private_person": false
     }

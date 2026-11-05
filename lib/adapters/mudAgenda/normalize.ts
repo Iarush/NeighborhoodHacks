@@ -100,6 +100,9 @@ export function readItemNumber(text: string, expected: number, start?: RegExp, o
   }
   // OCR text only: "2 Public Comments" (the period lost) and "il." (a speck read as a second "1").
   if (ocr) {
+    // "2: Approve minutes": a colon read for the period.
+    const colon = /^(\s*)(\d{1,2}):(\s+)(?=[A-Z])/.exec(text);
+    if (colon && Number(colon[2]) === expected) return { n: expected, marker: colon[0].length };
     const bare = /^(\s*)(\d{1,2})(\s+)(?=[A-Z])/.exec(text);
     if (bare && Number(bare[2]) === expected) return { n: expected, marker: bare[0].length };
     const doubled = /^(\s*)[iIl|]{2}[.)](\s+)/.exec(text);

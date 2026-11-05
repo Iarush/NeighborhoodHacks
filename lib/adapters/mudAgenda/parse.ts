@@ -79,25 +79,39 @@ const END_MARKERS: RegExp[] = [
 const HEADER_BOILERPLATE = /^\s*Persons\s+with\s+disabilities\s+who\s+plan\s+to\s+attend/i;
 
 const MONTHS = 'January|February|March|April|May|June|July|August|September|October|November|December';
-const DATE_RE = new RegExp(`\\b(?:(${MONTHS})\\s+([\\dSlIO]{1,2})(?:st|nd|rd|th)?,?\\s*(\\d{4})|(\\d{1,2})(?:st|nd|rd|th)?\\s+(?:day\\s+of\\s+)?(${MONTHS}),?\\s+(\\d{4}))`, 'i');
+const DATE_RE = new RegExp(`\\b(?:(${MONTHS})\\s+([\\dSlIO]{1,2})(?:st|nd|rd|th)?\\s*,?\\s*(\\d{4})|(\\d{1,2})(?:st|nd|rd|th)?\\s+(?:day\\s+of\\s+)?(${MONTHS}),?\\s+(\\d{4}))`, 'i');
+/** "November 2nd," with no year (Phase 6): the year comes from the link date. */
+const DATE_NO_YEAR_RE = new RegExp(`\\b(${MONTHS})\\s+(\\d{1,2})(?:st|nd|rd|th)?\\b(?!\\s*,?\\s*\\d)`, 'i');
 const TIME_RE = /\b(\d{1,2})(?::(\d{2}))?\s*(?:([ap])\.?\s*m\.?|(noon))/i;
 
 const CANCELLED = /\b(?:cancel+ed|cancel+ation|postponed)\b/i;
 
 const squash = (s: string) => s.replace(/\s+/g, ' ').trim();
 
-function parseNoticeDate(notice: string): { date?: string; time?: string } {
+const MEETS_RE = /\b(?:will\s+(?:hold|meet|be\s+held|convene)|held\s+(?:on|at)|meeting\s+(?:on|at))\b/i;
+
+function parseNoticeDate(notice: string, linkYear?: string): { date?: string; time?: string } {
   const flat = squash(notice);
-  // Prefer a date in a "will hold / will meet / will be held / held on" sentence.
+  // Prefer a date in a "will hold / will meet / will be held / held on" sentence, after those words
+  // (a statute's date can come earlier in the same sentence).
   const sentences = flat.split(/(?<=[.;:])\s+(?=[A-Z])/);
   const ranked = [
-    ...sentences.filter((s) => /\b(?:will\s+(?:hold|meet|be\s+held|convene)|held\s+(?:on|at)|meeting\s+(?:on|at))\b/i.test(s)),
+    ...sentences.filter((s) => MEETS_RE.test(s)).map((s) => s.slice(MEETS_RE.exec(s)!.index)),
     ...sentences,
+    ...(linkYear ? sentences.filter((s) => MEETS_RE.test(s)).map((s) => ({ noYear: s.slice(MEETS_RE.exec(s)!.index) })) : []),
   ];
-  for (const s of ranked) {
-    const m = DATE_RE.exec(s);
-    if (!m) continue;
-    const [mon, rawDay, year] = m[1] ? [m[1], m[2]!, m[3]] : [m[5]!, m[4]!, m[6]];
+  for (const entry of ranked) {
+    const s = typeof entry === 'string' ? entry : entry.noYear;
+    let mon: string, rawDay: string, year: string | undefined;
+    if (typeof entry === 'string') {
+      const m = DATE_RE.exec(s);
+      if (!m) continue;
+      [mon, rawDay, year] = m[1] ? [m[1], m[2]!, m[3]] : [m[5]!, m[4]!, m[6]];
+    } else {
+      const m = DATE_NO_YEAR_RE.exec(s);
+      if (!m) continue;
+      [mon, rawDay, year] = [m[1]!, m[2]!, linkYear];
+    }
     // OCR misreads in the day ("November S, 2026"): S->5, l/I->1, O->0.
     const day = rawDay.replace(/S/g, '5').replace(/[lI]/g, '1').replace(/O/g, '0');
     const month = mon!.charAt(0).toUpperCase() + mon!.slice(1).toLowerCase();
@@ -129,6 +143,8 @@ const safeDecode = (url: string) => {
 
 type RawItem = {
   n: number;
+  /** The number as printed, when it isn't n: "C.1" in a sectioned agenda (collectSectioned). */
+  label?: string;
   /** Lines of the item, the first one with the marker removed. */
   lines: { text: string; line: Line; sub: boolean }[];
   section?: string;
@@ -307,11 +323,33 @@ function collectItems(lines: Line[], from: number, profile: FirmProfile, loose: 
       }
       // OCR text only: a garbled marker ("Di", "am", "25", "i." for "2.") on a line that starts after a
       // blank line, with item expected+1 next in the list, is item `expected` (Phase 6 shadow run).
-      const garbled = ocr && blankBefore ? /^(\s*)(\S{1,3})(\s+)(?=[A-Z])/.exec(text) : null;
-      if (garbled && !subRe.test(text) && !/^[A-Za-z]{3}$/.test(garbled[2]!)) {
-        const nextNum = lines.slice(i + 1).find((x) => !x.dropped && readItemNumber(x.text, expected + 1, profile.item_start, ocr)?.n === expected + 1);
-        const between = nextNum ? lines.slice(i + 1, lines.indexOf(nextNum)) : [];
-        if (nextNum && between.length <= 15 && !between.some((x) => !x.dropped && /^\s*\d{1,2}[.)]\s/.test(x.text))) {
+      // Also right under the previous item when that one ended (";" or "."): "36 Hear", "i. Hear", "BE Security".
+      const prevEnded = items.length > 0 && /[;.]\s*$/.test(items.at(-1)!.lines.at(-1)!.text);
+      const garbled = ocr && (blankBefore || prevEnded) ? /^(\s*)(\S{1,3})(\s+)(?=[A-Z])/.exec(text) : null;
+      const word = garbled && /^(?:A|An|The|Any|All|For|And|If|In|On|At|By|To|Of|No|Or|As|It|Its|Per|Not|May|Can|Has|Was|Are|Our)$/.test(garbled[2]!);
+      // A sub-item marker ("a.", "i.") counts only when it isn't a sub-item: the item above has none of its own.
+      const subLike = !!garbled && subRe.test(text) && (items.at(-1)?.lines.some((x) => x.sub) || !prevEnded);
+      // The rest must read like an item, not a stamp or signature: 2+ words, mostly lowercase, no firm suffix.
+      const rest = garbled ? text.slice(garbled[0].length) : '';
+      const letters = rest.replace(/[^A-Za-z]/g, '');
+      const itemLike = rest.trim().split(/\s+/).length >= 2 && letters.length >= 6 && letters.replace(/[^a-z]/g, '').length / letters.length >= 0.6 && !/\b(?:L\.?L\.?P|P\.C|PLLC)\b/.test(rest) && !endRes.some((re) => re.test(text));
+      if (garbled && itemLike && !word && !subLike && !/^[A-Z][a-z]{2,}$/.test(garbled[2]!)) {
+        // The next readable number is expected+1, or expected+2 with exactly one more garbled marker
+        // (after a blank line, before a capital) in between: two misread numbers in a row.
+        const after = lines.slice(i + 1);
+        const reads = (x: Line, n: number) => !x.dropped && readItemNumber(x.text, n, profile.item_start, ocr)?.n === n;
+        let nextNum = after.find((x) => reads(x, expected + 1));
+        let between = nextNum ? lines.slice(i + 1, lines.indexOf(nextNum)) : [];
+        if (!nextNum) {
+          const n2 = after.find((x) => reads(x, expected + 2));
+          const mid = n2 ? lines.slice(i + 1, lines.indexOf(n2)) : [];
+          const cands = mid.filter((x, k) => !x.dropped && (k === 0 || !mid[k - 1]!.text.trim()) && /^\s*\S{1,3}\s+[A-Z][a-z]/.test(x.text) && !subRe.test(x.text) && !endRes.some((re) => re.test(x.text)));
+          if (n2 && cands.length === 1) {
+            nextNum = n2;
+            between = mid.filter((x) => x !== cands[0]);
+          }
+        }
+        if (nextNum && between.length <= 25 && !between.some((x) => !x.dropped && /^\s*\d{1,2}[.)]\s/.test(x.text))) {
           items.push({ n: expected, lines: [{ text: text.slice(garbled[0].length), line: l, sub: false }], ...(pendingSection ? { section: pendingSection } : {}) });
           pendingSection = undefined;
           blankBefore = false;
@@ -399,6 +437,114 @@ function collectItems(lines: Line[], from: number, profile: FirmProfile, loose: 
   return { items, end, boilerplate };
 }
 
+/** A CONSENT/REGULAR/ACTION section heading, after any outline marker. */
+const SECTION_HEAD = /^\s*((?:CONSENT|REGULAR|ACTION|DISCUSSION)\s+(?:AGENDA|ITEMS)|ACTION\s+ITEMS|AGENDA\s+ITEMS\s+FOR\s+ACTION)\b\s*[:.\-–]?/i;
+const OUTLINE_MARKER = /^(\s*)(\d{1,2}|[A-Z]|[IVX]{1,5})([.)])\s+(?=\S)/;
+type MarkerKind = 'digit' | 'letter' | 'roman';
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX'];
+const markerValue = (kind: MarkerKind, n: number) => (kind === 'digit' ? String(n) : kind === 'letter' ? String.fromCharCode(64 + n) : ROMAN[n - 1] ?? '');
+/** The kind a first marker ("1", "A", "I") starts; null if it doesn't start a list. */
+const startKind = (tok: string): MarkerKind | null => (tok === '1' ? 'digit' : tok === 'A' ? 'letter' : tok === 'I' ? 'roman' : null);
+
+/**
+ * Agendas split into CONSENT / REGULAR (or ACTION ITEMS) sections whose numbering restarts in each
+ * (Phase 6 shadow run, Iarush's decision Nov 5). Handles three outlines seen in the survey:
+ *   unmarked headings with 1..N under each ("CONSENT AGENDA: ..." / "REGULAR AGENDA: ...");
+ *   lettered top level with numbered sections ("A. Public comments", "C. CONSENT AGENDA:", "1. Minutes");
+ *   roman top level with lettered sections ("I. Comments", "II. CONSENT AGENDA:", "A. Approve minutes").
+ * Each section's children must run 1..N (or A..N) in order and the top level must run in order too.
+ * An item's agenda_number is its printed number, prefixed by its section's marker when it has one
+ * ("C.1", "II.A"); `section` is the heading ("Consent Agenda").
+ */
+function collectSectioned(lines: Line[], from: number, profile: FirmProfile, reasons: string[]): { items: RawItem[]; end: number; boilerplate: boolean } {
+  const subRe = profile.sub_item_start ?? DEFAULT_SUB_ITEM;
+  const endRes = [...END_MARKERS, ...(profile.extra_boilerplate ?? [])];
+  const items: RawItem[] = [];
+  let end = lines.length;
+  let boilerplate = false;
+  let outerKind: MarkerKind | 'none' | undefined;
+  let outerPunct: string | undefined;
+  let outerNext = 1;
+  let section: { name: string; prefix: string; kind?: MarkerKind; punct?: string; next: number } | undefined;
+  let sections = 0;
+  let cur: RawItem | undefined;
+  for (let i = from; i < lines.length; i++) {
+    const l = lines[i]!;
+    if (l.dropped || HEADER_BOILERPLATE.test(l.text)) continue;
+    if (endRes.some((re) => re.test(l.text))) {
+      boilerplate = true;
+      end = i;
+      break;
+    }
+    const text = l.text;
+    if (!text.trim()) continue;
+    const m = OUTLINE_MARKER.exec(text);
+    const tok = m?.[2];
+    const punct = m?.[3];
+    const body = m ? text.slice(m[0].length) : text;
+    const head = SECTION_HEAD.exec(body);
+    // Does this marker continue the top level?
+    // Before the first section, a numbered top level ("1." ... "4. CONSENT AGENDA:") counts too.
+    const outerOk = (t: string) => {
+      if (outerKind === 'none') return false;
+      if (outerKind) return t === markerValue(outerKind, outerNext) && punct === outerPunct;
+      return startKind(t) !== null && (startKind(t) !== 'digit' || !sections);
+    };
+    // An unmarked heading must be in capitals ("REGULAR AGENDA:"), not a phrase wrapped onto its own line.
+    if (head && (m ? outerOk(tok!) : head[1] === head[1]!.toUpperCase())) {
+      if (m) {
+        outerKind ??= startKind(tok!)!;
+        outerPunct ??= punct;
+        outerNext++;
+      } else if (!outerKind) outerKind = 'none';
+      const name = squash(head[1]!).toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
+      section = { name, prefix: m ? `${tok}.` : '', next: 1 };
+      sections++;
+      cur = undefined; // the heading's explanation ("The following items are considered routine...") isn't an item
+      continue;
+    }
+    if (m && section) {
+      const want = section.kind ? markerValue(section.kind, section.next) : null;
+      if (want ? tok === want && punct === section.punct : startKind(tok!) !== null) {
+        section.kind ??= startKind(tok!)!;
+        section.punct ??= punct;
+        section.next++;
+        cur = { n: items.length + 1, label: `${section.prefix}${tok}`, lines: [{ text: body, line: l, sub: false }], section: section.name };
+        items.push(cur);
+        continue;
+      }
+    }
+    if (m && outerOk(tok!)) {
+      outerKind ??= startKind(tok!)!;
+      outerPunct ??= punct;
+      outerNext++;
+      section = undefined;
+      cur = { n: items.length + 1, label: tok!, lines: [{ text: body, line: l, sub: false }] };
+      items.push(cur);
+      continue;
+    }
+    if (m && section?.kind && m[2] && markerValue(section.kind, section.next + 1) === tok) {
+      reasons.push(`sectioned: ${section.name} item ${markerValue(section.kind, section.next)} missing`);
+    }
+    if (cur) cur.lines.push({ text, line: l, sub: subRe.test(text) || !!m });
+  }
+  if (!sections) reasons.push('sectioned: no CONSENT/REGULAR/ACTION section heading');
+  if (items.some((it) => it.lines.length > 40)) reasons.push('sectioned: an item is longer than 40 lines');
+  if (items.length) {
+    const last = items.at(-1)!;
+    const signedBelow = end < lines.length && /^\s*(?:Attorneys?|(?:General\s+)?Counsel)\s+for\b/i.test(lines[end]!.text);
+    let popped = 0;
+    while (last.lines.length > 1 && looksLikeSignature(last.lines.at(-1)!.text) && (/[;.:]\s*$/.test(last.lines.at(-2)!.text) || (signedBelow && popped < 2))) {
+      last.lines.pop();
+      popped++;
+    }
+    // The district's name in capitals heading the next page's boilerplate ("CYPRESS CREEK UTILITY DISTRICT").
+    while (last.lines.length > 1 && end < lines.length && /^\s*[A-Z0-9 .,&'’-]+\bDISTRICT\b[A-Z0-9 .,]*$/.test(last.lines.at(-1)!.text)) last.lines.pop();
+    if (end === lines.length && /[;.]\s*$/.test(last.lines.at(-1)!.text)) boilerplate = true;
+  }
+  return { items, end, boilerplate };
+}
+
 /** Parse one agenda's text (pages joined with \f). */
 export function parseMudAgenda(text: string, profile: FirmProfile = GENERIC, ctx: ParseContext): ParseResult {
   const reasons: string[] = [];
@@ -422,13 +568,29 @@ export function parseMudAgenda(text: string, profile: FirmProfile = GENERIC, ctx
     .map((l) => l.text)
     .join('\n');
 
-  const { items: raw, end, boilerplate } = collectItems(lines, introLine + 1, profile, !!ctx.loose, reasons, !!ctx.ocr);
+  let { items: raw, end, boilerplate } = collectItems(lines, introLine + 1, profile, !!ctx.loose, reasons, !!ctx.ocr);
+  // A list split into CONSENT/REGULAR sections: read it as an outline instead (collectSectioned).
+  const listText = lines.slice(introLine + 1).map((l) => l.text);
+  // Used when the 1..N reading failed, or found fewer items ("I." read as item 1 of a roman outline).
+  if (!ctx.loose && listText.some((t) => SECTION_HEAD.test(t.replace(OUTLINE_MARKER, '')))) {
+    const secReasons: string[] = [];
+    // A text layer that ran a heading into the previous line ("encroachmentE. REGULAR AGENDA") is split there.
+    const secLines = markFurniture(splitLines(text)).flatMap((l) => {
+      const at = /[a-z;.](?=(?:[A-Z]|[IVX]{1,4}|\d{1,2})[.)]\s+(?:CONSENT|REGULAR|ACTION)\s+(?:AGENDA|ITEMS)\b)/.exec(l.text);
+      return at ? [{ ...l, text: l.text.slice(0, at.index + 1) }, { ...l, text: l.text.slice(at.index + 1) }] : [l];
+    });
+    const sec = collectSectioned(secLines, introLine + 1, profile, secReasons);
+    if (!secReasons.length && sec.items.length && (reasons.length > 0 || sec.items.length > raw.length)) {
+      reasons.splice(0, reasons.length);
+      ({ items: raw, end, boilerplate } = sec);
+    }
+  }
 
   // Confidence rule 1: items 1..N, and no further item numbers after the list ended.
   if (!raw.length) reasons.push('no items');
   if (!ctx.loose) {
     // An item number just past N after the list ended means the boilerplate swallowed part of it.
-    const n = raw.length;
+    const n = raw.some((r) => r.label) ? 99 : raw.length;
     const after = lines.slice(end).find((l) => {
       if (l.dropped) return false;
       const m = /^\s*(\d{1,2})[.)]\s+\S/.exec(l.text);
@@ -441,7 +603,7 @@ export function parseMudAgenda(text: string, profile: FirmProfile = GENERIC, ctx
 
   // Rule 2: the notice date matches the link date within 1 day.
   const notice2 = notice || lines.map((l) => l.text).join('\n');
-  const { date: noticeDate, time } = parseNoticeDate(notice2);
+  const { date: noticeDate, time } = parseNoticeDate(notice2, ctx.link?.date.slice(0, 4));
   if (!noticeDate) reasons.push('meeting date not found in the notice');
   else if (ctx.link) {
     const diff = Math.abs(DateTime.fromISO(noticeDate, { zone: ZONE }).diff(DateTime.fromISO(ctx.link.date, { zone: ZONE }), 'days').days);
@@ -450,7 +612,7 @@ export function parseMudAgenda(text: string, profile: FirmProfile = GENERIC, ctx
 
   const shaped = raw.map((r) => ({ raw: r, ...shapeItem(r) }));
   shaped.forEach((s) => {
-    if (!s.title) reasons.push(`item ${s.raw.n}: empty title`);
+    if (!s.title) reasons.push(`item ${s.raw.label ?? s.raw.n}: empty title`);
   });
 
   const date = ctx.link?.date ?? noticeDate;
@@ -474,7 +636,7 @@ export function parseMudAgenda(text: string, profile: FirmProfile = GENERIC, ctx
   const used = new Set<string>();
   for (const s of shaped) {
     if (!s.title) continue;
-    const agendaNumber = String(s.raw.n);
+    const agendaNumber = s.raw.label ?? String(s.raw.n);
     let id = llmItemExternalId(meeting.external_id, agendaNumber, s.title);
     if (used.has(id)) id = `${id}#${s.raw.n}`;
     used.add(id);

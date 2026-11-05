@@ -33,6 +33,15 @@ A shared log of changes made in this repo, so the next teammate or agent can cat
 
 ## Entries
 
+### 2026-11-05: MUD code parser Phase 6 done: 95.3%, sectioned agendas accepted
+- **Who:** Iarush · P2 Scrapers
+- **Branch:** main
+- **What changed:** As Iarush decided, CONSENT/REGULAR/ACTION-ITEMS agendas are now parsed instead of rejected (`collectSectioned()` in `lib/adapters/mudAgenda/parse.ts`). Also more OCR number repairs (two garbled markers in a row, a garbled marker right under an item, "2:"), with a check that the line reads like an item so signature stamps are refused, and notice-date fixes (a statute date earlier in the sentence, "27 , 2026", no year). Shadow run: both newest agendas accepted for 264 of 277 water districts (95.3%), up from 242; newest agenda alone 269 (97.1%). The Phase 6 target is met.
+- **Files:** `lib/adapters/mudAgenda/{parse,normalize}.ts`, `tests/unit/mud-agenda-phase6.test.ts` (new, 8 tests), `tests/golden/mud-agenda/{bridgestone_mud-2026-10-20,hcmud_155-2026-10-19}/expected.json` (now parse; read by hand), `.plans/mud-code-parser-spec.md` (progress log only)
+- **Contract changes:** No type or schema change, but **P1/P3 should know:** for sectioned MUD agendas, `item.agenda_number` can be `C.1`, `4.A` or `II.A`, or a plain number that **repeats across sections**. `item.section` is set ("Consent Agenda", "Regular Agenda", "Action Items"). Nothing in the DB or UI keys on `agenda_number` (checked with grep), and item IDs stay unique.
+- **Checked:** `npm test` (1173 vitest + 72 P4 pass), ESLint clean on the changed folders, `npm run typecheck` (only the known gitignored `tmp/` error). I compared every saved agenda against the round-1 parser. Of the documents both accept, 3 changed, all for the better (I read them), and 1 wrong single-item parse (hcmud_401 Oct 19) is now rejected. The run is offline on the text saved by round 1's live fetch (Nov 4–5); there was no new live fetch.
+- **Open issues / next:** 13 sources still fail (listed in the spec's progress log); they stay `llm_extract` in Phase 7. The LLM item-count comparison still has only 1 agenda (no MUD LLM items in `meetings`). Next: Phase 7 (switch the 264 passing sources to `mud_agenda`; HC MUD 489 last).
+
 ### 2026-11-05: MUD code parser Phase 6: shadow run (first round, 87.4%, target not met)
 - **Who:** Iarush · P2 Scrapers
 - **Branch:** main
